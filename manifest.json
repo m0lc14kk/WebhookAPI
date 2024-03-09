@@ -2,16 +2,16 @@
   "format_version": 2,
   "metadata": {
     "authors": [
-      "m0lc14kk",
+      "m0lc14kk"
+    ],
 
-      "url": ""
-    ]
+    "url": "https://github.com/m0lc14kk/WebhookAPI"
   },
 
   "header": {
     "name": "Webhook API",
     "description": "",
-    "uuid": "",
+    "uuid": "0bee8883-55f0-42c1-9206-6a5621dec309",
     "version": [
       1,
       0,
@@ -28,7 +28,7 @@
   "modules": [
     {
       "type": "data",
-      "uuid": "",
+      "uuid": "ea425960-a8a7-4a27-abb7-393615334c35",
       "version": [
         1,
         0,
@@ -38,7 +38,7 @@
     {
       "type": "script",
       "language": "javascript",
-      "uuid": "",
+      "uuid": "79856dfa-d1f3-4f40-805c-d206591f9aad",
       "entry": "scripts/Main.js",
       "version": [
         1,
