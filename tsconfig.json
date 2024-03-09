@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "outDir": "./scripts"
+  },
+
+  "include": [
+    "src"
+  ],
+
+  "exclude": [
+    "node_modules"
+  ]
+}

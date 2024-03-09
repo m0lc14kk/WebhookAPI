@@ -1,0 +1,61 @@
+{
+  "format_version": 2,
+  "metadata": {
+    "authors": [
+      "m0lc14kk",
+
+      "url": ""
+    ]
+  },
+
+  "header": {
+    "name": "Webhook API",
+    "description": "",
+    "uuid": "",
+    "version": [
+      1,
+      0,
+      0
+    ],
+
+    "min_engine_version": [
+      1,
+      20,
+      60
+    ]
+  },
+
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "",
+      "entry": "scripts/Main.js",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.9.0-beta"
+    },
+    {
+      "module_name": "@minecraft/server-net",
+      "version": "1.0.0-beta"
+    }
+  ]
+}
