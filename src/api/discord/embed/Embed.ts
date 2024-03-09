@@ -1,7 +1,9 @@
+import { IEmbed } from "./interfaces/IEmbed";
+
 class EmbedServer {
     private embedTitle: string | null;
     private embedDescription: string | null;
-    private embedColor: number;
+    private embedColor: number = 0;
 
     /**
      * Funkcja do ustawiania tytułu embeda.
@@ -35,9 +37,9 @@ class EmbedServer {
 
     /**
      * Funkcja od pobierania embeda w notacji JSON.
-     * @returns Zwraca obiekt JSON, gotowy do wysłania na kanał Discord.
+     * @returns Zwraca obiekt JSON embeda, gotowy do wysłania na kanał Discord.
      */
-    public getEmbed() {
+    public getEmbed(): IEmbed {
         return {
             color: this.embedColor,
 
