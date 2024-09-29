@@ -2,9 +2,7 @@
     <img src="../assets/logo.png" alt="Webhook API" />
 </p>
 
-<h3>
-    📢 INSTALLATION PROCESS FOR TYPESCRIPT
-</h3>
+### 📢 INSTALLATION PROCESS FOR TYPESCRIPT
 
 This documentation page covers the installation process for Typescript. You can find [here](./js-installation.md) the same process, but for JavaScript programmers.
 
@@ -12,9 +10,7 @@ Click [here](../README.md) to get back to main README file.
 
 <hr />
 
-<h3>
-    📌 FULL STEPS:
-</h3>
+### 📌 FULL STEPS:
 
 1. Check your BDS ([Bedrock Dedicated Server](https://www.minecraft.net/en-us/download/server/bedrock)) configuration file (`config/default/permissions.json`) and add the `@minecraft/server-net` module if it's not present.
 
