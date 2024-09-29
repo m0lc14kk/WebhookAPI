@@ -1,2 +1,2 @@
-export { WebhookUtility, IWebhookContent } from "./webhooks/WebhookUtility";
-export { EmbedUtility, IRawEmbedUtility } from "./embeds/EmbedUtility";
+export * from "./webhooks/WebhookUtility";
+export * from "./embeds/EmbedUtility";
