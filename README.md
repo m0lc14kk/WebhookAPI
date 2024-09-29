@@ -41,7 +41,7 @@
 3. Check if your world has experimental scripting API's enabled. It's really important part.
 
 <p>
-    If you did everything right, you should be able to start using our API and send fancy messages to your server! Just paste <code>api</code> folder into your scripts! Detailed tutorials you can find [down here!](#tutorials)
+    If you did everything right, you should be able to start using our API and send fancy messages to your server! Just paste <code>api</code> folder into your scripts! Detailed tutorials you can find on the bottom of README.
 </p>
 
 > [!TIP]
@@ -52,7 +52,9 @@
 
 <hr />
 
-# 📢 TUTORIALS
+<h3> 
+    📢 TUTORIALS
+</h3>
 
 <p>
     Here is a list of tutorials, which you might need when using our API:
