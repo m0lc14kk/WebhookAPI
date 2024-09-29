@@ -1,6 +1,18 @@
+/**
+ * Fixed structure for raw footer structure of embed.
+ */
 interface IRawEmbedFooter {
-    text: string,
-    icon_url?: string
+    /**
+     * Text of a footer.
+     * @readonly
+     */
+    readonly text: string,
+
+    /**
+     * Icon of a footer.
+     * @readonly
+     */
+    readonly icon_url?: string
 };
 
 export { IRawEmbedFooter };

@@ -1,7 +1,14 @@
 import { IEmbedContentWithImage } from "./IEmbedContentWithImage";
 
+/**
+ * Fixed structure of a footer in embed.
+ */
 interface IEmbedFooter extends IEmbedContentWithImage {
-    text: string,
+    /**
+     * Text of a footer in embed.
+     * @readonly
+     */
+    readonly text: string,
 };
 
 export { IEmbedFooter };

@@ -1,5 +1,12 @@
+/**
+ * Basic interface, which will be extended by other interfaces.
+ */
 interface IEmbedContentWithImage {
-    iconURL?: string
+    /**
+     * Icon of an author of embed.
+     * @readonly
+     */
+    readonly iconURL?: string
 };
 
 export { IEmbedContentWithImage };
