@@ -1,3 +1,5 @@
+import { EmbedUtility, IRawEmbedUtility } from "../../WebhookAPI";
+
 interface IWebhookContent {
     /**
      * Content of a webhook.
@@ -9,9 +11,10 @@ interface IWebhookContent {
 
     /**
      * Embeds of a message.
+     * If object is `EmbedUtility` instance, it will be automaticly converted to JSON object.
      * @readonly
      */
-    readonly embeds?: [],
+    readonly embeds?: (EmbedUtility | IRawEmbedUtility)[],
     
     /**
      * Compontents of a message. This option can have

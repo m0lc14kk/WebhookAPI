@@ -1,6 +1,7 @@
 import { http, HttpHeader, HttpRequest, HttpRequestMethod, HttpResponse } from "@minecraft/server-net";
 import { IWebhookContent } from "./interfaces/IWebhookContent";
 import { REQUEST_HEADERS } from "./constants/RequestHeaders";
+import { EmbedUtility, IRawEmbedUtility } from "../WebhookAPI";
 
 /**
  * Class that allows you to send messages via webhook.
@@ -23,8 +24,8 @@ class WebhookUtility {
                         content,
 
                         // It will be compiled to JSON forms in future.
-                        embeds,
-                        components  
+                        embeds: embeds.map((embed: EmbedUtility | IRawEmbedUtility) => embed instanceof EmbedUtility ? embed.toJSON() : embed),
+                        components
                     }))
 
                     .setHeaders(REQUEST_HEADERS as HttpHeader[])
