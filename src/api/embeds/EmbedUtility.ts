@@ -2,8 +2,8 @@ import { IRawEmbedUtility } from "./interfaces/raw/IRawEmbedUtility";
 import type { EmbedContentTypes } from "./types/EmbedContentTypes";
 
 class EmbedUtility {
-    public embedTitle: EmbedContentTypes = null;
-    public embedDescription: EmbedContentTypes = null;
+    private embedTitle: EmbedContentTypes = null;
+    private embedDescription: EmbedContentTypes = null;
     private embedColor: number = 0x000000;
 
     public setTitle(title: EmbedContentTypes): EmbedUtility {
