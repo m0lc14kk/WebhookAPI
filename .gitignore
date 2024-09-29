@@ -5,6 +5,3 @@ tsconfig.json
 # Disables documentation for tests.
 scripts/tests/*.d.ts
 src/tests/*.d.ts
-
-# Currently, JavaScript distribution is not ready to go.
-scripts/
