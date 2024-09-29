@@ -23,26 +23,51 @@ class EmbedUtility {
     private embedFooter: IEmbedFooter | null = null; 
     private embedFields: IEmbedField[] = [];
 
+    /**
+     * Sets a title for embed.
+     * @param title New title of an embed.
+     * @returns Edited instance of this embed.
+     */
     public setTitle(title: EmbedContentTypes): EmbedUtility {
         this.embedTitle = title;
         return this;
     };
 
+    /**
+     * Sets a description for embed.
+     * @param description New description of an embed.
+     * @returns Edited instance of this embed.
+     */
     public setDescription(description: EmbedContentTypes | EmbedContentTypes[]): EmbedUtility {
         this.embedDescription = Array.isArray(description) ? description.filter((line: EmbedContentTypes) => line !== null).join("\n") : description;
         return this;
     };
 
+    /**
+     * Sets a color for embed.
+     * @param color New description of an embed.
+     * @returns Edited instance of this embed.
+     */
     public setColor(color: number): EmbedUtility {
         this.embedColor = color;
         return this;
     };
 
-    public setURL(url: string): EmbedUtility {
+    /**
+     * Sets a URL for embed, that will be associated with title.
+     * @param url New URL target of a title in embed.
+     * @returns Edited instance of this embed.
+     */
+    public setURL(url: EmbedContentTypes): EmbedUtility {
         this.embedURL = url;
         return this;
     };
 
+    /**
+     * Sets a timestamp of an embed.
+     * @param timestamp Time displayed on the bottom of embed.
+     * @returns Edited instance of this embed.
+     */
     public setTimestamp(timestamp: ISO8601Data): EmbedUtility {
         if (timestamp instanceof Date) {
             this.embedTimestamp = timestamp.toISOString();
@@ -60,6 +85,11 @@ class EmbedUtility {
         return this;
     };
 
+    /**
+     * Sets an image of embed.
+     * @param image Options of an image.
+     * @returns Edited instance of this embed.
+     */
     public setImage(image: IEmbedMedia | EmbedContentTypes): EmbedUtility {
         if (typeof image === "string") {
             this.embedImage = {
@@ -80,6 +110,11 @@ class EmbedUtility {
         return this;
     };
 
+    /**
+     * Sets a thumbnail of embed.
+     * @param thumbnail Options of a thumbnail.
+     * @returns Edited instance of this embed.
+     */
     public setThumbnail(thumbnail: IEmbedMedia | EmbedContentTypes): EmbedUtility {
         if (typeof thumbnail === "string") {
             this.embedThumbnail = {
@@ -100,6 +135,11 @@ class EmbedUtility {
         return this;
     };
 
+    /**
+     * Sets a video of embed.
+     * @param video Options of a video.
+     * @returns Edited instance of this embed.
+     */
     public setVideo(video: IEmbedMedia | EmbedContentTypes): EmbedUtility {
         if (typeof video === "string") {
             this.embedVideo = {
@@ -120,26 +160,50 @@ class EmbedUtility {
         return this;
     };
 
+    /**
+     * Sets an author of embed.
+     * @param author Options of an author.
+     * @returns Edited instance of this embed.
+     */
     public setAuthor(author: IEmbedAuthor | null): EmbedUtility {
         this.embedAuthor = author;
         return this;
     };
 
+    /**
+     * Sets a footer of embed.
+     * @param author Options of a footer.
+     * @returns Edited instance of this embed.
+     */
     public setFooter(footer: IEmbedFooter | null): EmbedUtility {
         this.embedFooter = footer;
         return this;
     };
 
+    /**
+     * Adds a field or fields to embed.
+     * @param field Single or more fields.
+     * @returns Edited instance of this embed.
+     */
     public addFields(...field: IEmbedField[]): EmbedUtility {
         this.embedFields.push(...field);
         return this;
     };
 
+    /**
+     * Sets a field or fields of embed.
+     * @param field Single or more fields.
+     * @returns Edited instance of this embed.
+     */
     public setFields(...fields: IEmbedField[]): EmbedUtility {
         this.embedFields = fields;
         return this;
     };
 
+    /**
+     * Gets JSON data, which is created to be sent via webhook.
+     * @returns JSON object of an raw embed.
+     */
     public toJSON(): IRawEmbedUtility {
         return {
             type: "rich",
