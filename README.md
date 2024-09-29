@@ -46,3 +46,6 @@
 
 > [!TIP]
 > If you're troubling some problems with installation, contact me directly on Discord: @m0lc14kk
+
+> [!IMPORTANT]
+> Check code documentation and examples, to simplify process of learning usage of API.
