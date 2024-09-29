@@ -41,7 +41,7 @@
 3. Check if your world has experimental scripting API's enabled. It's really important part.
 
 <p>
-    If you did everything right, you should be able to start using our API and send fancy messages to your server!
+    If you did everything right, you should be able to start using our API and send fancy messages to your server! Just paste <code>api</code> folder into your scripts!
 </p>
 
 > [!TIP]
@@ -49,3 +49,16 @@
 
 > [!IMPORTANT]
 > Check code documentation and examples, to simplify process of learning usage of API.
+
+<hr />
+
+<h3>
+    📢 TUTORIALS
+</h3>
+
+<p>
+    Here is a list of tutorials, which you might need when using our API:
+</p>
+
+- [Full explanation of installation for JavaScript](./docs/js-installation.md)
+- [Full explanation of installation for TypeScript](./docs/ts-installation.md)
