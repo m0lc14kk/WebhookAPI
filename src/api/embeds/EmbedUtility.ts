@@ -9,8 +9,22 @@ import { ISO8601_REGEX } from "./constants/ISO8601RegEx";
 import { IRawEmbedField } from "./interfaces/raw/IRawEmbedField";
 import { EmbedConfiguration } from "./EmbedConfiguration";
 
+/**
+ * Class to create new instances of a embed.
+ * @public
+ */
 class EmbedUtility {
-    public static configuration: typeof EmbedConfiguration = EmbedConfiguration;
+    /**
+     * Default set for embeds.
+     * @readonly
+     */
+    public static readonly configuration: typeof EmbedConfiguration = EmbedConfiguration;
+
+    /**
+     * Creates a new instance of embed.
+     */
+    public constructor() {};
+
     private embedTitle: EmbedContentTypes = null;
     private embedDescription: EmbedContentTypes = null;
     private embedURL: EmbedContentTypes = null;
