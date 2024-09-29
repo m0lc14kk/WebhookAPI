@@ -2,6 +2,6 @@
 manifest.json
 tsconfig.json
 
-# Disables documentation for tests.
-scripts/tests/*.d.ts
-src/tests/*.d.ts
+# Disables documentation for tests
+scripts/tests/**/*.d.ts
+src/tests/**/*.d.ts
