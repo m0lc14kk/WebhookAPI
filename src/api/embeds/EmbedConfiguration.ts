@@ -1,5 +1,3 @@
-import { EmbedContentTypes } from "./types/EmbedContentTypes";
-
 /**
  * Class that allows set default properties for embeds.
  * @private
