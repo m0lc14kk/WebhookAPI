@@ -2,7 +2,6 @@ import { http, HttpHeader, HttpRequest, HttpRequestMethod, HttpResponse } from "
 import { IWebhookContent } from "./interfaces/IWebhookContent";
 import { REQUEST_HEADERS } from "./constants/RequestHeaders";
 import { EmbedUtility, IRawEmbedUtility } from "../WebhookAPI";
-
 /**
  * Class that allows you to send messages via webhook.
  * @private This class is private.
@@ -16,7 +15,7 @@ class WebhookUtility {
      * @param messageContent Content of a message.
      * @returns Returns a boolean, if messages was successfully sent.
      */
-    public static async sendWebhook(webhookUri: string, { content = "", embeds = [], components = [] }: IWebhookContent): Promise<boolean> {
+    public static async sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent): Promise<boolean> {
         try {
             const requestResponse: HttpResponse = await http.request(
                 new HttpRequest(webhookUri)
@@ -25,13 +24,13 @@ class WebhookUtility {
 
                         // It will be compiled to JSON forms in future.
                         embeds: embeds.map((embed: EmbedUtility | IRawEmbedUtility) => embed instanceof EmbedUtility ? embed.toJSON() : embed),
-                        components
                     }))
 
                     .setHeaders(REQUEST_HEADERS as HttpHeader[])
                     .setMethod(HttpRequestMethod.Post)
             );
 
+            console.log(JSON.stringify(requestResponse.body));
             return requestResponse.status.toString().startsWith("2");
         } catch {
             return false;

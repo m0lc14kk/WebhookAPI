@@ -15,13 +15,6 @@ interface IWebhookContent {
      * @readonly
      */
     readonly embeds?: (EmbedUtility | IRawEmbedUtility)[],
-    
-    /**
-     * Compontents of a message. This option can have
-     * buttons or dropdowns.
-     * @readonly
-     */
-    readonly components?: []
 };
 
 export { IWebhookContent };

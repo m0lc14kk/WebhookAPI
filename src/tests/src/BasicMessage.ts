@@ -1,4 +1,4 @@
-// Import a webhook class.
+// Import webhook classes.
 import { EmbedUtility, WebhookUtility } from "../../api/WebhookAPI";
 
 // Send a message with almost every possible embed property.
