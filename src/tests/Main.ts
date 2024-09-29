@@ -1,3 +1,5 @@
-// Check if add-on is pinned correctly.
+/**
+ * Sends a basic message via webhook.
+ */
 
-console.log("Add-on has been connected.");
+import "./src/BasicMessage";
