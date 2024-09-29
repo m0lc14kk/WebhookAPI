@@ -7,13 +7,15 @@ import type { EmbedContentTypes } from "./types/EmbedContentTypes";
 import type { ISO8601Data } from "./types/ISO8601Data";
 import { ISO8601_REGEX } from "./constants/ISO8601RegEx";
 import { IRawEmbedField } from "./interfaces/raw/IRawEmbedField";
+import { EmbedConfiguration } from "./EmbedConfiguration";
 
 class EmbedUtility {
+    public static configuration: typeof EmbedConfiguration = EmbedConfiguration;
     private embedTitle: EmbedContentTypes = null;
     private embedDescription: EmbedContentTypes = null;
     private embedURL: EmbedContentTypes = null;
     private embedTimestamp: string | null = null;
-    private embedColor: number = 0x000000;
+    private embedColor: number = EmbedConfiguration.embedColor;
     private embedImage: null | IEmbedMedia = null;
     private embedThumbnail: null | IEmbedMedia = null;
     private embedVideo: null | IEmbedMedia = null;
