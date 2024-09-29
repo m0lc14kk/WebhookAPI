@@ -1,5 +1,8 @@
 import { EmbedUtility, IRawEmbedUtility } from "../../WebhookAPI";
 
+/**
+ * Fixed structure of a webhook message content.
+ */
 interface IWebhookContent {
     /**
      * Content of a webhook.

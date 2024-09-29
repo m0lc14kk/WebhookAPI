@@ -2,6 +2,7 @@ import { http, HttpHeader, HttpRequest, HttpRequestMethod, HttpResponse } from "
 import { IWebhookContent } from "./interfaces/IWebhookContent";
 import { REQUEST_HEADERS } from "./constants/RequestHeaders";
 import { EmbedUtility, IRawEmbedUtility } from "../WebhookAPI";
+
 /**
  * Class that allows you to send messages via webhook.
  * @private This class is private.
@@ -21,8 +22,6 @@ class WebhookUtility {
                 new HttpRequest(webhookUri)
                     .setBody(JSON.stringify({
                         content,
-
-                        // It will be compiled to JSON forms in future.
                         embeds: embeds.map((embed: EmbedUtility | IRawEmbedUtility) => embed instanceof EmbedUtility ? embed.toJSON() : embed),
                     }))
 
@@ -30,7 +29,6 @@ class WebhookUtility {
                     .setMethod(HttpRequestMethod.Post)
             );
 
-            console.log(JSON.stringify(requestResponse.body));
             return requestResponse.status.toString().startsWith("2");
         } catch {
             return false;

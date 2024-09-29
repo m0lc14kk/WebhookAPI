@@ -8,7 +8,6 @@ WebhookUtility.sendWebhook("YOUR_WEBHOOK_URL_HERE", {
         new EmbedUtility()
             .setTitle("Some title.")
             .setDescription("Some description.")
-            .setColor(0xFFAA00)
             .setAuthor({
                 name: "Author",
                 url: "https://github.com/m0lc14kk",
