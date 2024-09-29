@@ -48,3 +48,7 @@ Here is a list of tutorials, which you might need when using our API:
 
 - [Full explanation of installation for JavaScript](./docs/js-installation.md)
 - [Full explanation of installation for TypeScript](./docs/ts-installation.md)
+
+### 📌 RESOURCES
+
+- [Licence](./docs/licence.md)
