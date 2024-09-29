@@ -266,4 +266,5 @@ class EmbedUtility {
     };
 };
 
-export { EmbedUtility, IRawEmbedUtility };
+export { EmbedUtility, IRawEmbedUtility, IEmbedAuthor, IEmbedField, IEmbedFooter, IEmbedMedia };
+export type { EmbedContentTypes, ISO8601Data };
