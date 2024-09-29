@@ -1,9 +1,24 @@
 interface IWebhookContent {
-    content?: string,
+    /**
+     * Content of a webhook.
+     * @readonly
+     */
+    readonly content?: string,
 
     // TO-DO: add embed/component objects instances,
-    embeds?: [],
-    components?: []
+
+    /**
+     * Embeds of a message.
+     * @readonly
+     */
+    readonly embeds?: [],
+    
+    /**
+     * Compontents of a message. This option can have
+     * buttons or dropdowns.
+     * @readonly
+     */
+    readonly components?: []
 };
 
 export { IWebhookContent };

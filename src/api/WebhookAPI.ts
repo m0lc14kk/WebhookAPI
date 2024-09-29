@@ -1,1 +1,1 @@
-export { WebhookUtility } from "./webhooks/WebhookUtility";
+export { WebhookUtility, IWebhookContent } from "./webhooks/WebhookUtility";

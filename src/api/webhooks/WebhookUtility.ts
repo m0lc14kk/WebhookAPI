@@ -2,6 +2,10 @@ import { http, HttpHeader, HttpRequest, HttpRequestMethod, HttpResponse } from "
 import { IWebhookContent } from "./interfaces/IWebhookContent";
 import { REQUEST_HEADERS } from "./constants/RequestHeaders";
 
+/**
+ * Class that allows you to send messages via webhook.
+ * @private This class is private.
+ */
 class WebhookUtility {
     private constructor() {};
 
@@ -34,4 +38,4 @@ class WebhookUtility {
     };
 };
 
-export { WebhookUtility };
+export { WebhookUtility, IWebhookContent };
