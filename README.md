@@ -26,7 +26,7 @@
 
 1. Check your BDS ([Bedrock Dedicated Server](https://www.minecraft.net/en-us/download/server/bedrock)) configuration file (`config/default/permissions.json`) and add the `@minecraft/server-net` module if it's not present.
 
-2. Push `@minecraft/server-net` to your pack's manifest, by pasting this inside your manifest:
+2. Push `@minecraft/server-net` module to your pack's manifest, by pasting this inside your dependencies in manifest:
 ```json
 {
     // You can remove comments, if they're causing warning in your IDE.
