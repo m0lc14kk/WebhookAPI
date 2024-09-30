@@ -261,7 +261,7 @@ class EmbedUtility {
             },
 
             url: this.embedURL,
-            timestamp: this.embedTimestamp
+            timestamp: this.embedTimestamp ?? null
         };
     };
 };

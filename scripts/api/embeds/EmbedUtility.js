@@ -241,7 +241,7 @@ class EmbedUtility {
                 height: this.embedImage.height
             },
             url: this.embedURL,
-            timestamp: this.embedTimestamp
+            timestamp: this.embedTimestamp ?? null
         };
     }
     ;
