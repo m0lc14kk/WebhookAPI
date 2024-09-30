@@ -6,6 +6,10 @@ import { WebhookConfiguration } from "./WebhookConfiguration";
  */
 declare class WebhookUtility {
     private static readonly dimension;
+    /**
+     * Default properties for webhooks.
+     * @readonly
+     */
     static readonly configuration: typeof WebhookConfiguration;
     private constructor();
     /**

@@ -8,6 +8,10 @@ import { WEBHOOK_WEBSOCKET_DATA } from "./constants/WebhookWebsocketData";
  */
 class WebhookUtility {
     static dimension = world.getDimension("overworld");
+    /**
+     * Default properties for webhooks.
+     * @readonly
+     */
     static configuration = WebhookConfiguration;
     constructor() { }
     ;
