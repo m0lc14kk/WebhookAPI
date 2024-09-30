@@ -1,6 +1,4 @@
-import { http, HttpHeader, HttpRequest, HttpRequestMethod, HttpResponse } from "@minecraft/server-net";
 import { IWebhookContent } from "./interfaces/IWebhookContent";
-import { REQUEST_HEADERS } from "./constants/RequestHeaders";
 import { EmbedUtility, IRawEmbedUtility } from "../WebhookAPI";
 
 /**
@@ -18,14 +16,20 @@ class WebhookUtility {
      */
     public static async sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent): Promise<boolean> {
         try {
-            const requestResponse: HttpResponse = await http.request(
+            const { http, HttpResponse, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
+
+            const requestResponse = await http.request(
                 new HttpRequest(webhookUri)
                     .setBody(JSON.stringify({
                         content,
                         embeds: embeds.map((embed: EmbedUtility | IRawEmbedUtility) => embed instanceof EmbedUtility ? embed.toJSON() : embed),
                     }))
 
-                    .setHeaders(REQUEST_HEADERS as HttpHeader[])
+                    .setHeaders([
+                        new HttpHeader("Content-Type", "application/json"),
+                        new HttpHeader("Accept", "application/json")
+                    ])
+
                     .setMethod(HttpRequestMethod.Post)
             );
 

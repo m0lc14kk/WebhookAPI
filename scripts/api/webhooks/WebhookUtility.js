@@ -1,5 +1,3 @@
-import { http, HttpRequest, HttpRequestMethod } from "@minecraft/server-net";
-import { REQUEST_HEADERS } from "./constants/RequestHeaders";
 import { EmbedUtility } from "../WebhookAPI";
 /**
  * Class that allows you to send messages via webhook.
@@ -16,12 +14,16 @@ class WebhookUtility {
      */
     static async sendWebhook(webhookUri, { content = "", embeds = [] }) {
         try {
+            const { http, HttpResponse, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
             const requestResponse = await http.request(new HttpRequest(webhookUri)
                 .setBody(JSON.stringify({
                 content,
                 embeds: embeds.map((embed) => embed instanceof EmbedUtility ? embed.toJSON() : embed),
             }))
-                .setHeaders(REQUEST_HEADERS)
+                .setHeaders([
+                new HttpHeader("Content-Type", "application/json"),
+                new HttpHeader("Accept", "application/json")
+            ])
                 .setMethod(HttpRequestMethod.Post));
             return requestResponse.status.toString().startsWith("2");
         }

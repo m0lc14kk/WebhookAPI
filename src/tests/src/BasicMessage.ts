@@ -2,7 +2,7 @@
 import { EmbedUtility, WebhookUtility } from "../../api/WebhookAPI";
 
 // Send a message with almost every possible embed property.
-WebhookUtility.sendWebhook("YOUR_WEBHOOK_URL_HERE", {
+WebhookUtility.sendWebhook("https://discord.com/api/webhooks/1289853542290554911/OuRGTWP93yTzo15dqmM0CjtSi2UGFAeNNZRu68xJ42cSjJpcuQHSDuhXAB36rZe0rDcr", {
     content: "test",
     embeds: [
         new EmbedUtility()
