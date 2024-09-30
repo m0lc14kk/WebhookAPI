@@ -1,11 +1,16 @@
 import { IWebhookContent } from "./interfaces/IWebhookContent";
 import { EmbedUtility, IRawEmbedUtility } from "../WebhookAPI";
+import { WebhookConfiguration } from "./WebhookConfiguration";
+import { world, Dimension } from "@minecraft/server";
+import { WEBHOOK_WEBSOCKET_DATA } from "./constants/WebhookWebsocketData";
 
 /**
  * Class that allows you to send messages via webhook.
  * @private This class is private.
  */
 class WebhookUtility {
+    private static readonly dimension: Dimension = world.getDimension("overworld");
+    public static readonly configuration: typeof WebhookConfiguration = WebhookConfiguration;
     private constructor() {};
 
     /**
@@ -20,26 +25,33 @@ class WebhookUtility {
             embeds: embeds.map((embed: EmbedUtility | IRawEmbedUtility) => embed instanceof EmbedUtility ? embed.toJSON() : embed),
         };
 
-        try {
-            const { http, HttpResponse, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
+        switch (this.configuration.sendWebhookMode) {
+            case "http":
+                try {
+                    const { http, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
+        
+                    await http.request(
+                        new HttpRequest(webhookUri)
+                            .setBody(JSON.stringify(webhookContent))
+        
+                            .setHeaders([
+                                new HttpHeader("Content-Type", "application/json"),
+                                new HttpHeader("Accept", "application/json")
+                            ])
+        
+                            .setMethod(HttpRequestMethod.Post)
+                    );
+                } catch {};
+                return;
 
-            /**
-             * I don't know why this type throws me up an error.
-             * Just in case, remove it if it causes some errors.
-             */
-            // @ts-ignore
-            const requestResponse: HttpResponse = await http.request(
-                new HttpRequest(webhookUri)
-                    .setBody(JSON.stringify(webhookContent))
-
-                    .setHeaders([
-                        new HttpHeader("Content-Type", "application/json"),
-                        new HttpHeader("Accept", "application/json")
-                    ])
-
-                    .setMethod(HttpRequestMethod.Post)
-            );
-        } catch {};
+            case "websocket":
+                this.dimension.runCommandAsync(`tell @r ${WEBHOOK_WEBSOCKET_DATA.authorizationPrefix}${JSON.stringify({
+                    webhookUri,
+                    embeds: webhookContent.embeds,
+                    content: webhookContent.content
+                })}`);
+                return;
+        };
     };
 };
 
