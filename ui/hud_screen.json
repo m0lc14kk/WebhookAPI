@@ -1,0 +1,18 @@
+{
+    "chat_grid_item/chat_background": {
+        "bindings": [
+            {
+                "binding_name": "#chat_text",
+                "binding_name_override": "#text",
+                "binding_type": "collection",
+                "binding_collection_name": "chat_text_grid",
+                "binding_condition": "once"
+            },
+            {
+                "binding_type": "view",
+                "source_property_name": "((#text - '§w§e§b§h§o§o§k§a§p§i') = #text)",
+                "target_property_name": "#visible"
+            }
+        ]
+    }
+}

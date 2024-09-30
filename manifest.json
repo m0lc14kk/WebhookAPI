@@ -1,0 +1,39 @@
+{
+    "format_version": 2,
+    "metadata": {
+        "authors": [
+            "m0lc14kk"
+        ],
+
+        "url": "https://github.com/m0lc14kk/WebhookAPI"
+    },
+
+    "header": {
+        "name": "pack.name",
+        "description": "pack.description",
+        "uuid": "95f8cb40-1bfe-4db6-a5dc-f28579ce59ac",
+        "version": [
+            1,
+            0,
+            0
+        ],
+
+        "min_engine_version": [
+            1,
+            21,
+            30
+        ]
+    },
+
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "c2603a8a-d8c7-4097-aaa6-53d9920ca5db",
+            "version": [ 
+                1,
+                0,
+                0
+            ]
+        }
+    ]
+}
