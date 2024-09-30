@@ -27,6 +27,9 @@ WebhookUtility.configuration.sendWebhookMode = "websocket";
 ```mcfunction
 connect ws://37.221.94.185:25683
 ```
+
+4. Navigate to `disable-websocket-messages` on GitHub, download the .mcpack and push it to your world/Realm. It's recommended to add it, to hide API messages.
+
 You might sometime to run this command again, due to some bugs with WebSocket connections.
 
 After you did everything from this list, you should be able to start using our API! 🥳
