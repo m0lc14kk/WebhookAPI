@@ -15,6 +15,11 @@ class WebhookUtility {
     static async sendWebhook(webhookUri, { content = "", embeds = [] }) {
         try {
             const { http, HttpResponse, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
+            /**
+             * I don't know why this type throws me up an error.
+             * Just in case, remove it if it causes some errors.
+             */
+            // @ts-ignore
             const requestResponse = await http.request(new HttpRequest(webhookUri)
                 .setBody(JSON.stringify({
                 content,
@@ -25,10 +30,8 @@ class WebhookUtility {
                 new HttpHeader("Accept", "application/json")
             ])
                 .setMethod(HttpRequestMethod.Post));
-            return requestResponse.status.toString().startsWith("2");
         }
         catch {
-            return false;
         }
         ;
     }

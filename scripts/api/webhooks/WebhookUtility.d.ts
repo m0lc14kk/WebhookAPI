@@ -11,6 +11,6 @@ declare class WebhookUtility {
      * @param messageContent Content of a message.
      * @returns Returns a boolean, if messages was successfully sent.
      */
-    static sendWebhook(webhookUri: string, { content, embeds }: IWebhookContent): Promise<boolean>;
+    static sendWebhook(webhookUri: string, { content, embeds }: IWebhookContent): Promise<void>;
 }
 export { WebhookUtility, IWebhookContent };

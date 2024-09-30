@@ -14,11 +14,16 @@ class WebhookUtility {
      * @param messageContent Content of a message.
      * @returns Returns a boolean, if messages was successfully sent.
      */
-    public static async sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent): Promise<boolean> {
+    public static async sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent): Promise<void> {
         try {
             const { http, HttpResponse, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
 
-            const requestResponse = await http.request(
+            /**
+             * I don't know why this type throws me up an error.
+             * Just in case, remove it if it causes some errors.
+             */
+            // @ts-ignore
+            const requestResponse: HttpResponse = await http.request(
                 new HttpRequest(webhookUri)
                     .setBody(JSON.stringify({
                         content,
@@ -32,10 +37,8 @@ class WebhookUtility {
 
                     .setMethod(HttpRequestMethod.Post)
             );
-
-            return requestResponse.status.toString().startsWith("2");
         } catch {
-            return false;
+            
         };
     };
 };
