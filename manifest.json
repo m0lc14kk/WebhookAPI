@@ -5,7 +5,9 @@
             "m0lc14kk"
         ],
 
-        "url": "https://github.com/m0lc14kk/WebhookAPI"
+        "url": "https://github.com/m0lc14kk/WebhookAPI",
+        "licence": "EULA",
+        "product_type": "addon"
     },
 
     "header": {
