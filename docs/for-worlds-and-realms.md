@@ -2,16 +2,18 @@
     <img src="../assets/logo.png" alt="Webhook API" />
 </p>
 
-### 📢 INSTALLATION FOR WORLDS
+### 📢 INSTALLATION FOR WORLDS AND REALMS
 
-This documentation page covers the installation process for worlds, after you used one for JavaScript/TypeScript before.
+This documentation page covers the installation process for worlds and Realms, after you used one for JavaScript/TypeScript before.
 
 Click [here](../README.md) to get back to main README file.
 
 <hr />
 
+**DISCLAIMER:** This method have not been tested on Realms yet. Worlds should be fully supported, after you'll do everything correct. You can always message me on Discord: `@m0lc14kk`
+
 ### 📌 FULL STEPS:
-1. Go to index file.
+1. Navigate to your main file of scripts.
 2. Add this to your code:
 ```js
 // Import class.
