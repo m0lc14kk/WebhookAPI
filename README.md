@@ -2,9 +2,9 @@
     <img src="assets/logo.png" alt="Webhook API" />
 </p>
 
-<p align="center">
-    <b>Send easily your Discord messages!</b>
-</p>
+<h6 align="center">
+    Easier way to send your Discord messages!
+</h6>
 
 <hr />
 
@@ -16,19 +16,27 @@ Webhook API is a API created to send your webhooks to Discord channel easier tha
 
 To start using this API, you must do these 3 simple steps:
 
-1. Check your BDS ([Bedrock Dedicated Server](https://www.minecraft.net/en-us/download/server/bedrock)) configuration file (`config/default/permissions.json`) and add the `@minecraft/server-net` module if it's not present.
+1. Check your BDS ([Bedrock Dedicated Server](https://www.minecraft.net/en-us/download/server/bedrock)) configuration file (`config/default/permissions.json`) and add the `@minecraft/server-net` module if it's not present. Your configuration file should look like this:
+    ```json
+        {
+            "allowed_modules": [
+                // other @minecraft/* modules
+                "@minecraft/server-net"
+            ]
+        }
+    ```
 
 2. Push `@minecraft/server-net` module to your pack's manifest, by pasting this inside your dependencies in manifest:
-```json
-{
-    // You can remove comments, if they're causing warning in your IDE.
-    // Name of a module
-    "module_name": "@minecraft/server-net",
+    ```json
+    {
+        // You can remove comments, if they're causing warning in your IDE.
+        // Name of required module.
+        "module_name": "@minecraft/server-net",
 
-    // Version of a module.
-    "version": "1.0.0-beta"
-}
-```
+        // Version of a module.
+        "version": "1.0.0-beta"
+    }
+    ```
 
 3. Check if your world has experimental scripting API's enabled. It's really important part.
 
@@ -42,14 +50,9 @@ To start using this API, you must do these 3 simple steps:
 
 <hr />
 
-### 📢 TUTORIALS
+### 📢 DOCUMENTATION
 
-Here is a list of tutorials, which you might need when using our API:
-
-- [Full explanation of installation for JavaScript](./docs/js-installation.md)
-- [Full explanation of installation for TypeScript](./docs/ts-installation.md)
-- [Installation for worlds/Realms](./docs/for-worlds-and-realms.md)
-- [Manage default properties](./docs/manage-default-properties.md)
+Documentation will be soon published.
 
 ### 📌 RESOURCES
 
