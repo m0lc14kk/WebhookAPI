@@ -5,7 +5,6 @@ import { WebhookConfiguration } from "./WebhookConfiguration";
  * @private This class is private.
  */
 declare class WebhookUtility {
-    private static readonly dimension;
     /**
      * Default properties for webhooks.
      * @readonly

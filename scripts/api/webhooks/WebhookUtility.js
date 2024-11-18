@@ -1,12 +1,10 @@
 import { EmbedUtility } from "../WebhookAPI";
 import { WebhookConfiguration } from "./WebhookConfiguration";
-import { world } from "@minecraft/server";
 /**
  * Class that allows you to send messages via webhook.
  * @private This class is private.
  */
 class WebhookUtility {
-    static dimension = world.getDimension("overworld");
     /**
      * Default properties for webhooks.
      * @readonly

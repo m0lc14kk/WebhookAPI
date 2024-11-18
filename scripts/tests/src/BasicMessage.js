@@ -1,3 +1,9 @@
+/**
+ * This example shows how to easily send messages
+ * with using your webhook URL.
+ *
+ * @author m0lc14kk
+ */
 // Import webhook classes.
 import { EmbedUtility, WebhookUtility } from "../../api/WebhookAPI";
 /**

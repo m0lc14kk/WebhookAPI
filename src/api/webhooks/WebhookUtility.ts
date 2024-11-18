@@ -8,8 +8,6 @@ import { world, Dimension } from "@minecraft/server";
  * @private This class is private.
  */
 class WebhookUtility {
-    private static readonly dimension: Dimension = world.getDimension("overworld");
-
     /**
      * Default properties for webhooks.
      * @readonly
