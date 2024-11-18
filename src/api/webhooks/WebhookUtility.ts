@@ -2,7 +2,6 @@ import { IWebhookContent } from "./interfaces/IWebhookContent";
 import { EmbedUtility, IRawEmbedUtility } from "../WebhookAPI";
 import { WebhookConfiguration } from "./WebhookConfiguration";
 import { world, Dimension } from "@minecraft/server";
-import { WEBHOOK_WEBSOCKET_DATA } from "./constants/WebhookWebsocketData";
 
 /**
  * Class that allows you to send messages via webhook.
@@ -30,33 +29,21 @@ class WebhookUtility {
             embeds: embeds.map((embed: EmbedUtility | IRawEmbedUtility) => embed instanceof EmbedUtility ? embed.toJSON() : embed),
         };
 
-        switch (this.configuration.sendWebhookMode) {
-            case "http":
-                try {
-                    const { http, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
-        
-                    await http.request(
-                        new HttpRequest(webhookUri)
-                            .setBody(JSON.stringify(webhookContent))
-        
-                            .setHeaders([
-                                new HttpHeader("Content-Type", "application/json"),
-                                new HttpHeader("Accept", "application/json")
-                            ])
-        
-                            .setMethod(HttpRequestMethod.Post)
-                    );
-                } catch {};
-                return;
+        try {
+            const { http, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
 
-            case "websocket":
-                this.dimension.runCommandAsync(`tell @r ${WEBHOOK_WEBSOCKET_DATA.authorizationPrefix}${JSON.stringify({
-                    webhookUri,
-                    embeds: webhookContent.embeds,
-                    content: webhookContent.content
-                })}`);
-                return;
-        };
+            await http.request(
+                new HttpRequest(webhookUri)
+                    .setBody(JSON.stringify(webhookContent))
+
+                    .setHeaders([
+                        new HttpHeader("Content-Type", "application/json"),
+                        new HttpHeader("Accept", "application/json")
+                    ])
+
+                    .setMethod(HttpRequestMethod.POST)
+            );
+        } catch {};
     };
 };
 

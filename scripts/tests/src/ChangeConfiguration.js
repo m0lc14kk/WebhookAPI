@@ -10,5 +10,5 @@ import { EmbedUtility } from "../../api/WebhookAPI";
 EmbedUtility.configuration.embedColor = 0xFFAA00;
 /**
  * You can read and write new values to these configuration properties.
- * Learn more on: https://github.com/m0lc14kk/WebhookAPI/blob/main/docs/manage-default-properties.md
+ * Learn more on: <to-setup>
  */ 
