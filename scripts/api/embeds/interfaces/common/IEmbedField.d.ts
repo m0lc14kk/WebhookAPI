@@ -18,6 +18,6 @@ interface IEmbedField {
      * @readonly
      * @default false // Won't be in-line with other elements.
      */
-    inline?: boolean;
+    readonly inline?: boolean;
 }
 export { IEmbedField };
