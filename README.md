@@ -12,6 +12,8 @@
 
 Webhook API is a API created to send your webhooks to Discord channel easier than before. It provides you classes, interfaces and even more to have full control of messages.
 
+You can visit our [documentation]() by clicking it right there.
+
 ### 🌐 START USING OUR API!
 
 To start using this API, you must do these 3 simple steps:
@@ -50,10 +52,12 @@ To start using this API, you must do these 3 simple steps:
 
 <hr />
 
-### 📢 DOCUMENTATION
+### 📢 SUPPORT
 
-Documentation will be soon published.
+You can check here if your enviroment (server source) is supported:
 
-### 📌 RESOURCES
-
-- [Licence](./docs/licence.md)
+| Enviroment    | Is supported?     |
+| ------------- | ----------------- |
+| BDS           | ✅                |
+| World         | ❌                |
+| Realms        | ❌                |
