@@ -6,6 +6,10 @@ import { world, Dimension } from "@minecraft/server";
 /**
  * Class that allows you to send messages via webhook.
  * @private This class is private.
+ * @remarks To send webhook, use static method:
+ * ```ts
+ * WebhookUtility.sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent);
+ * ```
  */
 class WebhookUtility {
     /**
@@ -13,13 +17,22 @@ class WebhookUtility {
      * @readonly
      */
     public static readonly configuration: typeof WebhookConfiguration = WebhookConfiguration;
+
+    /**
+     * Class that allows you to send messages via webhook.
+     * @private This class is private.
+     * @remarks To send webhook, use static method:
+     * ```ts
+     * WebhookUtility.sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent);
+     * ```
+     */
     private constructor() {};
 
     /**
      * Sends a messages via webhook to a channel.
      * @param webhookUri Link to a webhook.
      * @param messageContent Content of a message.
-     * @returns Returns an empty result.
+     * @returns Method does not return anything.
      */
     public static async sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent): Promise<void> {
         const webhookContent: IWebhookContent = {

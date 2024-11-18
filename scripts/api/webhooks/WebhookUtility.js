@@ -3,6 +3,10 @@ import { WebhookConfiguration } from "./WebhookConfiguration";
 /**
  * Class that allows you to send messages via webhook.
  * @private This class is private.
+ * @remarks To send webhook, use static method:
+ * ```ts
+ * WebhookUtility.sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent);
+ * ```
  */
 class WebhookUtility {
     /**
@@ -10,13 +14,21 @@ class WebhookUtility {
      * @readonly
      */
     static configuration = WebhookConfiguration;
+    /**
+     * Class that allows you to send messages via webhook.
+     * @private This class is private.
+     * @remarks To send webhook, use static method:
+     * ```ts
+     * WebhookUtility.sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent);
+     * ```
+     */
     constructor() { }
     ;
     /**
      * Sends a messages via webhook to a channel.
      * @param webhookUri Link to a webhook.
      * @param messageContent Content of a message.
-     * @returns Returns an empty result.
+     * @returns Method does not return anything.
      */
     static async sendWebhook(webhookUri, { content = "", embeds = [] }) {
         const webhookContent = {

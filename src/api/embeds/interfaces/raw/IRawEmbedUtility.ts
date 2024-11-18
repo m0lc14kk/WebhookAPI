@@ -6,6 +6,7 @@ import { IRawEmbedMedia } from "./IRawEmbedMedia";
 
 /**
  * Raw entire structure of an embed.
+ * @remarks We do not recommend using this interface to create embeds. Consider using EmbedUtility class.
  */
 interface IRawEmbedUtility {
     /**
