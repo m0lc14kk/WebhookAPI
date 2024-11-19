@@ -1,0 +1,19 @@
+@tailwind utilities;
+
+@layer utilities {
+    @keyframes ImageShowcaseFadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(20%);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+    }
+
+    .image-showcase-fade-in {
+        animation: ImageShowcaseFadeIn ease-in-out 350ms;
+    }
+}

@@ -8,3 +8,21 @@
         @apply m-0 p-0 bg-[#111020] text-[#F0F0F0]
     }
 }
+
+@layer utilities {
+    @keyframes MessageFadeIn {
+        from {
+            opacity: 0;
+            margin-left: -10%;
+        }
+
+        to {
+            opacity: 1;
+            margin-left: 0;
+        }
+    }
+
+    .message-fade-in {
+        animation: normal MessageFadeIn ease-in-out 350ms;
+    }
+}
