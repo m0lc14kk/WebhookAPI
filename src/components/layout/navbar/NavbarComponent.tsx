@@ -10,6 +10,10 @@ const navbarLinks: readonly NavbarLinkType[] = [
         path: "/about"
     },
     {
+        name: "Installation",
+        path: "/installation"
+    },
+    {
         name: "Documentation",
         path: "/documentation"
     },
