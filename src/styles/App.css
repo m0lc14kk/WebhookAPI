@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@layer base {
+    * {
+        @apply m-0 p-0 bg-[#101010] text-[#F0F0F0]
+    }
+}
