@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaListCheck, FaPaintbrush } from "react-icons/fa6";
+import { IoDocumentAttachOutline } from "react-icons/io5";
 import "../styles/pages/index.css";
 
 const IndexPage = (): React.JSX.Element => {
@@ -42,12 +44,61 @@ const IndexPage = (): React.JSX.Element => {
                 </div>
             </div>
 
-            <div className="py-16 px-8 lg:px-[14%]">
-                <h1>
-                    Easy to install!
-                </h1>
+            <div className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12">
+                <div className="bg-transparent flex flex-col gap-y-6 p-6">
+                    <h2 className="bg-transparent">
+                        Easy to install.
+                    </h2>
 
+                    <p className="bg-transparent text-2xl text-[#909090] font-medium">
+                        Our websites provides <Link to="/installation" className="bg-transparent hover:text-[#FF55FF] duration-150 text-[#6649F0]">lots of installation guides</Link> to make your experience with our API even easier.
+                    </p>
+                </div>
 
+                <div className="w-full h-full flex items-center justify-center bg-transparent">
+                    <FaListCheck
+                        size={150}
+                        className="bg-transparent fill-[#FF55FF]"
+                    />
+                </div>
+            </div>
+
+            <div className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12 bg-[#141025]">
+                <div className="w-full h-full flex items-center justify-center bg-transparent">
+                    <FaPaintbrush
+                        size={150}
+                        className="bg-transparent fill-[#FF55FF]"
+                    />
+                </div>
+
+                <div className="bg-transparent flex flex-col gap-y-6 p-6">
+                    <h2 className="bg-transparent">
+                        Customizable.
+                    </h2>
+
+                    <p className="bg-transparent text-2xl text-[#909090] font-medium">
+                        You can set your default embed color, thumbnail URL icon, footer or even extend our embed class. 
+                    </p>
+                </div>
+            </div>
+
+            <div className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12">
+                <div className="bg-transparent flex flex-col gap-y-6 p-6">
+                    <h2 className="bg-transparent">
+                        Well-Documented.
+                    </h2>
+
+                    <p className="bg-transparent text-2xl text-[#909090] font-medium">
+                        If you have got some troubles, while using our API - check <Link to="/installation" className="bg-transparent hover:text-[#FF55FF] duration-150 text-[#6649F0]">in documentation</Link> information about arguments, methods or even copy examples!
+                    </p>
+                </div>
+
+                <div className="w-full h-full flex items-center justify-center bg-transparent">
+                    <IoDocumentAttachOutline
+                        size={150}
+                        className="bg-transparent stroke-[#FF55FF]"
+                    />
+                </div>
             </div>
         </>
     );
