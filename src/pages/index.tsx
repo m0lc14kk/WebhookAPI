@@ -18,9 +18,13 @@ const IndexPage = (): React.JSX.Element => {
                         Minecraft: Bedrock Edition add-ons.
                     </p>
 
-                    <div className="bg-transparent pt-2 flex max-lg:justify-center">
+                    <div className="bg-transparent pt-2 flex max-lg:justify-center gap-x-3">
                         <Link to="/documentation" className="duration-150 text-[#FF55FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#FF55FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#FF55FF] message-fade-in">
                             Documentation
+                        </Link>
+
+                        <Link to="/installation" className="duration-150 text-[#00AA00] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#00AA00] rounded-sm hover:text-[#F0F0F0] hover:bg-[#00AA00] message-fade-in">
+                            INSTALLATION
                         </Link>
                     </div>
                 </div>
@@ -31,7 +35,7 @@ const IndexPage = (): React.JSX.Element => {
                         alt="/"
                         width={422}
                         height={236}
-                        className="bg-transparent rounded-md shadow-md shadow-black rotate-1 select-none image-showcase-fade-in max-sm:scale-75"
+                        className="bg-transparent rounded-md shadow-md shadow-black rotate-1 select-none image-showcase-fade-in max-sm:scale-75 border-2 border-[#FF55FF]"
                     />
 
                     <img
@@ -39,7 +43,7 @@ const IndexPage = (): React.JSX.Element => {
                         alt="/"
                         width={422}
                         height={236}
-                        className="bg-transparent rounded-md shadow-md shadow-black rotate-1 -mt-[20%] xl:-mr-[20%] -mr-[10%] select-none image-showcase-fade-in max-sm:scale-75"
+                        className="bg-transparent rounded-md shadow-md shadow-black rotate-1 -mt-[20%] xl:-mr-[20%] -mr-[10%] select-none image-showcase-fade-in max-sm:scale-75 border-2 border-[#FF55FF]"
                     />
                 </div>
             </div>
