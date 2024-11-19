@@ -5,6 +5,6 @@
 
 @layer base {
     * {
-        @apply m-0 p-0 bg-[#101010] text-[#F0F0F0]
+        @apply m-0 p-0 bg-[#111020] text-[#F0F0F0]
     }
 }
