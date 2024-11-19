@@ -54,7 +54,7 @@ const IndexPage = (): React.JSX.Element => {
                         Easy to install.
                     </h2>
 
-                    <p className="bg-transparent text-2xl text-[#909090] font-medium">
+                    <p className="bg-transparent text-xl text-[#909090] font-medium">
                         Our websites provides <Link to="/installation" className="bg-transparent hover:text-[#FF55FF] duration-150 text-[#6649F0]">lots of installation guides</Link> to make your experience with our API even easier.
                     </p>
                 </div>
@@ -80,7 +80,7 @@ const IndexPage = (): React.JSX.Element => {
                         Customizable.
                     </h2>
 
-                    <p className="bg-transparent text-2xl text-[#909090] font-medium">
+                    <p className="bg-transparent text-xl text-[#909090] font-medium">
                         You can set your default embed color, thumbnail URL icon, footer or even extend our embed class. 
                     </p>
                 </div>
@@ -92,7 +92,7 @@ const IndexPage = (): React.JSX.Element => {
                         Well-Documented.
                     </h2>
 
-                    <p className="bg-transparent text-2xl text-[#909090] font-medium">
+                    <p className="bg-transparent text-xl text-[#909090] font-medium">
                         If you have got some troubles, while using our API - check <Link to="/installation" className="bg-transparent hover:text-[#FF55FF] duration-150 text-[#6649F0]">in documentation</Link> information about arguments, methods or even copy examples!
                     </p>
                 </div>
