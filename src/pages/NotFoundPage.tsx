@@ -17,7 +17,7 @@ const NotFoundPage = (): React.JSX.Element => {
                     </p>
 
                     <div className="bg-transparent pt-2 flex max-lg:justify-center gap-x-3">
-                        <Link to={`${process.env.PUBLIC_URL}/documentation`} className="duration-150 text-[#FF55FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#FF55FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#FF55FF] message-fade-in">
+                        <Link to={`${process.env.PUBLIC_URL}/`} className="duration-150 text-[#FF55FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#FF55FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#FF55FF] message-fade-in">
                             BACK TO HOME
                         </Link>
                     </div>
