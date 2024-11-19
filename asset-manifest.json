@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/WebhookAPI/static/css/main.a612c84d.css",
+    "main.js": "/WebhookAPI/static/js/main.6c83e0db.js",
+    "index.html": "/WebhookAPI/index.html",
+    "main.a612c84d.css.map": "/WebhookAPI/static/css/main.a612c84d.css.map",
+    "main.6c83e0db.js.map": "/WebhookAPI/static/js/main.6c83e0db.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a612c84d.css",
+    "static/js/main.6c83e0db.js"
+  ]
+}
