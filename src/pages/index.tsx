@@ -31,7 +31,7 @@ const IndexPage = (): React.JSX.Element => {
 
                 <div className="bg-transparent flex flex-col items-end justify-center">
                     <img
-                        src="/imgs/showcase.png"
+                        src={`${process.env.PUBLIC_URL}/imgs/showcase.png`}
                         alt="/"
                         width={422}
                         height={236}
@@ -39,7 +39,7 @@ const IndexPage = (): React.JSX.Element => {
                     />
 
                     <img
-                        src="/imgs/showcase.png"
+                        src={`${process.env.PUBLIC_URL}/imgs/showcase.png`}
                         alt="/"
                         width={422}
                         height={236}

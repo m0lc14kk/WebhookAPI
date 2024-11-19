@@ -29,7 +29,7 @@ const NavbarComponent = (): React.JSX.Element => {
             <div className="bg-transparent absolute flex items-center justify-between px-8 lg:px-[14%] py-8 border-b-2 border-b-[#90909020] w-full backdrop-blur-2xl">
                 <Link to="/" className="bg-transparent">
                     <img
-                        src="/imgs/logo.png"
+                        src={`${process.env.PUBLIC_URL}/imgs/logo.png`}
                         alt="/"
                         width={180}
                         height={60}

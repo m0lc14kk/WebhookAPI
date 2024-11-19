@@ -9,7 +9,7 @@ function HomeApp(): React.JSX.Element {
         <BrowserRouter>
             <NavbarComponent />
             <Routes>
-                <Route path="/" element={<IndexPage />} />
+                <Route path={`${process.env.PUBLIC_URL}/`} element={<IndexPage />} />
             </Routes>
             <FooterComponent />
         </BrowserRouter>

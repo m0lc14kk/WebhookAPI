@@ -50,7 +50,7 @@ const FooterComponent = (): React.JSX.Element => {
 					<div className="bg-transparent flex items-center">
 						<Link to="/" className="bg-transparent">
 							<img
-								src="/imgs/logo.png"
+								src={`${process.env.PUBLIC_URL}/imgs/logo.png`}
 								alt="/"
 								width={128}
 								height={128}
