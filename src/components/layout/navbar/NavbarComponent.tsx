@@ -7,15 +7,15 @@ import NavbarLink from "./NavbarLink.";
 const navbarLinks: readonly NavbarLinkType[] = [
     {
         name: "About",
-        path: "/about"
+        path: `${process.env.PUBLIC_URL}/about`
     },
     {
         name: "Installation",
-        path: "/installation"
+        path: `${process.env.PUBLIC_URL}/installation`
     },
     {
         name: "Documentation",
-        path: "/documentation"
+        path: `${process.env.PUBLIC_URL}/documentation`
     },
     {
         name: "GitHub",
@@ -27,7 +27,7 @@ const NavbarComponent = (): React.JSX.Element => {
     return (
         <>
             <div className="bg-transparent absolute flex items-center justify-between px-8 lg:px-[14%] py-8 border-b-2 border-b-[#90909020] w-full backdrop-blur-2xl">
-                <Link to="/" className="bg-transparent">
+                <Link to={`${process.env.PUBLIC_URL}/`} className="bg-transparent">
                     <img
                         src={`${process.env.PUBLIC_URL}/imgs/logo.png`}
                         alt="/"

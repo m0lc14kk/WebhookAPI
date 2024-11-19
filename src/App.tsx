@@ -3,6 +3,7 @@ import NavbarComponent from "./components/layout/navbar/NavbarComponent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import IndexPage from "./pages";
 import FooterComponent from "./components/layout/footer/FooterComponent";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function HomeApp(): React.JSX.Element {
     return (
@@ -10,6 +11,7 @@ function HomeApp(): React.JSX.Element {
             <NavbarComponent />
             <Routes>
                 <Route path={`${process.env.PUBLIC_URL}/`} element={<IndexPage />} />
+                <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <FooterComponent />
         </BrowserRouter>

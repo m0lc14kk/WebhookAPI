@@ -48,7 +48,7 @@ const FooterComponent = (): React.JSX.Element => {
 			<div className="w-full py-16 px-8 lg:px-[14%] flex flex-col gap-y-6">
 				<div className="bg-transparent flex max-lg:flex-col items-center justify-between">
 					<div className="bg-transparent flex items-center">
-						<Link to="/" className="bg-transparent">
+						<Link to={`${process.env.PUBLIC_URL}/`} className="bg-transparent">
 							<img
 								src={`${process.env.PUBLIC_URL}/imgs/logo.png`}
 								alt="/"

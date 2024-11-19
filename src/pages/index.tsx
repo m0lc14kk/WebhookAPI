@@ -19,11 +19,11 @@ const IndexPage = (): React.JSX.Element => {
                     </p>
 
                     <div className="bg-transparent pt-2 flex max-lg:justify-center gap-x-3">
-                        <Link to="/documentation" className="duration-150 text-[#FF55FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#FF55FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#FF55FF] message-fade-in">
+                        <Link to={`${process.env.PUBLIC_URL}/documentation`} className="duration-150 text-[#FF55FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#FF55FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#FF55FF] message-fade-in">
                             Documentation
                         </Link>
 
-                        <Link to="/installation" className="duration-150 text-[#00AA00] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#00AA00] rounded-sm hover:text-[#F0F0F0] hover:bg-[#00AA00] message-fade-in">
+                        <Link to={`${process.env.PUBLIC_URL}/installation`} className="duration-150 text-[#00AA00] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#00AA00] rounded-sm hover:text-[#F0F0F0] hover:bg-[#00AA00] message-fade-in">
                             INSTALLATION
                         </Link>
                     </div>
@@ -55,7 +55,7 @@ const IndexPage = (): React.JSX.Element => {
                     </h2>
 
                     <p className="bg-transparent text-xl text-[#909090] font-medium">
-                        Our websites provides <Link to="/installation" className="bg-transparent hover:text-[#FF55FF] duration-150 text-[#6649F0]">lots of installation guides</Link> to make your experience with our API even easier.
+                        Our websites provides <Link to={`${process.env.PUBLIC_URL}/installation`} className="bg-transparent hover:text-[#FF55FF] duration-150 text-[#6649F0]">lots of installation guides</Link> to make your experience with our API even easier.
                     </p>
                 </div>
 
@@ -93,7 +93,7 @@ const IndexPage = (): React.JSX.Element => {
                     </h2>
 
                     <p className="bg-transparent text-xl text-[#909090] font-medium">
-                        If you have got some troubles, while using our API - check <Link to="/installation" className="bg-transparent hover:text-[#FF55FF] duration-150 text-[#6649F0]">in documentation</Link> information about arguments, methods or even copy examples!
+                        If you have got some troubles, while using our API - check <Link to={`${process.env.PUBLIC_URL}/documentation`} className="bg-transparent hover:text-[#FF55FF] duration-150 text-[#6649F0]">in documentation</Link> information about arguments, methods or even copy examples!
                     </p>
                 </div>
 
