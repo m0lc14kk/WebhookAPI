@@ -9,7 +9,7 @@ const HeaderComponent = ({ title, description }: HeaderComponentType): React.JSX
                     {title}
                 </h4>
 
-                <p className="bg-transparent text-[#909090] xl:text-xl text-lg font-medium message-fade-in max-lg:text-center">
+                <p className="bg-transparent text-[#909090] xl:text-xl text-lg font-medium message-fade-in max-lg:text-center pt-2">
                     {description}
                 </p>
             </div>
