@@ -10,7 +10,7 @@ const IndexPage = (): React.JSX.Element => {
             <div className="w-[100dvw] h-[100dvh] bg-gradient-to-tr from-[#111020] to-[#18114B] grid lg:grid-cols-2 place-items-center px-8 xl:px-[14%]">
                 <div className="w-full h-full bg-transparent flex flex-col justify-center gap-y-6 max-lg:pt-12">
                     <h4 className="bg-clip-text bg-gradient-to-r from-[#5555FF] to-[#F059EA] xl:text-6xl text-4xl text-transparent font-black message-fade-in max-lg:text-center">
-                        WebhookAPI
+                        Webhook API
                     </h4>
 
                     <p className="bg-transparent text-[#909090] xl:text-xl text-lg font-medium message-fade-in max-lg:text-center">
@@ -18,12 +18,12 @@ const IndexPage = (): React.JSX.Element => {
                         Minecraft: Bedrock Edition add-ons.
                     </p>
 
-                    <div className="bg-transparent pt-2 flex max-lg:justify-center gap-x-3">
-                        <Link to={`${process.env.PUBLIC_URL}/documentation`} className="duration-150 text-[#FF55FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#FF55FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#FF55FF] message-fade-in">
+                    <div className="bg-transparent pt-2 flex max-lg:justify-center gap-x-3 message-fade-in">
+                        <Link to={`${process.env.PUBLIC_URL}/documentation`} className="duration-150 text-[#FF55FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#FF55FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#FF55FF]">
                             Documentation
                         </Link>
 
-                        <Link to={`${process.env.PUBLIC_URL}/installation`} className="duration-150 text-[#5555FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#5555FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#5555FF] message-fade-in">
+                        <Link to={`${process.env.PUBLIC_URL}/installation`} className="duration-150 text-[#5555FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#5555FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#5555FF]">
                             INSTALLATION
                         </Link>
                     </div>
