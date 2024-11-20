@@ -23,7 +23,7 @@ const IndexPage = (): React.JSX.Element => {
                             Documentation
                         </Link>
 
-                        <Link to={`${process.env.PUBLIC_URL}/installation`} className="duration-150 text-[#00AA00] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#00AA00] rounded-sm hover:text-[#F0F0F0] hover:bg-[#00AA00] message-fade-in">
+                        <Link to={`${process.env.PUBLIC_URL}/installation`} className="duration-150 text-[#5555FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#5555FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#5555FF] message-fade-in">
                             INSTALLATION
                         </Link>
                     </div>
