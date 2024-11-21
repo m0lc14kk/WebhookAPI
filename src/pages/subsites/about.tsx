@@ -1,8 +1,8 @@
 import React from "react";
-import HeaderComponent from "../components/common/HeaderComponent";
-import QuestionComponent from "../components/pages/about/QuestionComponent";
-import type { QuestionComponentType } from "../components/pages/about/types/QuestionComponentType";
-import { aboutQuestions } from "../config/AboutQuestions";
+import HeaderComponent from "../../components/common/HeaderComponent";
+import QuestionComponent from "../../components/pages/about/QuestionComponent";
+import type { QuestionComponentType } from "../../components/pages/about/types/QuestionComponentType";
+import { aboutQuestions } from "../../config/AboutQuestions";
 
 const AboutPage = (): React.JSX.Element => {
     return (
