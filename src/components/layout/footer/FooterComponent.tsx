@@ -10,11 +10,11 @@ const footerCategories: readonly FooterCategoryType[] = [
         links: [
             {
                 linkName: "Home",
-                linkPath: "/"
+                linkPath: `${process.env.PUBLIC_URL}/`
             },
             {
                 linkName: "About",
-                linkPath: "/"
+                linkPath: `${process.env.PUBLIC_URL}/about`
             },
         ]
     },
@@ -23,7 +23,7 @@ const footerCategories: readonly FooterCategoryType[] = [
         links: [
             {
                 linkName: "Installation",
-                linkPath: "/installation"
+                linkPath: `${process.env.PUBLIC_URL}/installation`
             },
         ]
     },
@@ -32,7 +32,7 @@ const footerCategories: readonly FooterCategoryType[] = [
         links: [
             {
                 linkName: "Documentation",
-                linkPath: "/documentation"
+                linkPath: `${process.env.PUBLIC_URL}/documentation`
             },
             {
                 linkName: "GitHub",
