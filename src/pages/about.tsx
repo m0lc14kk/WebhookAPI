@@ -1,6 +1,8 @@
 import React from "react";
 import HeaderComponent from "../components/common/HeaderComponent";
 import QuestionComponent from "../components/pages/about/QuestionComponent";
+import type { QuestionComponentType } from "../components/pages/about/types/QuestionComponentType";
+import { aboutQuestions } from "../config/AboutQuestions";
 
 const AboutPage = (): React.JSX.Element => {
     return (
@@ -26,14 +28,16 @@ const AboutPage = (): React.JSX.Element => {
                 </p>
 
                 <div className="bg-transparent flex flex-col gap-y-4 pt-4">
-                    <QuestionComponent
-                        question="Sample question."
-                        answer="This is a sample response to a FAQ question."
-                    />
+                    {aboutQuestions.map(({ question, answer }: QuestionComponentType) =>                     
+                        <QuestionComponent
+                            question={question}
+                            answer={answer}
+                        />
+                    )}
                 </div>
             </div>
         </>
     );
 };
-
+ 
 export default AboutPage;
