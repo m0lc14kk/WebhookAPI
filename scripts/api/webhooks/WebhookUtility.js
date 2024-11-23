@@ -44,7 +44,7 @@ class WebhookUtility {
                 new HttpHeader("Accept", "application/json")
             ])
                 .setMethod(HttpRequestMethod.POST));
-            return request.status === 200;
+            return `${request.status}`[0] === "2";
         }
         catch {
             return false;
