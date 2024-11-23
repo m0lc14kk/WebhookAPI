@@ -1,5 +1,5 @@
 import { IWebhookContent } from "./interfaces/IWebhookContent";
-import { EmbedUtility, IRawEmbedUtility } from "../WebhookAPI";
+import { EmbedUtility, IRawEmbedUtility, validateDiscordWebhookUrl } from "../WebhookAPI";
 import { WebhookConfiguration } from "./WebhookConfiguration";
 import { world, Dimension } from "@minecraft/server";
 
@@ -8,7 +8,7 @@ import { world, Dimension } from "@minecraft/server";
  * @private This class is private.
  * @remarks To send webhook, use static method:
  * ```ts
- * WebhookUtility.sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent);
+ * WebhookUtility.sendWebhook(webhookUrl: string, { content = "", embeds = [] }: IWebhookContent);
  * ```
  */
 class WebhookUtility {
@@ -23,18 +23,20 @@ class WebhookUtility {
      * @private This class is private.
      * @remarks To send webhook, use static method:
      * ```ts
-     * WebhookUtility.sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent);
+     * WebhookUtility.sendWebhook(webhookUrl: string, { content = "", embeds = [] }: IWebhookContent);
      * ```
      */
     private constructor() {};
 
     /**
      * Sends a messages via webhook to a channel.
-     * @param webhookUri Link to a webhook.
+     * @param webhookUrl Link to a webhook.
      * @param messageContent Content of a message.
      * @returns Method does return whether webhook was succesfully sent.
      */
-    public static async sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent): Promise<boolean> {
+    public static async sendWebhook(webhookUrl: string, { content = "", embeds = [] }: IWebhookContent): Promise<boolean> {
+        if (!validateDiscordWebhookUrl(webhookUrl)) throw new Error("This is not a valid URL!");
+
         const webhookContent: IWebhookContent = {
             content,
             embeds: embeds.map((embed: EmbedUtility | IRawEmbedUtility) => embed instanceof EmbedUtility ? embed.toJSON() : embed),
@@ -44,7 +46,7 @@ class WebhookUtility {
             const { http, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
 
             const request = await http.request(
-                new HttpRequest(webhookUri)
+                new HttpRequest(webhookUrl)
                     .setBody(JSON.stringify(webhookContent))
 
                     .setHeaders([

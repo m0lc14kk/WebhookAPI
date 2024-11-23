@@ -5,7 +5,7 @@ import { WebhookConfiguration } from "./WebhookConfiguration";
  * @private This class is private.
  * @remarks To send webhook, use static method:
  * ```ts
- * WebhookUtility.sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent);
+ * WebhookUtility.sendWebhook(webhookUrl: string, { content = "", embeds = [] }: IWebhookContent);
  * ```
  */
 declare class WebhookUtility {
@@ -19,16 +19,16 @@ declare class WebhookUtility {
      * @private This class is private.
      * @remarks To send webhook, use static method:
      * ```ts
-     * WebhookUtility.sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent);
+     * WebhookUtility.sendWebhook(webhookUrl: string, { content = "", embeds = [] }: IWebhookContent);
      * ```
      */
     private constructor();
     /**
      * Sends a messages via webhook to a channel.
-     * @param webhookUri Link to a webhook.
+     * @param webhookUrl Link to a webhook.
      * @param messageContent Content of a message.
      * @returns Method does return whether webhook was succesfully sent.
      */
-    static sendWebhook(webhookUri: string, { content, embeds }: IWebhookContent): Promise<boolean>;
+    static sendWebhook(webhookUrl: string, { content, embeds }: IWebhookContent): Promise<boolean>;
 }
 export { WebhookUtility, IWebhookContent };

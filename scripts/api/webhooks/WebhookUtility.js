@@ -1,11 +1,11 @@
-import { EmbedUtility } from "../WebhookAPI";
+import { EmbedUtility, validateDiscordWebhookUrl } from "../WebhookAPI";
 import { WebhookConfiguration } from "./WebhookConfiguration";
 /**
  * Class that allows you to send messages via webhook.
  * @private This class is private.
  * @remarks To send webhook, use static method:
  * ```ts
- * WebhookUtility.sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent);
+ * WebhookUtility.sendWebhook(webhookUrl: string, { content = "", embeds = [] }: IWebhookContent);
  * ```
  */
 class WebhookUtility {
@@ -19,25 +19,27 @@ class WebhookUtility {
      * @private This class is private.
      * @remarks To send webhook, use static method:
      * ```ts
-     * WebhookUtility.sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent);
+     * WebhookUtility.sendWebhook(webhookUrl: string, { content = "", embeds = [] }: IWebhookContent);
      * ```
      */
     constructor() { }
     ;
     /**
      * Sends a messages via webhook to a channel.
-     * @param webhookUri Link to a webhook.
+     * @param webhookUrl Link to a webhook.
      * @param messageContent Content of a message.
      * @returns Method does return whether webhook was succesfully sent.
      */
-    static async sendWebhook(webhookUri, { content = "", embeds = [] }) {
+    static async sendWebhook(webhookUrl, { content = "", embeds = [] }) {
+        if (!validateDiscordWebhookUrl(webhookUrl))
+            throw new Error("This is not a valid URL!");
         const webhookContent = {
             content,
             embeds: embeds.map((embed) => embed instanceof EmbedUtility ? embed.toJSON() : embed),
         };
         try {
             const { http, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
-            const request = await http.request(new HttpRequest(webhookUri)
+            const request = await http.request(new HttpRequest(webhookUrl)
                 .setBody(JSON.stringify(webhookContent))
                 .setHeaders([
                 new HttpHeader("Content-Type", "application/json"),
