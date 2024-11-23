@@ -16,3 +16,4 @@
 .env.test.local
 .env.production.local
 **/*.log
+debug.log
