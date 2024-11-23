@@ -12,4 +12,4 @@
 
 export * from "./webhooks/WebhookUtility";
 export * from "./embeds/EmbedUtility";
-export * from "./webhooks/ValidateWebhookUri";
+export * from "./webhooks/ValidateDiscordWebhookUrl";
