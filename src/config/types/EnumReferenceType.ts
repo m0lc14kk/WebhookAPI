@@ -1,4 +1,4 @@
-type EnumReferenceTypes = {
+type EnumReferenceType = {
     readonly pairs: ({
         name: string,
         value: string,
@@ -9,4 +9,4 @@ type EnumReferenceTypes = {
     })[]
 };
 
-export type { EnumReferenceTypes };
+export type { EnumReferenceType };

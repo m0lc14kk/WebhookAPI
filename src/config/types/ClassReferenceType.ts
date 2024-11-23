@@ -1,4 +1,5 @@
 type ClassReferenceType = {
+    readonly description: string,
     readonly methods?: ({
         description: string,
         name: string,
