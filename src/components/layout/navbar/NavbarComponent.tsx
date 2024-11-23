@@ -26,7 +26,7 @@ const navbarLinks: readonly NavbarLinkType[] = [
 const NavbarComponent = (): React.JSX.Element => {
     return (
         <>
-            <nav className="bg-transparent absolute flex items-center justify-between px-8 lg:px-[14%] py-8 border-b-2 border-b-[#90909020] w-full backdrop-blur-2xl">
+            <nav className="bg-transparent absolute flex items-center justify-between px-8 lg:px-[14%] py-8 border-b-2 border-b-[#90909020] w-full backdrop-blur-2xl h-24">
                 <Link to={`${process.env.PUBLIC_URL}/`} className="bg-transparent">
                     <img
                         src={`${process.env.PUBLIC_URL}/imgs/logo.png`}
