@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const FooterCategory = ({ name, links }: FooterCategoryType): React.JSX.Element => {
     return (
         <>
-            <div className="bg-transparent flex flex-col gap-y-1 h-full max-lg:w-full">
+            <section className="bg-transparent flex flex-col gap-y-1 h-full max-lg:w-full">
                 <h4 className="bg-transparent text-[#949494] max-lg:text-center">
                     {name}
                 </h4>
@@ -19,7 +19,7 @@ const FooterCategory = ({ name, links }: FooterCategoryType): React.JSX.Element 
                         </li>
                     )}
                 </ul>
-            </div>
+            </section>
         </>
     );
 };

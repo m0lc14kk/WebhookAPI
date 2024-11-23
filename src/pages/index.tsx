@@ -7,8 +7,8 @@ import "../styles/pages/index.css";
 const IndexPage = (): React.JSX.Element => {
     return (
         <>
-            <div className="w-[100dvw] h-[100dvh] bg-gradient-to-tr from-[#111020] to-[#18114B] grid lg:grid-cols-2 place-items-center px-8 xl:px-[14%]">
-                <div className="w-full h-full bg-transparent flex flex-col justify-center gap-y-6 max-lg:pt-12">
+            <main className="w-[100dvw] h-[100dvh] bg-gradient-to-tr from-[#111020] to-[#18114B] grid lg:grid-cols-2 place-items-center px-8 xl:px-[14%]">
+                <section className="w-full h-full bg-transparent flex flex-col justify-center gap-y-6 max-lg:pt-12">
                     <h4 className="bg-clip-text bg-gradient-to-r from-[#5555FF] to-[#F059EA] xl:text-6xl text-4xl text-transparent font-black message-fade-in max-lg:text-center">
                         Webhook API
                     </h4>
@@ -18,7 +18,7 @@ const IndexPage = (): React.JSX.Element => {
                         Minecraft: Bedrock Edition add-ons.
                     </p>
 
-                    <div className="bg-transparent pt-2 flex max-lg:justify-center gap-x-3 message-fade-in">
+                    <nav className="bg-transparent pt-2 flex max-lg:justify-center gap-x-3 message-fade-in">
                         <Link to={`${process.env.PUBLIC_URL}/documentation`} className="duration-150 text-[#FF55FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#FF55FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#FF55FF]">
                             Documentation
                         </Link>
@@ -26,10 +26,10 @@ const IndexPage = (): React.JSX.Element => {
                         <Link to={`${process.env.PUBLIC_URL}/installation`} className="duration-150 text-[#5555FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#5555FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#5555FF]">
                             INSTALLATION
                         </Link>
-                    </div>
-                </div>
+                    </nav>
+                </section>
 
-                <div className="bg-transparent flex flex-col items-end justify-center">
+                <figure className="bg-transparent flex flex-col items-end justify-center">
                     <img
                         src={`${process.env.PUBLIC_URL}/imgs/showcase.png`}
                         alt="/"
@@ -45,10 +45,10 @@ const IndexPage = (): React.JSX.Element => {
                         height={236}
                         className="bg-transparent rounded-md shadow-md shadow-black -mt-[20%] xl:-mr-[20%] -mr-[10%] select-none image-showcase-fade-in max-sm:scale-75 border-2 border-[#FF55FF]"
                     />
-                </div>
-            </div>
+                </figure>
+            </main>
 
-            <div className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12">
+            <article className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12">
                 <div className="bg-transparent flex flex-col gap-y-6 p-6">
                     <h2 className="bg-transparent">
                         Easy to install.
@@ -59,21 +59,21 @@ const IndexPage = (): React.JSX.Element => {
                     </p>
                 </div>
 
-                <div className="w-full h-full flex items-center justify-center bg-transparent">
+                <figure className="w-full h-full flex items-center justify-center bg-transparent">
                     <FaListCheck
                         size={150}
                         className="bg-transparent fill-[#FF55FF]"
                     />
-                </div>
-            </div>
+                </figure>
+            </article>
 
-            <div className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12 bg-[#141025]">
-                <div className="w-full h-full flex items-center justify-center bg-transparent">
+            <article className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12 bg-[#141025]">
+                <figure className="w-full h-full flex items-center justify-center bg-transparent">
                     <FaPaintbrush
                         size={150}
                         className="bg-transparent fill-[#FF55FF]"
                     />
-                </div>
+                </figure>
 
                 <div className="bg-transparent flex flex-col gap-y-6 p-6">
                     <h2 className="bg-transparent">
@@ -84,9 +84,9 @@ const IndexPage = (): React.JSX.Element => {
                         You can set your default embed color, thumbnail URL icon, footer or even extend our embed class. 
                     </p>
                 </div>
-            </div>
+            </article>
 
-            <div className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12">
+            <article className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12">
                 <div className="bg-transparent flex flex-col gap-y-6 p-6">
                     <h2 className="bg-transparent">
                         Well-Documented.
@@ -97,13 +97,13 @@ const IndexPage = (): React.JSX.Element => {
                     </p>
                 </div>
 
-                <div className="w-full h-full flex items-center justify-center bg-transparent">
+                <figure className="w-full h-full flex items-center justify-center bg-transparent">
                     <IoDocumentAttachOutline
                         size={150}
                         className="bg-transparent stroke-[#FF55FF]"
                     />
-                </div>
-            </div>
+                </figure>
+            </article>
         </>
     );
 };

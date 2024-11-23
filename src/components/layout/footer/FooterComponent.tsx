@@ -45,9 +45,9 @@ const footerCategories: readonly FooterCategoryType[] = [
 const FooterComponent = (): React.JSX.Element => {
     return (
 		<>
-			<div className="w-full py-16 px-8 lg:px-[14%] flex flex-col gap-y-6">
-				<div className="bg-transparent flex max-lg:flex-col items-center justify-between">
-					<div className="bg-transparent flex items-center">
+			<footer className="w-full py-16 px-8 lg:px-[14%] flex flex-col gap-y-6">
+				<section className="bg-transparent flex max-lg:flex-col items-center justify-between">
+					<figure className="bg-transparent flex items-center">
 						<Link to={`${process.env.PUBLIC_URL}/`} className="bg-transparent">
 							<img
 								src={`${process.env.PUBLIC_URL}/imgs/logo.png`}
@@ -61,7 +61,7 @@ const FooterComponent = (): React.JSX.Element => {
 						<div className="w-[2px] mx-12 h-24 bg-[#8080800A] max-lg:hidden">
 
 						</div>
-					</div>
+					</figure>
 
 					<div className="bg-transparent grid max-lg:grid-cols-1 grid-cols-3 gap-x-12 gap-y-6 items-end max-md:pt-8">
 						{footerCategories.map(({ name, links }: FooterCategoryType, index: number) => 
@@ -72,11 +72,11 @@ const FooterComponent = (): React.JSX.Element => {
 							/>
 						)}
 					</div>
-				</div>
+				</section>
 
                 <hr className="w-full h-[1px] bg-[#90909020] border-none my-4" />
 
-                <div className="w-full flex justify-between items-center">
+                <section className="w-full flex justify-between items-center">
                     <p className="bg-transparent text-lg text-[#909090] font-medium">
                         Author: <Link to="https://github.com/m0lc14kk" className="bg-transparent hover:text-[#FF55FF] duration-150 text-[#6649F0]">@m0lc14kk</Link>
                     </p>
@@ -100,8 +100,8 @@ const FooterComponent = (): React.JSX.Element => {
                             </Link>
                         </li>
                     </ul>
-                </div>
-			</div>
+                </section>
+			</footer>
 		</>
     );
 };

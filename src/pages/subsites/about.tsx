@@ -12,13 +12,13 @@ const AboutPage = (): React.JSX.Element => {
                 description="Basic information about project and it's enviroment."
             />
 
-            <div className="bg-transparent py-16 px-8 lg:px-[14%]">
+            <section className="bg-transparent py-16 px-8 lg:px-[14%]">
                 <p className="bg-transparent text-[#909090] font-medium text-lg">
                     Main purpose of this project is to provide Minecraft: Bedrock Edition creator developers a much easier way to send messages via webhooks to their Discord channel. This API is providing them types for embeds, possible content to send within message and other utility functions to deal with webhooks even easier. 
                 </p>
-            </div>
+            </section>
 
-            <div className="bg-[#141025] py-16 px-8 lg:px-[14%]">
+            <section className="bg-[#141025] py-16 px-8 lg:px-[14%]">
                 <h3 className="bg-clip-text bg-gradient-to-r from-[#5555FF] to-[#F059EA] text-transparent font-black message-fade-in max-lg:text-center">
                     FAQ
                 </h3>
@@ -35,7 +35,7 @@ const AboutPage = (): React.JSX.Element => {
                         />
                     )}
                 </div>
-            </div>
+            </section>
         </>
     );
 };

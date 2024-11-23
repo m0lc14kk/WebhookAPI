@@ -7,7 +7,7 @@ const QuestionComponent = ({ question, answer }: QuestionComponentType) => {
     
     return (
         <>
-            <div className="bg-transparent flex flex-col">
+            <article className="bg-transparent flex flex-col">
                 <div className="w-full p-6 border-l-[3px] bg-[#101010] border-l-[#FF55FF] flex justify-between items-center cursor-pointer" onClick={(): void => setToggled(!isToggled)}>
                     <h1 className="bg-transparent text-xl">
                         {question}
@@ -22,7 +22,7 @@ const QuestionComponent = ({ question, answer }: QuestionComponentType) => {
                 <p className={`bg-[#121212] text-lg font-medium text-[#949494] ${isToggled ? "opacity-100 h-auto p-6" : "min-h-0 h-0 opacity-100 text-transparent"} duration-150`}>
                     {answer}
                 </p>
-            </div>
+            </article>
         </>
     );
 };
