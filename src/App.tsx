@@ -22,7 +22,15 @@ function HomeApp(): React.JSX.Element {
                 <Route path={`${base}/installation`} element={<InstallationPage />} />
                 <Route path={`${base}/documentation`} element={<DocumentationLayout />}>
                     <Route path={`${base}/documentation`} element={<DocumentationHomePage />} />
+                    {/**
+                     *  to-do: add more handlers
+                     */}
                     <Route path={`${base}/documentation/class/:className`} element={<ClassReferencePage />} />
+                    <Route path={`${base}/documentation/interface/:interfaceName`} element={<ClassReferencePage />} />
+                    <Route path={`${base}/documentation/constant/:constantName`} element={<ClassReferencePage />} />
+                    <Route path={`${base}/documentation/type/:typeName`} element={<ClassReferencePage />} />
+                    <Route path={`${base}/documentation/enum/:enumName`} element={<ClassReferencePage />} />
+                    <Route path={`${base}/documentation/function/:functionName`} element={<ClassReferencePage />} />
                 </Route>
 
                 <Route path="*" element={<NotFoundPage />} />
