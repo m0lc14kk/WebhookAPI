@@ -1,6 +1,7 @@
 import React from "react";
 import type { CodeBlockComponentType } from "./types/CodeBlockComponentType";
 import CopyButtonComponent from "./CopyButtonComponent";
+import "../../styles/components/common/CodeBlockComponent.css";
 
 const CodeBlockComponent = ({ children, copyText, language }: CodeBlockComponentType): React.JSX.Element => {
     return (
@@ -17,7 +18,7 @@ const CodeBlockComponent = ({ children, copyText, language }: CodeBlockComponent
                 <hr className="border-none h-[1px] w-full bg-[#94949420] my-2" />
                 <p className="bg-transparent text-lg font-mono fira-code">
                     <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap text-ellipsis block max-w-full"></span>
-                    <span className="overflow-hidden whitespace-nowrap text-ellipsis block max-w-full">
+                    <span className="overflow-x-scroll overflow-y-hidden whitespace-nowrap text-ellipsis block max-w-full scrollbar-hidden">
                         {children}
                     </span>
                 </p>

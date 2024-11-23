@@ -76,7 +76,7 @@ const InstallationPage = (): React.JSX.Element => {
                             module in it's config. If not, then add this your
                             config/default/permissions.json:
 
-                            <CodeBlockComponent copyText="@minecraft/server-net" language="json">
+                            <CodeBlockComponent copyText="@minecraft/server-net" language="config/default/permissions.json">
                                 <span>
                                     &#123; <br />
                                 </span>
@@ -112,7 +112,7 @@ const InstallationPage = (): React.JSX.Element => {
                                 "module_name": "@minecraft/server-net",
                                 "version": "1.0.0-beta"
                             }
-                        `} language="json">
+                        `} language="manifest.json">
                             <span>
                                 &#123; <br />
                             </span>
@@ -148,7 +148,7 @@ const InstallationPage = (): React.JSX.Element => {
                     </li>
                     <li className="bg-transparent">
                         <p className="text-lg font-medium text-[#949494] bg-transparent">
-                            Import our classes and start using our API!
+                            You correctly installed our API to your add-on! Import classes, interfaces and more from API's main file that you connected to your pack.
                         </p>
                     </li>
                 </ol>
