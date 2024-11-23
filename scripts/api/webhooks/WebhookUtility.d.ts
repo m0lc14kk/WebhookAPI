@@ -27,8 +27,8 @@ declare class WebhookUtility {
      * Sends a messages via webhook to a channel.
      * @param webhookUri Link to a webhook.
      * @param messageContent Content of a message.
-     * @returns Method does not return anything.
+     * @returns Method does return whether webhook was succesfully sent.
      */
-    static sendWebhook(webhookUri: string, { content, embeds }: IWebhookContent): Promise<void>;
+    static sendWebhook(webhookUri: string, { content, embeds }: IWebhookContent): Promise<boolean>;
 }
 export { WebhookUtility, IWebhookContent };

@@ -32,9 +32,9 @@ class WebhookUtility {
      * Sends a messages via webhook to a channel.
      * @param webhookUri Link to a webhook.
      * @param messageContent Content of a message.
-     * @returns Method does not return anything.
+     * @returns Method does return whether webhook was succesfully sent.
      */
-    public static async sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent): Promise<void> {
+    public static async sendWebhook(webhookUri: string, { content = "", embeds = [] }: IWebhookContent): Promise<boolean> {
         const webhookContent: IWebhookContent = {
             content,
             embeds: embeds.map((embed: EmbedUtility | IRawEmbedUtility) => embed instanceof EmbedUtility ? embed.toJSON() : embed),
@@ -43,7 +43,7 @@ class WebhookUtility {
         try {
             const { http, HttpHeader, HttpRequestMethod, HttpRequest } = await import("@minecraft/server-net");
 
-            await http.request(
+            const request = await http.request(
                 new HttpRequest(webhookUri)
                     .setBody(JSON.stringify(webhookContent))
 
@@ -54,7 +54,11 @@ class WebhookUtility {
 
                     .setMethod(HttpRequestMethod.POST)
             );
-        } catch {};
+
+            return request.status === 200;
+        } catch {
+            return false;
+        };
     };
 };
 
