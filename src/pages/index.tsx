@@ -35,7 +35,7 @@ const IndexPage = (): React.JSX.Element => {
                         alt="/"
                         width={422}
                         height={236}
-                        className="bg-transparent rounded-md shadow-md shadow-black rotate-1 select-none image-showcase-fade-in max-sm:scale-75 border-2 border-[#FF55FF]"
+                        className="bg-transparent rounded-md shadow-md shadow-black select-none image-showcase-fade-in max-sm:scale-75 border-2 border-[#FF55FF]"
                     />
 
                     <img
@@ -43,7 +43,7 @@ const IndexPage = (): React.JSX.Element => {
                         alt="/"
                         width={422}
                         height={236}
-                        className="bg-transparent rounded-md shadow-md shadow-black rotate-1 -mt-[20%] xl:-mr-[20%] -mr-[10%] select-none image-showcase-fade-in max-sm:scale-75 border-2 border-[#FF55FF]"
+                        className="bg-transparent rounded-md shadow-md shadow-black -mt-[20%] xl:-mr-[20%] -mr-[10%] select-none image-showcase-fade-in max-sm:scale-75 border-2 border-[#FF55FF]"
                     />
                 </div>
             </div>

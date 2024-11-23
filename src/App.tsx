@@ -5,6 +5,7 @@ import IndexPage from "./pages";
 import FooterComponent from "./components/layout/footer/FooterComponent";
 import NotFoundPage from "./pages/errors/NotFoundPage";
 import AboutPage from "./pages/subsites/about";
+import InstallationPage from "./pages/subsites/installation";
 
 function HomeApp(): React.JSX.Element {
     return (
@@ -13,6 +14,7 @@ function HomeApp(): React.JSX.Element {
             <Routes>
                 <Route path={`${process.env.PUBLIC_URL}/`} element={<IndexPage />} />
                 <Route path={`${process.env.PUBLIC_URL}/about`} element={<AboutPage />} />
+                <Route path={`${process.env.PUBLIC_URL}/installation`} element={<InstallationPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <FooterComponent />
