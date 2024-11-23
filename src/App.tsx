@@ -21,6 +21,7 @@ function HomeApp(): React.JSX.Element {
                 <Route path={`${base}/installation`} element={<InstallationPage />} />
                 <Route path={`${base}/documentation`} element={<DocumentationLayout />}>
                     <Route path={`${base}/documentation`} element={<DocumentationHomePage />} />
+                    <Route path={`${base}/documentation/class:className`} element={<DocumentationHomePage />} />
                 </Route>
 
                 <Route path="*" element={<NotFoundPage />} />

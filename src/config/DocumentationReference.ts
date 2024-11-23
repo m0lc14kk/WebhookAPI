@@ -8,7 +8,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
         data: {
             methods: [
                 {
-                    methodName: "sendWebhook",
+                    name: "sendWebhook",
                     parameters: [
                         {
                             name: "webhookUri",
