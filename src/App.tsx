@@ -8,6 +8,7 @@ import AboutPage from "./pages/subsites/about";
 import InstallationPage from "./pages/subsites/installation";
 import DocumentationLayout from "./components/layout/sites/DocumentationLayout";
 import DocumentationHomePage from "./pages/subsites/documentation/home";
+import ClassReferencePage from "./pages/subsites/documentation/class/page";
 
 function HomeApp(): React.JSX.Element {
     const base: string = process.env.PUBLIC_URL || "";
@@ -21,7 +22,7 @@ function HomeApp(): React.JSX.Element {
                 <Route path={`${base}/installation`} element={<InstallationPage />} />
                 <Route path={`${base}/documentation`} element={<DocumentationLayout />}>
                     <Route path={`${base}/documentation`} element={<DocumentationHomePage />} />
-                    <Route path={`${base}/documentation/class:className`} element={<DocumentationHomePage />} />
+                    <Route path={`${base}/documentation/class/:className`} element={<ClassReferencePage />} />
                 </Route>
 
                 <Route path="*" element={<NotFoundPage />} />

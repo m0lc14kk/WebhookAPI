@@ -48,7 +48,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                                 <ul className="bg-transparent flex flex-col">
                                     {classes.map(({ itemLinkTarget, itemName }: DocumentationReferenceType<ClassReferenceType>, key: number) => {
                                         return (
-                                            <Link key={key} to={itemLinkTarget} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
+                                            <Link key={key} to={`${process.env.PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
                                                 {itemName}
                                             </Link>
                                         );
@@ -66,7 +66,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                                 <ul className="bg-transparent flex flex-col">
                                     {interfaces.map(({ itemLinkTarget, itemName }: DocumentationReferenceType<InterfaceReferenceType>, key: number) => {
                                         return (
-                                            <Link key={key} to={itemLinkTarget} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
+                                            <Link key={key} to={`${process.env.PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
                                                 {itemName}
                                             </Link>
                                         );
@@ -84,7 +84,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                                 <ul className="bg-transparent flex flex-col">
                                     {types.map(({ itemLinkTarget, itemName }: DocumentationReferenceType<TypeReferenceType>, key: number) => {
                                         return (
-                                            <Link key={key} to={itemLinkTarget} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
+                                            <Link key={key} to={`${process.env.PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
                                                 {itemName}
                                             </Link>
                                         );
