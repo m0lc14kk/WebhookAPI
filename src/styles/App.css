@@ -6,6 +6,31 @@
 @tailwind variants;
 
 @layer base {
+    /**
+     * ------------------------------
+     * SCROLLBAR
+     * ------------------------------
+     */
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgba(255, 255, 255, 0);
+        border-radius: 0px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: #FF55FF;
+        border-radius: 0px;
+    }   
+
+
+    /**
+     * ------------------------------
+     * COMMON STYLES
+     * ------------------------------
+     */
     * {
         @apply m-0 p-0 bg-[#111020] text-[#F0F0F0];
     }
