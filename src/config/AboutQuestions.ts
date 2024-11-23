@@ -12,6 +12,14 @@ const aboutQuestions: QuestionComponentType[] = [
     {
         question: "What version/versions are supported?",
         answer: "API should work as long as you have @minecraft/server-net module and script API's on your server's world activate. From my research - it should work without any issues down to 1.20. Older versions were not checked, but they should work aswell."
+    },
+    {
+        question: "What enviroments (worlds, Realms etc.) are supported by add-on?",
+        answer: "Currently, only BDS (Bedrock Dedicated Server) is supported, by we might pull out some universal solution to world/Realms."
+    },
+    {
+        question: "Am I forced to use TypeScript by using this API?",
+        answer: "No, you can also use JavaScript distribution, which is under scripts folder."
     }
 ];
 
