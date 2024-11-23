@@ -4,6 +4,7 @@ import HeaderComponent from "../../components/common/HeaderComponent";
 import "../../styles/pages/installation.css";
 import { Link } from "react-router-dom";
 import CopyButtonComponent from "../../components/common/CopyButtonComponent";
+import CodeBlockComponent from "../../components/common/CodeBlockComponent";
 
 const InstallationPage = (): React.JSX.Element => {
     return (
@@ -75,36 +76,30 @@ const InstallationPage = (): React.JSX.Element => {
                             module in it's config. If not, then add this your
                             config/default/permissions.json:
 
-                            <code className="mt-4 rounded-sm px-6 py-3 flex flex-col bg-[#101020]">
-                                <div className="bg-transparent flex justify-between">
-                                <p className="bg-transparent font-medium text-[#949494] text-lg font-mono">
-                                    json
-                                </p>
-
-                                <CopyButtonComponent textToCopy="@minecraft/server-net" />
-                                </div>
-
-                                <hr className="border-none h-[1px] w-full bg-[#94949420] my-2" />
-                                <p className="bg-transparent text-lg font-mono">
-                                <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap text-ellipsis block max-w-full"></span>
-                                <span className="overflow-hidden whitespace-nowrap text-ellipsis block max-w-full">
+                            <CodeBlockComponent copyText="@minecraft/server-net" language="json">
+                                <span>
                                     &#123; <br />
+                                </span>
+                                <span>
                                     <span className="bg-transparent text-[#55FF55] ml-8">
-                                    "allowed_modules"
+                                        "allowed_modules"
                                     </span>
+
                                     : [ <br />
-                                    <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap text-ellipsis block max-w-full ml-16">
-                                    // Other @minecraft/* modules
-                                    </span>
-                                    <span className="bg-transparent text-[#55FF55] ml-16">
-                                    "@minecraft/server-net"
-                                    </span>{" "}
-                                    <br />
-                                    <span className="bg-transparent ml-8">]</span> <br />
+                                </span>
+                                <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap text-ellipsis block max-w-full ml-16">
+                                    // Other @minecraft/* modules <br />
+                                </span>
+                                <span className="bg-transparent text-[#55FF55] ml-16">
+                                    "@minecraft/server-net" <br />
+                                </span>
+                                <span className="bg-transparent ml-8">
+                                    ] <br />
+                                </span>
+                                <span>
                                     &#125;
                                 </span>
-                                </p>
-                            </code>
+                            </CodeBlockComponent>
                         </p>
                     </li>
                     <li className="bg-transparent">
@@ -112,46 +107,44 @@ const InstallationPage = (): React.JSX.Element => {
                             Check if your world has beta API's activated and includes <span className="bg-transparent text-[#FF55FF]">@minecraft/server-net</span> in manifest.json
                         </p>
 
-                        <code className="mt-4 rounded-sm px-6 py-3 flex flex-col bg-[#101020]">
-                            <div className="bg-transparent flex justify-between">
-                            <p className="bg-transparent font-medium text-[#949494] text-lg font-mono">
-                                json
-                            </p>
-
-                            <CopyButtonComponent textToCopy="@minecraft/server-net" />
-                            </div>
-
-                            <hr className="border-none h-[1px] w-full bg-[#94949420] my-2" />
-                            <p className="bg-transparent text-lg font-mono">
-                            <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap text-ellipsis block max-w-full"></span>
-                            <span className="overflow-hidden whitespace-nowrap text-ellipsis block max-w-full">
+                        <CodeBlockComponent copyText={`
+                            {
+                                "module_name": "@minecraft/server-net",
+                                "version": "1.0.0-beta"
+                            }
+                        `} language="json">
+                            <span>
                                 &#123; <br />
+                            </span>
+                            <span>
                                 <span className="bg-transparent text-[#55FF55] ml-8">
-                                "dependencies"
+                                    "dependencies"
                                 </span>
+
                                 : [ <br />
-                                <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap text-ellipsis block max-w-full ml-16">
-                                // Other @minecraft/* modules
-                                </span>
-                                <span className="bg-transparent ml-16">
-                                &#123;
-                                </span>{" "}
-                                <br />
-                                <span className="bg-transparent text-[#55FF55] ml-24">
+                            </span>
+                            <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap text-ellipsis block max-w-full ml-16">
+                                // Other @minecraft/* modules <br />
+                            </span>
+                            <span className="bg-transparent ml-16">
+                                &#123; <br />
+                            </span>
+                            <span className="bg-transparent text-[#55FF55] ml-24">
                                 "module_name": "@minecraft/server-net", <br />
-                                </span>
-                                <span className="bg-transparent text-[#55FF55] ml-24">
+                            </span>
+                            <span className="bg-transparent text-[#55FF55] ml-24">
                                 "version": "1.0.0-beta" <br />
-                                </span>
-                                <span className="bg-transparent ml-16">
-                                &#125;
-                                </span>{" "}
-                                <br />
-                                <span className="bg-transparent ml-8">]</span> <br />
+                            </span>
+                            <span className="bg-transparent ml-16">
+                                &#125; <br />
+                            </span>
+                            <span className="bg-transparent ml-8">
+                                ] <br />
+                            </span>
+                            <span>
                                 &#125;
                             </span>
-                            </p>
-                        </code>
+                        </CodeBlockComponent>
                     </li>
                     <li className="bg-transparent">
                         <p className="text-lg font-medium text-[#949494] bg-transparent">
