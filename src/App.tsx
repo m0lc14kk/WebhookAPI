@@ -6,15 +6,22 @@ import FooterComponent from "./components/layout/footer/FooterComponent";
 import NotFoundPage from "./pages/errors/NotFoundPage";
 import AboutPage from "./pages/subsites/about";
 import InstallationPage from "./pages/subsites/installation";
+import DocumentationLayout from "./components/layout/sites/DocumentationLayout";
 
 function HomeApp(): React.JSX.Element {
+    const base: string = process.env.PUBLIC_URL || "";
+
     return (
         <BrowserRouter>
             <NavbarComponent />
             <Routes>
-                <Route path={`${process.env.PUBLIC_URL}/`} element={<IndexPage />} />
-                <Route path={`${process.env.PUBLIC_URL}/about`} element={<AboutPage />} />
-                <Route path={`${process.env.PUBLIC_URL}/installation`} element={<InstallationPage />} />
+                <Route path={`${base}/`} element={<IndexPage />} />
+                <Route path={`${base}/about`} element={<AboutPage />} />
+                <Route path={`${base}/installation`} element={<InstallationPage />} />
+                <Route path={`${base}/documentation`} element={<DocumentationLayout />}>
+
+                </Route>
+
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <FooterComponent />
