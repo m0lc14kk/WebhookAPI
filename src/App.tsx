@@ -9,6 +9,7 @@ import InstallationPage from "./pages/subsites/installation";
 import DocumentationLayout from "./components/layout/sites/DocumentationLayout";
 import DocumentationHomePage from "./pages/subsites/documentation/home";
 import ClassReferencePage from "./pages/subsites/documentation/class/page";
+import InterfaceReferencePage from "./pages/subsites/documentation/interface/page";
 
 function HomeApp(): React.JSX.Element {
     const base: string = process.env.PUBLIC_URL || "";
@@ -26,7 +27,7 @@ function HomeApp(): React.JSX.Element {
                      *  to-do: add more handlers
                      */}
                     <Route path={`${base}/documentation/class/:className`} element={<ClassReferencePage />} />
-                    <Route path={`${base}/documentation/interface/:interfaceName`} element={<ClassReferencePage />} />
+                    <Route path={`${base}/documentation/interface/:interfaceName`} element={<InterfaceReferencePage />} />
                     <Route path={`${base}/documentation/constant/:constantName`} element={<ClassReferencePage />} />
                     <Route path={`${base}/documentation/types/:typeName`} element={<ClassReferencePage />} />
                     <Route path={`${base}/documentation/enum/:enumName`} element={<ClassReferencePage />} />

@@ -1,3 +1,4 @@
+import { endianness } from "os";
 import type { DocumentationReferenceType } from "./types/DocumentationReferenceType";
 
 const documentationReference: readonly DocumentationReferenceType<any>[] = [
@@ -21,7 +22,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                             name: "messageContent",
                             description: "Content of a message.",
                             dataType: "IWebhookContent",
-                            endPoint: "/interfaces/IWebhookContent"
+                            endPoint: "/documentation/interface/IWebhookContent"
                         },
                     ],
 
@@ -112,7 +113,8 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                         {
                             name: "url",
                             description: "New URL target of a title in embed.",
-                            dataType: "string",
+                            dataType: "EmbedContentTypes",
+                            endPoint: "/types/EmbedContentTypes"
                         }
                     ],
 
@@ -140,7 +142,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                             name: "thumbnail",
                             description: "Thumbnail of an embed. If you will provide string, width and height will be automaticly configured for your thumbnail's image.",
                             dataType: "IEmbedMedia | EmbedContentTypes",
-                            endPoint: "/documentation/types/IEmbedMedia"
+                            endPoint: "/documentation/interface/IEmbedMedia"
                         }
                     ],
 
@@ -154,7 +156,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                             name: "video",
                             description: "Video of an embed. If you will provide string, width and height will be automaticly configured for your video.",
                             dataType: "IEmbedMedia | EmbedContentTypes",
-                            endPoint: "/documentation/types/IEmbedMedia"
+                            endPoint: "/documentation/interface/IEmbedMedia"
                         }
                     ],
 
@@ -168,7 +170,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                             name: "author",
                             description: "Options of an author.",
                             dataType: "IEmbedAuthor | null",
-                            endPoint: "/documentation/types/IEmbedAuthor"
+                            endPoint: "/documentation/interface/IEmbedAuthor"
                         }
                     ],
 
@@ -182,7 +184,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                             name: "footer",
                             description: "Options of a footer.",
                             dataType: "IEmbedFooter | null",
-                            endPoint: "/documentation/types/IEmbedFooter"
+                            endPoint: "/documentation/interface/IEmbedFooter"
                         }
                     ],
 
@@ -196,7 +198,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                             name: "...fields",
                             description: "Single or more fields.",
                             dataType: "IEmbedField[]",
-                            endPoint: "/documentation/interfaces/IEmbedField"
+                            endPoint: "/documentation/interface/IEmbedField"
                         }
                     ],
 
@@ -210,7 +212,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                             name: "...fields",
                             description: "Single or more fields.",
                             dataType: "IEmbedField[]",
-                            endPoint: "/documentation/interfaces/IEmbedField"
+                            endPoint: "/documentation/interface/IEmbedField"
                         }
                     ],
 
@@ -222,7 +224,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                     parameters: [],
 
                     description: "Returns a JSON object, which is converted in stage of parsing Discord webhook request.",
-                    returnType: "EmbedUtility"
+                    returnType: "IRawEmbedUtility"
                 },
             ],
         }
@@ -243,6 +245,29 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
             ]
         }
     },
+    {
+        categoryName: "interface",
+        itemName: "IWebhookContent",
+        itemLinkTarget: "/documentation/interface/IWebhookContent",
+        data: {
+            description: "Content of your Discord message.",
+            properties: [
+                {
+                    readOnly: true,
+                    propertyName: "content",
+                    propertyDescription: "Content of a message.",
+                    propertyType: "string",
+                },
+                {
+                    readOnly: true,
+                    propertyName: "embeds",
+                    propertyDescription: "Embeds of a message.",
+                    propertyType: "(EmbedUtility | IRawEmbedUtility)[]",
+                    endPoint: "/documentation/class/EmbedUtility"
+                },
+            ]
+        }
+    }
 ];
 
 export { documentationReference };

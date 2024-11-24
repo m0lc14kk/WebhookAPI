@@ -75,7 +75,7 @@ const ClassReferencePage = (): React.JSX.Element => {
                                                 </span>
                                             )}
 
-                                            {isStatic && (
+                                            {readOnly && (
                                                 <span className="bg-[#FF555540] text-[#FF5555] p-2 rounded-sm font-semibold uppercase">
                                                     READONLY
                                                 </span>
