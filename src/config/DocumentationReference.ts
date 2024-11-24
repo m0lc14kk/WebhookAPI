@@ -43,7 +43,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                     propertyName: "sendWebhookMode",
                     propertyDescription: "Type of sending a webhook via our API. Default value is \"http\".",
                     propertyType: "SendWebhookModeTypes",
-                    endPoint: "/documentation/types/SendWebhookModeTypes"
+                    endPoint: "/documentation/type/SendWebhookModeTypes"
                 }
             ]
         }
@@ -499,7 +499,25 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
             content: "\"http\"",
             description: "Mode of sending request to your Discord webhook API. At this moment, there's no other option than \"http\"."
         }
-    }
+    },
+    {
+        categoryName: "type",
+        itemName: "EmbedContentTypes",
+        itemLinkTarget: "/documentation/type/EmbedContentTypes",
+        data: {
+            content: "string | null",
+            description: "Types of content in part of embeds like title, description etc."
+        }
+    },
+    {
+        categoryName: "type",
+        itemName: "ISO8601Data",
+        itemLinkTarget: "/documentation/type/ISO8601Data",
+        data: {
+            content: "Date | string | null",
+            description: "Data that should be presented in ISO8601 format.  If you will use Date object, it'll be converted to ISO8601 timestamp."
+        }
+    },
 ];
 
 export { documentationReference };
