@@ -33,6 +33,23 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
     },
     {
         categoryName: "class",
+        itemName: "WebhookConfiguration",
+        itemLinkTarget: "/documentation/class/WebhookConfiguration",
+        data: {
+            description: "Manage with global webhook settings.",
+            properties: [
+                {
+                    isStatic: true,
+                    propertyName: "sendWebhookMode",
+                    propertyDescription: "Type of sending a webhook via our API. Default value is \"http\".",
+                    propertyType: "SendWebhookModeTypes",
+                    endPoint: "/documentation/types/SendWebhookModeTypes"
+                }
+            ]
+        }
+    },
+    {
+        categoryName: "class",
         itemName: "EmbedUtility",
         itemLinkTarget: "/documentation/class/EmbedUtility",
         data: {
@@ -208,6 +225,22 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                     returnType: "EmbedUtility"
                 },
             ],
+        }
+    },
+    {
+        categoryName: "class",
+        itemName: "EmbedConfiguration",
+        itemLinkTarget: "/documentation/class/EmbedConfiguration",
+        data: {
+            description: "Manage default properties of your embeds.",
+            properties: [
+                {
+                    isStatic: true,
+                    propertyName: "embedColor",
+                    propertyDescription: "Default color of your embeds. Default value is 0x000000 (black hex).",
+                    propertyType: "number",
+                }
+            ]
         }
     },
 ];

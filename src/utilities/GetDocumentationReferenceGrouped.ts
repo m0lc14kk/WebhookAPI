@@ -1,9 +1,9 @@
 import { documentationReference } from "../config/DocumentationReference";
 import type { ClassReferenceType } from "../config/types/ClassReferenceType";
-import { ConstantReferenceType } from "../config/types/ConstantReferenceType";
+import type { ConstantReferenceType } from "../config/types/ConstantReferenceType";
 import type { DocumentationReferenceType } from "../config/types/DocumentationReferenceType";
-import { EnumReferenceType } from "../config/types/EnumReferenceType";
-import { FunctionReferenceType } from "../config/types/FunctionReferenceType";
+import type { EnumReferenceType } from "../config/types/EnumReferenceType";
+import type { FunctionReferenceType } from "../config/types/FunctionReferenceType";
 import type { InterfaceReferenceType } from "../config/types/InterfaceReferenceType";
 import type { TypeReferenceType } from "../config/types/TypeReferenceType";
 
