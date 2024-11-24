@@ -1,6 +1,7 @@
 type ClassReferenceType = {
     readonly description: string,
     readonly methods?: ({
+        isStatic?: boolean,
         description: string,
         name: string,
         returnType: string,
@@ -13,6 +14,7 @@ type ClassReferenceType = {
     })[],
 
     readonly properties?: ({
+        isStatic?: boolean,
         propertyName: string,
         propertyType: string,
         propertyFlags: ({

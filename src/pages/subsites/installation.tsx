@@ -46,26 +46,14 @@ const InstallationPage = (): React.JSX.Element => {
                             tsconfig.json file) in your code.
                         </p>
 
-                        <code className="mt-4 rounded-sm px-6 py-3 flex flex-col bg-[#101020]">
-                            <div className="bg-transparent flex justify-between">
-                                <p className="bg-transparent font-medium text-[#949494] text-lg font-mono">
-                                terminal
-                                </p>
-
-                                <CopyButtonComponent textToCopy="git clone https://github.com/m0lc14kk/WebhookAPI.git" />
-                            </div>
-
-                            <hr className="border-none h-[1px] w-full bg-[#94949420] my-2" />
-
-                            <p className="bg-transparent text-lg font-mono">
-                                <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap text-ellipsis block max-w-full">
-                                    # Navigate to your directory with scripts and clone the code.
-                                </span>
-                                <span className="overflow-hidden whitespace-nowrap text-ellipsis block max-w-full">
-                                    git clone https://github.com/m0lc14kk/WebhookAPI.git
-                                </span>
-                            </p>
-                        </code>
+                        <CodeBlockComponent language="terminal" copyText="git clone https://github.com/m0lc14kk/WebhookAPI.git .">
+                            <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap text-ellipsis block max-w-full">
+                                # Navigate to your directory with scripts and clone the code.
+                            </span>
+                            <span className="bg-transparent">
+                                git clone https://github.com/m0lc14kk/WebhookAPI.git .
+                            </span>
+                        </CodeBlockComponent>
                     </li>
                     <li className="bg-transparent">
                         <p className="text-lg font-medium text-[#949494] bg-transparent">
@@ -77,10 +65,10 @@ const InstallationPage = (): React.JSX.Element => {
                             config/default/permissions.json:
 
                             <CodeBlockComponent copyText="@minecraft/server-net" language="config/default/permissions.json">
-                                <span>
+                                <span className="bg-transparent">
                                     &#123; <br />
                                 </span>
-                                <span>
+                                <span className="bg-transparent">
                                     <span className="bg-transparent text-[#55FF55] ml-8">
                                         "allowed_modules"
                                     </span>
@@ -96,7 +84,7 @@ const InstallationPage = (): React.JSX.Element => {
                                 <span className="bg-transparent ml-8">
                                     ] <br />
                                 </span>
-                                <span>
+                                <span className="bg-transparent">
                                     &#125;
                                 </span>
                             </CodeBlockComponent>
@@ -113,10 +101,10 @@ const InstallationPage = (): React.JSX.Element => {
                                 "version": "1.0.0-beta"
                             }
                         `} language="manifest.json">
-                            <span>
+                            <span className="bg-transparent">
                                 &#123; <br />
                             </span>
-                            <span>
+                            <span className="bg-transparent">
                                 <span className="bg-transparent text-[#55FF55] ml-8">
                                     "dependencies"
                                 </span>
@@ -141,7 +129,7 @@ const InstallationPage = (): React.JSX.Element => {
                             <span className="bg-transparent ml-8">
                                 ] <br />
                             </span>
-                            <span>
+                            <span className="bg-transparent">
                                 &#125;
                             </span>
                         </CodeBlockComponent>

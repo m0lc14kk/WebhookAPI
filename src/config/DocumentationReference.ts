@@ -10,6 +10,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
             methods: [
                 {
                     name: "sendWebhook",
+                    isStatic: true,
                     parameters: [
                         {
                             name: "webhookUri",

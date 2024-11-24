@@ -4,6 +4,7 @@ import { DocumentationReferenceType } from "../../../../config/types/Documentati
 import { ClassReferenceType } from "../../../../config/types/ClassReferenceType";
 import { documentationReference } from "../../../../config/DocumentationReference";
 import NotFoundReferenceComponent from "../../../../components/pages/documentation/NotFoundReferenceComponent";
+import CodeBlockComponent from "../../../../components/common/CodeBlockComponent";
 
 const ClassReferencePage = (): React.JSX.Element => {
     const { className } = useParams();
@@ -67,57 +68,30 @@ const ClassReferencePage = (): React.JSX.Element => {
                         </h4>
 
                         <ul className="flex flex-col gap-6 pt-4 w-full">
-                            {classReference.data.methods?.map(({ name, description, parameters, returnType }, methodIndex) => (
+                            {classReference.data.methods?.map(({ name, description, parameters, returnType, isStatic = false }, methodIndex) => (
                                 <li
                                     key={methodIndex}
-                                    className="bg-[#141025] rounded-md p-6 w-full shadow-md"
+                                    className="bg-transparent"
                                 >
-                                    <p className="font-mono bg-[#1A1A2D] text-white rounded-md p-3 w-full">
-                                        {name}(
-                                        {parameters
-                                            .map(({ name, dataType }) => `${name}: ${dataType}`)
-                                            .join(", ")}
-                                        ): {returnType}
-                                    </p>
+                                    <section className="flex gap-x-2 bg-transparent items-center">
+                                        <span className="bg-[#FF55FF40] text-[#FF55FF] p-2 rounded-sm font-semibold uppercase">
+                                            METHOD
+                                        </span>
 
-                                    <p className="text-[#949494] pt-3 text-base font-medium bg-transparent">
-                                        {description}
-                                    </p>
+                                        {isStatic && (
+                                            <span className="bg-[#00AA0040] text-[#00AA00] p-2 rounded-sm font-semibold uppercase">
+                                                STATIC
+                                            </span>
+                                        )}
 
-                                    {parameters.length > 0 && (
-                                        <>
-                                            <h5 className="text-sm text-gray-400 pt-4 uppercase tracking-wider bg-transparent">
-                                                Parameters
-                                            </h5>
-                                            <ul className="flex flex-col gap-2 pt-2 bg-transparent">
-                                                {parameters.map(({ name, description, dataType, endPoint }, paramIndex) => (
-                                                    <li
-                                                        key={paramIndex}
-                                                        className="text-[#949494] bg-transparent"
-                                                    >
-                                                        <span className="font-mono bg-transparent">
-                                                            {name}:{" "}
-                                                            {endPoint ? (
-                                                                <Link
-                                                                    to={`${
-                                                                        process.env.PUBLIC_URL || ""
-                                                                    }/${endPoint}`}
-                                                                    className="text-[#5555FF] duration-150 hover:text-[#FF55FF] bg-transparent"
-                                                                >
-                                                                    {dataType}
-                                                                </Link>
-                                                            ) : (
-                                                                <span className="bg-transparent">{dataType}</span>
-                                                            )}
-                                                        </span>
-                                                        <span className="text-gray-400 bg-transparent">
-                                                            <br />{description}
-                                                        </span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </>
-                                    )}
+                                        <span className="bg-transparent fira-code text-2xl">
+                                            {name}
+                                        </span>
+                                    </section>
+
+                                    <CodeBlockComponent copyText={`${name}(${parameters.map(({ name }) => name).join(", ")});`} language="typescript">
+                                        test
+                                    </CodeBlockComponent>
                                 </li>
                             ))}
                         </ul>
