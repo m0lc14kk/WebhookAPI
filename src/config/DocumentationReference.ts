@@ -1,4 +1,3 @@
-import { endianness } from "os";
 import type { DocumentationReferenceType } from "./types/DocumentationReferenceType";
 
 const documentationReference: readonly DocumentationReferenceType<any>[] = [
@@ -250,24 +249,72 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
         itemName: "IWebhookContent",
         itemLinkTarget: "/documentation/interface/IWebhookContent",
         data: {
-            description: "Content of your Discord message.",
+            description: "Content of your Discord message. Atleast one of these fields must be provided.",
             properties: [
                 {
                     readOnly: true,
                     propertyName: "content",
                     propertyDescription: "Content of a message.",
                     propertyType: "string",
+                    optional: true,
                 },
                 {
                     readOnly: true,
                     propertyName: "embeds",
                     propertyDescription: "Embeds of a message.",
                     propertyType: "(EmbedUtility | IRawEmbedUtility)[]",
-                    endPoint: "/documentation/class/EmbedUtility"
+                    endPoint: "/documentation/class/EmbedUtility",
+                    optional: true,
                 },
             ]
         }
-    }
+    },
+    {
+        categoryName: "interface",
+        itemName: "IEmbedContentWithImage",
+        itemLinkTarget: "/documentation/interface/IEmbedContentWithImage",
+        data: {
+            description: "Abstract interface for elements with objects.",
+            properties: [
+                {
+                    readOnly: true,
+                    optional: true,
+                    propertyName: "iconUrl",
+                    propertyDescription: "URL of an icon.",
+                    propertyType: "string"
+                }
+            ]
+        }
+    },
+    {
+        categoryName: "interface",
+        itemName: "IEmbedAuthor",
+        itemLinkTarget: "/documentation/interface/IEmbedAuthor",
+        data: {
+            description: "Fixed structure of an embed's author.",
+            extendedBy: {
+                name: "IEmbedContentWithImage",
+                endPoint: "/documentation/interface/IEmbedContentWithImage"
+            },
+
+            properties: [
+                {
+                    readOnly: true,
+                    optional: true,
+                    propertyName: "name",
+                    propertyDescription: "Name of an author.",
+                    propertyType: "string"
+                },
+                {
+                    readOnly: true,
+                    optional: true,
+                    propertyName: "url",
+                    propertyDescription: "URL of an author.",
+                    propertyType: "string"
+                },
+            ]
+        }
+    },
 ];
 
 export { documentationReference };

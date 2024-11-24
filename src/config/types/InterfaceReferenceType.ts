@@ -8,6 +8,7 @@ type InterfaceReferenceType = {
     readonly properties: ({
         readOnly?: boolean,
         endPoint?: string,
+        optional?: boolean,
         propertyName: string,
         propertyType: string,
         propertyDescription: string,

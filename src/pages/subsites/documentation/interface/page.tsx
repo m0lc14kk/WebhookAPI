@@ -26,6 +26,26 @@ const InterfaceReferencePage = (): React.JSX.Element => {
                         {interfaceReference.data.description}
                     </p>
 
+                    {!!interfaceReference.data.extendedBy && (
+                        <CodeBlockComponent copyText="" language="typescript">
+                            <span className="bg-transparent text-[#FF9999]">
+                                interface{" "}
+                            </span>
+
+                            <span className="bg-transparent text-[#CCCCFF]">
+                                {interfaceReference.itemName}{" "}
+                            </span>
+
+                            <span className="bg-transparent text-[#FF9999]">
+                                extends{" "}
+                            </span>
+
+                            <Link to={`${process.env.PUBLIC_URL}${interfaceReference.data.extendedBy.endPoint}`} className="bg-transparent text-[#CCCCFF] underline-offset-2 underline">
+                                {interfaceReference.data.extendedBy.name}{" "}
+                            </Link>
+                        </CodeBlockComponent>
+                    )}
+
                     <h4 className="bg-transparent text-xl text-[#949494] pt-8">
                         Reference
                     </h4>
@@ -51,7 +71,7 @@ const InterfaceReferencePage = (): React.JSX.Element => {
                             </h4>
 
                             <ul className="flex flex-col gap-12 pt-4 w-full">
-                                {interfaceReference.data.properties?.map(({ propertyName, propertyType, propertyFlags, propertyDescription, endPoint = "", readOnly = false }, methodIndex) => (
+                                {interfaceReference.data.properties?.map(({ propertyName, propertyType, propertyFlags, propertyDescription, endPoint = "", readOnly = false, optional = false }, methodIndex) => (
                                     <li
                                         key={methodIndex}
                                         className="bg-transparent"
@@ -88,7 +108,7 @@ const InterfaceReferencePage = (): React.JSX.Element => {
                                             </span>
 
                                             <span className="bg-transparent">
-                                                :{" "}
+                                                {optional ? "?" : ""}:{" "}
                                             </span>
 
                                             {!!endPoint ? (
