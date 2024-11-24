@@ -315,6 +315,182 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
             ]
         }
     },
+    {
+        categoryName: "interface",
+        itemName: "IEmbedField",
+        itemLinkTarget: "/documentation/interface/IEmbedField",
+        data: {
+            description: "Fixed structure of an embed's field.",
+
+            properties: [
+                {
+                    readOnly: true,
+                    optional: false,
+                    propertyName: "name",
+                    propertyDescription: "Title of a field.",
+                    propertyType: "EmbedContentTypes",
+                    endPoint: "/documentation/type/EmbedContentTypes"
+                },
+                {
+                    readOnly: true,
+                    optional: false,
+                    propertyName: "content",
+                    propertyDescription: "Content of a field.",
+                    propertyType: "EmbedContentTypes | EmbedContentTypes[]",
+                    endPoint: "/documentation/type/EmbedContentTypes"
+                },
+                {
+                    readOnly: true,
+                    optional: true,
+                    propertyName: "inline",
+                    propertyDescription: "If field should be displayed in-line with other with this property.",
+                    propertyType: "boolean",
+                }
+            ]
+        }
+    },
+    {
+        categoryName: "interface",
+        itemName: "IEmbedFooter",
+        itemLinkTarget: "/documentation/interface/IEmbedFooter",
+        data: {
+            description: "Fixed structure of an embed's footer.",
+            extendedBy: {
+                name: "IEmbedContentWithImage",
+                endPoint: "/documentation/interface/IEmbedContentWithImage"
+            },
+
+            properties: [
+                {
+                    readOnly: true,
+                    propertyName: "name",
+                    propertyDescription: "Text of a footer.",
+                    propertyType: "string"
+                },
+            ]
+        }
+    },
+    {
+        categoryName: "interface",
+        itemName: "IEmbedMedia",
+        itemLinkTarget: "/documentation/interface/IEmbedMedia",
+        data: {
+            description: "Fixed structure of an embed's media elements.",
+
+            properties: [
+                {
+                    readOnly: true,
+                    propertyName: "url",
+                    propertyDescription: "Source of a media.",
+                    propertyType: "string"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "width",
+                    propertyDescription: "Width of a media. If set to null, it'll be automaticly set-up by Discord.",
+                    propertyType: "number | null"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "height",
+                    propertyDescription: "Height of a media. If set to null, it'll be automaticly set-up by Discord.",
+                    propertyType: "number | null"
+                },
+            ]
+        }
+    },
+    {
+        categoryName: "interface",
+        itemName: "IRawEmbedUtility",
+        itemLinkTarget: "/documentation/interface/IRawEmbedUtility",
+        data: {
+            description: "Fixed structure of compiled embed. We are recommending to use EmbedUtility class to build embeds.",
+
+            properties: [
+                {
+                    readOnly: true,
+                    propertyName: "type",
+                    propertyDescription: "Type of an embed. We do not recommend changing this.",
+                    propertyType: "\"rich\""
+                },
+                {
+                    readOnly: true,
+                    propertyName: "title",
+                    propertyDescription: "Title of an embed.",
+                    propertyType: "EmbedContentTypes",
+                    endPoint: "/documentation/types/EmbedContentTypes"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "description",
+                    propertyDescription: "Description of an embed.",
+                    propertyType: "EmbedContentTypes",
+                    endPoint: "/documentation/types/EmbedContentTypes"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "color",
+                    propertyDescription: "Color of an embed.",
+                    propertyType: "color",
+                },
+                {
+                    readOnly: true,
+                    propertyName: "url",
+                    propertyDescription: "A link of embed, that will be connected to title.",
+                    propertyType: "EmbedContentTypes",
+                    endPoint: "/documentation/types/EmbedContentTypes"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "fields",
+                    propertyDescription: "Fields of an embed.",
+                    propertyType: "IEmbedField[]",
+                    endPoint: "/documentation/interface/IEmbedField"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "author",
+                    propertyDescription: "Author of an embed.",
+                    propertyType: "IEmbedAuthor | null",
+                    endPoint: "/documentation/interface/IEmbedAuthor"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "footer",
+                    propertyDescription: "Footer of an embed.",
+                    propertyType: "IEmbedFooter | null",
+                    endPoint: "/documentation/interface/IEmbedFooter"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "video",
+                    propertyDescription: "Video of an embed.",
+                    propertyType: "IEmbedMedia | null",
+                    endPoint: "/documentation/interface/IEmbedMedia"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "image",
+                    propertyDescription: "Image of an embed.",
+                    propertyType: "IEmbedMedia | null",
+                    endPoint: "/documentation/interface/IEmbedMedia"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "thumbnail",
+                    propertyDescription: "Thumbnail of an embed.",
+                    propertyType: "IEmbedMedia | null",
+                    endPoint: "/documentation/interface/IEmbedMedia"
+                },
+                {
+                    readOnly: true,
+                    propertyName: "timestamp",
+                    propertyDescription: "A timestamp of an embed, which will be display on the bottom of embed, or next to footer, if it's defined aswell..",
+                    propertyType: "string | null",
+                },
+            ]
+        }
+    },
 ];
 
 export { documentationReference };
