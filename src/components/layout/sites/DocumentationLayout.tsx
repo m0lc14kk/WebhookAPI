@@ -95,7 +95,9 @@ const DocumentationLayout = (): React.JSX.Element => {
                     </section>
                 </aside>
 
-                <Outlet />
+                <main className="w-full lg:pr-[20%] px-8">
+                    <Outlet />
+                </main>
             </main>
         </>
     );

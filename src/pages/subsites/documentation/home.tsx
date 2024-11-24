@@ -4,7 +4,7 @@ const DocumentationHomePage = (): React.JSX.Element => {
     return (
         <>
             <main className="bg-transparent flex flex-col">
-                <article className="w-full h-full p-6  lg:pr-[20%]">
+                <article className="w-full h-full py-6">
                     <header>
                         <h3 className="bg-transparent">
                             Documentation
@@ -16,7 +16,7 @@ const DocumentationHomePage = (): React.JSX.Element => {
                     </header>
                 </article>
 
-                <article className="bg-transparent w-full h-full px-6  lg:pr-[20%]">
+                <article className="bg-transparent w-full h-full">
                     
                 </article>
             </main>

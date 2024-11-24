@@ -17,8 +17,8 @@ const ClassReferencePage = (): React.JSX.Element => {
 
     return (
         <>
-            <main className="bg-transparent flex flex-col lg:pr-[20%] p-6 w-full">
-                <header className="bg-transparent">
+            <main className="bg-transparent flex flex-col py-6 w-full">
+                <header className="bg-transparent w-full">
                     <h3 className="bg-transparent">
                         Class <span className="bg-transparent font-mono">{classReference.itemName}</span>
                     </h3>
