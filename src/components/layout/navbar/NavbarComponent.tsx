@@ -67,12 +67,14 @@ const NavbarComponent = (): React.JSX.Element => {
                 </div>
                 <nav className="bg-[#141025] w-[70%] h-full p-6">
                     <header className="flex items-center justify-between bg-transparent">
-                        <img
-                            width={100}
-                            alt="/"
-                            src={`${process.env.PUBLIC_URL}/imgs/logo-smaller.png`}
-                            className="bg-transparent"
-                        />
+                        <Link to={`${process.env.PUBLIC_URL}/`} className="bg-transparent">
+                            <img
+                                width={100}
+                                alt="/"
+                                src={`${process.env.PUBLIC_URL}/imgs/logo-smaller.png`}
+                                className="bg-transparent"
+                            />
+                        </Link>
 
                         <IoCloseOutline
                             size={35}
