@@ -491,6 +491,15 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
             ]
         }
     },
+    {
+        categoryName: "type",
+        itemName: "SendWebhookModeTypes",
+        itemLinkTarget: "/documentation/type/SendWebhookModeTypes",
+        data: {
+            content: "\"http\"",
+            description: "Mode of sending request to your Discord webhook API. At this moment, there's no other option than \"http\"."
+        }
+    }
 ];
 
 export { documentationReference };
