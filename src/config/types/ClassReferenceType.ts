@@ -15,9 +15,12 @@ type ClassReferenceType = {
     })[],
 
     readonly properties?: ({
+        readOnly?: boolean,
         isStatic?: boolean,
+        endPoint?: string,
         propertyName: string,
         propertyType: string,
+        propertyDescription: string,
         propertyFlags: ({
             flagName: string,
             flagDescription: string

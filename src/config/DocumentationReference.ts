@@ -37,6 +37,16 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
         itemLinkTarget: "/documentation/class/EmbedUtility",
         data: {
             description: "Class to create new instances of an embed.",
+            properties: [
+                {
+                    isStatic: true,
+                    readOnly: true,
+                    propertyName: "configuration",
+                    propertyDescription: "",
+                    propertyType: "EmbedConfiguration"
+                }
+            ],
+
             methods: [
                 {
                     name: "setTitle",

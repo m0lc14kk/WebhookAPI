@@ -32,19 +32,19 @@ const ClassReferencePage = (): React.JSX.Element => {
                     </h4>
 
                     <nav className="bg-transparent">
-                        <ul className="bg-transparent">
+                        <ul className="bg-transparent flex flex-col gap-y-1">
                             {hasProperties && (
                                 <>
-                                    <Link to="#properties" className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF]">
+                                    <a href="#properties" className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF]">
                                         Properties
-                                    </Link>
+                                    </a>
                                 </>
                             )}
                             {hasMethods && (
                                 <>
-                                    <Link to="#methods" className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF]">
+                                    <a href="#methods" className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF]">
                                         Methods
-                                    </Link>
+                                    </a>
                                 </>
                             )}
                         </ul>
@@ -57,6 +57,81 @@ const ClassReferencePage = (): React.JSX.Element => {
                             <h4 className="bg-transparent text-xl text-[#949494]" id="properties">
                                 Properties
                             </h4>
+
+                            <ul className="flex flex-col gap-12 pt-4 w-full">
+                                {classReference.data.properties?.map(({ propertyName, propertyType, propertyFlags, propertyDescription, readOnly = false, isStatic = false, endPoint = "" }, methodIndex) => (
+                                    <li
+                                        key={methodIndex}
+                                        className="bg-transparent"
+                                    >
+                                        <section className="flex gap-x-2 bg-transparent items-center">
+                                            <span className="bg-[#FF55FF40] text-[#FF55FF] p-2 rounded-sm font-semibold uppercase">
+                                                PROPERTY
+                                            </span>
+
+                                            {isStatic && (
+                                                <span className="bg-[#00AA0040] text-[#00AA00] p-2 rounded-sm font-semibold uppercase">
+                                                    STATIC
+                                                </span>
+                                            )}
+
+                                            {isStatic && (
+                                                <span className="bg-[#FF555540] text-[#FF5555] p-2 rounded-sm font-semibold uppercase">
+                                                    READONLY
+                                                </span>
+                                            )}
+
+                                            <span className="bg-transparent fira-code text-2xl">
+                                                {propertyName}
+                                            </span>
+                                        </section>
+
+                                        <p className="pt-2 bg-transparent text-[#949494] font-medium">
+                                            {propertyDescription}
+                                        </p>
+
+                                        <CodeBlockComponent copyText={`${propertyName}`} language="typescript">
+                                            <span className="bg-transparent text-[#FF9999]">
+                                                public{" "}
+                                            </span>
+
+                                            {isStatic && (
+                                                <span className="bg-transparent text-[#FF9999]">
+                                                    static{" "}
+                                                </span>
+                                            )}
+
+                                            {readOnly && (
+                                                <span className="bg-transparent text-[#FF9999]">
+                                                    readonly{" "}
+                                                </span>
+                                            )}
+
+                                            <span className="bg-transparent text-[#CCCCFF]">
+                                                {propertyName}
+                                            </span>
+
+                                            <span className="bg-transparent">
+                                                :{" "}
+                                            </span>
+
+                                            {!!endPoint ? (
+                                                <Link to={endPoint.startsWith("/") ? `${process.env.PUBLIC_URL || ""}${endPoint}` : endPoint} className={`bg-transparent text-[#FFAA00] ${endPoint ? "underline underline-offset-2" : ""}`}>{propertyType}</Link>
+                                            ) : (
+                                                <span className="bg-transparent text-[#FFAA00]">{propertyType}</span>  
+                                            )}
+                                        </CodeBlockComponent>
+
+                                        <ul className="bg-transparent flex flex-col gap-y-1 list-disc pl-6 marker:text-lg marker:text-[#949494] pt-1">
+                                            {propertyFlags?.map(({ flagName, flagDescription }, key: number) => 
+                                                <li className="bg-transparent fira-code" key={key}>
+                                                    {flagName} - {flagDescription}
+                                                </li>
+                                            )}
+                                        </ul>
+                                    </li>
+                                ))}
+                            </ul>
                         </section>
                     </>
                 )}
@@ -94,6 +169,16 @@ const ClassReferencePage = (): React.JSX.Element => {
                                     </p>
 
                                     <CodeBlockComponent copyText={`${name}(${parameters.map(({ name }) => name).join(", ")});`} language="typescript">
+                                        <span className="bg-transparent text-[#FF9999]">
+                                            public{" "}
+                                        </span>
+
+                                        {isStatic && (
+                                            <span className="bg-transparent text-[#FF9999]">
+                                                static{" "}
+                                            </span>
+                                        )}
+                                        
                                         <span className="bg-transparent text-[#CCCCFF]">
                                             {name}
                                         </span>
