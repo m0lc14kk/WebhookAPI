@@ -17,8 +17,8 @@ const CodeBlockComponent = ({ children, copyText, language }: CodeBlockComponent
 
                 <hr className="border-none h-[1px] w-full bg-[#94949420] my-2" />
                 <p className="bg-transparent text-lg font-mono fira-code">
-                    <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap text-ellipsis block max-w-full"></span>
-                    <span className="overflow-x-scroll overflow-y-hidden whitespace-nowrap text-ellipsis block max-w-full scrollbar-hidden bg-transparent">
+                    <span className="bg-transparent text-[#404040] overflow-hidden whitespace-nowrap block max-w-full"></span>
+                    <span className="overflow-x-scroll overflow-y-hidde block max-w-full whitespace-nowrap scrollbar-hidden bg-transparent">
                         {children}
                     </span>
                 </p>

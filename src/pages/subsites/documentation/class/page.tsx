@@ -67,7 +67,7 @@ const ClassReferencePage = (): React.JSX.Element => {
                             Methods
                         </h4>
 
-                        <ul className="flex flex-col gap-6 pt-4 w-full">
+                        <ul className="flex flex-col gap-12 pt-4 w-full">
                             {classReference.data.methods?.map(({ name, description, parameters, returnType, isStatic = false }, methodIndex) => (
                                 <li
                                     key={methodIndex}
@@ -89,9 +89,46 @@ const ClassReferencePage = (): React.JSX.Element => {
                                         </span>
                                     </section>
 
+                                    <p className="pt-2 bg-transparent text-[#949494] font-medium">
+                                        {description}
+                                    </p>
+
                                     <CodeBlockComponent copyText={`${name}(${parameters.map(({ name }) => name).join(", ")});`} language="typescript">
-                                        test
+                                        <span className="bg-transparent text-[#CCCCFF]">
+                                            {name}
+                                        </span>
+                                        <span className="bg-transparent">
+                                            (
+                                        </span>
+
+                                        <span className="bg-transparent">
+                                            {parameters.map(({ name, dataType, endPoint = "", optional = false }, index: number) => 
+                                                <span className="bg-transparent">
+                                                    {name}{optional ? "?" : ""}: {!!endPoint ? (
+                                                        <Link to={endPoint.startsWith("/") ? `${process.env.PUBLIC_URL || ""}${endPoint}` : endPoint} className={`bg-transparent text-[#FFAA00] ${endPoint ? "underline underline-offset-2" : ""}`}>{dataType}</Link>
+                                                    ) : (
+                                                        <span className="bg-transparent text-[#FFAA00]">{dataType}</span>  
+                                                    )}{index < (parameters.length - 1) ? ", " : ""}
+                                                </span>
+                                            )}
+                                        </span>
+
+                                        <span className="bg-transparent">
+                                            ):{" "}
+                                        </span>
+
+                                        <span className="bg-transparent text-[#99AAFF]">
+                                            {returnType}
+                                        </span>
                                     </CodeBlockComponent>
+
+                                    <ul className="bg-transparent flex flex-col gap-y-1 list-disc pl-6 marker:text-lg marker:text-[#949494] pt-1">
+                                        {parameters.map(({ name, description, dataType, optional = false }, key: number) => 
+                                            <li className="bg-transparent fira-code" key={key}>
+                                                {name}{optional ? "?" : ""}: <span className="bg-transparent text-[#FFAA00]">{dataType}</span> - {description}
+                                            </li>
+                                        )}
+                                    </ul>
                                 </li>
                             ))}
                         </ul>

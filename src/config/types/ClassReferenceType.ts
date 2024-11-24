@@ -10,6 +10,7 @@ type ClassReferenceType = {
             description: string,
             dataType: string,
             endPoint?: string,
+            optional?: boolean,
         })[]
     })[],
 

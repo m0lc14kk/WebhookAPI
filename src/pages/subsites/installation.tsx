@@ -3,7 +3,6 @@ import React from "react";
 import HeaderComponent from "../../components/common/HeaderComponent";
 import "../../styles/pages/installation.css";
 import { Link } from "react-router-dom";
-import CopyButtonComponent from "../../components/common/CopyButtonComponent";
 import CodeBlockComponent from "../../components/common/CodeBlockComponent";
 
 const InstallationPage = (): React.JSX.Element => {

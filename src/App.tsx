@@ -28,7 +28,7 @@ function HomeApp(): React.JSX.Element {
                     <Route path={`${base}/documentation/class/:className`} element={<ClassReferencePage />} />
                     <Route path={`${base}/documentation/interface/:interfaceName`} element={<ClassReferencePage />} />
                     <Route path={`${base}/documentation/constant/:constantName`} element={<ClassReferencePage />} />
-                    <Route path={`${base}/documentation/type/:typeName`} element={<ClassReferencePage />} />
+                    <Route path={`${base}/documentation/types/:typeName`} element={<ClassReferencePage />} />
                     <Route path={`${base}/documentation/enum/:enumName`} element={<ClassReferencePage />} />
                     <Route path={`${base}/documentation/function/:functionName`} element={<ClassReferencePage />} />
                 </Route>
