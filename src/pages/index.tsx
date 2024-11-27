@@ -4,6 +4,7 @@ import { FaListCheck, FaPaintbrush } from "react-icons/fa6";
 import { IoDocumentAttachOutline } from "react-icons/io5";
 import "../styles/pages/index.css";
 import { PUBLIC_URL } from "../utilities/GlobalVariables";
+import CodeBlockComponent from "../components/common/CodeBlockComponent";
 
 const IndexPage = (): React.JSX.Element => {
     return (
@@ -69,12 +70,18 @@ const IndexPage = (): React.JSX.Element => {
             </article>
 
             <article className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12 bg-[#141025]">
-                <figure className="w-full h-full flex items-center justify-center bg-transparent">
-                    <FaPaintbrush
-                        size={150}
-                        className="bg-transparent fill-[#FF55FF]"
-                    />
-                </figure>
+                <div className="overflow-x-auto bg-transparent">
+                    <CodeBlockComponent 
+                        language="Main.js" 
+                        copyText={`import { EmbedUtility } from "../path/to/API"
+
+            EmbedUtility.configuration.embedColor = 0xFFAA00;`}
+                    >
+                        <span className="bg-transparent text-[#FF9999]">import</span> &#123; <span className="bg-transparent text-[#CCCCFF]">EmbedUtility</span> &#125; from <span className="bg-transparent text-[#CCCCFF]">"../path/to/API"</span>; <br />
+                        <br />
+                        <span className="bg-transparent text-[#CCCCFF]">EmbedUtility</span>.configuration.embedColor = <span className="bg-transparent text-[#FFAA00]">0xFFAA00</span>;
+                    </CodeBlockComponent>
+                </div>
 
                 <div className="bg-transparent flex flex-col gap-y-6 p-6">
                     <h2 className="bg-transparent">
@@ -82,10 +89,11 @@ const IndexPage = (): React.JSX.Element => {
                     </h2>
 
                     <p className="bg-transparent text-xl text-[#909090] font-medium">
-                        You can set your default embed color, thumbnail URL icon, footer or even extend our embed class. 
+                        You can set your default embed color, extend our embed class that we provide to have even better experience.
                     </p>
                 </div>
             </article>
+
 
             <article className="py-16 px-8 lg:px-[14%] grid lg:grid-cols-2 gap-12">
                 <div className="bg-transparent flex flex-col gap-y-6 p-6">
