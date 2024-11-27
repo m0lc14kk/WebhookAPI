@@ -229,7 +229,7 @@ const ClassReferencePage = (): React.JSX.Element => {
                                                 @throws
                                             </h4>
 
-                                            <p className="bg-transparent text-[#949494]">
+                                            <p className="bg-transparent text-[#949494] font-medium">
                                                 {throws}
                                             </p>
                                         </article>
