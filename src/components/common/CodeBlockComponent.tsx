@@ -8,7 +8,7 @@ const CodeBlockComponent = ({ children, copyText, language }: CodeBlockComponent
         <>
             <code className="mt-4 rounded-sm px-6 py-3 flex flex-col bg-[#190820] fira-code">
                 <div className="bg-transparent flex justify-between">
-                    <p className="bg-transparent font-medium text-[#949494] text-lg font-mono">
+                    <p className="bg-transparent font-medium text-[#949494] xl:text-lg text-base font-mono">
                         {language}
                     </p>
 

@@ -64,7 +64,7 @@ const InstallationPage = (): React.JSX.Element => {
                             module in it's config. If not, then add this your
                             config/default/permissions.json:
 
-                            <CodeBlockComponent copyText="@minecraft/server-net" language="config/default/permissions.json">
+                            <CodeBlockComponent copyText="@minecraft/server-net" language="config/../permissions.json">
                                 <span className="bg-transparent">
                                     &#123; <br />
                                 </span>
