@@ -25,6 +25,7 @@ const documentationReference: readonly DocumentationReferenceType<any>[] = [
                         },
                     ],
 
+                    throws: "Throws an error if provided URL was invalid by validateDiscordWebhookUrl function.",
                     description: "Sends a messages via webhook to a channel.",
                     returnType: "Promise<boolean>"
                 }

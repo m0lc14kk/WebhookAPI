@@ -143,12 +143,12 @@ const ClassReferencePage = (): React.JSX.Element => {
                         </h4>
 
                         <ul className="flex flex-col gap-12 pt-4 w-full">
-                            {classReference.data.methods?.map(({ name, description, parameters, returnType, isStatic = false }, methodIndex) => (
+                            {classReference.data.methods?.map(({ name, description, parameters, returnType, isStatic = false, throws = "" }, methodIndex) => (
                                 <li
                                     key={methodIndex}
                                     className="bg-transparent"
                                 >
-                                    <section className="flex gap-x-2 bg-transparent items-center">
+                                    <section className="flex gap-x-2 bg-transparent items-cente flex-wrap gap-y-1">
                                         <span className="bg-[#FF55FF40] text-[#FF55FF] p-2 rounded-sm font-semibold uppercase">
                                             METHOD
                                         </span>
@@ -156,6 +156,13 @@ const ClassReferencePage = (): React.JSX.Element => {
                                         {isStatic && (
                                             <span className="bg-[#00AA0040] text-[#00AA00] p-2 rounded-sm font-semibold uppercase">
                                                 STATIC
+                                            </span>
+                                        )}
+
+                                        
+                                        {throws !== "" && (
+                                            <span className="bg-[#FFAA0040] text-[#FFAA00] p-2 rounded-sm font-semibold uppercase">
+                                                THROWS
                                             </span>
                                         )}
 
@@ -207,13 +214,25 @@ const ClassReferencePage = (): React.JSX.Element => {
                                         </span>
                                     </CodeBlockComponent>
 
-                                    <ul className="bg-transparent flex flex-col gap-y-1 list-disc pl-6 marker:text-lg marker:text-[#949494] pt-1">
+                                    <ul className="bg-transparent flex flex-col gap-y-1 list-disc pl-6 marker:text-lg marker:text-[#949494] pt-2">
                                         {parameters.map(({ name, description, dataType, optional = false }, key: number) => 
                                             <li className="bg-transparent fira-code" key={key}>
                                                 {name}{optional ? "?" : ""}: <span className="bg-transparent text-[#FFAA00]">{dataType}</span> - {description}
                                             </li>
                                         )}
                                     </ul>
+
+                                    {throws !== "" && (
+                                        <article className="bg-transparent flex flex-col gap-y-1 pt-2">
+                                            <h4 className="bg-transparent">
+                                                @throws
+                                            </h4>
+
+                                            <p className="bg-transparent text-[#949494]">
+                                                {throws}
+                                            </p>
+                                        </article>
+                                    )}
                                 </li>
                             ))}
                         </ul>

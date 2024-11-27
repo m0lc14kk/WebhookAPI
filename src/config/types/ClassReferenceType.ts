@@ -1,6 +1,7 @@
 type ClassReferenceType = {
     readonly description: string,
     readonly methods?: ({
+        throws?: string,
         isStatic?: boolean,
         description: string,
         name: string,
