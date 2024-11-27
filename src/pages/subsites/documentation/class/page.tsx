@@ -149,7 +149,7 @@ const ClassReferencePage = (): React.JSX.Element => {
                                     key={methodIndex}
                                     className="bg-transparent"
                                 >
-                                    <section className="flex gap-x-2 bg-transparent items-cente flex-wrap gap-y-1">
+                                    <section className="flex gap-x-2 bg-transparent items-center flex-wrap gap-y-1">
                                         <span className="bg-[#FF55FF40] text-[#FF55FF] p-2 rounded-sm font-semibold uppercase">
                                             METHOD
                                         </span>
