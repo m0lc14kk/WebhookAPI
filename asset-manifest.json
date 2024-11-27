@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/WebhookAPI/static/css/main.6a81f041.css",
-    "main.js": "/WebhookAPI/static/js/main.0e2ede0d.js",
+    "main.css": "/WebhookAPI/static/css/main.71cedf3d.css",
+    "main.js": "/WebhookAPI/static/js/main.e8322f9e.js",
     "index.html": "/WebhookAPI/index.html",
-    "main.6a81f041.css.map": "/WebhookAPI/static/css/main.6a81f041.css.map",
-    "main.0e2ede0d.js.map": "/WebhookAPI/static/js/main.0e2ede0d.js.map"
+    "main.71cedf3d.css.map": "/WebhookAPI/static/css/main.71cedf3d.css.map",
+    "main.e8322f9e.js.map": "/WebhookAPI/static/js/main.e8322f9e.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a81f041.css",
-    "static/js/main.0e2ede0d.js"
+    "static/css/main.71cedf3d.css",
+    "static/js/main.e8322f9e.js"
   ]
 }
