@@ -5,6 +5,7 @@ import type { InterfaceReferenceType } from "../../../../config/types/InterfaceR
 import { documentationReference } from "../../../../config/DocumentationReference";
 import NotFoundReferenceComponent from "../../../../components/pages/documentation/NotFoundReferenceComponent";
 import CodeBlockComponent from "../../../../components/common/CodeBlockComponent";
+import { PUBLIC_URL } from "../../../../utilities/GlobalVariables";
 
 const InterfaceReferencePage = (): React.JSX.Element => {
     const { interfaceName } = useParams();
@@ -40,7 +41,7 @@ const InterfaceReferencePage = (): React.JSX.Element => {
                                 extends{" "}
                             </span>
 
-                            <Link to={`${process.env.PUBLIC_URL}${interfaceReference.data.extendedBy.endPoint}`} className="bg-transparent text-[#CCCCFF] underline-offset-2 underline">
+                            <Link to={`${PUBLIC_URL}${interfaceReference.data.extendedBy.endPoint}`} className="bg-transparent text-[#CCCCFF] underline-offset-2 underline">
                                 {interfaceReference.data.extendedBy.name}{" "}
                             </Link>
                         </CodeBlockComponent>
@@ -112,7 +113,7 @@ const InterfaceReferencePage = (): React.JSX.Element => {
                                             </span>
 
                                             {!!endPoint ? (
-                                                <Link to={endPoint.startsWith("/") ? `${process.env.PUBLIC_URL || ""}${endPoint}` : endPoint} className={`bg-transparent text-[#FFAA00] ${endPoint ? "underline underline-offset-2" : ""}`}>{propertyType}</Link>
+                                                <Link to={endPoint.startsWith("/") ? `${PUBLIC_URL || ""}${endPoint}` : endPoint} className={`bg-transparent text-[#FFAA00] ${endPoint ? "underline underline-offset-2" : ""}`}>{propertyType}</Link>
                                             ) : (
                                                 <span className="bg-transparent text-[#FFAA00]">{propertyType}</span>  
                                             )}

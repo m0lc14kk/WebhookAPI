@@ -5,6 +5,7 @@ import type { TypeReferenceType } from "../../../../config/types/TypeReferenceTy
 import { documentationReference } from "../../../../config/DocumentationReference";
 import NotFoundReferenceComponent from "../../../../components/pages/documentation/NotFoundReferenceComponent";
 import CodeBlockComponent from "../../../../components/common/CodeBlockComponent";
+import { PUBLIC_URL } from "../../../../utilities/GlobalVariables";
 
 const TypeReferencePage = (): React.JSX.Element => {
     const { typeName } = useParams();
@@ -38,7 +39,7 @@ const TypeReferencePage = (): React.JSX.Element => {
                                 extends{" "}
                             </span>
 
-                            <Link to={`${process.env.PUBLIC_URL}${typeReference.data.extendedBy.endPoint}`} className="bg-transparent text-[#CCCCFF] underline-offset-2 underline">
+                            <Link to={`${PUBLIC_URL}${typeReference.data.extendedBy.endPoint}`} className="bg-transparent text-[#CCCCFF] underline-offset-2 underline">
                                 {typeReference.data.extendedBy.name}{" "}
                             </Link>
                         </CodeBlockComponent>

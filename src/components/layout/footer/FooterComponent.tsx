@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaBook, FaGithub } from "react-icons/fa";
 import { FooterCategoryType } from "./types/FooterCategoryType";
 import FooterCategory from "./FooterCategory";
+import { PUBLIC_URL } from "../../../utilities/GlobalVariables";
 
 const footerCategories: readonly FooterCategoryType[] = [
     {
@@ -10,11 +11,11 @@ const footerCategories: readonly FooterCategoryType[] = [
         links: [
             {
                 linkName: "Home",
-                linkPath: `${process.env.PUBLIC_URL}/`
+                linkPath: `${PUBLIC_URL}/`
             },
             {
                 linkName: "About",
-                linkPath: `${process.env.PUBLIC_URL}/about`
+                linkPath: `${PUBLIC_URL}/about`
             },
         ]
     },
@@ -23,7 +24,7 @@ const footerCategories: readonly FooterCategoryType[] = [
         links: [
             {
                 linkName: "Installation",
-                linkPath: `${process.env.PUBLIC_URL}/installation`
+                linkPath: `${PUBLIC_URL}/installation`
             },
         ]
     },
@@ -32,7 +33,7 @@ const footerCategories: readonly FooterCategoryType[] = [
         links: [
             {
                 linkName: "Documentation",
-                linkPath: `${process.env.PUBLIC_URL}/documentation`
+                linkPath: `${PUBLIC_URL}/documentation`
             },
             {
                 linkName: "GitHub",
@@ -48,9 +49,9 @@ const FooterComponent = (): React.JSX.Element => {
 			<footer className="w-full py-16 px-8 lg:px-[14%] flex flex-col gap-y-6">
 				<section className="bg-transparent flex max-lg:flex-col items-center justify-between">
 					<figure className="bg-transparent flex items-center">
-						<Link to={`${process.env.PUBLIC_URL}/`} className="bg-transparent">
+						<Link to={`${PUBLIC_URL}/`} className="bg-transparent">
 							<img
-								src={`${process.env.PUBLIC_URL}/imgs/logo.png`}
+								src={`${PUBLIC_URL}/imgs/logo.png`}
 								alt="/"
 								width={128}
 								height={128}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdNearbyError } from "react-icons/md";
+import { PUBLIC_URL } from "../../utilities/GlobalVariables";
 
 const NotFoundPage = (): React.JSX.Element => {
     return (
@@ -17,7 +18,7 @@ const NotFoundPage = (): React.JSX.Element => {
                     </p>
 
                     <div className="bg-transparent pt-2 flex max-lg:justify-center gap-x-3">
-                        <Link to={`${process.env.PUBLIC_URL}/`} className="duration-150 text-[#FF55FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#FF55FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#FF55FF] message-fade-in">
+                        <Link to={`${PUBLIC_URL}/`} className="duration-150 text-[#FF55FF] bg-transparent border-[3px] font-bold uppercase text-lg p-3 border-[#FF55FF] rounded-sm hover:text-[#F0F0F0] hover:bg-[#FF55FF] message-fade-in">
                             BACK TO HOME
                         </Link>
                     </div>

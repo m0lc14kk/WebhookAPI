@@ -5,19 +5,20 @@ import { NavbarLinkType } from "./types/NavbarLinkType";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
 import NavbarLink from "./NavbarLink.";
+import { PUBLIC_URL } from "../../../utilities/GlobalVariables";
 
 const navbarLinks: readonly NavbarLinkType[] = [
     {
         name: "About",
-        path: `${process.env.PUBLIC_URL}/about`
+        path: `${PUBLIC_URL}/about`
     },
     {
         name: "Installation",
-        path: `${process.env.PUBLIC_URL}/installation`
+        path: `${PUBLIC_URL}/installation`
     },
     {
         name: "Documentation",
-        path: `${process.env.PUBLIC_URL}/documentation`
+        path: `${PUBLIC_URL}/documentation`
     },
     {
         name: "GitHub",
@@ -35,9 +36,9 @@ const NavbarComponent = (): React.JSX.Element => {
     return (
         <>
             <nav className="bg-transparent absolute flex items-center justify-between px-8 lg:px-[14%] py-8 border-b-2 border-b-[#90909020] w-full backdrop-blur-2xl h-24">
-                <Link to={`${process.env.PUBLIC_URL}/`} className="bg-transparent">
+                <Link to={`${PUBLIC_URL}/`} className="bg-transparent">
                     <img
-                        src={`${process.env.PUBLIC_URL}/imgs/logo.png`}
+                        src={`${PUBLIC_URL}/imgs/logo.png`}
                         alt="/"
                         width={180}
                         height={60}
@@ -67,11 +68,11 @@ const NavbarComponent = (): React.JSX.Element => {
                 </div>
                 <nav className="bg-[#141025] w-[70%] h-full p-6">
                     <header className="flex items-center justify-between bg-transparent">
-                        <Link to={`${process.env.PUBLIC_URL}/`} className="bg-transparent">
+                        <Link to={`${PUBLIC_URL}/`} className="bg-transparent">
                             <img
                                 width={100}
                                 alt="/"
-                                src={`${process.env.PUBLIC_URL}/imgs/logo-smaller.png`}
+                                src={`${PUBLIC_URL}/imgs/logo-smaller.png`}
                                 className="bg-transparent"
                             />
                         </Link>

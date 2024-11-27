@@ -5,6 +5,7 @@ import { ClassReferenceType } from "../../../../config/types/ClassReferenceType"
 import { documentationReference } from "../../../../config/DocumentationReference";
 import NotFoundReferenceComponent from "../../../../components/pages/documentation/NotFoundReferenceComponent";
 import CodeBlockComponent from "../../../../components/common/CodeBlockComponent";
+import { PUBLIC_URL } from "../../../../utilities/GlobalVariables";
 
 const ClassReferencePage = (): React.JSX.Element => {
     const { className } = useParams();
@@ -116,7 +117,7 @@ const ClassReferencePage = (): React.JSX.Element => {
                                             </span>
 
                                             {!!endPoint ? (
-                                                <Link to={endPoint.startsWith("/") ? `${process.env.PUBLIC_URL || ""}${endPoint}` : endPoint} className={`bg-transparent text-[#FFAA00] ${endPoint ? "underline underline-offset-2" : ""}`}>{propertyType}</Link>
+                                                <Link to={endPoint.startsWith("/") ? `${PUBLIC_URL || ""}${endPoint}` : endPoint} className={`bg-transparent text-[#FFAA00] ${endPoint ? "underline underline-offset-2" : ""}`}>{propertyType}</Link>
                                             ) : (
                                                 <span className="bg-transparent text-[#FFAA00]">{propertyType}</span>  
                                             )}
@@ -197,7 +198,7 @@ const ClassReferencePage = (): React.JSX.Element => {
                                             {parameters.map(({ name, dataType, endPoint = "", optional = false }, index: number) => 
                                                 <span className="bg-transparent">
                                                     {name}{optional ? "?" : ""}: {!!endPoint ? (
-                                                        <Link to={endPoint.startsWith("/") ? `${process.env.PUBLIC_URL || ""}${endPoint}` : endPoint} className={`bg-transparent text-[#FFAA00] ${endPoint ? "underline underline-offset-2" : ""}`}>{dataType}</Link>
+                                                        <Link to={endPoint.startsWith("/") ? `${PUBLIC_URL || ""}${endPoint}` : endPoint} className={`bg-transparent text-[#FFAA00] ${endPoint ? "underline underline-offset-2" : ""}`}>{dataType}</Link>
                                                     ) : (
                                                         <span className="bg-transparent text-[#FFAA00]">{dataType}</span>  
                                                     )}{index < (parameters.length - 1) ? ", " : ""}

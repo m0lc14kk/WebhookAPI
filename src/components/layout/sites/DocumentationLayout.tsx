@@ -8,6 +8,7 @@ import { TypeReferenceType } from "../../../config/types/TypeReferenceType";
 import { getDocumentationReferenceGrouped } from "../../../utilities/GetDocumentationReferenceGrouped";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { IoCloseOutline } from "react-icons/io5";
+import { PUBLIC_URL } from "../../../utilities/GlobalVariables";
 
 const DocumentationLayout = (): React.JSX.Element => {
     const [documentationSidebar, setDocumentationSidebar] = useState<boolean>(false);
@@ -24,11 +25,11 @@ const DocumentationLayout = (): React.JSX.Element => {
                 </div>
                 <nav className="bg-[#141025] w-[70%] h-full p-6">
                     <header className="flex items-center justify-between bg-transparent">
-                        <Link to={`${process.env.PUBLIC_URL}/`} className="bg-transparent">
+                        <Link to={`${PUBLIC_URL}/`} className="bg-transparent">
                             <img
                                 width={100}
                                 alt="/"
-                                src={`${process.env.PUBLIC_URL}/imgs/logo-smaller.png`}
+                                src={`${PUBLIC_URL}/imgs/logo-smaller.png`}
                                 className="bg-transparent"
                             />
                         </Link>
@@ -41,7 +42,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                     </header>
 
                     <ul className="bg-transparent flex flex-col gap-y-1 pt-4">
-                        <Link to={`${process.env.PUBLIC_URL}/documentation`} className="bg-transparent flex gap-x-2 items-center group">
+                        <Link to={`${PUBLIC_URL}/documentation`} className="bg-transparent flex gap-x-2 items-center group">
                             <FaHome 
                                 size={20}
                                 className="bg-[#141025] stroke-transparent fill-[#949494] p-1 rounded-sm duration-150 group-hover:fill-[#FF55FF]"
@@ -52,7 +53,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                             </span>
                         </Link>
 
-                        <Link to={`${process.env.PUBLIC_URL}/installation`} className="bg-transparent flex gap-x-2 items-center group">
+                        <Link to={`${PUBLIC_URL}/installation`} className="bg-transparent flex gap-x-2 items-center group">
                             <FaBook
                                 size={20}
                                 className="bg-[#141025] stroke-transparent fill-[#949494] p-1 rounded-sm duration-150 group-hover:fill-[#FF55FF]"
@@ -74,7 +75,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                                 <ul className="bg-transparent flex flex-col">
                                     {classes.map(({ itemLinkTarget, itemName }: DocumentationReferenceType<ClassReferenceType>, key: number) => {
                                         return (
-                                            <Link key={key} to={`${process.env.PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
+                                            <Link key={key} to={`${PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
                                                 {itemName}
                                             </Link>
                                         );
@@ -92,7 +93,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                                 <ul className="bg-transparent flex flex-col">
                                     {interfaces.map(({ itemLinkTarget, itemName }: DocumentationReferenceType<InterfaceReferenceType>, key: number) => {
                                         return (
-                                            <Link key={key} to={`${process.env.PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
+                                            <Link key={key} to={`${PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
                                                 {itemName}
                                             </Link>
                                         );
@@ -110,7 +111,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                                 <ul className="bg-transparent flex flex-col">
                                     {types.map(({ itemLinkTarget, itemName }: DocumentationReferenceType<TypeReferenceType>, key: number) => {
                                         return (
-                                            <Link key={key} to={`${process.env.PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
+                                            <Link key={key} to={`${PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
                                                 {itemName}
                                             </Link>
                                         );
@@ -123,7 +124,7 @@ const DocumentationLayout = (): React.JSX.Element => {
             </aside>
 
             <nav className="bg-transparent lg:hidden pt-[7rem] pb-4 flex items-center justify-between px-8 border-b-2 border-b-[#90909020]">
-                <Link to={`${process.env.PUBLIC_URL}/documentation`} className="bg-transparent flex gap-x-2 items-center group">
+                <Link to={`${PUBLIC_URL}/documentation`} className="bg-transparent flex gap-x-2 items-center group">
                     <FaHome 
                         size={20}
                         className="bg-[#141025] stroke-transparent fill-[#949494] p-1 rounded-sm duration-150 group-hover:fill-[#FF55FF]"
@@ -144,7 +145,7 @@ const DocumentationLayout = (): React.JSX.Element => {
             <main className="bg-transparent flex w-[100dvw] pt-24 h-full">
                 <aside className="max-lg:hidden bg-transparent w-[30%] bg-[#141025] h-full pl-8 lg:pl-[14%] border-r-2 border-r-[#90909020] py-6 flex flex-col">
                     <ul className="bg-transparent flex flex-col gap-y-1">
-                        <Link to={`${process.env.PUBLIC_URL}/documentation`} className="bg-transparent flex gap-x-2 items-center group">
+                        <Link to={`${PUBLIC_URL}/documentation`} className="bg-transparent flex gap-x-2 items-center group">
                             <FaHome 
                                 size={20}
                                 className="bg-[#141025] stroke-transparent fill-[#949494] p-1 rounded-sm duration-150 group-hover:fill-[#FF55FF]"
@@ -155,7 +156,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                             </span>
                         </Link>
 
-                        <Link to={`${process.env.PUBLIC_URL}/installation`} className="bg-transparent flex gap-x-2 items-center group">
+                        <Link to={`${PUBLIC_URL}/installation`} className="bg-transparent flex gap-x-2 items-center group">
                             <FaBook
                                 size={20}
                                 className="bg-[#141025] stroke-transparent fill-[#949494] p-1 rounded-sm duration-150 group-hover:fill-[#FF55FF]"
@@ -177,7 +178,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                                 <ul className="bg-transparent flex flex-col">
                                     {classes.map(({ itemLinkTarget, itemName }: DocumentationReferenceType<ClassReferenceType>, key: number) => {
                                         return (
-                                            <Link key={key} to={`${process.env.PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
+                                            <Link key={key} to={`${PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
                                                 {itemName}
                                             </Link>
                                         );
@@ -195,7 +196,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                                 <ul className="bg-transparent flex flex-col">
                                     {interfaces.map(({ itemLinkTarget, itemName }: DocumentationReferenceType<InterfaceReferenceType>, key: number) => {
                                         return (
-                                            <Link key={key} to={`${process.env.PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
+                                            <Link key={key} to={`${PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
                                                 {itemName}
                                             </Link>
                                         );
@@ -213,7 +214,7 @@ const DocumentationLayout = (): React.JSX.Element => {
                                 <ul className="bg-transparent flex flex-col">
                                     {types.map(({ itemLinkTarget, itemName }: DocumentationReferenceType<TypeReferenceType>, key: number) => {
                                         return (
-                                            <Link key={key} to={`${process.env.PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
+                                            <Link key={key} to={`${PUBLIC_URL || ""}${itemLinkTarget}`} className="bg-transparent text-[#949494] duration-150 hover:text-[#FF55FF] visited:text-[#5555FF] font-medium">
                                                 {itemName}
                                             </Link>
                                         );

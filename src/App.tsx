@@ -11,25 +11,21 @@ import DocumentationHomePage from "./pages/subsites/documentation/home";
 import ClassReferencePage from "./pages/subsites/documentation/class/page";
 import InterfaceReferencePage from "./pages/subsites/documentation/interface/page";
 import TypeReferencePage from "./pages/subsites/documentation/types/page";
+import { PUBLIC_URL } from "./utilities/GlobalVariables";
 
 function HomeApp(): React.JSX.Element {
-    const base: string = process.env.PUBLIC_URL || "";
-
     return (
         <BrowserRouter>
             <NavbarComponent />
             <Routes>
-                <Route path={`${base}/`} element={<IndexPage />} />
-                <Route path={`${base}/about`} element={<AboutPage />} />
-                <Route path={`${base}/installation`} element={<InstallationPage />} />
-                <Route path={`${base}/documentation`} element={<DocumentationLayout />}>
-                    <Route path={`${base}/documentation`} element={<DocumentationHomePage />} />
-                    {/**
-                     *  to-do: add more handlers
-                     */}
-                    <Route path={`${base}/documentation/class/:className`} element={<ClassReferencePage />} />
-                    <Route path={`${base}/documentation/interface/:interfaceName`} element={<InterfaceReferencePage />} />
-                    <Route path={`${base}/documentation/type/:typeName`} element={<TypeReferencePage />} />
+                <Route path={`${PUBLIC_URL}/`} element={<IndexPage />} />
+                <Route path={`${PUBLIC_URL}/about`} element={<AboutPage />} />
+                <Route path={`${PUBLIC_URL}/installation`} element={<InstallationPage />} />
+                <Route path={`${PUBLIC_URL}/documentation`} element={<DocumentationLayout />}>
+                    <Route path={`${PUBLIC_URL}/documentation`} element={<DocumentationHomePage />} />
+                    <Route path={`${PUBLIC_URL}/documentation/class/:className`} element={<ClassReferencePage />} />
+                    <Route path={`${PUBLIC_URL}/documentation/interface/:interfaceName`} element={<InterfaceReferencePage />} />
+                    <Route path={`${PUBLIC_URL}/documentation/type/:typeName`} element={<TypeReferencePage />} />
                 </Route>
 
                 <Route path="*" element={<NotFoundPage />} />

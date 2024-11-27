@@ -4,6 +4,7 @@ import HeaderComponent from "../../components/common/HeaderComponent";
 import "../../styles/pages/installation.css";
 import { Link } from "react-router-dom";
 import CodeBlockComponent from "../../components/common/CodeBlockComponent";
+import { PUBLIC_URL } from "../../utilities/GlobalVariables";
 
 const InstallationPage = (): React.JSX.Element => {
     return (
@@ -28,7 +29,7 @@ const InstallationPage = (): React.JSX.Element => {
                         Check if your enviroment is supported, that you will use is
                         supported in{" "}
                             <Link
-                                to={`${process.env.PUBLIC_URL}/about`}
+                                to={`${PUBLIC_URL}/about`}
                                 className="bg-transparent text-[#5555FF] duration-150 hover:text-[#FF55FF]"
                             >
                                 about FAQ section.
