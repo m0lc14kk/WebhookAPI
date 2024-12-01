@@ -54,11 +54,6 @@ class WebhookUtility {
                         new HttpHeader("Accept", "application/json")
                     ])
 
-                    /**
-                     * Due to some bug with @minecraft/server-net module
-                     * it's forced to have @ts-ignore flag with "invalid" enum, which is valid in reality.
-                     */
-                    // @ts-ignore
                     .setMethod(HttpRequestMethod.Post)
             );
 
