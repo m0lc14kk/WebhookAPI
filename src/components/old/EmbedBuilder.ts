@@ -1,8 +1,21 @@
 import { EmbedDefaultProperties } from "./EmbedDefaultProperties"
+import { IEmbedAuthorStructure } from "./interfaces/IEmbedAuthorStructure"
+import { IEmbedFieldStructure } from "./interfaces/IEmbedFieldStructure"
+import { IEmbedFooterStructure } from "./interfaces/IEmbedFooterStructure"
+import { IEmbedMediaStructure } from "./interfaces/IEmbedMediaStructure"
 
 class EmbedBuilder {
+    private readonly ISO8601_REGEX: Readonly<RegExp> = /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](2[0-3]|[01][0-9]):?[0-5][0-9])?$/;
+
     private title: string | null = null
     private description: string | null = null
+    private fields: IEmbedFieldStructure[] = []
+    private author: IEmbedAuthorStructure | null = null
+    private footer: IEmbedFooterStructure | null = null
+    private image: IEmbedMediaStructure | null = null
+    private thumbnail: IEmbedMediaStructure | null = null
+    private video: IEmbedMediaStructure | null = null
+    private timestamp: string | null = null
     private color: number
 
     public constructor() {
@@ -24,11 +37,88 @@ class EmbedBuilder {
         return this
     }
 
+    public setFields(...fields: IEmbedFieldStructure[]): EmbedBuilder {
+        this.fields = fields
+        return this
+    }
+
+    public addFields(...fields: IEmbedFieldStructure[]): EmbedBuilder {
+        this.fields.push(...fields)
+        return this
+    }
+
+    public setAuthor(author: IEmbedAuthorStructure | null): EmbedBuilder {
+        this.author = author
+        return this
+    }
+
+    public setFooter(footer: IEmbedFooterStructure | null): EmbedBuilder {
+        this.footer = footer
+        return this
+    }
+
+    public setImage(image: IEmbedMediaStructure | null): EmbedBuilder {
+        this.image = image
+        return this
+    }
+
+    public setVideo(video: IEmbedMediaStructure | null): EmbedBuilder {
+        this.video = video
+        return this
+    }
+
+    public setThumbnail(thumbnail: IEmbedMediaStructure | null): EmbedBuilder {
+        this.thumbnail = thumbnail
+        return this
+    }
+
+    public setTimestamp(timestamp: Date | string | null): EmbedBuilder {
+        if (timestamp === null) {
+            this.timestamp = null
+        } else if (typeof timestamp === "string") {
+            if (!this.ISO8601_REGEX.test(timestamp)) throw new Error("DataError: Invalid timestamp.")
+            this.timestamp = timestamp
+        } else {
+            this.timestamp = timestamp.toISOString()
+        }
+        
+        return this
+    }
+
     public toJSON() {
         return {
             title: this.title,
             description: this.description,
             color: this.color,
+            fields: this.fields.map(({ name, content, inline = false }: IEmbedFieldStructure) => ({
+                name, inline,
+                value: Array.isArray(content) ? content.join("\n") : content,
+            })),
+            author: this.author === null ? null : {
+                name: this.author.name,
+                icon_url: this.author.iconUrl || null,
+                url: this.author.url || null
+            },
+            footer: this.footer === null ? null : {
+                text: this.footer.text,
+                icon_url: this.footer.iconUrl || null
+            },
+            image: this.image === null ? null : {
+                url: this.image.url,
+                width: this.image.width || null,
+                height: this.image.height || null
+            },
+            video: this.video === null ? null : {
+                url: this.video.url,
+                width: this.video.width || null,
+                height: this.video.height || null
+            },
+            thumbnail: this.thumbnail === null ? null : {
+                url: this.thumbnail.url,
+                width: this.thumbnail.width || null,
+                height: this.thumbnail.height || null
+            },
+            timestamp: this.timestamp
         }
     }
 }
