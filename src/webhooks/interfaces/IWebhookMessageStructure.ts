@@ -12,7 +12,7 @@ interface IWebhookMessageStructure {
         users?: string[]
         replied_user?: boolean
     }
-    components: []
+    components: unknown[]
     thread_name: string
 }
 

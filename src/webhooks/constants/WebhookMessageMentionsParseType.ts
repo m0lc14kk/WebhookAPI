@@ -3,7 +3,7 @@
 enum WebhookMessageMentionsParseType {
     ROLES = "roles",
     USERS = "users",
-    EVERYONE = "everyone"
+    EVERYONE = "everyone",
 }
 
 export { WebhookMessageMentionsParseType }

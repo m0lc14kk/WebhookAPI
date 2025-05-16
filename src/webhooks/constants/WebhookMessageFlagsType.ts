@@ -2,7 +2,7 @@
 
 enum WebhookMessageFlagsType {
     SUPPRESS_EMBEDS = 1 << 2,
-    SUPPRESS_NOTIFICATIONS = 1 << 12
+    SUPPRESS_NOTIFICATIONS = 1 << 12,
 }
 
 export { WebhookMessageFlagsType }
