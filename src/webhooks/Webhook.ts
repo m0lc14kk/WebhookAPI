@@ -33,12 +33,13 @@ class Webhook {
                 new HttpRequest(this.webhookUrl)
                     // to-do: change method to PATCH after an update
                     .setMethod(HttpRequestMethod.Put)
-                    .setHeaders([
-                        new HttpHeader("Content-Type", "application/json")
-                    ])
-                    .setBody(JSON.stringify({
-                        name, avatar
-                    }))
+                    .setHeaders([new HttpHeader("Content-Type", "application/json")])
+                    .setBody(
+                        JSON.stringify({
+                            name,
+                            avatar,
+                        }),
+                    ),
             )
 
             return true
@@ -47,7 +48,18 @@ class Webhook {
         }
     }
 
-    public async deleteWebhook() {}
+    public async deleteWebhook(): Promise<boolean> {
+        try {
+            await http.request(
+                new HttpRequest(this.webhookUrl)
+                    .setMethod(HttpRequestMethod.Delete)
+            )
+
+            return true
+        } catch {
+            return false
+        }
+    }
 
     public async sendMessage() {}
 
