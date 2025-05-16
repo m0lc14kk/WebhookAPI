@@ -11,6 +11,7 @@ class PollBuilder {
     public constructor() {}
 
     public setQuestion(question: string): PollBuilder {
+        if (question.length > 300) throw new Error("DataError: Question cannot exceed 300 characters.")
         this.question = question
         return this
     }
@@ -27,11 +28,19 @@ class PollBuilder {
     }
 
     public setAnswers(...answers: IPollAnswerStructure[]): PollBuilder {
+        for (const { text } of answers) {
+            if (text.length > 55) throw new Error("DataError: Answer's text cannot exceed 55 characters!")
+        }
+
         this.answers = answers
         return this
     }
 
     public addAnswers(...answers: IPollAnswerStructure[]): PollBuilder {
+        for (const { text } of answers) {
+            if (text.length > 55) throw new Error("DataError: Answer's text cannot exceed 55 characters!")
+        }
+
         this.answers.push(...answers)
         return this
     }
