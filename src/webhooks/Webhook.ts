@@ -5,33 +5,19 @@ class Webhook {
         this.webhookUri = webhookUri
     }
 
-    public async getWebhook() {
+    public async getWebhook() {}
 
-    }
+    public async editWebhook() {}
 
-    public async editWebhook() {
+    public async deleteWebhook() {}
 
-    }
+    public async sendMessage() {}
 
-    public async deleteWebhook() {
+    public async getMessage() {}
 
-    }
+    public async editMessage() {}
 
-    public async sendMessage() {
-       
-    }
-
-    public async getMessage() {
-
-    }
-
-    public async editMessage() {
-
-    }
-
-    public async deleteMessage() {
-        
-    }
+    public async deleteMessage() {}
 }
 
 export { Webhook }
