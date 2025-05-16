@@ -88,10 +88,7 @@ class Webhook {
         try {
             const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
 
-            await http.request(
-                new HttpRequest(finalUrl.toString())
-                    .setMethod(HttpRequestMethod.Delete)
-            )
+            await http.request(new HttpRequest(finalUrl.toString()).setMethod(HttpRequestMethod.Delete))
             return true
         } catch {
             return false
