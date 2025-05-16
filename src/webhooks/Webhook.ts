@@ -50,11 +50,7 @@ class Webhook {
 
     public async deleteWebhook(): Promise<boolean> {
         try {
-            await http.request(
-                new HttpRequest(this.webhookUrl)
-                    .setMethod(HttpRequestMethod.Delete)
-            )
-
+            await http.request(new HttpRequest(this.webhookUrl).setMethod(HttpRequestMethod.Delete))
             return true
         } catch {
             return false
