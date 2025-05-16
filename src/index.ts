@@ -8,3 +8,5 @@
  * @author m0lc14kk
  * @license Apache-2.0
  */
+
+export { Webhook } from "./webhooks/Webhook"
