@@ -1,4 +1,4 @@
-import { ButtonStyle } from "../constants/ButtonStyle";
+import { ButtonStyle } from "../constants/ButtonStyle"
 
 type ButtonStyleCommonTypes = ButtonStyle.PRIMARY | ButtonStyle.SECONDARY | ButtonStyle.SUCCESS | ButtonStyle.DANGER
 

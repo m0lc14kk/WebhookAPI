@@ -6,7 +6,7 @@ enum ButtonStyle {
     SUCCESS,
     DANGER,
     LINK,
-    PREMIUM
+    PREMIUM,
 }
 
 export { ButtonStyle }

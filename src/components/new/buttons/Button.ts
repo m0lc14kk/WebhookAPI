@@ -1,6 +1,6 @@
-import { BaseButton } from "./BaseButton";
-import { ButtonStyle } from "./constants/ButtonStyle";
-import type { ButtonStyleCommonTypes } from "./types/ButtonStyleCommonTypes";
+import { BaseButton } from "./BaseButton"
+import { ButtonStyle } from "./constants/ButtonStyle"
+import type { ButtonStyleCommonTypes } from "./types/ButtonStyleCommonTypes"
 
 class Button extends BaseButton {
     protected override style: ButtonStyleCommonTypes = ButtonStyle.PRIMARY
@@ -16,7 +16,7 @@ class Button extends BaseButton {
             label: this.label,
             custom_id: this.customId,
             style: this.style,
-            disabled: this.disabled
+            disabled: this.disabled,
         }
     }
 }

@@ -1,6 +1,6 @@
-import { Component } from "../../Component";
-import { ComponentType } from "../../types/ComponentType";
-import { ButtonStyle } from "./constants/ButtonStyle";
+import { Component } from "../../Component"
+import { ComponentType } from "../../types/ComponentType"
+import { ButtonStyle } from "./constants/ButtonStyle"
 
 abstract class BaseButton extends Component {
     public static override type: ComponentType = ComponentType.BUTTON
@@ -18,7 +18,7 @@ abstract class BaseButton extends Component {
         return this
     }
 
-    public abstract toJSON(): object;
+    public abstract toJSON(): object
 }
 
 export { BaseButton }
