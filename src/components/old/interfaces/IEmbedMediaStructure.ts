@@ -1,6 +1,6 @@
 interface IEmbedMediaStructure {
-    url: string,
-    width?: number,
+    url: string
+    width?: number
     height?: number
 }
 

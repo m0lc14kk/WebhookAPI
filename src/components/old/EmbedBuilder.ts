@@ -5,7 +5,8 @@ import { IEmbedFooterStructure } from "./interfaces/IEmbedFooterStructure"
 import { IEmbedMediaStructure } from "./interfaces/IEmbedMediaStructure"
 
 class EmbedBuilder {
-    private readonly ISO8601_REGEX: Readonly<RegExp> = /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](2[0-3]|[01][0-9]):?[0-5][0-9])?$/;
+    private readonly ISO8601_REGEX: Readonly<RegExp> =
+        /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](2[0-3]|[01][0-9]):?[0-5][0-9])?$/
 
     private title: string | null = null
     private description: string | null = null
@@ -81,7 +82,7 @@ class EmbedBuilder {
         } else {
             this.timestamp = timestamp.toISOString()
         }
-        
+
         return this
     }
 
@@ -91,34 +92,50 @@ class EmbedBuilder {
             description: this.description,
             color: this.color,
             fields: this.fields.map(({ name, content, inline = false }: IEmbedFieldStructure) => ({
-                name, inline,
+                name,
+                inline,
                 value: Array.isArray(content) ? content.join("\n") : content,
             })),
-            author: this.author === null ? null : {
-                name: this.author.name,
-                icon_url: this.author.iconUrl || null,
-                url: this.author.url || null
-            },
-            footer: this.footer === null ? null : {
-                text: this.footer.text,
-                icon_url: this.footer.iconUrl || null
-            },
-            image: this.image === null ? null : {
-                url: this.image.url,
-                width: this.image.width || null,
-                height: this.image.height || null
-            },
-            video: this.video === null ? null : {
-                url: this.video.url,
-                width: this.video.width || null,
-                height: this.video.height || null
-            },
-            thumbnail: this.thumbnail === null ? null : {
-                url: this.thumbnail.url,
-                width: this.thumbnail.width || null,
-                height: this.thumbnail.height || null
-            },
-            timestamp: this.timestamp
+            author:
+                this.author === null
+                    ? null
+                    : {
+                          name: this.author.name,
+                          icon_url: this.author.iconUrl || null,
+                          url: this.author.url || null,
+                      },
+            footer:
+                this.footer === null
+                    ? null
+                    : {
+                          text: this.footer.text,
+                          icon_url: this.footer.iconUrl || null,
+                      },
+            image:
+                this.image === null
+                    ? null
+                    : {
+                          url: this.image.url,
+                          width: this.image.width || null,
+                          height: this.image.height || null,
+                      },
+            video:
+                this.video === null
+                    ? null
+                    : {
+                          url: this.video.url,
+                          width: this.video.width || null,
+                          height: this.video.height || null,
+                      },
+            thumbnail:
+                this.thumbnail === null
+                    ? null
+                    : {
+                          url: this.thumbnail.url,
+                          width: this.thumbnail.width || null,
+                          height: this.thumbnail.height || null,
+                      },
+            timestamp: this.timestamp,
         }
     }
 }
