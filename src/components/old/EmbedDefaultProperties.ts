@@ -1,15 +1,18 @@
+const MAX_COLOR_NUMBER: number = Math.pow(256, 3) - 1
+
 class EmbedDefaultProperties {
-    private constructor() {}
+    private constructor() { }
     private static defaultEmbedColor: number = 0x000000
 
     public static setDefaultEmbedColor(defaultColor: string | number): void {
-        if (typeof defaultColor === "string") {
-            if (!defaultColor.startsWith("#")) throw new Error("DataError: Invalid color's HEX.")
+        if (typeof defaultColor == "string") {
+            if (!defaultColor.startsWith("#") && defaultColor.length !== 7) throw new Error("DataError: Invalid color HEX.")
             this.defaultEmbedColor = Number(`0x${defaultColor.slice(1)}`)
             return
         }
 
-        this.defaultEmbedColor = defaultColor
+        if (defaultColor > MAX_COLOR_NUMBER || defaultColor < 0) throw new Error("DataError: Color is out of bounds.")
+        this.defaultEmbedColor = Math.floor(defaultColor)
     }
 
     public static getDefaultEmbedColor(): number {

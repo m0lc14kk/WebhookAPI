@@ -4,6 +4,8 @@ import { IEmbedFieldStructure } from "./interfaces/IEmbedFieldStructure"
 import { IEmbedFooterStructure } from "./interfaces/IEmbedFooterStructure"
 import { IEmbedMediaStructure } from "./interfaces/IEmbedMediaStructure"
 
+const MAX_COLOR_NUMBER: number = Math.pow(256, 3) - 1
+
 class EmbedBuilder {
     private readonly ISO8601_REGEX: Readonly<RegExp> =
         /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-](2[0-3]|[01][0-9]):?[0-5][0-9])?$/
@@ -34,7 +36,14 @@ class EmbedBuilder {
     }
 
     public setColor(color: string | number): EmbedBuilder {
-        this.color = typeof color === "string" ? +color.slice(1) : color
+        if (typeof color == "string") {
+            if (!color.startsWith("#") && color.length !== 7) throw new Error("DataError: Invalid color HEX.")
+            this.color = Number(`0x${color.slice(1)}`)
+            return this
+        }
+
+        if (color > MAX_COLOR_NUMBER || color < 0) throw new Error("DataError: Color is out of bounds.")
+        this.color = Math.floor(color)
         return this
     }
 
