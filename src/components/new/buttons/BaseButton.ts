@@ -3,7 +3,7 @@ import { ComponentType } from "../../types/ComponentType"
 import { ButtonStyle } from "./constants/ButtonStyle"
 
 abstract class BaseButton extends Component {
-    public static override type: ComponentType = ComponentType.BUTTON
+    public static override readonly type: ComponentType = ComponentType.BUTTON
     protected abstract style: ButtonStyle
     protected label: string = ""
     protected disabled: boolean = false

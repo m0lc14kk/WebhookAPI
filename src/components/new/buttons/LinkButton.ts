@@ -1,9 +1,9 @@
-import { IComponentEmojiStructure } from "../../interfaces/IComponentEmojiStructure";
-import { BaseButton } from "./BaseButton";
-import { ButtonStyle } from "./constants/ButtonStyle";
+import { IComponentEmojiStructure } from "../../interfaces/IComponentEmojiStructure"
+import { BaseButton } from "./BaseButton"
+import { ButtonStyle } from "./constants/ButtonStyle"
 
 class LinkButton extends BaseButton {
-    protected override style: ButtonStyle.LINK = ButtonStyle.LINK
+    protected override readonly style: ButtonStyle.LINK = ButtonStyle.LINK
     private emoji: string | IComponentEmojiStructure | null = null
     private url: string | null = null
 
@@ -19,11 +19,12 @@ class LinkButton extends BaseButton {
 
     public toJSON() {
         return {
+            type: LinkButton.type,
             style: this.style,
             label: this.label,
             disabled: this.disabled,
             url: this.url,
-            emoji: this.emoji
+            emoji: this.emoji,
         }
     }
 }
