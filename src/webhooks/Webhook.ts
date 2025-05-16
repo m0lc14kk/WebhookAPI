@@ -59,7 +59,9 @@ class Webhook {
         }
     }
 
-    public async sendMessage() {}
+    public async sendMessage() {
+
+    }
 
     public async getMessage() {}
 
