@@ -59,13 +59,13 @@ class Webhook {
         }
     }
 
-    public async sendMessage() { }
+    public async sendMessage() {}
 
-    public async getMessage() { }
+    public async getMessage() {}
 
-    public async editMessage() { }
+    public async editMessage() {}
 
-    public async deleteMessage() { }
+    public async deleteMessage() {}
 }
 
 export { Webhook }
