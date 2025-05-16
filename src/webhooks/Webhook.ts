@@ -1,5 +1,9 @@
 import type { WebhookTypeUnion } from "./types/WebhookTypeUnion"
 import { IWebhookEditStructure } from "./interfaces/IWebhookEditStructure"
+import { IWebhookOldMessageStructure } from "./interfaces/IWebhookOldMessageStructure"
+import { IWebhookNewMessageStructure } from "./interfaces/IWebhookNewMessageStructure"
+import { IWebhookMessageMethodQueryOptionsStructure } from "./interfaces/IWebhookMessageMethodQueryOptionsStructure"
+import { WebhookMessageType } from "./constants/WebhookMessageType"
 
 class Webhook {
     public static validateUri(webhookUrl: string): boolean {
@@ -59,7 +63,19 @@ class Webhook {
         }
     }
 
-    public async sendMessage() {}
+    public async sendMessage(message: IWebhookOldMessageStructure | IWebhookNewMessageStructure, options: IWebhookMessageMethodQueryOptionsStructure) {
+        const finalUrl: URL = new URL(this.webhookUrl)
+        if (options.wait) finalUrl.searchParams.set("with", "true")
+        if (options.withComponent) finalUrl.searchParams.set("with_components", "true")
+        if (options.threadId) finalUrl.searchParams.set("thread_id", options.threadId)
+
+        if (message.version === WebhookMessageType.OLD) {
+            if (message.content && message.content.length > 2000) throw new Error("DataError: Content of a message cannot exceed 2000 characters.")
+            if (message.embeds && message.embeds.length > 10) throw new Error("DataError: You can send up to 10 embeds in a message.")
+        } else {
+            if (message.components.length === 0) throw new Error("DataError: You must provide at least 1 component to send a message.")
+        }
+    }
 
     public async getMessage() {}
 
