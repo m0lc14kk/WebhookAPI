@@ -81,7 +81,22 @@ class Webhook {
 
     public async editMessage() {}
 
-    public async deleteMessage() {}
+    public async deleteMessage(messageId: string, threadId?: string) {
+        const finalUrl: URL = new URL(`${this.webhookUrl}/messages/${messageId}`)
+        if (threadId) finalUrl.searchParams.set("thread_id", threadId)
+
+        try {
+            const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
+
+            await http.request(
+                new HttpRequest(finalUrl.toString())
+                    .setMethod(HttpRequestMethod.Delete)
+            )
+            return true
+        } catch {
+            return false
+        }
+    }
 }
 
 export { Webhook }
