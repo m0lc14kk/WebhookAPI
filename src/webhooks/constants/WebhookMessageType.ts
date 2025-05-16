@@ -2,7 +2,7 @@
 
 enum WebhookMessageType {
     OLD,
-    NEW
+    NEW,
 }
 
 export { WebhookMessageType }
