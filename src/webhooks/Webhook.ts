@@ -1,4 +1,3 @@
-import { http, HttpHeader, HttpRequest, HttpRequestMethod, HttpResponse } from "@minecraft/server-net"
 import type { WebhookTypeUnion } from "./types/WebhookTypeUnion"
 import { IWebhookEditStructure } from "./interfaces/IWebhookEditStructure"
 
@@ -19,7 +18,8 @@ class Webhook {
 
     public async getWebhook<T extends WebhookTypeUnion>(): Promise<T | null> {
         try {
-            const request: HttpResponse = await http.get(this.webhookUrl)
+            const { http } = await import("@minecraft/server-net")
+            const request = await http.get(this.webhookUrl)
             if (request.status === 200) return JSON.parse(request.body)
             return null
         } catch {
@@ -29,6 +29,7 @@ class Webhook {
 
     public async editWebhook({ name, avatar }: Readonly<IWebhookEditStructure>): Promise<boolean> {
         try {
+            const { http, HttpRequest, HttpRequestMethod, HttpHeader } = await import("@minecraft/server-net")
             await http.request(
                 new HttpRequest(this.webhookUrl)
                     // to-do: change method to PATCH after an update
@@ -50,6 +51,7 @@ class Webhook {
 
     public async deleteWebhook(): Promise<boolean> {
         try {
+            const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
             await http.request(new HttpRequest(this.webhookUrl).setMethod(HttpRequestMethod.Delete))
             return true
         } catch {
@@ -57,13 +59,13 @@ class Webhook {
         }
     }
 
-    public async sendMessage() {}
+    public async sendMessage() { }
 
-    public async getMessage() {}
+    public async getMessage() { }
 
-    public async editMessage() {}
+    public async editMessage() { }
 
-    public async deleteMessage() {}
+    public async deleteMessage() { }
 }
 
 export { Webhook }

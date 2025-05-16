@@ -9,4 +9,5 @@
  * @license Apache-2.0
  */
 
-export { Webhook } from "./webhooks/Webhook"
+export * from "./webhooks/Webhook"
+export * from "./webhooks/types/WebhookTypeUnion"
