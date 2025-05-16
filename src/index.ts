@@ -25,3 +25,6 @@ export * from "./components/old/embeds/interfaces/IEmbedAuthorStructure"
 export * from "./components/old/embeds/interfaces/IEmbedFieldStructure"
 export * from "./components/old/embeds/interfaces/IEmbedFooterStructure"
 export * from "./components/old/embeds/interfaces/IEmbedMediaStructure"
+
+export * from "./components/old/polls/PollBuilder"
+export * from "./components/old/polls/interfaces/IPollAnswerStructure"
