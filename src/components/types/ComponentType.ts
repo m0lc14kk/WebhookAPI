@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
 
-enum ComponentType {
-
-}
+enum ComponentType {}
 
 export { ComponentType }
