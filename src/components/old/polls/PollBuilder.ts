@@ -41,17 +41,21 @@ class PollBuilder {
 
         return {
             question: {
-                text: this.question
+                text: this.question,
             },
             duration: this.duration,
             allow_multiselect: this.allowMultiselect,
             answers: this.answers.map(({ text, emoji }: IPollAnswerStructure) => ({
                 poll_media: {
-                    text, emoji: typeof emoji === "string" ? {
-                        name: emoji
-                    } : emoji
-                }
-            }))
+                    text,
+                    emoji:
+                        typeof emoji === "string"
+                            ? {
+                                  name: emoji,
+                              }
+                            : emoji,
+                },
+            })),
         }
     }
 }
