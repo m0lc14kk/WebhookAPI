@@ -1,5 +1,6 @@
-import { http, HttpResponse } from "@minecraft/server-net"
+import { http, HttpHeader, HttpRequest, HttpRequestMethod, HttpResponse } from "@minecraft/server-net"
 import type { WebhookTypeUnion } from "./types/WebhookTypeUnion"
+import { IWebhookEditStructure } from "./interfaces/IWebhookEditStructure"
 
 class Webhook {
     public static validateUri(webhookUrl: string): boolean {
@@ -26,7 +27,25 @@ class Webhook {
         }
     }
 
-    public async editWebhook() {}
+    public async editWebhook({ name, avatar }: Readonly<IWebhookEditStructure>): Promise<boolean> {
+        try {
+            await http.request(
+                new HttpRequest(this.webhookUrl)
+                    // to-do: change method to PATCH after an update
+                    .setMethod(HttpRequestMethod.Put)
+                    .setHeaders([
+                        new HttpHeader("Content-Type", "application/json")
+                    ])
+                    .setBody(JSON.stringify({
+                        name, avatar
+                    }))
+            )
+
+            return true
+        } catch {
+            return false
+        }
+    }
 
     public async deleteWebhook() {}
 

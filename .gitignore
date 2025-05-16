@@ -5,3 +5,5 @@
 !.vscode/extensions.json
 /.vs/
 /.idea/
+
+.rest
