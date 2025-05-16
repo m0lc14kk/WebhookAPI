@@ -1,8 +1,8 @@
 import { EmbedDefaultProperties } from "./EmbedDefaultProperties"
-import { IEmbedAuthorStructure } from "./interfaces/IEmbedAuthorStructure"
-import { IEmbedFieldStructure } from "./interfaces/IEmbedFieldStructure"
-import { IEmbedFooterStructure } from "./interfaces/IEmbedFooterStructure"
-import { IEmbedMediaStructure } from "./interfaces/IEmbedMediaStructure"
+import type { IEmbedAuthorStructure } from "./interfaces/IEmbedAuthorStructure"
+import type { IEmbedFieldStructure } from "./interfaces/IEmbedFieldStructure"
+import type { IEmbedFooterStructure } from "./interfaces/IEmbedFooterStructure"
+import type { IEmbedMediaStructure } from "./interfaces/IEmbedMediaStructure"
 
 const MAX_COLOR_NUMBER: number = Math.pow(256, 3) - 1
 

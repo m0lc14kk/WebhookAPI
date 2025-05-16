@@ -1,4 +1,4 @@
-import { IPollAnswerStructure } from "./interfaces/IPollAnswerStructure"
+import type { IPollAnswerStructure } from "./interfaces/IPollAnswerStructure"
 
 const MAX_POLL_DURATION: number = 32 * 24
 

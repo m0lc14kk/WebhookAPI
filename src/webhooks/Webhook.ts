@@ -1,8 +1,8 @@
 import type { WebhookTypeUnion } from "./types/WebhookTypeUnion"
-import { IWebhookEditStructure } from "./interfaces/IWebhookEditStructure"
-import { IWebhookOldMessageStructure } from "./interfaces/IWebhookOldMessageStructure"
-import { IWebhookNewMessageStructure } from "./interfaces/IWebhookNewMessageStructure"
-import { IWebhookMessageMethodQueryOptionsStructure } from "./interfaces/IWebhookMessageMethodQueryOptionsStructure"
+import type { IWebhookEditStructure } from "./interfaces/IWebhookEditStructure"
+import type { IWebhookOldMessageStructure } from "./interfaces/IWebhookOldMessageStructure"
+import type { IWebhookNewMessageStructure } from "./interfaces/IWebhookNewMessageStructure"
+import type { IWebhookMessageMethodQueryOptionsStructure } from "./interfaces/IWebhookMessageMethodQueryOptionsStructure"
 import { WebhookMessageType } from "./constants/WebhookMessageType"
 
 class Webhook {

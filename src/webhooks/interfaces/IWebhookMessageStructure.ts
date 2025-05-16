@@ -1,5 +1,5 @@
-import { WebhookMessageMentionsParseType } from "../constants/WebhookMessageMentionsParseType"
-import { WebhookMessageType } from "../constants/WebhookMessageType"
+import type { WebhookMessageMentionsParseType } from "../constants/WebhookMessageMentionsParseType"
+import type { WebhookMessageType } from "../constants/WebhookMessageType"
 
 interface IWebhookMessageStructure {
     version: WebhookMessageType

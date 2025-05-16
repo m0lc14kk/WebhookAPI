@@ -1,4 +1,4 @@
-import { WebhookType } from "../constants/WebhookType"
+import type { WebhookType } from "../constants/WebhookType"
 
 interface IWebhookStructure {
     id: string
