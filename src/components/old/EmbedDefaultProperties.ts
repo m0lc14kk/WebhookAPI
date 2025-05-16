@@ -1,7 +1,7 @@
 const MAX_COLOR_NUMBER: number = Math.pow(256, 3) - 1
 
 class EmbedDefaultProperties {
-    private constructor() { }
+    private constructor() {}
     private static defaultEmbedColor: number = 0x000000
 
     public static setDefaultEmbedColor(defaultColor: string | number): void {
