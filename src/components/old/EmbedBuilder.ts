@@ -1,10 +1,12 @@
+import { EmbedDefaultProperties } from "./EmbedDefaultProperties"
+
 class EmbedBuilder {
     private title: string | null = null
     private description: string | null = null
-    private color: number = 0x000000
+    private color: number
 
     public constructor() {
-
+        this.color = EmbedDefaultProperties.getDefaultEmbedColor()
     }
 
     public setTitle(title: string): EmbedBuilder {
@@ -26,7 +28,7 @@ class EmbedBuilder {
         return {
             title: this.title,
             description: this.description,
-            color: this.color
+            color: this.color,
         }
     }
 }
