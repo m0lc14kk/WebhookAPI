@@ -18,7 +18,7 @@ class PremiumButton extends Component {
         return {
             type: PremiumButton.type,
             style: this.style,
-            sku_id: this.skuId
+            sku_id: this.skuId,
         }
     }
 }
