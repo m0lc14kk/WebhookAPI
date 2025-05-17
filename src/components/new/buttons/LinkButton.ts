@@ -2,11 +2,7 @@ import { ComponentEmojiType } from "../../types/ComponentEmojiType"
 import { BaseButton } from "./BaseButton"
 import { ButtonStyle } from "./constants/ButtonStyle"
 
-const ALLOWED_URL_PROTOCOLS: readonly string[] = [
-    "discord://",
-    "https://",
-    "http://"
-]
+const ALLOWED_URL_PROTOCOLS: readonly string[] = ["discord://", "https://", "http://"]
 
 class LinkButton extends BaseButton {
     protected override readonly style: ButtonStyle.LINK = ButtonStyle.LINK
