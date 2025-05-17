@@ -6,6 +6,9 @@ import type { IWebhookMessageMethodQueryOptionsStructure } from "./interfaces/IW
 import { WebhookMessageType } from "./constants/WebhookMessageType"
 import { SnowflakeValidator } from "../validators/SnowflakeValidator"
 
+/**
+ * Discord Webhook instance that is connecting to REST API via `@minecraft/server-net` library.
+ */
 class Webhook {
     public static validateUri(webhookUrl: string): boolean {
         return /^https:\/\/(canary\.|ptb\.)?discord\.com\/api\/webhooks\/\d{17,20}\/[A-Za-z0-9_-]{60,70}$/.test(webhookUrl)
