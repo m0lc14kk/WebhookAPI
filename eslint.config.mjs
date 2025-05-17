@@ -7,12 +7,7 @@ import { defineConfig } from "eslint/config"
 export default defineConfig([
     tseslint.configs.recommended,
     {
-        ignores: [
-            "dist",
-            "node_modules",
-            ".github",
-            ".husky",
-        ]
+        ignores: ["dist", "node_modules", ".github", ".husky"],
     },
     {
         files: ["**/*.{js,mjs,cjs,ts}"],
