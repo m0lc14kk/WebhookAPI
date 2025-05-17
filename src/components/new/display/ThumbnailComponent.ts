@@ -1,8 +1,8 @@
-import { Component } from "../../Component";
-import { ComponentType } from "../../constants/ComponentType";
+import { Component } from "../../Component"
+import { ComponentType } from "../../constants/ComponentType"
 
 class ThumbnailComponent extends Component {
-    public static override readonly type: ComponentType = ComponentType.THUMBNAIL;
+    public static override readonly type: ComponentType = ComponentType.THUMBNAIL
     private url: string | null = null
     private description: string | null = null
     private spoiler: boolean = false
@@ -28,8 +28,8 @@ class ThumbnailComponent extends Component {
             description: this.description,
             spoiler: this.spoiler,
             media: {
-                url: this.url
-            }
+                url: this.url,
+            },
         }
     }
 }
