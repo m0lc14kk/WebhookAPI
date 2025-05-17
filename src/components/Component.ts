@@ -1,4 +1,4 @@
-import { ComponentType } from "./types/ComponentType"
+import { ComponentType } from "./constants/ComponentType"
 
 abstract class Component {
     public static type: ComponentType

@@ -1,13 +1,13 @@
-import { IComponentEmojiStructure } from "../../interfaces/IComponentEmojiStructure"
+import { ComponentEmojiType } from "../../types/ComponentEmojiType"
 import { BaseButton } from "./BaseButton"
 import { ButtonStyle } from "./constants/ButtonStyle"
 
 class LinkButton extends BaseButton {
     protected override readonly style: ButtonStyle.LINK = ButtonStyle.LINK
-    private emoji: string | IComponentEmojiStructure | null = null
+    private emoji: string | ComponentEmojiType | null = null
     private url: string | null = null
 
-    public setEmoji(emoji: string | IComponentEmojiStructure | null): LinkButton {
+    public setEmoji(emoji: string | ComponentEmojiType | null): LinkButton {
         this.emoji = emoji
         return this
     }

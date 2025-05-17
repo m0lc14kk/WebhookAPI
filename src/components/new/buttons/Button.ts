@@ -1,4 +1,4 @@
-import { IComponentEmojiStructure } from "../../interfaces/IComponentEmojiStructure"
+import { ComponentEmojiType } from "../../types/ComponentEmojiType"
 import { BaseButton } from "./BaseButton"
 import { ButtonStyle } from "./constants/ButtonStyle"
 import type { ButtonStyleCommonTypes } from "./types/ButtonStyleCommonTypes"
@@ -6,14 +6,14 @@ import type { ButtonStyleCommonTypes } from "./types/ButtonStyleCommonTypes"
 class Button extends BaseButton {
     protected override readonly style: ButtonStyleCommonTypes = ButtonStyle.PRIMARY
     private customId: string | null = null
-    private emoji: string | IComponentEmojiStructure | null = null
+    private emoji: string | ComponentEmojiType | null = null
 
     public setCustomId(customId: string): Button {
         this.customId = customId
         return this
     }
 
-    public setEmoji(emoji: IComponentEmojiStructure): Button {
+    public setEmoji(emoji: ComponentEmojiType): Button {
         this.emoji = emoji
         return this
     }

@@ -1,5 +1,5 @@
 import { Component } from "../../Component"
-import { ComponentType } from "../../types/ComponentType"
+import { ComponentType } from "../../constants/ComponentType"
 import { ButtonStyle } from "./constants/ButtonStyle"
 
 abstract class BaseButton extends Component {
