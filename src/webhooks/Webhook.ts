@@ -5,6 +5,7 @@ import type { IWebhookNewMessageStructure } from "./interfaces/IWebhookNewMessag
 import type { IWebhookMessageMethodQueryOptionsStructure } from "./interfaces/IWebhookMessageMethodQueryOptionsStructure"
 import { WebhookMessageType } from "./constants/WebhookMessageType"
 import { SnowflakeValidator } from "../validators/SnowflakeValidator"
+import { IWebhookDiscordMessageStructure } from "./interfaces/IWebhookDiscordMessageStructure"
 
 /**
  * Discord Webhook instance that is connecting to REST API via `@minecraft/server-net` library.
@@ -111,9 +112,27 @@ class Webhook {
     /**
      * Gets a message based on it's identifier.
      * @param messageId Identifier of a message.
+     * @param threadId Optional identifier of a thread.
      * @return Returns a message object if it exists, unless `null`.
      */
-    public async getMessage() {}
+    public async getMessage(messageId: string, threadId?: string): Promise<IWebhookDiscordMessageStructure | undefined> {
+        if (!SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
+        const finalUrl: URL = new URL(`${this.webhookUrl}/messages/${messageId}`)
+
+        if (threadId) {
+            if (!SnowflakeValidator.isSnowflake(threadId)) throw new Error("DataError: Invalid message's identifier.")
+            finalUrl.searchParams.set("thread_id", threadId)
+        }
+
+        try {
+            const { http } = await import("@minecraft/server-net")
+            const response = await http.get(finalUrl.toString())
+
+            if (response.status === 200) return JSON.parse(response.body)
+        } catch {
+            return undefined
+        }
+    }
 
     /**
      * Edits a message based on it's identifier.
@@ -123,7 +142,7 @@ class Webhook {
      * @returns Returns a boolean based on if message was correctly edited.
      * @remarks If you were using new components system, you have to keep the format in the new content also.
      */
-    public async editMessage() {}
+    public async editMessage() { }
 
     /**
      * Deletes a message from channel.
