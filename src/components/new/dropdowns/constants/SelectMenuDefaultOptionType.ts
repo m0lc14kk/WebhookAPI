@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 
-enum UserSelectMenuDefaultOptionType {
+enum SelectMenuDefaultOptionType {
     USER = "user",
     ROLE = "role",
     CHANNEL = "channel",
 }
 
-export { UserSelectMenuDefaultOptionType }
+export { SelectMenuDefaultOptionType }

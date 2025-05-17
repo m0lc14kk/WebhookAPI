@@ -1,6 +1,6 @@
-import { UserSelectMenuDefaultOptionType } from "../constants/UserSelectMenuDefaultOptionType"
+import { SelectMenuDefaultOptionType } from "../constants/SelectMenuDefaultOptionType"
 
-interface IUserSelectMenuDefaultOptionStructure<T extends UserSelectMenuDefaultOptionType> {
+interface IUserSelectMenuDefaultOptionStructure<T extends SelectMenuDefaultOptionType> {
     id: string
     type: T
 }
