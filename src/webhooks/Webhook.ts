@@ -4,13 +4,14 @@ import type { IWebhookOldMessageStructure } from "./interfaces/IWebhookOldMessag
 import type { IWebhookNewMessageStructure } from "./interfaces/IWebhookNewMessageStructure"
 import type { IWebhookMessageMethodQueryOptionsStructure } from "./interfaces/IWebhookMessageMethodQueryOptionsStructure"
 import { WebhookMessageType } from "./constants/WebhookMessageType"
+import { SnowflakeValidator } from "../validators/SnowflakeValidator"
 
 class Webhook {
     public static validateUri(webhookUrl: string): boolean {
         return /^https:\/\/(canary\.|ptb\.)?discord\.com\/api\/webhooks\/\d{17,20}\/[A-Za-z0-9_-]{60,70}$/.test(webhookUrl)
     }
 
-    public webhookUrl: string
+    public readonly webhookUrl: string
 
     public constructor(webhookUrl: string) {
         if (Webhook.validateUri(webhookUrl)) {
@@ -67,7 +68,10 @@ class Webhook {
         const finalUrl: URL = new URL(this.webhookUrl)
         if (options.wait) finalUrl.searchParams.set("with", "true")
         if (options.withComponent) finalUrl.searchParams.set("with_components", "true")
-        if (options.threadId) finalUrl.searchParams.set("thread_id", options.threadId)
+        if (options.threadId) {
+            if (SnowflakeValidator.isSnowflake(options.threadId)) throw new Error("DataError: Invalid thread's identifier.")
+            finalUrl.searchParams.set("thread_id", options.threadId)
+        }
 
         if (message.version === WebhookMessageType.OLD) {
             if (message.content && message.content.length > 2000) throw new Error("DataError: Content of a message cannot exceed 2000 characters.")
@@ -77,17 +81,20 @@ class Webhook {
         }
     }
 
-    public async getMessage() {}
+    public async getMessage() { }
 
-    public async editMessage() {}
+    public async editMessage() { }
 
-    public async deleteMessage(messageId: string, threadId?: string) {
+    public async deleteMessage(messageId: string, threadId?: string): Promise<boolean> {
+        if (!SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
         const finalUrl: URL = new URL(`${this.webhookUrl}/messages/${messageId}`)
-        if (threadId) finalUrl.searchParams.set("thread_id", threadId)
+        if (threadId) {
+            if (!SnowflakeValidator.isSnowflake(threadId)) throw new Error("DataError: Invalid message's identifier.")
+            finalUrl.searchParams.set("thread_id", threadId)
+        }
 
         try {
             const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
-
             await http.request(new HttpRequest(finalUrl.toString()).setMethod(HttpRequestMethod.Delete))
             return true
         } catch {
