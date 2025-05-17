@@ -28,3 +28,19 @@ export * from "./components/old/embeds/interfaces/IEmbedMediaStructure"
 
 export * from "./components/old/polls/PollBuilder"
 export * from "./components/old/polls/interfaces/IPollAnswerStructure"
+
+export * from "./components/new/buttons/Button"
+export * from "./components/new/buttons/LinkButton"
+export * from "./components/new/buttons/PremiumButton"
+export * from "./components/new/buttons/constants/ButtonStyle"
+
+export * from "./components/new/dropdowns/ChannelSelectMenuComponent"
+export * from "./components/new/dropdowns/MentionableSelectMenuComponent"
+export * from "./components/new/dropdowns/RoleSelectMenuComponent"
+export * from "./components/new/dropdowns/StringSelectMenuComponent"
+export * from "./components/new/dropdowns/UserSelectMenuComponent"
+export * from "./components/new/dropdowns/interfaces/IStringSelectMenuOptionStructure"
+export * from "./components/new/dropdowns/interfaces/ISelectMenuDefaultOptionStructure"
+
+export * from "./components/new/grouping/ActionRowComponent"
+export * from "./components/new/grouping/types/ActionRowChildComponentType"
