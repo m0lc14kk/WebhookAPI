@@ -3,21 +3,21 @@ import { BaseSelectMenuComponent } from "./BaseSelectMenuComponent"
 import { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultOptionType"
 import { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenuDefaultOptionStructure"
 
-class UserSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultOptionType.USER> {
-    public static readonly type: ComponentType = ComponentType.USER_SELECT
+class ChannelSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultOptionType.CHANNEL> {
+    public static readonly type: ComponentType = ComponentType.CHANNEL_SELECT
 
-    public override setDefaultValues(...defaultValues: Omit<ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.USER>, "type">[]): this {
+    public override setDefaultValues(...defaultValues: Omit<ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.CHANNEL>, "type">[]): this {
         this.defaultValues = defaultValues.map(({ id }) => ({
             id,
-            type: SelectMenuDefaultOptionType.USER as const,
+            type: SelectMenuDefaultOptionType.CHANNEL as const,
         }))
         return this
     }
 
-    public override addDefaultValues(...defaultValues: Omit<ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.USER>, "type">[]): this {
-        const transformedValues: ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.USER>[] = defaultValues.map(({ id }) => ({
+    public override addDefaultValues(...defaultValues: Omit<ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.CHANNEL>, "type">[]): this {
+        const transformedValues: ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.CHANNEL>[] = defaultValues.map(({ id }) => ({
             id,
-            type: SelectMenuDefaultOptionType.USER as const,
+            type: SelectMenuDefaultOptionType.CHANNEL as const,
         }))
 
         this.defaultValues.push(...transformedValues)
@@ -27,7 +27,7 @@ class UserSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultO
 
     public toJSON() {
         return {
-            type: UserSelectMenuComponent.type,
+            type: ChannelSelectMenuComponent.type,
             custom_id: this.customId,
             placeholder: this.placeholder,
             min_values: this.minValues,
@@ -38,4 +38,4 @@ class UserSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultO
     }
 }
 
-export { UserSelectMenuComponent }
+export { ChannelSelectMenuComponent }
