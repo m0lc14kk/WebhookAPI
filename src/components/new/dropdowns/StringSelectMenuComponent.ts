@@ -1,9 +1,9 @@
-import { Component } from "../../Component";
-import { ComponentType } from "../../constants/ComponentType";
-import { IStringSelectMenuOptionStructure } from "./interfaces/IStringSelectMenuOptionStructure";
+import { Component } from "../../Component"
+import { ComponentType } from "../../constants/ComponentType"
+import { IStringSelectMenuOptionStructure } from "./interfaces/IStringSelectMenuOptionStructure"
 
 class StringSelectMenuComponent extends Component {
-    public static override type: ComponentType = ComponentType.STRING_SELECT;
+    public static override type: ComponentType = ComponentType.STRING_SELECT
     private customId: string | null = null
     private maxValues: number = 1
     private minValues: number = 1
@@ -58,10 +58,13 @@ class StringSelectMenuComponent extends Component {
             disabled: this.disabled,
             options: this.options.map(({ emoji, ...props }: IStringSelectMenuOptionStructure) => ({
                 ...props,
-                emoji: typeof emoji === "string" ? {
-                    name: emoji
-                } : emoji
-            }))
+                emoji:
+                    typeof emoji === "string"
+                        ? {
+                              name: emoji,
+                          }
+                        : emoji,
+            })),
         }
     }
 }
