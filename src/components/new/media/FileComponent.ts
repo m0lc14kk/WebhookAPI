@@ -1,14 +1,14 @@
-import { Component } from "../../Component";
-import { ComponentType } from "../../constants/ComponentType";
+import { Component } from "../../Component"
+import { ComponentType } from "../../constants/ComponentType"
 
 class FileComponent extends Component {
-    public static override readonly type: ComponentType = ComponentType.FILE;
+    public static override readonly type: ComponentType = ComponentType.FILE
     private fileUrl: string | null = null
     private spolier: boolean = false
 
     public setFileUrl(fileUrl: string): this {
         this.fileUrl = fileUrl
-        return this        
+        return this
     }
 
     public setSpoiler(spoiler: boolean): this {
@@ -22,9 +22,9 @@ class FileComponent extends Component {
         return {
             type: FileComponent.type,
             file: {
-                url: this.fileUrl
+                url: this.fileUrl,
             },
-            spoiler: this.spolier
+            spoiler: this.spolier,
         }
     }
 }

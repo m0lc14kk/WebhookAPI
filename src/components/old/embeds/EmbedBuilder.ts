@@ -125,24 +125,18 @@ class EmbedBuilder {
                     ? null
                     : {
                           url: this.image.url,
-                          width: this.image.width || null,
-                          height: this.image.height || null,
                       },
             video:
                 this.video === null
                     ? null
                     : {
                           url: this.video.url,
-                          width: this.video.width || null,
-                          height: this.video.height || null,
                       },
             thumbnail:
                 this.thumbnail === null
                     ? null
                     : {
                           url: this.thumbnail.url,
-                          width: this.thumbnail.width || null,
-                          height: this.thumbnail.height || null,
                       },
             timestamp: this.timestamp,
         }
