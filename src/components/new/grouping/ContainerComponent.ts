@@ -1,11 +1,11 @@
-import { Component } from "../../Component";
-import { ComponentType } from "../../constants/ComponentType";
-import { ContainerComponentTypes } from "./types/ContainerComponentTypes";
+import { Component } from "../../Component"
+import { ComponentType } from "../../constants/ComponentType"
+import { ContainerComponentTypes } from "./types/ContainerComponentTypes"
 
 const MAX_COLOR_NUMBER: Readonly<number> = Math.pow(256, 3) - 1
 
 class ContainerComponent extends Component {
-    public static override readonly type: ComponentType = ComponentType.CONTAINER;
+    public static override readonly type: ComponentType = ComponentType.CONTAINER
     private components: ContainerComponentTypes[] = []
     private accentColor: number = 0x000000
     private spoiler: boolean = false
@@ -42,7 +42,7 @@ class ContainerComponent extends Component {
             type: ContainerComponent.type,
             accent_color: this.accentColor,
             spoiler: this.spoiler,
-            components: this.components.map((component: Component) => component.toJSON())
+            components: this.components.map((component: Component) => component.toJSON()),
         }
     }
 }
