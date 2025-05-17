@@ -1,6 +1,6 @@
 import { Component } from "../../Component"
 import { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultOptionType"
-import { IUserSelectMenuDefaultOptionStructure } from "./interfaces/IUserSelectMenuDefaultOptionStructure"
+import { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenuDefaultOptionStructure"
 
 abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> extends Component {
     protected customId: string | null = null
@@ -8,7 +8,7 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
     protected minValues: number = 1
     protected disabled: boolean = false
     protected placeholder: string = ""
-    protected defaultValues: IUserSelectMenuDefaultOptionStructure<T>[] = []
+    protected defaultValues: ISelectMenuDefaultOptionStructure<T>[] = []
 
     public setCustomId(customId: string): this {
         this.customId = customId
@@ -37,12 +37,12 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
         return this
     }
 
-    public setDefaultValues(...defaultValues: IUserSelectMenuDefaultOptionStructure<T>[]): this {
+    public setDefaultValues(...defaultValues: ISelectMenuDefaultOptionStructure<T>[]): this {
         this.defaultValues = defaultValues
         return this
     }
 
-    public addDefaultValues(...defaultValues: IUserSelectMenuDefaultOptionStructure<T>[]): this {
+    public addDefaultValues(...defaultValues: ISelectMenuDefaultOptionStructure<T>[]): this {
         this.defaultValues.push(...defaultValues)
         return this
     }
