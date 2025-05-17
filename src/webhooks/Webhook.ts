@@ -16,6 +16,10 @@ class Webhook {
 
     public readonly webhookUrl: string
 
+    /**
+     * Creates a wrapper instance of a Discord webhook.
+     * @param webhookUrl URL of a webhook, that includes his ID and token.
+     */
     public constructor(webhookUrl: string) {
         if (Webhook.validateUri(webhookUrl)) {
             throw new Error("DataError: Invalid webhook's URL has been provided.")
@@ -24,6 +28,10 @@ class Webhook {
         this.webhookUrl = webhookUrl
     }
 
+    /**
+     * Returns information about webhook.
+     * @returns Information about webhook.
+     */
     public async getWebhook<T extends WebhookTypeUnion>(): Promise<T | null> {
         try {
             const { http } = await import("@minecraft/server-net")
@@ -35,6 +43,11 @@ class Webhook {
         }
     }
 
+    /**
+     * Edit display of a webhook on Discord.
+     * @param options New properties of a webhook.
+     * @returns Return a boolean, based on if webhook was correctly updated.
+     */
     public async editWebhook({ name, avatar }: Readonly<IWebhookEditStructure>): Promise<boolean> {
         try {
             const { http, HttpRequest, HttpRequestMethod, HttpHeader } = await import("@minecraft/server-net")
@@ -57,6 +70,11 @@ class Webhook {
         }
     }
 
+    /**
+     * Deletes a webhook from Discord.
+     * @returns Returns a boolean based on if webhook was correctly deleted.
+     * @remarks You shouldn't use any methods of this webhook after calling this method.
+     */
     public async deleteWebhook(): Promise<boolean> {
         try {
             const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
@@ -67,11 +85,17 @@ class Webhook {
         }
     }
 
-    public async sendMessage(message: IWebhookOldMessageStructure | IWebhookNewMessageStructure, options: IWebhookMessageMethodQueryOptionsStructure) {
+    /**
+     * Sends a message to Discord channel.
+     * @param message Content of a message.
+     * @param options Options of a message.
+     * @returns Returns a message object if it was correctly sent, unless `null`.
+     */
+    public async sendMessage(message: IWebhookOldMessageStructure | IWebhookNewMessageStructure, options?: IWebhookMessageMethodQueryOptionsStructure | null) {
         const finalUrl: URL = new URL(this.webhookUrl)
-        if (options.wait) finalUrl.searchParams.set("with", "true")
-        if (options.withComponent) finalUrl.searchParams.set("with_components", "true")
-        if (options.threadId) {
+        if (options?.wait) finalUrl.searchParams.set("with", "true")
+        if (options?.withComponent) finalUrl.searchParams.set("with_components", "true")
+        if (options?.threadId) {
             if (SnowflakeValidator.isSnowflake(options.threadId)) throw new Error("DataError: Invalid thread's identifier.")
             finalUrl.searchParams.set("thread_id", options.threadId)
         }
@@ -84,10 +108,29 @@ class Webhook {
         }
     }
 
+    /**
+     * Gets a message based on it's identifier.
+     * @param messageId Identifier of a message.
+     * @return Returns a message object if it exists, unless `null`.
+     */
     public async getMessage() {}
 
+    /**
+     * Edits a message based on it's identifier.
+     * @param messageId Identifier of a message.
+     * @param message New content of a message.
+     * @param options Options of a message content.
+     * @returns Returns a boolean based on if message was correctly edited.
+     * @remarks If you were using new components system, you have to keep the format in the new content also.
+     */
     public async editMessage() {}
 
+    /**
+     * Deletes a message from channel.
+     * @param messageId Identifier of a message.
+     * @param threadId Optional thread's identifier.
+     * @returns Returns a boolean based on if message was correctly deleted from a channel.
+     */
     public async deleteMessage(messageId: string, threadId?: string): Promise<boolean> {
         if (!SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
         const finalUrl: URL = new URL(`${this.webhookUrl}/messages/${messageId}`)
