@@ -4,7 +4,6 @@
     "version": "1.0.0",
     "main": "dist/Main.js",
     "scripts": {
-        "build": "tsc",
         "build:min": "tsup",
         "pretty": "pnpx prettier --write \"./**/*.{ts,js,mjs,json,yaml}\"",
         "lint": "pnpm eslint .",
