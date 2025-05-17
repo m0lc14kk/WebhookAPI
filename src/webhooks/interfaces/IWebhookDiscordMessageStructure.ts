@@ -23,13 +23,16 @@ type IWebhookDiscordMessageStructure = {
         id: string
         name: string
     }
-} & ({
-    content?: string
-    components?: ActionRowComponent[]
-    embeds?: EmbedBuilder[]
-    poll?: PollBuilder
-} | {
-    components: Component[]
-})
+} & (
+    | {
+          content?: string
+          components?: ActionRowComponent[]
+          embeds?: EmbedBuilder[]
+          poll?: PollBuilder
+      }
+    | {
+          components: Component[]
+      }
+)
 
 export type { IWebhookDiscordMessageStructure }

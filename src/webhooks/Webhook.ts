@@ -142,7 +142,7 @@ class Webhook {
      * @returns Returns a boolean based on if message was correctly edited.
      * @remarks If you were using new components system, you have to keep the format in the new content also.
      */
-    public async editMessage() { }
+    public async editMessage() {}
 
     /**
      * Deletes a message from channel.
