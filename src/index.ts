@@ -29,6 +29,9 @@ export * from "./components/old/embeds/interfaces/IEmbedMediaStructure"
 export * from "./components/old/polls/PollBuilder"
 export * from "./components/old/polls/interfaces/IPollAnswerStructure"
 
+export * from "./components/constants/MinecraftColorsType"
+export * from "./components/constants/ComponentType"
+
 export * from "./components/new/buttons/Button"
 export * from "./components/new/buttons/LinkButton"
 export * from "./components/new/buttons/PremiumButton"
@@ -41,6 +44,17 @@ export * from "./components/new/dropdowns/StringSelectMenuComponent"
 export * from "./components/new/dropdowns/UserSelectMenuComponent"
 export * from "./components/new/dropdowns/interfaces/IStringSelectMenuOptionStructure"
 export * from "./components/new/dropdowns/interfaces/ISelectMenuDefaultOptionStructure"
+export * from "./components/new/dropdowns/constants/SelectMenuDefaultOptionType"
 
 export * from "./components/new/grouping/ActionRowComponent"
-export * from "./components/new/grouping/types/ActionRowChildComponentType"
+export * from "./components/new/grouping/ContainerComponent"
+export * from "./components/new/grouping/SectionComponent"
+
+export * from "./components/new/display/SeparatorComponent"
+export * from "./components/new/display/TextDisplayComponent"
+export * from "./components/new/display/ThumbnailComponent"
+export * from "./components/new/display/constants/SeparatorPaddingType"
+
+export * from "./components/new/media/FileComponent"
+export * from "./components/new/media/MediaGalleryComponent"
+export * from "./components/new/media/interfaces/IMediaGalleryItemStructure"
