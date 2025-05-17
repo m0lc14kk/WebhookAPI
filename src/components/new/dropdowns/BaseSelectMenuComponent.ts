@@ -1,6 +1,6 @@
 import { Component } from "../../Component"
 import { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultOptionType"
-import { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenuDefaultOptionStructure"
+import type { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenuDefaultOptionStructure"
 
 abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> extends Component {
     protected customId: string | null = null

@@ -1,6 +1,6 @@
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
-import { IStringSelectMenuOptionStructure } from "./interfaces/IStringSelectMenuOptionStructure"
+import type { IStringSelectMenuOptionStructure } from "./interfaces/IStringSelectMenuOptionStructure"
 
 class StringSelectMenuComponent extends Component {
     public static override type: ComponentType = ComponentType.STRING_SELECT

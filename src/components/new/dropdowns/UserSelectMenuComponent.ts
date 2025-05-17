@@ -1,7 +1,7 @@
 import { ComponentType } from "../../constants/ComponentType"
 import { BaseSelectMenuComponent } from "./BaseSelectMenuComponent"
 import { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultOptionType"
-import { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenuDefaultOptionStructure"
+import type { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenuDefaultOptionStructure"
 
 class UserSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultOptionType.USER> {
     public static readonly type: ComponentType = ComponentType.USER_SELECT

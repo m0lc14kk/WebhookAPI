@@ -1,6 +1,6 @@
-import { ComponentType } from "../../constants/ComponentType";
-import { BaseSelectMenuComponent } from "./BaseSelectMenuComponent";
-import { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultOptionType";
+import { ComponentType } from "../../constants/ComponentType"
+import { BaseSelectMenuComponent } from "./BaseSelectMenuComponent"
+import type { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultOptionType"
 
 class MentionableSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultOptionType.ROLE | SelectMenuDefaultOptionType.USER> {
     public static override readonly type: ComponentType = ComponentType.MENTIONABLE_SELECT
