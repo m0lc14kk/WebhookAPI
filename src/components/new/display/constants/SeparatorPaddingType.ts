@@ -2,7 +2,7 @@
 
 enum SeparatorPaddingType {
     SMALL = 1,
-    LARGE
+    LARGE,
 }
 
 export { SeparatorPaddingType }

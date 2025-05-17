@@ -1,9 +1,9 @@
-import { Component } from "../../Component";
-import { ComponentType } from "../../constants/ComponentType";
-import { SeparatorPaddingType } from "./constants/SeparatorPaddingType";
+import { Component } from "../../Component"
+import { ComponentType } from "../../constants/ComponentType"
+import { SeparatorPaddingType } from "./constants/SeparatorPaddingType"
 
 class SeparatorComponent extends Component {
-    public static override readonly type: ComponentType = ComponentType.SEPARATOR;
+    public static override readonly type: ComponentType = ComponentType.SEPARATOR
     private padding: SeparatorPaddingType = SeparatorPaddingType.SMALL
     private displayDivider: boolean = true
 
@@ -21,7 +21,7 @@ class SeparatorComponent extends Component {
         return {
             type: SeparatorComponent.type,
             padding: this.padding,
-            divider: this.displayDivider
+            divider: this.displayDivider,
         }
     }
 }
