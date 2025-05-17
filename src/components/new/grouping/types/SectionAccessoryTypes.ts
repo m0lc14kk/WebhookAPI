@@ -1,5 +1,5 @@
-import { BaseButton } from "../../buttons/BaseButton";
-import { ThumbnailComponent } from "../../display/ThumbnailComponent";
+import { BaseButton } from "../../buttons/BaseButton"
+import { ThumbnailComponent } from "../../display/ThumbnailComponent"
 
 type SectionAccessoryTypes = BaseButton | ThumbnailComponent
 

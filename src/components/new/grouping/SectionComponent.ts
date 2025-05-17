@@ -24,10 +24,13 @@ class SectionComponent extends Component {
     }
 
     public toJSON() {
+        if (this.components.length === 0) throw new Error("DataError: You must provide atleast 1 component to section.")
+        if (this.accessory === null) throw new Error("DataError: Accessory is not defined.")
+
         return {
             type: SectionComponent.type,
             components: this.components.map((component: Component) => component.toJSON()),
-            accessory: this.accessory
+            accessory: this.accessory,
         }
     }
 }
