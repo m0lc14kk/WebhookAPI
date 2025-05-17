@@ -81,9 +81,9 @@ class Webhook {
         }
     }
 
-    public async getMessage() { }
+    public async getMessage() {}
 
-    public async editMessage() { }
+    public async editMessage() {}
 
     public async deleteMessage(messageId: string, threadId?: string): Promise<boolean> {
         if (!SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")

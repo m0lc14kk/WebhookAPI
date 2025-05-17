@@ -2,6 +2,12 @@ import { ComponentEmojiType } from "../../types/ComponentEmojiType"
 import { BaseButton } from "./BaseButton"
 import { ButtonStyle } from "./constants/ButtonStyle"
 
+const ALLOWED_URL_PROTOCOLS: readonly string[] = [
+    "discord://",
+    "https://",
+    "http://"
+]
+
 class LinkButton extends BaseButton {
     protected override readonly style: ButtonStyle.LINK = ButtonStyle.LINK
     private emoji: string | ComponentEmojiType | null = null
@@ -13,6 +19,9 @@ class LinkButton extends BaseButton {
     }
 
     public setUrl(url: string): LinkButton {
+        const isValidProtocol: boolean = !!ALLOWED_URL_PROTOCOLS.find((protocol: string) => url.startsWith(protocol))
+        if (!isValidProtocol) throw new Error("DataError: Invalid button's URL protocol.")
+
         this.url = url
         return this
     }
