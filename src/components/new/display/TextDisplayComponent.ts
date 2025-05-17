@@ -1,8 +1,8 @@
-import { Component } from "../../Component";
-import { ComponentType } from "../../constants/ComponentType";
+import { Component } from "../../Component"
+import { ComponentType } from "../../constants/ComponentType"
 
 class TextDisplayComponent extends Component {
-    public static override readonly type: ComponentType = ComponentType.TEXT_DISPLAY;
+    public static override readonly type: ComponentType = ComponentType.TEXT_DISPLAY
     private content: string = ""
 
     public setContent(content: string | string[]): this {
@@ -13,7 +13,7 @@ class TextDisplayComponent extends Component {
     public toJSON(): object {
         return {
             type: TextDisplayComponent.type,
-            content: this.content
+            content: this.content,
         }
     }
 }
