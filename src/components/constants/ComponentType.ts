@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 
+/**
+ * Component types.
+ */
 enum ComponentType {
     ACTION_ROW = 1,
     BUTTON = 2,
