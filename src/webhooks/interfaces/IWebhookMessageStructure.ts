@@ -6,16 +6,16 @@ interface IWebhookMessageStructure {
      * Version of a message content.
      */
     version: WebhookMessageType
-    
+
     /**
      * Optional username of an author.
-     * @remarks If you won't provide this, it'll be replaced with username saved on Discord. 
+     * @remarks If you won't provide this, it'll be replaced with username saved on Discord.
      */
     username?: string
 
     /**
      * Optional URL to an avatr of an author.
-     * @remarks If you won't provide this, it'll be replaced with username saved on Discord. 
+     * @remarks If you won't provide this, it'll be replaced with username saved on Discord.
      */
     avatar_url?: string
 
@@ -33,9 +33,9 @@ interface IWebhookMessageStructure {
          * Mentions that will be parsed.
          */
         parse?: WebhookMessageMentionsParseType[]
-        
+
         /**
-         * Roles that will be allowed to be pinged. 
+         * Roles that will be allowed to be pinged.
          */
         roles?: string[]
 

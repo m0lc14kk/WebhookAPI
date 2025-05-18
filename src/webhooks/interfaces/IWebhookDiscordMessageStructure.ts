@@ -80,7 +80,7 @@ type IWebhookDiscordMessageStructure = {
 
     /**
      * Thread of a message.
-     * @remarks This field will be defined, it message was originally sent in a thread. 
+     * @remarks This field will be defined, it message was originally sent in a thread.
      */
     thread?: {
         /**
@@ -94,34 +94,34 @@ type IWebhookDiscordMessageStructure = {
         name: string
     }
 } & (
-        | {
-            /**
-             * Content of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            content?: string
-            /**
-             * Old components of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            components?: ActionRowComponent[]
-            /**
-             * Embeds of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            embeds?: EmbedBuilder[]
-            /**
-             * Poll of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            poll?: PollBuilder
-        }
-        | {
-            /**
-             * Components of a message.
-             */
-            components: Component[]
-        }
-    )
+    | {
+          /**
+           * Content of a message.
+           * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+           */
+          content?: string
+          /**
+           * Old components of a message.
+           * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+           */
+          components?: ActionRowComponent[]
+          /**
+           * Embeds of a message.
+           * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+           */
+          embeds?: EmbedBuilder[]
+          /**
+           * Poll of a message.
+           * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+           */
+          poll?: PollBuilder
+      }
+    | {
+          /**
+           * Components of a message.
+           */
+          components: Component[]
+      }
+)
 
 export type { IWebhookDiscordMessageStructure }

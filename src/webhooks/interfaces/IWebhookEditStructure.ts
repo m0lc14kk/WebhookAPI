@@ -6,7 +6,7 @@ interface IWebhookEditStructure {
 
     /**
      * New avatar of a webhook.
-     * @remarks Avatar must be in Base64 format. 
+     * @remarks Avatar must be in Base64 format.
      */
     avatar?: string
 }

@@ -15,105 +15,105 @@ type IWebhookOldMessageStructure = IWebhookMessageStructure & {
     version: WebhookMessageType.OLD
 } & (
         | {
-            /**
-             * Content of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            content: string
+              /**
+               * Content of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              content: string
 
-            /**
-             * Embeds of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            embeds?: EmbedBuilder[]
+              /**
+               * Embeds of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              embeds?: EmbedBuilder[]
 
-            /**
-             * Poll of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            poll?: PollBuilder
-            
-            /**
-             * Components of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            components?: ActionRowComponent[]
-        }
+              /**
+               * Poll of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              poll?: PollBuilder
+
+              /**
+               * Components of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              components?: ActionRowComponent[]
+          }
         | {
-            /**
-             * Content of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            content?: string
+              /**
+               * Content of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              content?: string
 
-            /**
-             * Embeds of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            embeds: EmbedBuilder[]
+              /**
+               * Embeds of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              embeds: EmbedBuilder[]
 
-            /**
-             * Poll of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            poll?: PollBuilder
+              /**
+               * Poll of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              poll?: PollBuilder
 
-            /**
-             * Components of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            components?: ActionRowComponent[]
-        }
+              /**
+               * Components of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              components?: ActionRowComponent[]
+          }
         | {
-            /**
-             * Content of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            content?: string
+              /**
+               * Content of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              content?: string
 
-            /** 
-             * Embeds of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            embeds?: EmbedBuilder[]
+              /**
+               * Embeds of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              embeds?: EmbedBuilder[]
 
-            /**
-             * Poll of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            poll: PollBuilder
+              /**
+               * Poll of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              poll: PollBuilder
 
-            /**
-             * Components of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            components?: ActionRowComponent[]
-        }
+              /**
+               * Components of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              components?: ActionRowComponent[]
+          }
         | {
-            /**
-             * Content of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            content?: string
+              /**
+               * Content of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              content?: string
 
-            /**
-             * Embeds of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            embeds?: EmbedBuilder[]
+              /**
+               * Embeds of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              embeds?: EmbedBuilder[]
 
-            /**
-             * Poll of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            poll?: PollBuilder
+              /**
+               * Poll of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              poll?: PollBuilder
 
-            /**
-             * Components of a message.
-             * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
-             */
-            components: ActionRowComponent[]
-        }
+              /**
+               * Components of a message.
+               * @remarks One of `content`, `components`, `embeds` and `poll` must be defined.
+               */
+              components: ActionRowComponent[]
+          }
     )
 
 export { IWebhookOldMessageStructure }
