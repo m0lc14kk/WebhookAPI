@@ -1,6 +1,6 @@
 import type { IPollAnswerStructure } from "./interfaces/IPollAnswerStructure"
 
-const MAX_POLL_DURATION: number = 32 * 24
+const MAX_POLL_DURATION: Readonly<number> = 32 * 24
 
 class PollBuilder {
     private question: string | null = null
@@ -10,24 +10,46 @@ class PollBuilder {
 
     public constructor() {}
 
+    /**
+     * Sets a question of a poll.
+     * @param question Question of a poll.
+     * @returns Edited instance.
+     */
     public setQuestion(question: string): PollBuilder {
         if (question.length > 300) throw new Error("DataError: Question cannot exceed 300 characters.")
         this.question = question
         return this
     }
 
-    public setDuration(duration: number): PollBuilder {
+    /**
+     * Sets a duration of a poll.
+     * @param duration Duration of a poll in hours.
+     * @remarks Duration cannot be longer than `MAX_POLL_DURATION` global.
+     * @throws Throws an error if duration is not in bounds [0; `MAX_POLL_DURATION`]
+     * @returns Edited instance.
+     */
+    public setDuration(duration: number): this {
         if (duration < 1 || duration > MAX_POLL_DURATION) throw new Error("DataError: Too long duration of a poll. Poll cannot be open for more than 32 days.")
         this.duration = duration
         return this
     }
 
-    public setAllowMultiselect(allowMultiselect: boolean): PollBuilder {
+    /**
+     * Sets a possibility to multi-select.
+     * @param allowMultiselect Possibility to select multiple answers.
+     * @return Edited instance.
+     */
+    public setAllowMultiselect(allowMultiselect: boolean): this {
         this.allowMultiselect = allowMultiselect
         return this
     }
 
-    public setAnswers(...answers: IPollAnswerStructure[]): PollBuilder {
+    /**
+     * Sets answers of a poll.
+     * @param answers Answers of a poll.
+     * @returns Edited instance.
+     */
+    public setAnswers(...answers: IPollAnswerStructure[]): this {
         for (const { text } of answers) {
             if (text.length > 55) throw new Error("DataError: Answer's text cannot exceed 55 characters!")
         }
@@ -36,7 +58,12 @@ class PollBuilder {
         return this
     }
 
-    public addAnswers(...answers: IPollAnswerStructure[]): PollBuilder {
+    /**
+     * Adds answers to a poll.
+     * @param answers New answers of a poll.
+     * @returns Edited instance.
+     */
+    public addAnswers(...answers: IPollAnswerStructure[]): this {
         for (const { text } of answers) {
             if (text.length > 55) throw new Error("DataError: Answer's text cannot exceed 55 characters!")
         }
@@ -45,6 +72,10 @@ class PollBuilder {
         return this
     }
 
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
     public toJSON(): object {
         if (this.question === null) throw new Error("DataError: You must provide a question before creating a poll.")
 
@@ -69,4 +100,4 @@ class PollBuilder {
     }
 }
 
-export { PollBuilder }
+export { PollBuilder, MAX_POLL_DURATION }
