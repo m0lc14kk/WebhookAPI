@@ -7,16 +7,31 @@ class ThumbnailComponent extends Component {
     private description: string | null = null
     private spoiler: boolean = false
 
+    /**
+     * Sets an URL of an icon of a thumbnail.
+     * @param url URL to an icon.
+     * @returns Edited instance.
+     */
     public setUrl(url: string): this {
         this.url = url
         return this
     }
 
+    /**
+     * Sets a description, that is visible if thumbnail has not loaded correctly.
+     * @param description Alternative text of a thumbnail.
+     * @returns Edited instance.
+     */
     public setDescription(description: string): this {
         this.description = description
         return this
     }
 
+    /**
+     * Sets a spoiler on a thumbnail.
+     * @param spoiler Spoiler state.
+     * @returns Edited instance.
+     */
     public setSpoiler(spoiler: boolean): this {
         this.spoiler = spoiler
         return this

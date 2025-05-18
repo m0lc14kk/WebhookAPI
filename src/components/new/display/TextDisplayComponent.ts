@@ -5,6 +5,11 @@ class TextDisplayComponent extends Component {
     public static override readonly type: ComponentType = ComponentType.TEXT_DISPLAY
     private content: string = ""
 
+    /**
+     * Sets a markdown content.
+     * @param content Markdown content.
+     * @returns Edited instance.
+     */
     public setContent(content: string | string[]): this {
         this.content = Array.isArray(content) ? content.join("\n") : content
         return this

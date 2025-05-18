@@ -7,11 +7,21 @@ class SeparatorComponent extends Component {
     private padding: SeparatorPaddingType = SeparatorPaddingType.SMALL
     private displayDivider: boolean = true
 
+    /**
+     * Sets a padding between separator and other components.
+     * @param padding Padding of a separator.
+     * @returns Edited instance.
+     */
     public setPadding(padding: SeparatorPaddingType): this {
         this.padding = padding
         return this
     }
 
+    /**
+     * Sets if a separator's line should be visible.
+     * @param displayDivider Separator display state.
+     * @returns Edited instance.
+     */
     public setDisplayDivider(displayDivider: boolean): this {
         this.displayDivider = displayDivider
         return this
