@@ -115,7 +115,7 @@ class Webhook {
      * @param threadId Optional identifier of a thread.
      * @return Returns a message object if it exists, unless `null`.
      */
-    public async getMessage(messageId: string, threadId?: string): Promise<IWebhookDiscordMessageStructure | undefined> {
+    public async getMessage(messageId: string, threadId?: string): Promise<IWebhookDiscordMessageStructure | null> {
         if (!SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
         const finalUrl: URL = new URL(`${this.webhookUrl}/messages/${messageId}`)
 
@@ -129,8 +129,9 @@ class Webhook {
             const response = await http.get(finalUrl.toString())
 
             if (response.status === 200) return JSON.parse(response.body)
+            return null
         } catch {
-            return undefined
+            return null
         }
     }
 
