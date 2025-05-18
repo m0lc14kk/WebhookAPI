@@ -1,18 +1,11 @@
-import { ComponentEmojiType } from "../../types/ComponentEmojiType"
 import { BaseButton } from "./BaseButton"
 import { ButtonStyle } from "./constants/ButtonStyle"
 
-const ALLOWED_URL_PROTOCOLS: readonly string[] = ["discord://", "https://", "http://"]
+export const ALLOWED_URL_PROTOCOLS: readonly string[] = ["discord://", "https://", "http://"]
 
 class LinkButton extends BaseButton {
     protected override readonly style: ButtonStyle.LINK = ButtonStyle.LINK
-    private emoji: string | ComponentEmojiType | null = null
     private url: string | null = null
-
-    public setEmoji(emoji: string | ComponentEmojiType | null): LinkButton {
-        this.emoji = emoji
-        return this
-    }
 
     public setUrl(url: string): LinkButton {
         const isValidProtocol: boolean = !!ALLOWED_URL_PROTOCOLS.find((protocol: string) => url.startsWith(protocol))
