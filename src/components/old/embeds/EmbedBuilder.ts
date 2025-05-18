@@ -24,17 +24,33 @@ class EmbedBuilder {
         this.color = EmbedDefaultProperties.getDefaultEmbedColor()
     }
 
-    public setTitle(title: string): EmbedBuilder {
+    /**
+     * Sets a title of an embed.
+     * @param title New title of an embed.
+     * @returns Edited instance.
+     */
+    public setTitle(title: string): this {
         this.title = title
         return this
     }
 
-    public setDescription(description: string | string[]): EmbedBuilder {
+    /**
+     * Sets a description of an embed.
+     * @param description New description of an embed.
+     * @returns Edited instance.
+     */
+    public setDescription(description: string | string[]): this {
         this.description = Array.isArray(description) ? description.join("\n") : description
         return this
     }
 
-    public setColor(color: string | number): EmbedBuilder {
+    /**
+     * Sets a color of an embed.
+     * @param color New color of an embed.
+     * @throws Throws an error, if color HEX format is invalid.
+     * @returns Edited instance.
+     */
+    public setColor(color: string | number): this {
         if (typeof color == "string") {
             if (!color.startsWith("#") && color.length !== 7) throw new Error("DataError: Invalid color HEX.")
             this.color = Number(`0x${color.slice(1)}`)
@@ -46,42 +62,83 @@ class EmbedBuilder {
         return this
     }
 
-    public setFields(...fields: IEmbedFieldStructure[]): EmbedBuilder {
+    /**
+     * Set fields of an embed.
+     * @param fields New fields of an embed.
+     * @returns Edited instance.
+     */
+    public setFields(...fields: IEmbedFieldStructure[]): this {
         this.fields = fields
         return this
     }
 
-    public addFields(...fields: IEmbedFieldStructure[]): EmbedBuilder {
+    /**
+     * Adds new fields to an embed.
+     * @param fields New fields, that will appear to existing ones.
+     * @returns Edited instance.
+     */
+    public addFields(...fields: IEmbedFieldStructure[]): this {
         this.fields.push(...fields)
         return this
     }
 
-    public setAuthor(author: IEmbedAuthorStructure | null): EmbedBuilder {
+    /**
+     * Sets an author of an embed.
+     * @param author New author of an embed.
+     * @returns Edited instance.
+     */
+    public setAuthor(author: IEmbedAuthorStructure | null): this {
         this.author = author
         return this
     }
 
-    public setFooter(footer: IEmbedFooterStructure | null): EmbedBuilder {
+    /**
+     * Sets a footer of an embed.
+     * @param footer New footer of an embed.
+     * @returns Edited instance.
+     */
+    public setFooter(footer: IEmbedFooterStructure | null): this {
         this.footer = footer
         return this
     }
 
-    public setImage(image: IEmbedMediaStructure | null): EmbedBuilder {
+    /**
+     * Sets an image of an embed.
+     * @param image New image of an embed.
+     * @returns Edited instance.
+     */
+    public setImage(image: IEmbedMediaStructure | null): this {
         this.image = image
         return this
     }
 
-    public setVideo(video: IEmbedMediaStructure | null): EmbedBuilder {
+    /**
+     * Sets a video of an embed.
+     * @param video New video of an embed.
+     * @returns Edited instance.
+     */
+    public setVideo(video: IEmbedMediaStructure | null): this {
         this.video = video
         return this
     }
 
-    public setThumbnail(thumbnail: IEmbedMediaStructure | null): EmbedBuilder {
+    /**
+     * Sets a thumbnail of an embed.
+     * @param thumbnail New thumbnail of an embed.
+     * @returns Edited instance.
+     */
+    public setThumbnail(thumbnail: IEmbedMediaStructure | null): this {
         this.thumbnail = thumbnail
         return this
     }
 
-    public setTimestamp(timestamp: Date | string | null): EmbedBuilder {
+    /**
+     * Sets a timestamp of an embed.
+     * @param timestamp New timestamp of an embed.
+     * @throws Throws an error, if provided string is not in ISO8601 format.
+     * @returns Edited instance.
+     */
+    public setTimestamp(timestamp: Date | string | null): this {
         if (timestamp === null) {
             this.timestamp = null
         } else if (typeof timestamp === "string") {

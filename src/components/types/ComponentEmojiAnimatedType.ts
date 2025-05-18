@@ -6,6 +6,7 @@ import type { ComponentEmojiType } from "./ComponentEmojiType"
 type ComponentEmojiAnimatedType = ComponentEmojiType & {
     /**
      * If an emoji will be animated.
+     * @default false
      */
     animated?: boolean
 }
