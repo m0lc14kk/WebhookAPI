@@ -120,16 +120,16 @@ class Webhook {
                 new HttpRequest(finalUrl.toString()).setMethod(HttpRequestMethod.Post).setBody(
                     message.version === WebhookMessageType.NEW
                         ? JSON.stringify({
-                            ...message,
-                            components: message.components.map((component: Component) => component.toJSON()),
-                        })
+                              ...message,
+                              components: message.components.map((component: Component) => component.toJSON()),
+                          })
                         : JSON.stringify({
-                            ...message,
-                            embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                            components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                            poll: message.poll ? message.poll.toJSON() : undefined,
-                            content: message.content || "",
-                        }),
+                              ...message,
+                              embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                              components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                              poll: message.poll ? message.poll.toJSON() : undefined,
+                              content: message.content || "",
+                          }),
                 ),
             )
 
@@ -175,7 +175,11 @@ class Webhook {
      * @returns Returns a boolean based on if message was correctly edited.
      * @remarks If you were using new components system, you have to keep the format in the new content also.
      */
-    public async editMessage(messageId: string, message: Partial<IWebhookNewMessageStructure | IWebhookOldMessageStructure> & { version: WebhookMessageType }, options?: Omit<IWebhookMessageMethodQueryOptionsStructure, "wait">): Promise<IWebhookDiscordMessageStructure | null> {
+    public async editMessage(
+        messageId: string,
+        message: Partial<IWebhookNewMessageStructure | IWebhookOldMessageStructure> & { version: WebhookMessageType },
+        options?: Omit<IWebhookMessageMethodQueryOptionsStructure, "wait">,
+    ): Promise<IWebhookDiscordMessageStructure | null> {
         const finalUrl: URL = new URL(`${this.webhookUrl}/messages/${messageId}`)
         if (options?.withComponent) finalUrl.searchParams.set("with_components", "true")
         if (options?.threadId) {
@@ -196,16 +200,16 @@ class Webhook {
                 new HttpRequest(finalUrl.toString()).setMethod(HttpRequestMethod.Post).setBody(
                     message.version === WebhookMessageType.NEW
                         ? JSON.stringify({
-                            ...message,
-                            components: (message.components || []).map((component: Component) => component.toJSON()),
-                        })
+                              ...message,
+                              components: (message.components || []).map((component: Component) => component.toJSON()),
+                          })
                         : JSON.stringify({
-                            ...message,
-                            embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                            components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                            poll: message.poll ? message.poll.toJSON() : undefined,
-                            content: message.content || "",
-                        }),
+                              ...message,
+                              embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                              components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                              poll: message.poll ? message.poll.toJSON() : undefined,
+                              content: message.content || "",
+                          }),
                 ),
             )
 
