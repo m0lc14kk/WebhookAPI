@@ -6,6 +6,9 @@ import type { IWebhookMessageMethodQueryOptionsStructure } from "./interfaces/IW
 import { WebhookMessageType } from "./constants/WebhookMessageType"
 import { SnowflakeValidator } from "../validators/SnowflakeValidator"
 import { IWebhookDiscordMessageStructure } from "./interfaces/IWebhookDiscordMessageStructure"
+import { Component } from "../components/Component"
+import { EmbedBuilder } from "../components/old/embeds/EmbedBuilder"
+import { ActionRowComponent } from "../components/new/grouping/ActionRowComponent"
 
 /**
  * Discord Webhook instance that is connecting to REST API via `@minecraft/server-net` library.
@@ -92,7 +95,7 @@ class Webhook {
      * @param options Options of a message.
      * @returns Returns a message object if it was correctly sent, unless `null`.
      */
-    public async sendMessage(message: IWebhookOldMessageStructure | IWebhookNewMessageStructure, options?: IWebhookMessageMethodQueryOptionsStructure | null) {
+    public async sendMessage(message: IWebhookOldMessageStructure | IWebhookNewMessageStructure, options?: IWebhookMessageMethodQueryOptionsStructure | null): Promise<IWebhookDiscordMessageStructure | true | null> {
         const finalUrl: URL = new URL(this.webhookUrl)
         if (options?.wait) finalUrl.searchParams.set("with", "true")
         if (options?.withComponent) finalUrl.searchParams.set("with_components", "true")
@@ -106,6 +109,32 @@ class Webhook {
             if (message.embeds && message.embeds.length > 10) throw new Error("DataError: You can send up to 10 embeds in a message.")
         } else {
             if (message.components.length === 0) throw new Error("DataError: You must provide at least 1 component to send a message.")
+        }
+
+        try {
+            const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
+            const response = await http.request(
+                new HttpRequest(this.webhookUrl)
+                    .setMethod(HttpRequestMethod.Post)
+                    .setBody(
+                        message.version === WebhookMessageType.NEW ? JSON.stringify({
+                            ...message,
+                            components: message.components.map((component: Component) => component.toJSON())    
+                        }) : JSON.stringify({
+                            ...message,
+                            embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                            components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                            poll: message.poll ? message.poll.toJSON() : undefined,
+                            content: message.content || ""
+                        })
+                    )
+            )
+
+            if (response.status === 200) return JSON.parse(response.body)
+            if (response.status === 204) return true
+            return null
+        } catch {
+            return null
         }
     }
 
@@ -143,7 +172,7 @@ class Webhook {
      * @returns Returns a boolean based on if message was correctly edited.
      * @remarks If you were using new components system, you have to keep the format in the new content also.
      */
-    public async editMessage() {}
+    public async editMessage() { }
 
     /**
      * Deletes a message from channel.
