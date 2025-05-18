@@ -8,16 +8,31 @@ class SectionComponent extends Component {
     private components: SectionComponentTypes[] = []
     private accessory: SectionAccessoryTypes | null = null
 
+    /**
+     * Sets new components to this section.
+     * @param components New components.
+     * @returns Edited instance.
+     */
     public setComponents(...components: SectionComponentTypes[]): this {
         this.components = components
         return this
     }
 
+    /**
+     * Adds new components to existing ones.
+     * @param components New components.
+     * @returns Edited instance.
+     */
     public addComponents(...components: SectionComponentTypes[]): this {
         this.components.push(...components)
         return this
     }
 
+    /**
+     * Sets an accessory of a section.
+     * @param accessory New accessory.
+     * @returns Edited instance.
+     */
     public setAccessory(accessory: SectionAccessoryTypes): this {
         this.accessory = accessory
         return this

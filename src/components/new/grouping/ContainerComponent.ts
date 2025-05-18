@@ -10,16 +10,32 @@ class ContainerComponent extends Component {
     private accentColor: number = ContainerDefaultProperties.getDefaultEmbedColor()
     private spoiler: boolean = false
 
+    /**
+     * Sets new components to this container.
+     * @param components New components.
+     * @returns Edited instance.
+     */
     public setComponents(...components: ContainerComponentTypes[]): this {
         this.components = components
         return this
     }
 
+    /**
+     * Adds new components to existing ones.
+     * @param components New components.
+     * @returns Edited instance.
+     */
     public addComponents(...components: ContainerComponentTypes[]): this {
         this.components.push(...components)
         return this
     }
 
+    /**
+     * Sets an accent color of a container.
+     * @param accentColor New color of a container.
+     * @throws Throws an error if provided accent color as a HEX string is invalid.
+     * @returns Edited instance.
+     */
     public setAccentColor(accentColor: string | number): this {
         if (typeof accentColor == "string") {
             if (!accentColor.startsWith("#") && accentColor.length !== 7) throw new Error("DataError: Invalid color HEX.")
@@ -32,6 +48,11 @@ class ContainerComponent extends Component {
         return this
     }
 
+    /**
+     * Sets a spoiler of a container.
+     * @param spoiler Spoiler state.
+     * @returns Edited instance.
+     */
     public setSpoiler(spoiler: boolean): this {
         this.spoiler = spoiler
         return this
