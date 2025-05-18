@@ -6,11 +6,21 @@ class FileComponent extends Component {
     private fileUrl: string | null = null
     private spolier: boolean = false
 
+    /**
+     * Sets an URL to a file.
+     * @param fileUrl URL to a file.
+     * @returns Edited instance.
+     */
     public setFileUrl(fileUrl: string): this {
         this.fileUrl = fileUrl
         return this
     }
 
+    /**
+     * Sets a spoiler on a file.
+     * @param spoiler Spoiler status.
+     * @returns Edited instance.
+     */
     public setSpoiler(spoiler: boolean): this {
         this.spolier = spoiler
         return this

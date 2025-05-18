@@ -6,11 +6,21 @@ class MediaGalleryComponent extends Component {
     public static override readonly type: ComponentType = ComponentType.MEDIA_GALERY
     private images: IMediaGalleryItemStructure[] = []
 
+    /**
+     * Adds images to gallery.
+     * @param images Images, that will be added to existing ones.
+     * @returns Edited instance.
+     */
     public addImages(...images: IMediaGalleryItemStructure[]): this {
         this.images.push(...images)
         return this
     }
 
+    /**
+     * Sets images in gallery.
+     * @param images Images in gallery.
+     * @returns Edited instance.
+     */
     public setImages(...images: IMediaGalleryItemStructure[]): this {
         this.images = images
         return this
