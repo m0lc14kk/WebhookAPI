@@ -23,7 +23,11 @@ class SectionComponent extends Component {
         return this
     }
 
-    public toJSON() {
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         if (this.components.length === 0) throw new Error("DataError: You must provide atleast 1 component to section.")
         if (this.accessory === null) throw new Error("DataError: Accessory is not defined.")
 

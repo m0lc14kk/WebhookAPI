@@ -22,7 +22,11 @@ class LinkButton extends BaseButton {
         return this
     }
 
-    public toJSON() {
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         return {
             type: LinkButton.type,
             style: this.style,

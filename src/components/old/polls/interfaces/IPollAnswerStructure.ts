@@ -8,7 +8,7 @@ interface IPollAnswerStructure {
      * Text of an answer.
      */
     text: string
-    
+
     /**
      * Optional emoji of an answer.
      */

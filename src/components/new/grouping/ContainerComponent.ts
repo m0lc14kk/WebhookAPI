@@ -36,8 +36,12 @@ class ContainerComponent extends Component {
         this.spoiler = spoiler
         return this
     }
-
-    public toJSON() {
+    
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         return {
             type: ContainerComponent.type,
             accent_color: this.accentColor,

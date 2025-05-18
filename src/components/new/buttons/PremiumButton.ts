@@ -12,7 +12,11 @@ class PremiumButton extends Component {
         return this
     }
 
-    public toJSON() {
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         if (this.skuId === null) throw new Error("DataError: You have to provide SKU ID before creating a premium button.")
 
         return {

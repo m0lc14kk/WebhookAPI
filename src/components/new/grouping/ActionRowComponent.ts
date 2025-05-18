@@ -30,6 +30,10 @@ class ActionRowComponent extends Component {
         if (isAllButtons && components.length > 5) throw new Error("ActionRowComponent can only contain up to 5 buttons.")
     }
 
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
     public toJSON(): object {
         return {
             type: ActionRowComponent.type,

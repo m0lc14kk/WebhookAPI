@@ -16,7 +16,11 @@ class FileComponent extends Component {
         return this
     }
 
-    public toJSON() {
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         if (this.fileUrl === null) throw new Error("DataError: You must provide file's URL to create a file component.")
 
         return {

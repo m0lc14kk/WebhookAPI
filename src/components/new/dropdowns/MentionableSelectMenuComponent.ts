@@ -5,7 +5,11 @@ import type { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultO
 class MentionableSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultOptionType.ROLE | SelectMenuDefaultOptionType.USER> {
     public static override readonly type: ComponentType = ComponentType.MENTIONABLE_SELECT
 
-    public toJSON() {
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         return {
             type: MentionableSelectMenuComponent.type,
             custom_id: this.customId,

@@ -25,7 +25,11 @@ class ChannelSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefau
         return this
     }
 
-    public toJSON() {
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         return {
             type: ChannelSelectMenuComponent.type,
             custom_id: this.customId,

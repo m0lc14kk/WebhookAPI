@@ -17,7 +17,11 @@ class SeparatorComponent extends Component {
         return this
     }
 
-    public toJSON() {
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         return {
             type: SeparatorComponent.type,
             padding: this.padding,

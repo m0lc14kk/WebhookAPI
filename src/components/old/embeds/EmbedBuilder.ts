@@ -94,7 +94,11 @@ class EmbedBuilder {
         return this
     }
 
-    public toJSON() {
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         return {
             title: this.title,
             description: this.description,

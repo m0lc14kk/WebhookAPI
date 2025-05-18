@@ -25,7 +25,11 @@ class UserSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultO
         return this
     }
 
-    public toJSON() {
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         return {
             type: UserSelectMenuComponent.type,
             custom_id: this.customId,

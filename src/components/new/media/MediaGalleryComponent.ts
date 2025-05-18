@@ -15,8 +15,12 @@ class MediaGalleryComponent extends Component {
         this.images = images
         return this
     }
-
-    public toJSON() {
+    
+    /**
+     * Converts instance to JSON object.
+     * @return JSON object, which is ready to be sent to a Discord API.
+     */
+    public toJSON(): object {
         return {
             type: MediaGalleryComponent.type,
             items: this.images,
