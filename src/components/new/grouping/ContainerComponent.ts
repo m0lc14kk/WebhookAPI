@@ -1,12 +1,13 @@
 import { MAX_COLOR_NUMBER } from "../../../globals"
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
+import { ContainerDefaultProperties } from "./ContainerDefaultProperties"
 import { ContainerComponentTypes } from "./types/ContainerComponentTypes"
 
 class ContainerComponent extends Component {
     public static override readonly type: ComponentType = ComponentType.CONTAINER
     private components: ContainerComponentTypes[] = []
-    private accentColor: number = 0x000000
+    private accentColor: number = ContainerDefaultProperties.getDefaultEmbedColor()
     private spoiler: boolean = false
 
     public setComponents(...components: ContainerComponentTypes[]): this {

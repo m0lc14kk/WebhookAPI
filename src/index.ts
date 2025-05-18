@@ -48,6 +48,7 @@ export * from "./components/new/dropdowns/constants/SelectMenuDefaultOptionType"
 
 export * from "./components/new/grouping/ActionRowComponent"
 export * from "./components/new/grouping/ContainerComponent"
+export * from "./components/new/grouping/ContainerDefaultProperties"
 export * from "./components/new/grouping/SectionComponent"
 
 export * from "./components/new/display/SeparatorComponent"
