@@ -18,6 +18,11 @@ class Webhook {
         return /^https:\/\/(canary\.|ptb\.)?discord\.com\/api\/webhooks\/\d{17,20}\/[A-Za-z0-9_-]{60,70}$/.test(webhookUrl)
     }
 
+    /**
+     * URL of a Discord webhook.
+     * @remarks This URL contains essential information. It is not recommended to provide it directly.
+     * @readonly This property is in read-only mode.
+     */
     public readonly webhookUrl: string
 
     /**

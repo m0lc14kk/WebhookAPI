@@ -1,8 +1,8 @@
 import type { WebhookType } from "../constants/WebhookType"
 
 interface IWebhookStructure {
-    id: string
     type: WebhookType
+    id: string
     channel_id: string | null
     application_id: string | null
     name: string | null
