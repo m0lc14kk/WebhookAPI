@@ -6,6 +6,11 @@ class Button extends BaseButton {
     protected override readonly style: ButtonStyleCommonTypes = ButtonStyle.PRIMARY
     private customId: string | null = null
 
+    /**
+     * Sets a custom identifier, which are required to interact with API.
+     * @param customId Custom identifier of a button.
+     * @returns Edited instance.
+     */
     public setCustomId(customId: string): this {
         this.customId = customId
         return this
@@ -16,6 +21,9 @@ class Button extends BaseButton {
      * @return JSON object, which is ready to be sent to a Discord API.
      */
     public toJSON(): object {
+        if (this.customId === null) throw new Error("DataError: You must provide customId after creating a button.")
+        if (!this.emoji && !this.label) throw new Error("DataError: You must provide an emoji or a label of a button.")
+
         return {
             type: Button.type,
             label: this.label,

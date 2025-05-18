@@ -10,16 +10,31 @@ abstract class BaseButton extends Component {
     protected disabled: boolean = false
     protected emoji: string | ComponentEmojiType | null = null
 
+    /**
+     * Sets a label of a button.
+     * @param label Label of a button.
+     * @returns Edited instance.
+     */
     public setLabel(label: string): this {
         this.label = label
         return this
     }
 
+    /**
+     * Sets a disabled state on a button.
+     * @param disabled Disable state.
+     * @returns Edited instance.
+     */
     public setDisabled(disabled: boolean): this {
         this.disabled = disabled
         return this
     }
 
+    /**
+     * Sets an emoji of a button.
+     * @param emoji Emoji of a button.
+     * @returns Edited instance.
+     */
     public setEmoji(emoji: string | ComponentEmojiType | null): this {
         this.emoji = emoji
         return this

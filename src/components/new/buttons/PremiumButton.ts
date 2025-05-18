@@ -7,6 +7,11 @@ class PremiumButton extends Component {
     private readonly style: ButtonStyle.PREMIUM = ButtonStyle.PREMIUM
     private skuId: string | null = null
 
+    /**
+     * Sets an identifier of a shop item on button.
+     * @param skuId Identifier of a shop item.
+     * @returns Edited instance.
+     */
     public setSkuId(skuId: string): PremiumButton {
         this.skuId = skuId
         return this
