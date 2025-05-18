@@ -1,7 +1,7 @@
 import { BaseButton } from "./BaseButton"
 import { ButtonStyle } from "./constants/ButtonStyle"
 
-export const ALLOWED_URL_PROTOCOLS: readonly string[] = ["discord://", "https://", "http://"]
+const ALLOWED_URL_PROTOCOLS: readonly string[] = ["discord://", "https://", "http://"]
 
 class LinkButton extends BaseButton {
     protected override readonly style: ButtonStyle.LINK = ButtonStyle.LINK
@@ -40,4 +40,4 @@ class LinkButton extends BaseButton {
     }
 }
 
-export { LinkButton }
+export { LinkButton, ALLOWED_URL_PROTOCOLS }
