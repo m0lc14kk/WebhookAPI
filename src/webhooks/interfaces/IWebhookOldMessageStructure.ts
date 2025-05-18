@@ -8,29 +8,29 @@ type IWebhookOldMessageStructure = IWebhookMessageStructure & {
     version: WebhookMessageType.OLD
 } & (
         | {
-            content: string
-            embeds?: EmbedBuilder[]
-            poll?: PollBuilder
-            components?: ActionRowComponent[]
-        }
+              content: string
+              embeds?: EmbedBuilder[]
+              poll?: PollBuilder
+              components?: ActionRowComponent[]
+          }
         | {
-            content?: string
-            embeds: EmbedBuilder[]
-            poll?: PollBuilder
-            components?: ActionRowComponent[]
-        }
+              content?: string
+              embeds: EmbedBuilder[]
+              poll?: PollBuilder
+              components?: ActionRowComponent[]
+          }
         | {
-            content?: string
-            embeds?: EmbedBuilder[]
-            poll: PollBuilder
-            components?: ActionRowComponent[]
-        }
+              content?: string
+              embeds?: EmbedBuilder[]
+              poll: PollBuilder
+              components?: ActionRowComponent[]
+          }
         | {
-            content?: string
-            embeds?: EmbedBuilder[]
-            poll?: PollBuilder
-            components: ActionRowComponent[]
-        }
+              content?: string
+              embeds?: EmbedBuilder[]
+              poll?: PollBuilder
+              components: ActionRowComponent[]
+          }
     )
 
 export { IWebhookOldMessageStructure }
