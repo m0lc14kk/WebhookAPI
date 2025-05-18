@@ -36,7 +36,7 @@ class ContainerComponent extends Component {
         this.spoiler = spoiler
         return this
     }
-    
+
     /**
      * Converts instance to JSON object.
      * @return JSON object, which is ready to be sent to a Discord API.
