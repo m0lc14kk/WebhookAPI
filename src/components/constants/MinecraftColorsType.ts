@@ -28,27 +28,27 @@ enum MinecraftColorsType {
      * This color is equal to §4 in Minecraft.
      */
     DarkRed = 0xaa000,
-    
+
     /**
      * This color is equal to §5 in Minecraft.
      */
     DarkPurple = 0xaa00aa,
-    
+
     /**
      * This color is equal to §6 in Minecraft.
      */
     Gold = 0xffaa00,
-    
+
     /**
      * This color is equal to §7 in Minecraft.
      */
     Gray = 0xaaaaaa,
-    
+
     /**
      * This color is equal to §8 in Minecraft.
      */
     DarkGray = 0x555555,
-    
+
     /**
      * This color is equal to §9 in Minecraft.
      */
