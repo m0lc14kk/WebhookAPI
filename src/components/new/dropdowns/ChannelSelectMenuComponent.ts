@@ -6,6 +6,11 @@ import type { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenu
 class ChannelSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultOptionType.CHANNEL> {
     public static readonly type: ComponentType = ComponentType.CHANNEL_SELECT
 
+    /**
+     * Sets default values of a dropdown menu.
+     * @param defaultValues Default values of a dropdown.
+     * @returns Edited instance.
+     */
     public override setDefaultValues(...defaultValues: Omit<ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.CHANNEL>, "type">[]): this {
         this.defaultValues = defaultValues.map(({ id }) => ({
             id,
@@ -14,6 +19,11 @@ class ChannelSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefau
         return this
     }
 
+    /**
+     * Adds default values of a dropdown menu.
+     * @param defaultValues Default values of a dropdown.
+     * @returns Edited instance.
+     */
     public override addDefaultValues(...defaultValues: Omit<ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.CHANNEL>, "type">[]): this {
         const transformedValues: ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.CHANNEL>[] = defaultValues.map(({ id }) => ({
             id,

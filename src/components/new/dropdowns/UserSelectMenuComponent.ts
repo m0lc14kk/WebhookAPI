@@ -6,6 +6,11 @@ import type { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenu
 class UserSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultOptionType.USER> {
     public static readonly type: ComponentType = ComponentType.USER_SELECT
 
+    /**
+     * Sets default values of a dropdown menu.
+     * @param defaultValues Default values of a dropdown.
+     * @returns Edited instance.
+     */
     public override setDefaultValues(...defaultValues: Omit<ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.USER>, "type">[]): this {
         this.defaultValues = defaultValues.map(({ id }) => ({
             id,
@@ -14,6 +19,11 @@ class UserSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultO
         return this
     }
 
+    /**
+     * Adds default values of a dropdown menu.
+     * @param defaultValues Default values of a dropdown.
+     * @returns Edited instance.
+     */
     public override addDefaultValues(...defaultValues: Omit<ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.USER>, "type">[]): this {
         const transformedValues: ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.USER>[] = defaultValues.map(({ id }) => ({
             id,
