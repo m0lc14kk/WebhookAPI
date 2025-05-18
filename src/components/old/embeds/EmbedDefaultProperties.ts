@@ -1,4 +1,4 @@
-const MAX_COLOR_NUMBER: number = Math.pow(256, 3) - 1
+import { MAX_COLOR_NUMBER } from "../../../globals"
 
 class EmbedDefaultProperties {
     private constructor() {}

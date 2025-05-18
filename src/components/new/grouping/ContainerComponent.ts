@@ -1,8 +1,7 @@
+import { MAX_COLOR_NUMBER } from "../../../globals"
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
 import { ContainerComponentTypes } from "./types/ContainerComponentTypes"
-
-const MAX_COLOR_NUMBER: Readonly<number> = Math.pow(256, 3) - 1
 
 class ContainerComponent extends Component {
     public static override readonly type: ComponentType = ComponentType.CONTAINER

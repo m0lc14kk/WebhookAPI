@@ -1,10 +1,9 @@
+import { MAX_COLOR_NUMBER } from "../../../globals"
 import { EmbedDefaultProperties } from "./EmbedDefaultProperties"
 import type { IEmbedAuthorStructure } from "./interfaces/IEmbedAuthorStructure"
 import type { IEmbedFieldStructure } from "./interfaces/IEmbedFieldStructure"
 import type { IEmbedFooterStructure } from "./interfaces/IEmbedFooterStructure"
 import type { IEmbedMediaStructure } from "./interfaces/IEmbedMediaStructure"
-
-const MAX_COLOR_NUMBER: number = Math.pow(256, 3) - 1
 
 class EmbedBuilder {
     private readonly ISO8601_REGEX: Readonly<RegExp> =

@@ -58,3 +58,5 @@ export * from "./components/new/display/constants/SeparatorPaddingType"
 export * from "./components/new/media/FileComponent"
 export * from "./components/new/media/MediaGalleryComponent"
 export * from "./components/new/media/interfaces/IMediaGalleryItemStructure"
+
+export * from "./globals"
