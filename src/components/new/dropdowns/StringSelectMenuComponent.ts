@@ -13,7 +13,7 @@ class StringSelectMenuComponent extends Component {
 
     /**
      * Sets a custom identifier of a dropdown menu.
-     * @param customId Custom identifier of a dropdown menu. 
+     * @param customId Custom identifier of a dropdown menu.
      * @returns Edited instance.
      */
     public setCustomId(customId: string): StringSelectMenuComponent {
@@ -72,7 +72,7 @@ class StringSelectMenuComponent extends Component {
         this.options = options
         return this
     }
-    
+
     /**
      * Adds options to a dropdpown.
      * @param maxValues New options of a dropdown.

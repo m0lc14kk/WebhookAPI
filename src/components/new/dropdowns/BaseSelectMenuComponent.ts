@@ -12,7 +12,7 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
 
     /**
      * Sets a custom identifier of a dropdown menu.
-     * @param customId Custom identifier of a dropdown menu. 
+     * @param customId Custom identifier of a dropdown menu.
      * @returns Edited instance.
      */
     public setCustomId(customId: string): this {
