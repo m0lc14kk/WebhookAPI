@@ -3,7 +3,7 @@ import { ButtonStyle } from "./constants/ButtonStyle"
 import type { ButtonStyleCommonTypes } from "./types/ButtonStyleCommonTypes"
 
 class Button extends BaseButton {
-    protected override readonly style: ButtonStyleCommonTypes = ButtonStyle.PRIMARY
+    protected override style: ButtonStyleCommonTypes = ButtonStyle.PRIMARY
     private customId: string | null = null
 
     /**
@@ -13,6 +13,11 @@ class Button extends BaseButton {
      */
     public setCustomId(customId: string): this {
         this.customId = customId
+        return this
+    }
+
+    public setStyle(style: ButtonStyleCommonTypes): this {
+        this.style = style
         return this
     }
 
