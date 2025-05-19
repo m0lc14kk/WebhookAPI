@@ -49,5 +49,5 @@ If you are using BDS (Bedrock Dedicated Server), you should use `Webhook` class.
     - Copy end-point of a WebSocket Server from command.
     - Open your world and connect to the websocket via `/wsserver` command:
     ```sql
-        /wsserver <end-point>
+    /wsserver <end-point>
     ```
