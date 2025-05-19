@@ -11,7 +11,6 @@
  */
 
 export * from "./webhooks/Webhook"
-export * from "./webhooks/WebSocketWebhook"
 export * from "./webhooks/interfaces/IWebhookApplicationStructure"
 export * from "./webhooks/interfaces/IWebhookChannelFollowerStructure"
 export * from "./webhooks/interfaces/IWebhookEditStructure"

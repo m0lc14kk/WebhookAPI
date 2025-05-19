@@ -45,9 +45,4 @@ If you are using BDS (Bedrock Dedicated Server), you should use `Webhook` class.
         }
 
 - ### Worlds:
-    - Download `websocket.zip` from [releases](https://github.com/m0lc14kk/WebhookAPI/releases) and check README for next steps of a WebSocket server deployment.
-    - Copy end-point of a WebSocket Server from command.
-    - Open your world and connect to the websocket via `/wsserver` command:
-    ```sql
-    /wsserver <end-point>
-    ```
+    At this moment, worlds are not supported. Consider using redirects with `@minecraft/server-admin` to an external server.
