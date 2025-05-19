@@ -27,7 +27,7 @@ class Webhook {
      * @param webhookUrl URL of a webhook, that includes his ID and token.
      */
     public constructor(webhookUrl: string) {
-        if (DiscordWebhookEndPointValidator.isDiscordWebhookEndPoint(webhookUrl)) {
+        if (!DiscordWebhookEndPointValidator.isDiscordWebhookEndPoint(webhookUrl)) {
             throw new Error("DataError: Invalid webhook's URL has been provided.")
         }
 
@@ -101,12 +101,26 @@ class Webhook {
         message: IWebhookOldMessageStructure | IWebhookNewMessageStructure,
         options?: IWebhookMessageMethodQueryOptionsStructure | null,
     ): Promise<IWebhookDiscordMessageStructure | true | null> {
-        const finalUrl: URL = new URL(this.webhookUrl)
-        if (options?.wait) finalUrl.searchParams.set("wait", "true")
-        if (options?.withComponent) finalUrl.searchParams.set("with_components", "true")
+        let finalUrl: string = this.webhookUrl;
+        const params: string[] = [];
+
+        if (options?.wait) {
+            params.push("wait=true");
+        }
+
+        if (options?.withComponent) {
+            params.push("with_components=true");
+        }
+
         if (options?.threadId) {
-            if (SnowflakeValidator.isSnowflake(options.threadId)) throw new Error("DataError: Invalid thread's identifier.")
-            finalUrl.searchParams.set("thread_id", options.threadId)
+            if (SnowflakeValidator.isSnowflake(options.threadId)) {
+                throw new Error("DataError: Invalid thread's identifier.");
+            }
+            params.push(`thread_id=${encodeURIComponent(options.threadId)}`);
+        }
+
+        if (params.length > 0) {
+            finalUrl += (finalUrl.includes("?") ? "&" : "?") + params.join("&");
         }
 
         if (message.version === WebhookMessageType.OLD) {
@@ -117,22 +131,26 @@ class Webhook {
         }
 
         try {
-            const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
+            const { http, HttpRequest, HttpRequestMethod, HttpHeader } = await import("@minecraft/server-net")
             const response = await http.request(
-                new HttpRequest(finalUrl.toString()).setMethod(HttpRequestMethod.Post).setBody(
-                    message.version === WebhookMessageType.NEW
-                        ? JSON.stringify({
-                              ...message,
-                              components: message.components.map((component: Component) => component.toJSON()),
-                          })
-                        : JSON.stringify({
-                              ...message,
-                              embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                              components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                              poll: message.poll ? message.poll.toJSON() : undefined,
-                              content: message.content || "",
-                          }),
-                ),
+                new HttpRequest(finalUrl).setMethod(HttpRequestMethod.Post)
+                    .setHeaders([
+                        new HttpHeader("Content-Type", "application/json")
+                    ])
+                    .setBody(
+                        message.version === WebhookMessageType.NEW
+                            ? JSON.stringify({
+                                ...message,
+                                components: message.components.map((component: Component) => component.toJSON()),
+                            })
+                            : JSON.stringify({
+                                ...message,
+                                embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                                components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                                poll: message.poll ? message.poll.toJSON() : undefined,
+                                content: message.content || "",
+                            }),
+                    ),
             )
 
             if (response.status === 200) return JSON.parse(response.body)
@@ -182,11 +200,22 @@ class Webhook {
         message: Partial<IWebhookNewMessageStructure | IWebhookOldMessageStructure> & { version: WebhookMessageType },
         options?: Omit<IWebhookMessageMethodQueryOptionsStructure, "wait">,
     ): Promise<IWebhookDiscordMessageStructure | null> {
-        const finalUrl: URL = new URL(`${this.webhookUrl}/messages/${messageId}`)
-        if (options?.withComponent) finalUrl.searchParams.set("with_components", "true")
+        let finalUrl: string = `${this.webhookUrl}/messages/${messageId}`;
+        const params: string[] = [];
+
+        if (options?.withComponent) {
+            params.push("with_components=true");
+        }
+
         if (options?.threadId) {
-            if (SnowflakeValidator.isSnowflake(options.threadId)) throw new Error("DataError: Invalid thread's identifier.")
-            finalUrl.searchParams.set("thread_id", options.threadId)
+            if (SnowflakeValidator.isSnowflake(options.threadId)) {
+                throw new Error("DataError: Invalid thread's identifier.");
+            }
+            params.push(`thread_id=${encodeURIComponent(options.threadId)}`);
+        }
+
+        if (params.length > 0) {
+            finalUrl += `?${params.join("&")}`;
         }
 
         if (message.version === WebhookMessageType.OLD) {
@@ -197,21 +226,23 @@ class Webhook {
         }
 
         try {
-            const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
+            const { http, HttpRequest, HttpRequestMethod, HttpHeader } = await import("@minecraft/server-net")
             const response = await http.request(
-                new HttpRequest(finalUrl.toString()).setMethod(HttpRequestMethod.Post).setBody(
+                new HttpRequest(finalUrl).setMethod(HttpRequestMethod.Post).setHeaders([
+                    new HttpHeader("Content-Type", "application/json")
+                ]).setBody(
                     message.version === WebhookMessageType.NEW
                         ? JSON.stringify({
-                              ...message,
-                              components: (message.components || []).map((component: Component) => component.toJSON()),
-                          })
+                            ...message,
+                            components: (message.components || []).map((component: Component) => component.toJSON()),
+                        })
                         : JSON.stringify({
-                              ...message,
-                              embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                              components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                              poll: message.poll ? message.poll.toJSON() : undefined,
-                              content: message.content || "",
-                          }),
+                            ...message,
+                            embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                            components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                            poll: message.poll ? message.poll.toJSON() : undefined,
+                            content: message.content || "",
+                        }),
                 ),
             )
 

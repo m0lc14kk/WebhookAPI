@@ -21,7 +21,7 @@ interface IWebhookMessageStructure {
 
     /**
      * If a message will be text-to-speech.
-     * @default fasle
+     * @default false
      */
     tts?: boolean
 
@@ -53,7 +53,7 @@ interface IWebhookMessageStructure {
     /**
      * Name of a thread.
      */
-    thread_name: string
+    thread_name?: string
 }
 
 export { IWebhookMessageStructure }
