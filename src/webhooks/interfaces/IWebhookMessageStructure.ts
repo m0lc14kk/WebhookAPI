@@ -1,3 +1,4 @@
+import { WebhookMessageFlagsType } from "../constants/WebhookMessageFlagsType"
 import type { WebhookMessageMentionsParseType } from "../constants/WebhookMessageMentionsParseType"
 import type { WebhookMessageType } from "../constants/WebhookMessageType"
 
@@ -6,6 +7,11 @@ interface IWebhookMessageStructure {
      * Version of a message content.
      */
     version: WebhookMessageType
+
+    /**
+     * Flags of a message.
+     */
+    flags?: WebhookMessageFlagsType[]
 
     /**
      * Optional username of an author.

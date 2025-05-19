@@ -8,7 +8,7 @@ interface IWebhookMessageMethodQueryOptionsStructure {
     /**
      * If components in old format should be respected.
      */
-    withComponent?: boolean
+    withComponents?: boolean
 
     /**
      * Optional identifier of a thread.
