@@ -1,6 +1,7 @@
 import { Component } from "../components/Component"
 import { ActionRowComponent } from "../components/new/grouping/ActionRowComponent"
 import { EmbedBuilder } from "../components/old/embeds/EmbedBuilder"
+import { DiscordWebhookEndPointValidator } from "../validators/DiscordWebhookEndPointValidator"
 import { SnowflakeValidator } from "../validators/SnowflakeValidator"
 import { WebhookMessageType } from "./constants/WebhookMessageType"
 import type { IWebhookEditStructure } from "./interfaces/IWebhookEditStructure"
@@ -14,9 +15,6 @@ import type { IWebhookOldMessageStructure } from "./interfaces/IWebhookOldMessag
  */
 class WebSocketWebhook {
     private static readonly MESSAGE_FLAG: Readonly<string> = "§w§e§b§h§o§o§k§a§p§i"
-    public static validateUri(webhookUrl: string): boolean {
-        return /^https:\/\/(canary\.|ptb\.)?discord\.com\/api\/webhooks\/\d{17,20}\/[A-Za-z0-9_-]{60,70}$/.test(webhookUrl)
-    }
 
     /**
      * URL of a Discord webhook.
@@ -30,7 +28,7 @@ class WebSocketWebhook {
      * @param webhookUrl URL of a webhook, that includes his ID and token.
      */
     public constructor(webhookUrl: string) {
-        if (WebSocketWebhook.validateUri(webhookUrl)) {
+        if (DiscordWebhookEndPointValidator.isDiscordWebhookEndPoint(webhookUrl)) {
             throw new Error("DataError: Invalid webhook's URL has been provided.")
         }
 

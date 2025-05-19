@@ -63,3 +63,4 @@ export * from "./components/new/media/interfaces/IMediaGalleryItemStructure"
 
 export * from "./globals"
 export * from "./validators/SnowflakeValidator"
+export * from "./validators/DiscordWebhookEndPointValidator"

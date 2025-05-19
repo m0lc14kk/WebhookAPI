@@ -9,15 +9,12 @@ import { IWebhookDiscordMessageStructure } from "./interfaces/IWebhookDiscordMes
 import { Component } from "../components/Component"
 import { EmbedBuilder } from "../components/old/embeds/EmbedBuilder"
 import { ActionRowComponent } from "../components/new/grouping/ActionRowComponent"
+import { DiscordWebhookEndPointValidator } from "../validators/DiscordWebhookEndPointValidator"
 
 /**
  * Discord Webhook instance that is connecting to REST API via `@minecraft/server-net` library.
  */
 class Webhook {
-    public static validateUri(webhookUrl: string): boolean {
-        return /^https:\/\/(canary\.|ptb\.)?discord\.com\/api\/webhooks\/\d{17,20}\/[A-Za-z0-9_-]{60,70}$/.test(webhookUrl)
-    }
-
     /**
      * URL of a Discord webhook.
      * @remarks This URL contains essential information. It is not recommended to provide it directly.
@@ -30,7 +27,7 @@ class Webhook {
      * @param webhookUrl URL of a webhook, that includes his ID and token.
      */
     public constructor(webhookUrl: string) {
-        if (Webhook.validateUri(webhookUrl)) {
+        if (DiscordWebhookEndPointValidator.isDiscordWebhookEndPoint(webhookUrl)) {
             throw new Error("DataError: Invalid webhook's URL has been provided.")
         }
 
