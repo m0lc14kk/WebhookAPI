@@ -133,20 +133,18 @@ class Webhook {
         const finalObject = {
             ...message,
             flags: message.flags?.reduce((a: number, b: number) => a + b) || 0 + message.version === WebhookMessageType.NEW ? 32768 : 0,
-            ...(
-                message.version === WebhookMessageType.NEW
-                            ? {
-                                  ...message,
-                                  components: message.components.map((component: Component) => component.toJSON()),
-                              }
-                            : {
-                                  ...message,
-                                  embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                                  components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                                  poll: message.poll ? message.poll.toJSON() : undefined,
-                                  content: message.content || "",
-                              }
-            )
+            ...(message.version === WebhookMessageType.NEW
+                ? {
+                    ...message,
+                    components: message.components.map((component: Component) => component.toJSON()),
+                }
+                : {
+                    ...message,
+                    embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                    components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                    poll: message.poll ? message.poll.toJSON() : undefined,
+                    content: message.content || "",
+                }),
         }
 
         try {
@@ -230,27 +228,32 @@ class Webhook {
             if (message.components?.length === 0) throw new Error("DataError: You must provide at least 1 component to send a message.")
         }
 
+        const finalObject = {
+            ...message,
+            flags: message.flags?.reduce((a: number, b: number) => a + b) || 0 + message.version === WebhookMessageType.NEW ? 32768 : 0,
+            ...(message.version === WebhookMessageType.NEW
+                ? {
+                    ...message,
+                    components: (message?.components || [])?.map((component: Component) => component.toJSON()),
+                }
+                : {
+                    ...message,
+                    embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                    components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                    poll: message.poll ? message.poll.toJSON() : undefined,
+                    content: message.content || "",
+                }),
+        }
+
         try {
             const { http, HttpRequest, HttpRequestMethod, HttpHeader } = await import("@minecraft/server-net")
             const response = await http.request(
                 new HttpRequest(finalUrl)
                     .setMethod(HttpRequestMethod.Post)
                     .setHeaders([new HttpHeader("Content-Type", "application/json")])
-                    .setBody(
-                        message.version === WebhookMessageType.NEW
-                            ? JSON.stringify({
-                                  ...message,
-                                  components: (message.components || []).map((component: Component) => component.toJSON()),
-                              })
-                            : JSON.stringify({
-                                  ...message,
-                                  embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                                  components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                                  poll: message.poll ? message.poll.toJSON() : undefined,
-                                  content: message.content || "",
-                              }),
-                    ),
+                    .setBody(JSON.stringify(finalObject)),
             )
+            
 
             if (response.status === 200) return JSON.parse(response.body)
             return null
