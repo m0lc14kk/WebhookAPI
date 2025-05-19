@@ -9,7 +9,8 @@ import type { IWebhookNewMessageStructure } from "./interfaces/IWebhookNewMessag
 import type { IWebhookOldMessageStructure } from "./interfaces/IWebhookOldMessageStructure"
 
 /**
- * Discord Webhook instance that is connecting to REST API via `@minecraft/server-net` library.
+ * Discord Webhook instance that is connecting to REST API via WebSockets.
+ * @remarks This class does not support every route of an API, due to limits with WebSockets. Consider using `Webhook` class if you can.
  */
 class WebSocketWebhook {
     private static readonly MESSAGE_FLAG: Readonly<string> = "§w§e§b§h§o§o§k§a§p§i"
@@ -45,8 +46,9 @@ class WebSocketWebhook {
             url: this.webhookUrl,
             method: "PATCH",
             body: {
-                name, avatar
-            }
+                name,
+                avatar,
+            },
         })
 
         try {
@@ -64,7 +66,7 @@ class WebSocketWebhook {
     public async deleteWebhook(): Promise<void> {
         const stringifiedMessage: string = JSON.stringify({
             url: this.webhookUrl,
-            method: "DELETE"
+            method: "DELETE",
         })
 
         try {
@@ -80,10 +82,7 @@ class WebSocketWebhook {
      * @param message Content of a message.
      * @param options Options of a message.
      */
-    public async sendMessage(
-        message: IWebhookOldMessageStructure | IWebhookNewMessageStructure,
-        options?: IWebhookMessageMethodQueryOptionsStructure | null,
-    ): Promise<void> {
+    public async sendMessage(message: IWebhookOldMessageStructure | IWebhookNewMessageStructure, options?: IWebhookMessageMethodQueryOptionsStructure | null): Promise<void> {
         const finalUrl: URL = new URL(this.webhookUrl)
         if (options?.wait) finalUrl.searchParams.set("wait", "true")
         if (options?.withComponent) finalUrl.searchParams.set("with_components", "true")
@@ -102,18 +101,19 @@ class WebSocketWebhook {
         const stringifiedMessage: string = JSON.stringify({
             url: this.webhookUrl,
             method: "POST",
-            body: message.version === WebhookMessageType.NEW
-                ? JSON.stringify({
-                    ...message,
-                    components: message.components.map((component: Component) => component.toJSON()),
-                })
-                : JSON.stringify({
-                    ...message,
-                    embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                    components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                    poll: message.poll ? message.poll.toJSON() : undefined,
-                    content: message.content || "",
-                }),
+            body:
+                message.version === WebhookMessageType.NEW
+                    ? JSON.stringify({
+                          ...message,
+                          components: message.components.map((component: Component) => component.toJSON()),
+                      })
+                    : JSON.stringify({
+                          ...message,
+                          embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                          components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                          poll: message.poll ? message.poll.toJSON() : undefined,
+                          content: message.content || "",
+                      }),
         })
 
         try {
@@ -153,18 +153,19 @@ class WebSocketWebhook {
         const stringifiedMessage: string = JSON.stringify({
             url: finalUrl.toString(),
             method: "DELETE",
-            body: message.version === WebhookMessageType.NEW
-                ? JSON.stringify({
-                    ...message,
-                    components: (message.components || []).map((component: Component) => component.toJSON()),
-                })
-                : JSON.stringify({
-                    ...message,
-                    embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                    components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                    poll: message.poll ? message.poll.toJSON() : undefined,
-                    content: message.content || "",
-                }),
+            body:
+                message.version === WebhookMessageType.NEW
+                    ? JSON.stringify({
+                          ...message,
+                          components: (message.components || []).map((component: Component) => component.toJSON()),
+                      })
+                    : JSON.stringify({
+                          ...message,
+                          embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                          components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                          poll: message.poll ? message.poll.toJSON() : undefined,
+                          content: message.content || "",
+                      }),
         })
 
         try {
