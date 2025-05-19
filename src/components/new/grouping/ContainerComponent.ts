@@ -7,7 +7,7 @@ import { ContainerComponentTypes } from "./types/ContainerComponentTypes"
 class ContainerComponent extends Component {
     public static override readonly type: ComponentType = ComponentType.CONTAINER
     private components: ContainerComponentTypes[] = []
-    private accentColor: number = ContainerDefaultProperties.getDefaultEmbedColor()
+    private accentColor: number | null = ContainerDefaultProperties.getDefaultEmbedColor()
     private spoiler: boolean = false
 
     /**
@@ -36,7 +36,12 @@ class ContainerComponent extends Component {
      * @throws Throws an error if provided accent color as a HEX string is invalid.
      * @returns Edited instance.
      */
-    public setAccentColor(accentColor: string | number): this {
+    public setAccentColor(accentColor: string | number | null): this {
+        if (accentColor === null) {
+            this.accentColor = null
+            return this
+        }
+
         if (typeof accentColor == "string") {
             if (!accentColor.startsWith("#") && accentColor.length !== 7) throw new Error("DataError: Invalid color HEX.")
             this.accentColor = Number(`0x${accentColor.slice(1)}`)
