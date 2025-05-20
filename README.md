@@ -9,13 +9,10 @@
 
 2. Install `index.js` (or `index.ts` if you're using TypeScript) and `index.d.ts` files and drag them into your project.
 
-3. Start using our API.
-
-It's that simple!
+3. Start using our API in your code!
 
 # 📌 REQUIREMENTS
-- Bedrock Dedicated Server
-- A small set-up of an add-on.
+Before you will begin with installation this API, create a basic add-on template before. It should have atleast a manifest and a scripting folder.
 
 - ### BDS:
     - Activate **Experimental Beta API** in a world.
