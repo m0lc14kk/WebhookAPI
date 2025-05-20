@@ -7,14 +7,15 @@
 # 📦 INSTALLATION
 1. Navigate to [releases](https://github.com/m0lc14kk/WebhookAPI/releases) and download the latest one.
 
-2. Install `index.js`, `index.d.ts` and `index.js.map` files and drag them into your project. If you're using TypeScript, you might want to change file extensions to `.ts` instead.
+2. Install `index.js` (or `index.ts` if you're using TypeScript) and `index.d.ts` files and drag them into your project.
 
 3. Start using our API.
 
 It's that simple!
 
 # 📌 REQUIREMENTS
-If you are using BDS (Bedrock Dedicated Server), you should use `Webhook` class. If you are using world, you're forced to use `WebSocketWebhook`.
+- Bedrock Dedicated Server
+- A small set-up of an add-on.
 
 - ### BDS:
     - Activate **Experimental Beta API** in a world.
