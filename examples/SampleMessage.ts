@@ -1,3 +1,8 @@
+/**
+ * This is a sample test for checking, if API has loaded correctly.
+ * It should send a basic message to your Discord channel.
+ */
+
 import { world } from "@minecraft/server"
 import { ContainerComponent, MediaGalleryComponent, TextDisplayComponent, Webhook, WebhookMessageType } from "../src" // Change path to your's index file.
 
