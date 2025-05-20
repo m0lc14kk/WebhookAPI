@@ -32,9 +32,9 @@ export * from "./components/old/polls/interfaces/IPollAnswerStructure"
 export * from "./components/constants/MinecraftColorsType"
 export * from "./components/constants/ComponentType"
 
-export * from "./components/new/buttons/Button"
+export * from "./components/new/buttons/ButtonComponent"
 export * from "./components/new/buttons/LinkButton"
-export * from "./components/new/buttons/PremiumButton"
+export * from "./components/new/buttons/PremiumButtonComponent"
 export * from "./components/new/buttons/constants/ButtonStyle"
 
 export * from "./components/new/dropdowns/ChannelSelectMenuComponent"

@@ -1,6 +1,6 @@
-import { BaseButton } from "../../buttons/BaseButton"
+import { BaseButtonComponent } from "../../buttons/BaseButtonComponent"
 import { ThumbnailComponent } from "../../display/ThumbnailComponent"
 
-type SectionAccessoryTypes = BaseButton | ThumbnailComponent
+type SectionAccessoryTypes = BaseButtonComponent | ThumbnailComponent
 
 export type { SectionAccessoryTypes }

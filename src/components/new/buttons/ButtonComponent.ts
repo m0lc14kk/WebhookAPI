@@ -1,8 +1,8 @@
-import { BaseButton } from "./BaseButton"
+import { BaseButtonComponent } from "./BaseButtonComponent"
 import { ButtonStyle } from "./constants/ButtonStyle"
 import type { ButtonStyleCommonTypes } from "./types/ButtonStyleCommonTypes"
 
-class Button extends BaseButton {
+class ButtonComponent extends BaseButtonComponent {
     protected override style: ButtonStyleCommonTypes = ButtonStyle.PRIMARY
     private customId: string | null = null
 
@@ -30,7 +30,7 @@ class Button extends BaseButton {
         if (!this.emoji && !this.label) throw new Error("DataError: You must provide an emoji or a label of a button.")
 
         return {
-            type: Button.type,
+            type: ButtonComponent.type,
             label: this.label,
             custom_id: this.customId,
             style: this.style,
@@ -40,4 +40,4 @@ class Button extends BaseButton {
     }
 }
 
-export { Button }
+export { ButtonComponent }

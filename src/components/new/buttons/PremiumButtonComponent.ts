@@ -2,7 +2,7 @@ import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
 import { ButtonStyle } from "./constants/ButtonStyle"
 
-class PremiumButton extends Component {
+class PremiumButtonComponent extends Component {
     public static override readonly type: ComponentType = ComponentType.BUTTON
     private readonly style: ButtonStyle.PREMIUM = ButtonStyle.PREMIUM
     private skuId: string | null = null
@@ -12,7 +12,7 @@ class PremiumButton extends Component {
      * @param skuId Identifier of a shop item.
      * @returns Edited instance.
      */
-    public setSkuId(skuId: string): PremiumButton {
+    public setSkuId(skuId: string): this {
         this.skuId = skuId
         return this
     }
@@ -25,11 +25,11 @@ class PremiumButton extends Component {
         if (this.skuId === null) throw new Error("DataError: You have to provide SKU ID before creating a premium button.")
 
         return {
-            type: PremiumButton.type,
+            type: PremiumButtonComponent.type,
             style: this.style,
             sku_id: this.skuId,
         }
     }
 }
 
-export { PremiumButton }
+export { PremiumButtonComponent }

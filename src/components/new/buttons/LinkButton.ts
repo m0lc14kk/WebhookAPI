@@ -1,9 +1,9 @@
-import { BaseButton } from "./BaseButton"
+import { BaseButtonComponent } from "./BaseButtonComponent"
 import { ButtonStyle } from "./constants/ButtonStyle"
 
 const ALLOWED_URL_PROTOCOLS: readonly string[] = ["discord://", "https://", "http://"]
 
-class LinkButton extends BaseButton {
+class LinkButtonComponent extends BaseButtonComponent {
     protected override readonly style: ButtonStyle.LINK = ButtonStyle.LINK
     private url: string | null = null
 
@@ -13,7 +13,7 @@ class LinkButton extends BaseButton {
      * @throws Throws an error, if URL has an unsupported protocol.
      * @returns Edited instance.
      */
-    public setUrl(url: string): LinkButton {
+    public setUrl(url: string): this {
         const isValidProtocol: boolean = !!ALLOWED_URL_PROTOCOLS.find((protocol: string) => url.startsWith(protocol))
         if (!isValidProtocol) throw new Error("DataError: Invalid button's URL protocol.")
 
@@ -30,7 +30,7 @@ class LinkButton extends BaseButton {
         if (!this.emoji && !this.label) throw new Error("DataError: You must provide an emoji or a label of a button.")
 
         return {
-            type: LinkButton.type,
+            type: LinkButtonComponent.type,
             style: this.style,
             label: this.label,
             disabled: this.disabled,
@@ -40,4 +40,4 @@ class LinkButton extends BaseButton {
     }
 }
 
-export { LinkButton, ALLOWED_URL_PROTOCOLS }
+export { LinkButtonComponent, ALLOWED_URL_PROTOCOLS }

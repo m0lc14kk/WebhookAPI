@@ -1,6 +1,6 @@
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
-import { BaseButton } from "../buttons/BaseButton"
+import { BaseButtonComponent } from "../buttons/BaseButtonComponent"
 import { BaseSelectMenuComponent } from "../dropdowns/BaseSelectMenuComponent"
 import { StringSelectMenuComponent } from "../dropdowns/StringSelectMenuComponent"
 import type { ActionRowChildComponentType } from "./types/ActionRowChildComponentType"
@@ -38,7 +38,7 @@ class ActionRowComponent extends Component {
      * @throws Throws an error if they're invalid.
      */
     private validateComponents(components: ActionRowChildComponentType[]): void {
-        const isAllButtons: boolean = components.every((component: Component) => component instanceof BaseButton)
+        const isAllButtons: boolean = components.every((component: Component) => component instanceof BaseButtonComponent)
         const isSingleSelectMenu: boolean = components.length === 1 && (components[0] instanceof StringSelectMenuComponent || components[0] instanceof BaseSelectMenuComponent)
 
         if (!isAllButtons && !isSingleSelectMenu) throw new Error("DataError: ActionRowComponent must contain either 1 select menu or 1-5 buttons only.")

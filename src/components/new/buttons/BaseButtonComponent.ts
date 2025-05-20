@@ -3,7 +3,7 @@ import { ComponentType } from "../../constants/ComponentType"
 import { ComponentEmojiType } from "../../types/ComponentEmojiType"
 import { ButtonStyle } from "./constants/ButtonStyle"
 
-abstract class BaseButton extends Component {
+abstract class BaseButtonComponent extends Component {
     public static override readonly type: ComponentType = ComponentType.BUTTON
     protected abstract style: ButtonStyle
     protected label: string = ""
@@ -43,4 +43,4 @@ abstract class BaseButton extends Component {
     public abstract toJSON(): object
 }
 
-export { BaseButton }
+export { BaseButtonComponent }
