@@ -10,6 +10,7 @@ import { Component } from "../components/Component"
 import { EmbedBuilder } from "../components/old/embeds/EmbedBuilder"
 import { ActionRowComponent } from "../components/new/grouping/ActionRowComponent"
 import { DiscordWebhookEndPointValidator } from "../validators/DiscordWebhookEndPointValidator"
+import { DiscordMessageValidator } from "../validators/DiscordMessageValidator"
 
 /**
  * Discord Webhook instance that is connecting to REST API via `@minecraft/server-net` library.
@@ -123,12 +124,7 @@ class Webhook {
             finalUrl += (finalUrl.includes("?") ? "&" : "?") + params.join("&")
         }
 
-        if (message.version === WebhookMessageType.OLD) {
-            if (message.content && message.content.length > 2000) throw new Error("DataError: Content of a message cannot exceed 2000 characters.")
-            if (message.embeds && message.embeds.length > 10) throw new Error("DataError: You can send up to 10 embeds in a message.")
-        } else {
-            if (message.components.length === 0) throw new Error("DataError: You must provide at least 1 component to send a message.")
-        }
+        DiscordMessageValidator.validateMessage(message)
 
         const finalObject = {
             ...message,
@@ -221,12 +217,7 @@ class Webhook {
             finalUrl += `?${params.join("&")}`
         }
 
-        if (message.version === WebhookMessageType.OLD) {
-            if (message.content && message.content?.length > 2000) throw new Error("DataError: Content of a message cannot exceed 2000 characters.")
-            if (message.embeds && message.embeds?.length > 10) throw new Error("DataError: You can send up to 10 embeds in a message.")
-        } else {
-            if (message.components?.length === 0) throw new Error("DataError: You must provide at least 1 component to send a message.")
-        }
+        DiscordMessageValidator.validateMessage(message)
 
         const finalObject = {
             ...message,
@@ -269,15 +260,12 @@ class Webhook {
      */
     public async deleteMessage(messageId: string, threadId?: string): Promise<boolean> {
         if (!SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
-        const finalUrl: URL = new URL(`${this.webhookUrl}/messages/${messageId}`)
-        if (threadId) {
-            if (!SnowflakeValidator.isSnowflake(threadId)) throw new Error("DataError: Invalid message's identifier.")
-            finalUrl.searchParams.set("thread_id", threadId)
-        }
+        let finalUrl: string = `${this.webhookUrl}/messages/${messageId}`
+        if (threadId) finalUrl += `?thread_id=${threadId}`
 
         try {
             const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
-            await http.request(new HttpRequest(finalUrl.toString()).setMethod(HttpRequestMethod.Delete))
+            await http.request(new HttpRequest(finalUrl).setMethod(HttpRequestMethod.Delete))
             return true
         } catch {
             return false
