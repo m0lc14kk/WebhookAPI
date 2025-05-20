@@ -9,7 +9,7 @@
 
 2. Install `index.js` (or `index.ts` if you're using TypeScript) and `index.d.ts` files and drag them into your project.
 
-3. Start using our API in your code!
+3. Start using our API in your code! You can use [examples](https://github.com/m0lc14kk/WebhookAPI/tree/main/examples) to check if you have done eveyrthing right.
 
 # 📌 REQUIREMENTS
 Before you will begin with installation this API, create a basic add-on template before. It should have atleast a manifest and a scripting folder.
