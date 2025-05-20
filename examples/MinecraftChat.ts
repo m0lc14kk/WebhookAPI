@@ -16,14 +16,14 @@ world.beforeEvents.chatSend.subscribe((eventData: ChatSendBeforeEvent): void => 
 
     world.sendMessage(`${player.name}: ${message}`)
     system.run((): void => {
-        webhook.sendMessage({
-            version: WebhookMessageType.NEW,
-            components: [
-                new TextDisplayComponent()
-                    .setContent(`${player.name}: ${message}`)
-            ]
-        }, {
-            withComponents: true
-        })
+        webhook.sendMessage(
+            {
+                version: WebhookMessageType.NEW,
+                components: [new TextDisplayComponent().setContent(`${player.name}: ${message}`)],
+            },
+            {
+                withComponents: true,
+            },
+        )
     })
 })
