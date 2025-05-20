@@ -5,7 +5,7 @@ import type { IWebhookNewMessageStructure } from "./interfaces/IWebhookNewMessag
 import type { IWebhookMessageMethodQueryOptionsStructure } from "./interfaces/IWebhookMessageMethodQueryOptionsStructure"
 import { WebhookMessageType } from "./constants/WebhookMessageType"
 import { SnowflakeValidator } from "../validators/SnowflakeValidator"
-import { IWebhookDiscordMessageStructure } from "./interfaces/IWebhookDiscordMessageStructure"
+import type { IWebhookDiscordMessageStructure } from "./interfaces/IWebhookDiscordMessageStructure"
 import { Component } from "../components/Component"
 import { EmbedBuilder } from "../components/old/embeds/EmbedBuilder"
 import { ActionRowComponent } from "../components/new/grouping/ActionRowComponent"
@@ -102,6 +102,8 @@ class Webhook {
         message: IWebhookOldMessageStructure | IWebhookNewMessageStructure,
         options?: IWebhookMessageMethodQueryOptionsStructure | null,
     ): Promise<IWebhookDiscordMessageStructure | true | null> {
+        DiscordMessageValidator.validateMessage(message)
+
         let finalUrl: string = this.webhookUrl
         const params: string[] = []
 
@@ -124,23 +126,21 @@ class Webhook {
             finalUrl += (finalUrl.includes("?") ? "&" : "?") + params.join("&")
         }
 
-        DiscordMessageValidator.validateMessage(message)
-
         const finalObject = {
             ...message,
             flags: message.flags?.reduce((a: number, b: number) => a + b) || 0 + message.version === WebhookMessageType.NEW ? 32768 : 0,
             ...(message.version === WebhookMessageType.NEW
                 ? {
-                      ...message,
-                      components: message.components.map((component: Component) => component.toJSON()),
-                  }
+                    ...message,
+                    components: message.components.map((component: Component) => component.toJSON()),
+                }
                 : {
-                      ...message,
-                      embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                      components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                      poll: message.poll ? message.poll.toJSON() : undefined,
-                      content: message.content || "",
-                  }),
+                    ...message,
+                    embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                    components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                    poll: message.poll ? message.poll.toJSON() : undefined,
+                    content: message.content || "",
+                }),
         }
 
         try {
@@ -168,16 +168,16 @@ class Webhook {
      */
     public async getMessage(messageId: string, threadId?: string): Promise<IWebhookDiscordMessageStructure | null> {
         if (!SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
-        const finalUrl: URL = new URL(`${this.webhookUrl}/messages/${messageId}`)
+        let finalUrl: string = `${this.webhookUrl}/messages/${messageId}`
 
         if (threadId) {
             if (!SnowflakeValidator.isSnowflake(threadId)) throw new Error("DataError: Invalid message's identifier.")
-            finalUrl.searchParams.set("thread_id", threadId)
+            finalUrl += `?thread_id=${threadId}`
         }
 
         try {
             const { http } = await import("@minecraft/server-net")
-            const response = await http.get(finalUrl.toString())
+            const response = await http.get(finalUrl)
 
             if (response.status === 200) return JSON.parse(response.body)
             return null
@@ -199,6 +199,8 @@ class Webhook {
         message: Partial<IWebhookNewMessageStructure | IWebhookOldMessageStructure> & { version: WebhookMessageType },
         options?: Omit<IWebhookMessageMethodQueryOptionsStructure, "wait">,
     ): Promise<IWebhookDiscordMessageStructure | null> {
+        DiscordMessageValidator.validateMessage(message)
+
         let finalUrl: string = `${this.webhookUrl}/messages/${messageId}`
         const params: string[] = []
 
@@ -217,23 +219,21 @@ class Webhook {
             finalUrl += `?${params.join("&")}`
         }
 
-        DiscordMessageValidator.validateMessage(message)
-
         const finalObject = {
             ...message,
             flags: message.flags?.reduce((a: number, b: number) => a + b) || 0 + message.version === WebhookMessageType.NEW ? 32768 : 0,
             ...(message.version === WebhookMessageType.NEW
                 ? {
-                      ...message,
-                      components: (message?.components || [])?.map((component: Component) => component.toJSON()),
-                  }
+                    ...message,
+                    components: (message?.components || [])?.map((component: Component) => component.toJSON()),
+                }
                 : {
-                      ...message,
-                      embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                      components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                      poll: message.poll ? message.poll.toJSON() : undefined,
-                      content: message.content || "",
-                  }),
+                    ...message,
+                    embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                    components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                    poll: message.poll ? message.poll.toJSON() : undefined,
+                    content: message.content || "",
+                }),
         }
 
         try {

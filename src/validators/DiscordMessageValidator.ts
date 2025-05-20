@@ -1,12 +1,12 @@
-import { WebhookMessageType } from "../webhooks/constants/WebhookMessageType";
-import type { IWebhookNewMessageStructure } from "../webhooks/interfaces/IWebhookNewMessageStructure";
-import type { IWebhookOldMessageStructure } from "../webhooks/interfaces/IWebhookOldMessageStructure";
+import { WebhookMessageType } from "../webhooks/constants/WebhookMessageType"
+import type { IWebhookNewMessageStructure } from "../webhooks/interfaces/IWebhookNewMessageStructure"
+import type { IWebhookOldMessageStructure } from "../webhooks/interfaces/IWebhookOldMessageStructure"
 
 /**
  * A class to validate Discord messages, that will be send soon.
  */
 class DiscordMessageValidator {
-    private constructor() { }
+    private constructor() {}
 
     /**
      * Validates Discord message.
