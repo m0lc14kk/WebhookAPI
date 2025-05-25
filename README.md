@@ -7,7 +7,7 @@
 # 📦 INSTALLATION
 1. Navigate to [releases](https://github.com/m0lc14kk/WebhookAPI/releases) and download the latest one.
 
-2. Install `index.js` (or `index.ts` if you're using TypeScript) and `index.d.ts` files and drag them into your project.
+2. Install `index.js` and `index.d.ts` files and drag them into your project.
 
 3. Start using our API in your code! You can use [examples](https://github.com/m0lc14kk/WebhookAPI/tree/main/examples) to check if you have done eveyrthing right.
 
@@ -42,5 +42,5 @@ Before you will begin with installation this API, create a basic add-on template
             ]
         }
 
-- ### Worlds:
-    At this moment, worlds are not supported. Consider using redirects with `@minecraft/server-admin` to an external server.
+- ### Worlds/Realms:
+    At this moment, worlds are not supported. Consider using redirects with `@minecraft/server-admin` and `transferPlayer` function to an external server.
