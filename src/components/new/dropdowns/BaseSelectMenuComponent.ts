@@ -73,7 +73,6 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
         return this
     }
 
-
     /**
      * Adds default values of a dropdown menu.
      * @param defaultValues Default values of a dropdown.
