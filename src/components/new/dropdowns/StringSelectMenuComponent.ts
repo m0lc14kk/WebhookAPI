@@ -16,7 +16,7 @@ class StringSelectMenuComponent extends Component {
      * @param customId Custom identifier of a dropdown menu.
      * @returns Edited instance.
      */
-    public setCustomId(customId: string): StringSelectMenuComponent {
+    public setCustomId(customId: string): this {
         this.customId = customId
         return this
     }
@@ -26,7 +26,7 @@ class StringSelectMenuComponent extends Component {
      * @param maxValues Maximum number of values.
      * @returns Edited instance.
      */
-    public setMaximumValues(maxValues: number): StringSelectMenuComponent {
+    public setMaximumValues(maxValues: number): this {
         if (maxValues < 1 || maxValues > 25) throw new Error("DataError: Maximum values is out of bounds!")
         this.maxValues = maxValues
         return this
@@ -37,7 +37,7 @@ class StringSelectMenuComponent extends Component {
      * @param maxValues Minimum number of values.
      * @returns Edited instance.
      */
-    public setMinimumValues(minValues: number): StringSelectMenuComponent {
+    public setMinimumValues(minValues: number): this {
         if (minValues < 0 || minValues > 25) throw new Error("DataError: Minimum values is out of bounds!")
         this.minValues = minValues
         return this
@@ -48,7 +48,7 @@ class StringSelectMenuComponent extends Component {
      * @param maxValues Disabled state.
      * @returns Edited instance.
      */
-    public setDisabled(disabled: boolean): StringSelectMenuComponent {
+    public setDisabled(disabled: boolean): this {
         this.disabled = disabled
         return this
     }
@@ -58,7 +58,8 @@ class StringSelectMenuComponent extends Component {
      * @param maxValues Text of a placeholder
      * @returns Edited instance.
      */
-    public setPlaceholder(placeholder: string): StringSelectMenuComponent {
+    public setPlaceholder(placeholder: string): this {
+        if (placeholder.length > 150) throw new Error("DataError: Dropdown's placeholder cannot be longer than 150 characters.")
         this.placeholder = placeholder
         return this
     }
@@ -68,7 +69,7 @@ class StringSelectMenuComponent extends Component {
      * @param maxValues Options of a dropdown.
      * @returns Edited instance.
      */
-    public setOptions(...options: IStringSelectMenuOptionStructure[]): StringSelectMenuComponent {
+    public setOptions(...options: IStringSelectMenuOptionStructure[]): this {
         this.options = options
         return this
     }
@@ -78,7 +79,7 @@ class StringSelectMenuComponent extends Component {
      * @param maxValues New options of a dropdown.
      * @returns Edited instance.
      */
-    public addOptions(...options: IStringSelectMenuOptionStructure[]): StringSelectMenuComponent {
+    public addOptions(...options: IStringSelectMenuOptionStructure[]): this {
         this.options.push(...options)
         return this
     }
@@ -88,6 +89,9 @@ class StringSelectMenuComponent extends Component {
      * @return JSON object, which is ready to be sent to a Discord API.
      */
     public toJSON(): object {
+        if (this.customId === null) throw new Error("DataError: You must provide custom identifier of a dropdown before creating it.")
+        if (this.options.length === 0) throw new Error("DataError: You must provide at least 1 option to a string dropdown.")
+
         return {
             type: StringSelectMenuComponent.type,
             custom_id: this.customId,

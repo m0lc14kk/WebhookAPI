@@ -58,6 +58,7 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
      * @returns Edited instance.
      */
     public setPlaceholder(placeholder: string): this {
+        if (placeholder.length > 150) throw new Error("DataError: Dropdown's placeholder cannot be longer than 150 characters.")
         this.placeholder = placeholder
         return this
     }

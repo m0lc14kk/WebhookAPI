@@ -40,6 +40,8 @@ class UserSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultO
      * @return JSON object, which is ready to be sent to a Discord API.
      */
     public toJSON(): object {
+        if (this.customId === null) throw new Error("DataError: You must provide custom identifier of a dropdown before creating it.")
+
         return {
             type: UserSelectMenuComponent.type,
             custom_id: this.customId,
