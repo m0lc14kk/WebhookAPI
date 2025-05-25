@@ -78,6 +78,7 @@ class PollBuilder {
      */
     public toJSON(): object {
         if (this.question === null) throw new Error("DataError: You must provide a question before creating a poll.")
+        if (this.answers.length === 0) throw new Error("DataError: You must provide at least 1 answer of a poll.")
 
         return {
             question: {
