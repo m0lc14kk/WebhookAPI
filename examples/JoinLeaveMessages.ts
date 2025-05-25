@@ -1,6 +1,9 @@
 /**
  * This example is a sample code, that will log every player's join
  * and leave to a Minecraft server as themselves.
+ * 
+ * @author m0l1c4kk
+ * @see https://github.com/m0lc14kk/WebhookAPI
  */
 
 import { PlayerJoinAfterEvent, PlayerLeaveBeforeEvent, system, world } from "@minecraft/server"
@@ -15,10 +18,7 @@ world.afterEvents.playerJoin.subscribe(({ playerName }: PlayerJoinAfterEvent): v
         webhook.sendMessage({
             version: WebhookMessageType.NEW,
             username: playerName,
-            components: [
-                new TextDisplayComponent()
-                    .setContent("I just joined a server!")
-            ]
+            components: [new TextDisplayComponent().setContent("I just joined a server!")],
         })
     })
 })
@@ -33,10 +33,7 @@ world.beforeEvents.playerLeave.subscribe(({ player }: PlayerLeaveBeforeEvent): v
         webhook.sendMessage({
             version: WebhookMessageType.NEW,
             username: playerName,
-            components: [
-                new TextDisplayComponent()
-                    .setContent("I just left a server!")
-            ]
+            components: [new TextDisplayComponent().setContent("I just left a server!")],
         })
     })
 })
