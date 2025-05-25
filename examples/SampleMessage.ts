@@ -1,7 +1,7 @@
 /**
  * This is a sample test for checking, if API has loaded correctly.
  * It should send a basic message to your Discord channel.
- * 
+ *
  * @author m0lc14kk
  * @see https://github.com/m0lc14kk/WebhookAPI
  */

@@ -20,6 +20,8 @@ class TextDisplayComponent extends Component {
      * @return JSON object, which is ready to be sent to a Discord API.
      */
     public toJSON(): object {
+        if (this.content === "") throw new Error("DataError: You must provide a content to TextDisplayComponent.")
+
         return {
             type: TextDisplayComponent.type,
             content: this.content,

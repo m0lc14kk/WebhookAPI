@@ -1,7 +1,7 @@
 /**
  * This example is a sample code, that will log every player's message
  * from a chat to Discord channel.
- * 
+ *
  * @author m0l1c4kk
  * @see https://github.com/m0lc14kk/WebhookAPI
  */
