@@ -48,6 +48,7 @@ class ActionRowComponent extends Component {
     /**
      * Converts instance to JSON object.
      * @return JSON object, which is ready to be sent to a Discord API.
+     * @throws Throws an error if component is invalid.
      */
     public toJSON(): object {
         if (this.components.length === 0) throw new Error("DataError: You have to provide at least 1 component of a action row.")

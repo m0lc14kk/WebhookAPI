@@ -41,6 +41,7 @@ class SectionComponent extends Component {
     /**
      * Converts instance to JSON object.
      * @return JSON object, which is ready to be sent to a Discord API.
+     * @throws Throws an error if component is invalid.
      */
     public toJSON(): object {
         if (this.components.length === 0) throw new Error("DataError: You must provide atleast 1 component to section.")

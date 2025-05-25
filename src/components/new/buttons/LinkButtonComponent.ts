@@ -24,6 +24,7 @@ class LinkButtonComponent extends BaseButtonComponent {
     /**
      * Converts instance to JSON object.
      * @return JSON object, which is ready to be sent to a Discord API.
+     * @throws Throws an error if component is invalid.
      */
     public toJSON(): object {
         if (this.url === null) throw new Error("DataError: You must provide customId after creating a button.")
