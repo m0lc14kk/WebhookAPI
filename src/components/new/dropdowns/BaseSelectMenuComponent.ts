@@ -63,11 +63,22 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
         return this
     }
 
+    /**
+     * Sets default values of a dropdown menu.
+     * @param defaultValues Default values of a dropdown.
+     * @returns Edited instance.
+     */
     public setDefaultValues(...defaultValues: ISelectMenuDefaultOptionStructure<T>[]): this {
         this.defaultValues = defaultValues
         return this
     }
 
+
+    /**
+     * Adds default values of a dropdown menu.
+     * @param defaultValues Default values of a dropdown.
+     * @returns Edited instance.
+     */
     public addDefaultValues(...defaultValues: ISelectMenuDefaultOptionStructure<T>[]): this {
         this.defaultValues.push(...defaultValues)
         return this
