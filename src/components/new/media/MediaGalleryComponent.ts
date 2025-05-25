@@ -31,6 +31,8 @@ class MediaGalleryComponent extends Component {
      * @return JSON object, which is ready to be sent to a Discord API.
      */
     public toJSON(): object {
+        if (this.images.length === 0) throw new Error("DataError: You have to provide at least 1 image of a media gallery.")
+
         return {
             type: MediaGalleryComponent.type,
             items: this.images,

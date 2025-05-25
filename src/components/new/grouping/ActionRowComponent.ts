@@ -50,6 +50,8 @@ class ActionRowComponent extends Component {
      * @return JSON object, which is ready to be sent to a Discord API.
      */
     public toJSON(): object {
+        if (this.components.length === 0) throw new Error("DataError: You have to provide at least 1 component of a action row.")
+
         return {
             type: ActionRowComponent.type,
             components: this.components.map((component) => component.toJSON()),
