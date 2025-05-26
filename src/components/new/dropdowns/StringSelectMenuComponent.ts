@@ -1,4 +1,4 @@
-import { MAX_CUSTOM_ID_LENGTH } from "../../../globals"
+import { MAX_CUSTOM_ID_LENGTH, MAX_SELECT_MENU_PLACEHOLDER_LENGTH } from "../../../globals"
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
 import type { IStringSelectMenuOptionStructure } from "./interfaces/IStringSelectMenuOptionStructure"
@@ -61,7 +61,7 @@ class StringSelectMenuComponent extends Component {
      * @returns Edited instance.
      */
     public setPlaceholder(placeholder: string): this {
-        if (placeholder.length > 150) throw new Error("DataError: Dropdown's placeholder cannot be longer than 150 characters.")
+        if (placeholder.length > MAX_SELECT_MENU_PLACEHOLDER_LENGTH) throw new Error(`DataError: Dropdown's placeholder cannot be longer than ${MAX_SELECT_MENU_PLACEHOLDER_LENGTH} characters.`)
         this.placeholder = placeholder
         return this
     }
