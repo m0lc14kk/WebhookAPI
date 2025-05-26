@@ -13,7 +13,7 @@ class TextDisplayComponent extends Component {
      */
     public setContent(content: string | string[]): this {
         const finalContent: string = Array.isArray(content) ? content.join("\n") : content
-        if (finalContent.length > MAX_CONTENT_LENGTH) throw new RangeError(`DataError: Content of a text display component cannot be longer than ${MAX_CONTENT_LENGTH} characters.`) 
+        if (finalContent.length > MAX_CONTENT_LENGTH) throw new RangeError(`DataError: Content of a text display component cannot be longer than ${MAX_CONTENT_LENGTH} characters.`)
         this.content = finalContent
         return this
     }
