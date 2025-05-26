@@ -9,7 +9,7 @@ interface IWebhookChannelFollowerStructure extends IWebhookStructure {
      * Type of a webhook.
      * @readonly This property is in read-only mode.
      */
-    type: WebhookType.CHANNEL_FOLLOWER
+    readonly type: WebhookType.CHANNEL_FOLLOWER
 
     /**
      * Name of a webhook.

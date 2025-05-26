@@ -9,7 +9,7 @@ interface IWebhookIncomingStructure extends IWebhookStructure {
      * Type of a webhook.
      * @readonly This property is in read-only mode.
      */
-    type: WebhookType.INCOMING
+    readonly type: WebhookType.INCOMING
 
     /**
      * Name of a webhook.

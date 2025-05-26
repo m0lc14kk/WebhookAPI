@@ -1,3 +1,7 @@
+/**
+ * Structure of a editWebhook method options.
+ * @remarks You can only provide fields, that you want to change.
+ */
 interface IWebhookEditStructure {
     /**
      * New name of a webhook.

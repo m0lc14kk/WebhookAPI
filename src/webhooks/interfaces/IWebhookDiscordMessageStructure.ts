@@ -3,6 +3,9 @@ import { ActionRowComponent } from "../../components/new/grouping/ActionRowCompo
 import { EmbedBuilder } from "../../components/old/embeds/EmbedBuilder"
 import { PollBuilder } from "../../components/old/polls/PollBuilder"
 
+/**
+ * Structure of a message, that will be send to Discord REST API.
+ */
 type IWebhookDiscordMessageStructure = {
     /**
      * Identifier of a message.

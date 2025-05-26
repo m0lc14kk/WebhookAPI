@@ -1,3 +1,6 @@
+/**
+ * Structure of options of a message, that will be send to Discord REST API.
+ */
 interface IWebhookMessageMethodQueryOptionsStructure {
     /**
      * Waits for server confirmation of message send before response,

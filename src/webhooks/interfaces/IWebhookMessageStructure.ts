@@ -2,6 +2,9 @@ import { WebhookMessageFlagsType } from "../constants/WebhookMessageFlagsType"
 import type { WebhookMessageMentionsParseType } from "../constants/WebhookMessageMentionsParseType"
 import type { WebhookMessageType } from "../constants/WebhookMessageType"
 
+/**
+ * Structure of new message of Discord REST API.
+ */
 interface IWebhookMessageStructure {
     /**
      * Version of a message content.
