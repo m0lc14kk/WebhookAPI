@@ -1,3 +1,4 @@
+import { MAX_MEDIA_DESCRIPTION_LENGTH } from "../../../globals"
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
 
@@ -23,6 +24,7 @@ class ThumbnailComponent extends Component {
      * @returns Edited instance.
      */
     public setDescription(description: string): this {
+        if (description.length > MAX_MEDIA_DESCRIPTION_LENGTH) throw new RangeError(`DataError: Description of a thumbnail cannot be longer than ${MAX_MEDIA_DESCRIPTION_LENGTH} characters.`)
         this.description = description
         return this
     }
