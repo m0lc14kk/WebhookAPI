@@ -18,6 +18,11 @@ class ButtonComponent extends BaseButtonComponent {
         return this
     }
 
+    /**
+     * Sets a style of a button.
+     * @param style Style of a button.
+     * @returns Edited instance.
+     */
     public setStyle(style: ButtonStyleCommonTypes): this {
         this.style = style
         return this
