@@ -107,8 +107,8 @@ class StringSelectMenuComponent extends Component {
                 emoji:
                     typeof emoji === "string"
                         ? {
-                            name: emoji,
-                        }
+                              name: emoji,
+                          }
                         : emoji,
             })),
         }

@@ -1,3 +1,4 @@
+import { MAX_BUTTON_LABEL_LENGTH } from "../../../globals"
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
 import { ComponentEmojiType } from "../../types/ComponentEmojiType"
@@ -16,6 +17,7 @@ abstract class BaseButtonComponent extends Component {
      * @returns Edited instance.
      */
     public setLabel(label: string): this {
+        if (label.length > MAX_BUTTON_LABEL_LENGTH) throw new Error(`DataError: Button's label cannot be longer than ${MAX_BUTTON_LABEL_LENGTH} characters!`)
         this.label = label
         return this
     }
