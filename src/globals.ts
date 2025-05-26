@@ -22,4 +22,11 @@ const MAX_BUTTON_LABEL_LENGTH: Readonly<number> = 80
  */
 const MAX_SELECT_MENU_PLACEHOLDER_LENGTH: Readonly<number> = 150
 
-export { MAX_COLOR_NUMBER, MAX_CUSTOM_ID_LENGTH, MAX_BUTTON_LABEL_LENGTH, MAX_SELECT_MENU_PLACEHOLDER_LENGTH }
+/**
+ * Max number of options in a string select menu.
+ * @readonly
+ * @remarks This global variable is also used for maximum default options in other select menus. 
+ */
+const MAX_SELECT_MENU_OPTIONS: Readonly<number> = 25
+
+export { MAX_COLOR_NUMBER, MAX_CUSTOM_ID_LENGTH, MAX_BUTTON_LABEL_LENGTH, MAX_SELECT_MENU_PLACEHOLDER_LENGTH, MAX_SELECT_MENU_OPTIONS }

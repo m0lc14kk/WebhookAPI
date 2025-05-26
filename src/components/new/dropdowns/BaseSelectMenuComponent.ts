@@ -1,4 +1,4 @@
-import { MAX_CUSTOM_ID_LENGTH, MAX_SELECT_MENU_PLACEHOLDER_LENGTH } from "../../../globals"
+import { MAX_CUSTOM_ID_LENGTH, MAX_SELECT_MENU_OPTIONS, MAX_SELECT_MENU_PLACEHOLDER_LENGTH } from "../../../globals"
 import { Component } from "../../Component"
 import { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultOptionType"
 import type { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenuDefaultOptionStructure"
@@ -28,7 +28,7 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
      * @returns Edited instance.
      */
     public setMaximumValues(maxValues: number): this {
-        if (maxValues < 1 || maxValues > 25) throw new Error("DataError: Maximum values is out of bounds!")
+        if (maxValues < 1 || maxValues > MAX_SELECT_MENU_OPTIONS) throw new Error("DataError: Maximum values is out of bounds!")
         this.maxValues = maxValues
         return this
     }
@@ -39,7 +39,7 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
      * @returns Edited instance.
      */
     public setMinimumValues(minValues: number): this {
-        if (minValues < 0 || minValues > 25) throw new Error("DataError: Minimum values is out of bounds!")
+        if (minValues < 0 || minValues > MAX_SELECT_MENU_OPTIONS) throw new Error("DataError: Minimum values is out of bounds!")
         this.minValues = minValues
         return this
     }

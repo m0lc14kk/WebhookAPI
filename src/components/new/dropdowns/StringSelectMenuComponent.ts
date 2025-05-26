@@ -1,4 +1,4 @@
-import { MAX_CUSTOM_ID_LENGTH, MAX_SELECT_MENU_PLACEHOLDER_LENGTH } from "../../../globals"
+import { MAX_CUSTOM_ID_LENGTH, MAX_SELECT_MENU_OPTIONS, MAX_SELECT_MENU_PLACEHOLDER_LENGTH } from "../../../globals"
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
 import type { IStringSelectMenuOptionStructure } from "./interfaces/IStringSelectMenuOptionStructure"
@@ -72,6 +72,7 @@ class StringSelectMenuComponent extends Component {
      * @returns Edited instance.
      */
     public setOptions(...options: IStringSelectMenuOptionStructure[]): this {
+        if (options.length > MAX_SELECT_MENU_OPTIONS) throw new Error(`DataError: String select menu cannot have more options than ${MAX_SELECT_MENU_OPTIONS}.`)
         this.options = options
         return this
     }
