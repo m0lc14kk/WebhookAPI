@@ -43,6 +43,8 @@ class ThumbnailComponent extends Component {
      * @throws Throws an error if component is invalid.
      */
     public toJSON(): object {
+        if (!this.url || !this.description) throw new Error("DataError: You must provide an URL or description of a thumbnail!")
+
         return {
             type: ThumbnailComponent.type,
             description: this.description,
