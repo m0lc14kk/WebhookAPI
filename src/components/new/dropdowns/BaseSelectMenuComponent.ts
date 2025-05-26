@@ -1,3 +1,4 @@
+import { MAX_CUSTOM_ID_LENGTH } from "../../../globals"
 import { Component } from "../../Component"
 import { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultOptionType"
 import type { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenuDefaultOptionStructure"
@@ -16,6 +17,7 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
      * @returns Edited instance.
      */
     public setCustomId(customId: string): this {
+        if (customId.length > MAX_CUSTOM_ID_LENGTH) throw new Error(`DataError: Custom identifier cannot be longer than ${MAX_CUSTOM_ID_LENGTH} characters!`) 
         this.customId = customId
         return this
     }

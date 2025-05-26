@@ -1,3 +1,4 @@
+import { MAX_CUSTOM_ID_LENGTH } from "../../../globals"
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
 import type { IStringSelectMenuOptionStructure } from "./interfaces/IStringSelectMenuOptionStructure"
@@ -17,6 +18,7 @@ class StringSelectMenuComponent extends Component {
      * @returns Edited instance.
      */
     public setCustomId(customId: string): this {
+        if (customId.length > MAX_CUSTOM_ID_LENGTH) throw new Error(`DataError: Custom identifier cannot be longer than ${MAX_CUSTOM_ID_LENGTH} characters!`)
         this.customId = customId
         return this
     }
@@ -105,8 +107,8 @@ class StringSelectMenuComponent extends Component {
                 emoji:
                     typeof emoji === "string"
                         ? {
-                              name: emoji,
-                          }
+                            name: emoji,
+                        }
                         : emoji,
             })),
         }
