@@ -25,7 +25,7 @@ const MAX_SELECT_MENU_PLACEHOLDER_LENGTH: Readonly<number> = 150
 /**
  * Max number of options in a string select menu.
  * @readonly
- * @remarks This global variable is also used for maximum default options in other select menus. 
+ * @remarks This global variable is also used for maximum default options in other select menus.
  */
 const MAX_SELECT_MENU_OPTIONS: Readonly<number> = 25
 

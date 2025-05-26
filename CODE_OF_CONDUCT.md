@@ -2,7 +2,7 @@
 
 ## Our Pledge
 
-As contributors, developers, and community members of this Minecraft: Bedrock Vanilla API project, we pledge to make participation in this community a welcoming and respectful experience for everyone. That includes players, modders, developers, and curious tinkerers alike—regardless of background, identity, or level of experience.
+As contributors, developers, and community members of this Minecraft: Bedrock Vanilla API project, we pledge to make participation in this community a welcoming and respectful experience for everyone. That includes players, modders, developers, and curious tinkerers alike - regardless of background, identity, or level of experience.
 
 We’re here to build cool things, learn from each other, and create a space where everyone feels safe, heard, and encouraged to contribute.
 
@@ -28,7 +28,7 @@ Unacceptable behaviors include:
 
 This Code of Conduct applies to all official project spaces: GitHub repos, Discord chats, documentation comment threads, and any public events or online communities connected to this API.
 
-If you are representing the project—whether through your code, support, or communication—you’re expected to uphold this standard.
+If you are representing the project - whether through your code, support, or communication - you’re expected to uphold this standard.
 
 ## Reporting Issues
 
@@ -60,7 +60,7 @@ For serious or ongoing issues.
 For harassment, hate speech, or sustained bad behavior.  
 **Action:** Permanent removal from all official community channels.
 
-Enforcement decisions will be made as fairly and transparently as possible. In most cases, we’ll explain the reasons behind moderation actions—except where it may put others at risk.
+Enforcement decisions will be made as fairly and transparently as possible. In most cases, we’ll explain the reasons behind moderation actions - except where it may put others at risk.
 
 ## A Final Note
 
