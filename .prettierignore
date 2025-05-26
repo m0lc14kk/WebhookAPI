@@ -1,4 +1,9 @@
+# Package typings.
 /node_modules/
-/dist/
 
+# Unused JavaScript distribution.
+/dist/
+/src/**/*.js
+
+# Package manager's file.
 pnpm-lock.yaml

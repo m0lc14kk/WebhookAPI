@@ -1,7 +1,7 @@
 ![banner](./.github/assets/banner.png)
 
 <p align="center">
-    Webhook API is an API that makes dealing with Discord Webhooks much easier than using raw requests. API covers 100% support for HTTP modules and supports worlds!
+    Webhook API is an API that makes dealing with Discord Webhooks much easier than using raw requests. API covers 100% support of Discord possibilities and is built on-top single Minecraft library!
 </p>
 
 # 📦 INSTALLATION
