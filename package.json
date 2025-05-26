@@ -2,7 +2,6 @@
     "name": "webhook-api",
     "description": "A typing library to easily create content of Discord webhook messages.",
     "version": "1.0.0",
-    "main": "dist/Main.js",
     "scripts": {
         "build:min": "tsup",
         "pretty": "pnpx prettier --write \"./**/*.{ts,js,mjs,json,yaml}\"",
