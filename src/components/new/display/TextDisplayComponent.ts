@@ -1,3 +1,4 @@
+import { MAX_CONTENT_LENGTH } from "../../../globals"
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
 
@@ -11,7 +12,9 @@ class TextDisplayComponent extends Component {
      * @returns Edited instance.
      */
     public setContent(content: string | string[]): this {
-        this.content = Array.isArray(content) ? content.join("\n") : content
+        const finalContent: string = Array.isArray(content) ? content.join("\n") : content
+        if (finalContent.length > MAX_CONTENT_LENGTH) throw new RangeError(`DataError: Content of a text display component cannot be longer than ${MAX_CONTENT_LENGTH} characters.`) 
+        this.content = finalContent
         return this
     }
 
