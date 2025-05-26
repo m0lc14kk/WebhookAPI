@@ -18,15 +18,17 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: "18"
-                  cache: "pnpm"
 
-            - name: Set up pnpm
+            - name: Set up pnpm as a package manager
               uses: pnpm/action-setup@v2
               with:
-                  version: 8
+                  version: 10.11
+                  cache: true
 
             - name: Install dependencies
               run: pnpm install
+              shell: bash
 
             - name: Run ESLint script and validate
               run: pnpm lint
+              shell: bash
