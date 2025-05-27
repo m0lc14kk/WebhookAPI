@@ -54,8 +54,12 @@ class Webhook {
      * Edit display of a webhook on Discord.
      * @param options New properties of a webhook.
      * @returns Return a boolean, based on if webhook was correctly updated.
+     * @throws Throws an error, if one of provided options is invalid.
      */
     public async editWebhook({ name, avatar }: Readonly<IWebhookEditStructure>): Promise<boolean> {
+        if (name && typeof name !== "string") throw new Error("DataError: Webhook's make has to be a string.")
+        if (avatar && typeof avatar !== "string") throw new Error("DataError: Webhook's avatar has to be a string in Base64 format.")
+
         try {
             const { http, HttpRequest, HttpRequestMethod, HttpHeader } = await import("@minecraft/server-net")
             await http.request(
@@ -97,6 +101,7 @@ class Webhook {
      * @param message Content of a message.
      * @param options Options of a message.
      * @returns Returns a message object if it was correctly sent, unless `null`.
+     * @throws Throws an error, if one of provided argument's properties is invalid.
      */
     public async sendMessage(
         message: IWebhookOldMessageStructure | IWebhookNewMessageStructure,
@@ -108,17 +113,21 @@ class Webhook {
         const params: string[] = []
 
         if (options?.wait) {
+            if (typeof options.wait !== "boolean") throw new TypeError("DataError: You have to provide wait query option as a boolean.")
             params.push("wait=true")
         }
 
         if (options?.withComponents) {
+            if (typeof options.withComponents !== "boolean") throw new TypeError("DataError: You have to provide withComponents query option as a boolean.")
             params.push("with_components=true")
         }
 
         if (options?.threadId) {
-            if (SnowflakeValidator.isSnowflake(options.threadId)) {
+            if (typeof options.threadId !== "string") throw new TypeError("DataError: You have to provide thread's identifier query option as a Snowflake.")
+            if (!SnowflakeValidator.isSnowflake(options.threadId)) {
                 throw new Error("DataError: Invalid thread's identifier.")
             }
+
             params.push(`thread_id=${encodeURIComponent(options.threadId)}`)
         }
 
@@ -131,16 +140,16 @@ class Webhook {
             flags: message.flags?.reduce((a: number, b: number) => a + b) || 0 + message.version === WebhookMessageType.NEW ? 32768 : 0,
             ...(message.version === WebhookMessageType.NEW
                 ? {
-                      ...message,
-                      components: message.components.map((component: Component) => component.toJSON()),
-                  }
+                    ...message,
+                    components: message.components.map((component: Component) => component.toJSON()),
+                }
                 : {
-                      ...message,
-                      embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                      components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                      poll: message.poll ? message.poll.toJSON() : undefined,
-                      content: message.content || "",
-                  }),
+                    ...message,
+                    embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                    components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                    poll: message.poll ? message.poll.toJSON() : undefined,
+                    content: message.content || "",
+                }),
         }
 
         try {
@@ -165,13 +174,16 @@ class Webhook {
      * @param messageId Identifier of a message.
      * @param threadId Optional identifier of a thread.
      * @return Returns a message object if it exists, unless `null`.
+     * @throws Throws an error, if one of identifiers is invalid.
      */
     public async getMessage(messageId: string, threadId?: string): Promise<IWebhookDiscordMessageStructure | null> {
-        if (!SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
-        let finalUrl: string = `${this.webhookUrl}/messages/${messageId}`
+        if (typeof messageId !== "string") throw new TypeError("TypeError: You have to provide message's identifier as a Snowflake.")
+        if (SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
 
+        let finalUrl: string = `${this.webhookUrl}/messages/${messageId}`
         if (threadId) {
-            if (!SnowflakeValidator.isSnowflake(threadId)) throw new Error("DataError: Invalid message's identifier.")
+            if (typeof threadId !== "string") throw new TypeError("TypeError: You have to provide thread's identifier as a Snowflake.")
+            if (SnowflakeValidator.isSnowflake(threadId)) throw new Error("DataError: Invalid thread's identifier.")
             finalUrl += `?thread_id=${threadId}`
         }
 
@@ -193,6 +205,7 @@ class Webhook {
      * @param options Options of a message content.
      * @returns Returns a boolean based on if message was correctly edited.
      * @remarks If you were using new components system, you have to keep the format in the new content also.
+     * @throws Throws an error, if one of provided argument's properties is invalid.
      */
     public async editMessage(
         messageId: string,
@@ -200,6 +213,9 @@ class Webhook {
         options?: Omit<IWebhookMessageMethodQueryOptionsStructure, "wait">,
     ): Promise<IWebhookDiscordMessageStructure | null> {
         DiscordMessageValidator.validateMessage(message)
+
+        if (typeof messageId !== "string") throw new TypeError("TypeError: You have to provide message's identifier as a Snowflake.")
+        if (SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
 
         let finalUrl: string = `${this.webhookUrl}/messages/${messageId}`
         const params: string[] = []
@@ -209,9 +225,8 @@ class Webhook {
         }
 
         if (options?.threadId) {
-            if (SnowflakeValidator.isSnowflake(options.threadId)) {
-                throw new Error("DataError: Invalid thread's identifier.")
-            }
+            if (typeof options.threadId !== "string") throw new TypeError("DataError: You have to provide thread's identifier query option as a Snowflake.")
+            if (SnowflakeValidator.isSnowflake(options.threadId)) throw new Error("DataError: Invalid thread's identifier.")
             params.push(`thread_id=${encodeURIComponent(options.threadId)}`)
         }
 
@@ -224,16 +239,16 @@ class Webhook {
             flags: message.flags?.reduce((a: number, b: number) => a + b) || 0 + message.version === WebhookMessageType.NEW ? 32768 : 0,
             ...(message.version === WebhookMessageType.NEW
                 ? {
-                      ...message,
-                      components: (message?.components || [])?.map((component: Component) => component.toJSON()),
-                  }
+                    ...message,
+                    components: (message?.components || [])?.map((component: Component) => component.toJSON()),
+                }
                 : {
-                      ...message,
-                      embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                      components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                      poll: message.poll ? message.poll.toJSON() : undefined,
-                      content: message.content || "",
-                  }),
+                    ...message,
+                    embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                    components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                    poll: message.poll ? message.poll.toJSON() : undefined,
+                    content: message.content || "",
+                }),
         }
 
         try {
@@ -257,11 +272,18 @@ class Webhook {
      * @param messageId Identifier of a message.
      * @param threadId Optional thread's identifier.
      * @returns Returns a boolean based on if message was correctly deleted from a channel.
+     * @throws Throws an error, if one of identifiers is invalid.
      */
     public async deleteMessage(messageId: string, threadId?: string): Promise<boolean> {
-        if (!SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
+        if (typeof messageId !== "string") throw new TypeError("TypeError: You have to provide message's identifier as a Snowflake.")
+        if (SnowflakeValidator.isSnowflake(messageId)) throw new Error("DataError: Invalid message's identifier.")
+
         let finalUrl: string = `${this.webhookUrl}/messages/${messageId}`
-        if (threadId) finalUrl += `?thread_id=${threadId}`
+        if (threadId) {
+            if (typeof threadId !== "string") throw new TypeError("TypeError: You have to provide thread's identifier as a Snowflake.")
+            if (SnowflakeValidator.isSnowflake(threadId)) throw new Error("DataError: Invalid thread's identifier.")
+            finalUrl += `?thread_id=${threadId}`
+        }
 
         try {
             const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")

@@ -26,7 +26,7 @@ class DiscordMessageValidator {
         } else if (message.version === WebhookMessageType.NEW) {
             if (!message.components || message.components.length === 0) throw new Error("DataError: You must provide at least 1 component to send a message.")
         } else {
-            throw new Error("DataError: Invalid message version.")
+            throw new TypeError("TypeError: Invalid message version.")
         }
     }
 }
