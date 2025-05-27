@@ -1,5 +1,6 @@
 import { MAX_CUSTOM_ID_LENGTH } from "../../../globals"
 import { BaseButtonComponent } from "./BaseButtonComponent"
+import { BUTTON_COMPONENT_ALLOWED_STYLES } from "./constants/ButtonComponentAllowedStyles"
 import { ButtonStyle } from "./constants/ButtonStyle"
 import type { ButtonStyleCommonTypes } from "./types/ButtonStyleCommonTypes"
 
@@ -24,6 +25,7 @@ class ButtonComponent extends BaseButtonComponent {
      * @returns Edited instance.
      */
     public setStyle(style: ButtonStyleCommonTypes): this {
+        if (!BUTTON_COMPONENT_ALLOWED_STYLES.has(style)) throw new Error("DataError: Invalid style enumeration of a button.")
         this.style = style
         return this
     }

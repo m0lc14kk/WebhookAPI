@@ -4,7 +4,7 @@ import { MAX_COLOR_NUMBER } from "../../../globals"
  * A class to manage default properties of containers.
  */
 class ContainerDefaultProperties {
-    private constructor() { }
+    private constructor() {}
     private static defaultContainerAccentColor: number | null = 0x000000
 
     /**
