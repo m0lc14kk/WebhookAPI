@@ -12,6 +12,7 @@ class FileComponent extends Component {
      * @returns Edited instance.
      */
     public setFileUrl(fileUrl: string): this {
+        if (typeof fileUrl !== "string") throw new TypeError("TypeError: File's URL must be a string.")
         this.fileUrl = fileUrl
         return this
     }
@@ -22,6 +23,7 @@ class FileComponent extends Component {
      * @returns Edited instance.
      */
     public setSpoiler(spoiler: boolean): this {
+        if (typeof spoiler !== "boolean") throw new TypeError("TypeError: File's spolier must be a boolean.")
         this.spolier = spoiler
         return this
     }
