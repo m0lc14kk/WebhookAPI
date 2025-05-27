@@ -1,3 +1,5 @@
+import { MAX_POLL_ANSWER_LENGTH } from "./constants/MaxPollAnswerLength"
+import { MAX_POLL_QUESTION_LENGTH } from "./constants/MaxPollQuestionLength"
 import type { IPollAnswerStructure } from "./interfaces/IPollAnswerStructure"
 
 const MAX_POLL_DURATION: Readonly<number> = 32 * 24
@@ -8,15 +10,17 @@ class PollBuilder {
     private allowMultiselect: boolean = false
     private answers: IPollAnswerStructure[] = []
 
-    public constructor() {}
+    public constructor() { }
 
     /**
      * Sets a question of a poll.
      * @param question Question of a poll.
      * @returns Edited instance.
+     * @throws Throws an error, if question is invalid.
      */
     public setQuestion(question: string): PollBuilder {
-        if (question.length > 300) throw new Error("DataError: Question cannot exceed 300 characters.")
+        if (typeof question !== "string") throw new Error("DataError: Poll's question must be a string.")
+        if (question.length > MAX_POLL_QUESTION_LENGTH) throw new Error(`DataError: Question cannot exceed ${MAX_POLL_ANSWER_LENGTH} characters.`)
         this.question = question
         return this
     }
@@ -29,6 +33,7 @@ class PollBuilder {
      * @returns Edited instance.
      */
     public setDuration(duration: number): this {
+        if (typeof duration !== "number" || Number.isNaN(duration) || !Number.isInteger(duration)) throw new TypeError("TypeError: You must provide poll's duration as a unsigned integer.")
         if (duration < 1 || duration > MAX_POLL_DURATION) throw new Error("DataError: Too long duration of a poll. Poll cannot be open for more than 32 days.")
         this.duration = duration
         return this
@@ -38,8 +43,10 @@ class PollBuilder {
      * Sets a possibility to multi-select.
      * @param allowMultiselect Possibility to select multiple answers.
      * @return Edited instance.
+     * @throws Throws an error, if allow multi-select argument is invalid.
      */
     public setAllowMultiselect(allowMultiselect: boolean): this {
+        if (typeof allowMultiselect !== "boolean") throw new TypeError("TypeError: Poll's auto multi-select mode must be a boolean.")
         this.allowMultiselect = allowMultiselect
         return this
     }
@@ -48,12 +55,10 @@ class PollBuilder {
      * Sets answers of a poll.
      * @param answers Answers of a poll.
      * @returns Edited instance.
+     * @throws Throws an error, if one of answers is invalid.
      */
     public setAnswers(...answers: IPollAnswerStructure[]): this {
-        for (const { text } of answers) {
-            if (text.length > 55) throw new Error("DataError: Answer's text cannot exceed 55 characters!")
-        }
-
+        this.validateAnswers(answers)
         this.answers = answers
         return this
     }
@@ -62,14 +67,19 @@ class PollBuilder {
      * Adds answers to a poll.
      * @param answers New answers of a poll.
      * @returns Edited instance.
+     * @throws Throws an error, if one of answers is invalid.
      */
     public addAnswers(...answers: IPollAnswerStructure[]): this {
-        for (const { text } of answers) {
-            if (text.length > 55) throw new Error("DataError: Answer's text cannot exceed 55 characters!")
-        }
-
+        this.validateAnswers(answers)
         this.answers.push(...answers)
         return this
+    }
+
+    private validateAnswers(answers: IPollAnswerStructure[]) {
+        for (const { text } of answers) {
+            if (typeof text !== "string") throw new TypeError("TypeError: Poll's answer must be a string!")
+            if (text.length > MAX_POLL_ANSWER_LENGTH) throw new Error("DataError: Answer's text cannot exceed 55 characters!")
+        }
     }
 
     /**
@@ -92,8 +102,8 @@ class PollBuilder {
                     emoji:
                         typeof emoji === "string"
                             ? {
-                                  name: emoji,
-                              }
+                                name: emoji,
+                            }
                             : emoji,
                 },
             })),
