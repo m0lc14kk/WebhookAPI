@@ -1,4 +1,5 @@
 import { MAX_COLOR_NUMBER } from "../../../globals"
+import { MAX_EMBED_DESCRIPTION_LENGTH, MAX_EMBED_FIELDS, MAX_EMBED_FOOTER_TEXT_LENGTH, MAX_EMBED_TITLE_LENGTH } from "./constants/EmbedMaxContentLengths"
 import { EmbedDefaultProperties } from "./EmbedDefaultProperties"
 import type { IEmbedAuthorStructure } from "./interfaces/IEmbedAuthorStructure"
 import type { IEmbedFieldStructure } from "./interfaces/IEmbedFieldStructure"
@@ -29,7 +30,14 @@ class EmbedBuilder {
      * @param title New title of an embed.
      * @returns Edited instance.
      */
-    public setTitle(title: string): this {
+    public setTitle(title: string | null): this {
+        if (title === null) {
+            this.title = null
+            return this
+        }
+
+        if (typeof title !== "string") throw new TypeError("TypeError: Invalid embed's title.")
+        if (title.length > MAX_EMBED_TITLE_LENGTH) throw new Error(`DataError: Embed's title cannot exceed ${MAX_EMBED_TITLE_LENGTH} characters.`)
         this.title = title
         return this
     }
@@ -39,8 +47,23 @@ class EmbedBuilder {
      * @param description New description of an embed.
      * @returns Edited instance.
      */
-    public setDescription(description: string | string[]): this {
-        this.description = Array.isArray(description) ? description.join("\n") : description
+    public setDescription(description: string | string[] | null): this {
+        if (description === null) {
+            this.description = null
+            return this
+        }
+
+        if (typeof description === "string") {
+            if (description.length > MAX_EMBED_DESCRIPTION_LENGTH) throw new Error(`DataError: Embed's description cannot exceed ${MAX_EMBED_DESCRIPTION_LENGTH} characters.`)
+            this.description = description
+            return this
+        }
+
+        if (typeof description !== "object" || !Array.isArray(description) || description.some((line: unknown) => typeof line !== "string")) throw new TypeError("TypeError: Invalid embed's description.")
+
+        const finalDescription: string = Array.isArray(description) ? description.join("\n") : description
+        if (finalDescription.length > MAX_EMBED_DESCRIPTION_LENGTH) throw new Error(`DataError: Embed's description cannot exceed ${MAX_EMBED_DESCRIPTION_LENGTH} characters.`)
+        this.description = finalDescription
         return this
     }
 
@@ -57,9 +80,13 @@ class EmbedBuilder {
             return this
         }
 
-        if (color > MAX_COLOR_NUMBER || color < 0) throw new Error("DataError: Color is out of bounds.")
-        this.color = Math.floor(color)
-        return this
+        if (typeof color === "number") {
+            if (color > MAX_COLOR_NUMBER || color < 0) throw new Error("DataError: Color is out of bounds.")
+            this.color = Math.floor(color)
+            return this
+        }
+
+        throw new TypeError("TypeError: Invalid embed's color.")
     }
 
     /**
@@ -68,6 +95,8 @@ class EmbedBuilder {
      * @returns Edited instance.
      */
     public setFields(...fields: IEmbedFieldStructure[]): this {
+        if (fields.length > MAX_EMBED_FIELDS) throw new Error(`DataError: Embed cannot have more than ${MAX_EMBED_FIELDS} fields.`)
+        this.validateFields(fields)
         this.fields = fields
         return this
     }
@@ -78,6 +107,8 @@ class EmbedBuilder {
      * @returns Edited instance.
      */
     public addFields(...fields: IEmbedFieldStructure[]): this {
+        if (fields.length + this.fields.length > MAX_EMBED_FIELDS) throw new Error(`DataError: Embed cannot have more than ${MAX_EMBED_FIELDS} fields.`)
+        this.validateFields(fields)
         this.fields.push(...fields)
         return this
     }
@@ -88,6 +119,16 @@ class EmbedBuilder {
      * @returns Edited instance.
      */
     public setAuthor(author: IEmbedAuthorStructure | null): this {
+        if (author === null) {
+            this.author = null
+            return this
+        }
+
+        if (typeof author !== "object") throw new TypeError("TypeError: Invalid embed's author.")
+        if (author.name.length > MAX_EMBED_TITLE_LENGTH) throw new Error(`DataError: Embed's author cannot exceed ${MAX_EMBED_TITLE_LENGTH} characters.`)
+        if (author.iconUrl && typeof author.iconUrl !== "string") throw new TypeError("TypeError: Invalid embed author's icon.")
+        if (author.url && typeof author.url !== "string") throw new TypeError("TypeError: Invalid embed author's URL.")
+
         this.author = author
         return this
     }
@@ -98,6 +139,14 @@ class EmbedBuilder {
      * @returns Edited instance.
      */
     public setFooter(footer: IEmbedFooterStructure | null): this {
+        if (footer === null) {
+            this.footer = null
+            return this
+        }
+
+        if (typeof footer !== "object") throw new TypeError("TypeError: Invalid embed's footer.")
+        if (footer.text.length > MAX_EMBED_FOOTER_TEXT_LENGTH) throw new Error(`DataError: Embed's footer cannot exceed ${MAX_EMBED_FOOTER_TEXT_LENGTH} characters.`)
+        if (footer.iconUrl && typeof footer.iconUrl !== "string") throw new TypeError("TypeError: Invalid embed footer's icon.")
         this.footer = footer
         return this
     }
@@ -108,6 +157,7 @@ class EmbedBuilder {
      * @returns Edited instance.
      */
     public setImage(image: IEmbedMediaStructure | null): this {
+        this.validateMediaElement(image)
         this.image = image
         return this
     }
@@ -118,6 +168,7 @@ class EmbedBuilder {
      * @returns Edited instance.
      */
     public setVideo(video: IEmbedMediaStructure | null): this {
+        this.validateMediaElement(video)
         this.video = video
         return this
     }
@@ -128,6 +179,7 @@ class EmbedBuilder {
      * @returns Edited instance.
      */
     public setThumbnail(thumbnail: IEmbedMediaStructure | null): this {
+        this.validateMediaElement(thumbnail)
         this.thumbnail = thumbnail
         return this
     }
@@ -144,11 +196,27 @@ class EmbedBuilder {
         } else if (typeof timestamp === "string") {
             if (!this.ISO8601_REGEX.test(timestamp)) throw new Error("DataError: Invalid timestamp.")
             this.timestamp = timestamp
-        } else {
+        } else if (timestamp instanceof Date) {
             this.timestamp = timestamp.toISOString()
-        }
+        } else throw new TypeError("TypeError: Invalid embed's timestamp.")
 
         return this
+    }
+
+    private validateMediaElement(mediaElement: IEmbedMediaStructure | null): void {
+        if (mediaElement === null) return
+        if (typeof mediaElement !== "object") throw new TypeError("TypeError: Invalid media element.")
+        if (typeof mediaElement.url !== "string") throw new TypeError("TypeError: Media's URL must be a string.")
+    }
+
+    private validateFields(fields: IEmbedFieldStructure[]): void {
+        for (const field of fields) {
+            if (typeof field.name !== "string") throw new TypeError("TypeError: Invalid embed field's title.")
+            if (field.name.length > MAX_EMBED_TITLE_LENGTH) throw new Error(`DataError: Embed field's title cannot exceed ${MAX_EMBED_TITLE_LENGTH} characters.`)
+            if (typeof field.content !== "string") throw new TypeError("TypeError: Invalid embed field's title.")
+            if (field.content.length > MAX_EMBED_DESCRIPTION_LENGTH) throw new Error(`DataError: Embed field's content cannot exceed ${MAX_EMBED_DESCRIPTION_LENGTH} characters.`)
+            if (typeof (field.inline ?? false) !== "boolean") throw new TypeError("TypeError: Invalid embed field's inline state.")
+        }
     }
 
     /**
@@ -169,35 +237,35 @@ class EmbedBuilder {
                 this.author === null
                     ? null
                     : {
-                          name: this.author.name,
-                          icon_url: this.author.iconUrl || null,
-                          url: this.author.url || null,
-                      },
+                        name: this.author.name,
+                        icon_url: this.author.iconUrl || null,
+                        url: this.author.url || null,
+                    },
             footer:
                 this.footer === null
                     ? null
                     : {
-                          text: this.footer.text,
-                          icon_url: this.footer.iconUrl || null,
-                      },
+                        text: this.footer.text,
+                        icon_url: this.footer.iconUrl || null,
+                    },
             image:
                 this.image === null
                     ? null
                     : {
-                          url: this.image.url,
-                      },
+                        url: this.image.url,
+                    },
             video:
                 this.video === null
                     ? null
                     : {
-                          url: this.video.url,
-                      },
+                        url: this.video.url,
+                    },
             thumbnail:
                 this.thumbnail === null
                     ? null
                     : {
-                          url: this.thumbnail.url,
-                      },
+                        url: this.thumbnail.url,
+                    },
             timestamp: this.timestamp,
         }
     }

@@ -10,7 +10,7 @@ class PollBuilder {
     private allowMultiselect: boolean = false
     private answers: IPollAnswerStructure[] = []
 
-    public constructor() { }
+    public constructor() {}
 
     /**
      * Sets a question of a poll.
@@ -102,8 +102,8 @@ class PollBuilder {
                     emoji:
                         typeof emoji === "string"
                             ? {
-                                name: emoji,
-                            }
+                                  name: emoji,
+                              }
                             : emoji,
                 },
             })),
