@@ -74,6 +74,7 @@ class StringSelectMenuComponent extends Component {
      */
     public setOptions(...options: IStringSelectMenuOptionStructure[]): this {
         if (options.length > MAX_SELECT_MENU_OPTIONS) throw new Error(`DataError: String select menu cannot have more options than ${MAX_SELECT_MENU_OPTIONS}.`)
+        this.validateOptions(options)
         this.options = options
         return this
     }
@@ -84,8 +85,20 @@ class StringSelectMenuComponent extends Component {
      * @returns Edited instance.
      */
     public addOptions(...options: IStringSelectMenuOptionStructure[]): this {
+        if (this.options.length + options.length > MAX_SELECT_MENU_OPTIONS) throw new Error(`DataError: String select menu cannot have more options than ${MAX_SELECT_MENU_OPTIONS}.`)
+        this.validateOptions(options)
         this.options.push(...options)
         return this
+    }
+
+    private validateOptions(options: IStringSelectMenuOptionStructure[]): void {
+        for (const option of options) {
+            if (typeof option.label !== "string") throw new TypeError("TypeError: Option's label must be a string.")
+            if (typeof option.description !== "string") throw new TypeError("TypeError: Option's description must be a string.")
+            if (typeof option.value !== "string") throw new TypeError("TypeError: Option's value must be a string.")
+            if (typeof (option.default ?? false) !== "boolean") throw new TypeError("TypeError: Option's default check must be a boolean.")
+            DiscordEmojiValidator.validateEmoji(option.emoji)
+        }
     }
 
     /**
@@ -105,19 +118,15 @@ class StringSelectMenuComponent extends Component {
             min_values: this.minValues,
             max_values: this.maxValues,
             disabled: this.disabled,
-            options: this.options.map(({ emoji, ...props }: IStringSelectMenuOptionStructure) => {
-                DiscordEmojiValidator.validateEmoji(emoji)
-
-                return {
-                    ...props,
-                    emoji:
-                        typeof emoji === "string"
-                            ? {
-                                name: emoji,
-                            }
-                            : emoji,
-                }
-            }),
+            options: this.options.map(({ emoji, ...props }: IStringSelectMenuOptionStructure) => ({
+                ...props,
+                emoji:
+                    typeof emoji === "string"
+                        ? {
+                            name: emoji,
+                        }
+                        : emoji,
+            })),
         }
     }
 }
