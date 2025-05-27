@@ -140,16 +140,16 @@ class Webhook {
             flags: message.flags?.reduce((a: number, b: number) => a + b) || 0 + message.version === WebhookMessageType.NEW ? 32768 : 0,
             ...(message.version === WebhookMessageType.NEW
                 ? {
-                    ...message,
-                    components: message.components.map((component: Component) => component.toJSON()),
-                }
+                      ...message,
+                      components: message.components.map((component: Component) => component.toJSON()),
+                  }
                 : {
-                    ...message,
-                    embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                    components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                    poll: message.poll ? message.poll.toJSON() : undefined,
-                    content: message.content || "",
-                }),
+                      ...message,
+                      embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                      components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                      poll: message.poll ? message.poll.toJSON() : undefined,
+                      content: message.content || "",
+                  }),
         }
 
         try {
@@ -239,16 +239,16 @@ class Webhook {
             flags: message.flags?.reduce((a: number, b: number) => a + b) || 0 + message.version === WebhookMessageType.NEW ? 32768 : 0,
             ...(message.version === WebhookMessageType.NEW
                 ? {
-                    ...message,
-                    components: (message?.components || [])?.map((component: Component) => component.toJSON()),
-                }
+                      ...message,
+                      components: (message?.components || [])?.map((component: Component) => component.toJSON()),
+                  }
                 : {
-                    ...message,
-                    embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
-                    components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
-                    poll: message.poll ? message.poll.toJSON() : undefined,
-                    content: message.content || "",
-                }),
+                      ...message,
+                      embeds: (message.embeds || []).map((embed: EmbedBuilder) => embed.toJSON()),
+                      components: (message.components || []).map((actionRow: ActionRowComponent) => actionRow.toJSON()),
+                      poll: message.poll ? message.poll.toJSON() : undefined,
+                      content: message.content || "",
+                  }),
         }
 
         try {
