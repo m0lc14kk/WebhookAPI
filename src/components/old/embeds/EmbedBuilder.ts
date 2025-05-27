@@ -28,6 +28,7 @@ class EmbedBuilder {
     /**
      * Sets a title of an embed.
      * @param title New title of an embed.
+     * @throws Throws an error, if title is invalid or it's too long.
      * @returns Edited instance.
      */
     public setTitle(title: string | null): this {
@@ -45,6 +46,7 @@ class EmbedBuilder {
     /**
      * Sets a description of an embed.
      * @param description New description of an embed.
+     * @throws Throws an error, if description is invalid or it's too long.
      * @returns Edited instance.
      */
     public setDescription(description: string | string[] | null): this {
@@ -59,7 +61,8 @@ class EmbedBuilder {
             return this
         }
 
-        if (typeof description !== "object" || !Array.isArray(description) || description.some((line: unknown) => typeof line !== "string")) throw new TypeError("TypeError: Invalid embed's description.")
+        if (typeof description !== "object" || !Array.isArray(description) || description.some((line: unknown) => typeof line !== "string"))
+            throw new TypeError("TypeError: Invalid embed's description.")
 
         const finalDescription: string = Array.isArray(description) ? description.join("\n") : description
         if (finalDescription.length > MAX_EMBED_DESCRIPTION_LENGTH) throw new Error(`DataError: Embed's description cannot exceed ${MAX_EMBED_DESCRIPTION_LENGTH} characters.`)
@@ -92,6 +95,7 @@ class EmbedBuilder {
     /**
      * Set fields of an embed.
      * @param fields New fields of an embed.
+     * @throws Throws an error, if there are too many fields or one of the fields that are being added is invalid.
      * @returns Edited instance.
      */
     public setFields(...fields: IEmbedFieldStructure[]): this {
@@ -104,6 +108,7 @@ class EmbedBuilder {
     /**
      * Adds new fields to an embed.
      * @param fields New fields, that will appear to existing ones.
+     * @throws Throws an error, if there are too many fields or one of the fields that are being added is invalid.
      * @returns Edited instance.
      */
     public addFields(...fields: IEmbedFieldStructure[]): this {
@@ -116,6 +121,7 @@ class EmbedBuilder {
     /**
      * Sets an author of an embed.
      * @param author New author of an embed.
+     * @throws Throws an error, if author is invalid.
      * @returns Edited instance.
      */
     public setAuthor(author: IEmbedAuthorStructure | null): this {
@@ -136,6 +142,7 @@ class EmbedBuilder {
     /**
      * Sets a footer of an embed.
      * @param footer New footer of an embed.
+     * @throws Throws an error, if footer is invalid.
      * @returns Edited instance.
      */
     public setFooter(footer: IEmbedFooterStructure | null): this {
@@ -154,6 +161,7 @@ class EmbedBuilder {
     /**
      * Sets an image of an embed.
      * @param image New image of an embed.
+     * @throws Throws an error, if image is invalid.
      * @returns Edited instance.
      */
     public setImage(image: IEmbedMediaStructure | null): this {
@@ -165,6 +173,7 @@ class EmbedBuilder {
     /**
      * Sets a video of an embed.
      * @param video New video of an embed.
+     * @throws Throws an error, if video is invalid.
      * @returns Edited instance.
      */
     public setVideo(video: IEmbedMediaStructure | null): this {
@@ -176,6 +185,7 @@ class EmbedBuilder {
     /**
      * Sets a thumbnail of an embed.
      * @param thumbnail New thumbnail of an embed.
+     * @throws Throws an error, if thumbnail is invalid.
      * @returns Edited instance.
      */
     public setThumbnail(thumbnail: IEmbedMediaStructure | null): this {
