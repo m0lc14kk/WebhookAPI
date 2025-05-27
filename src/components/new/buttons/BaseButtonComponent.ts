@@ -2,15 +2,15 @@ import { MAX_BUTTON_LABEL_LENGTH } from "../../../globals"
 import { DiscordEmojiValidator } from "../../../validators/DiscordEmojiValidator"
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
-import { ComponentEmojiType } from "../../types/ComponentEmojiType"
 import { ButtonStyle } from "./constants/ButtonStyle"
+import type { ComponentEmojiAnimatedType } from "../../types/ComponentEmojiAnimatedType"
 
 abstract class BaseButtonComponent extends Component {
     public static override readonly type: ComponentType = ComponentType.BUTTON
     protected abstract style: ButtonStyle
     protected label: string = ""
     protected disabled: boolean = false
-    protected emoji: string | ComponentEmojiType | null = null
+    protected emoji: string | ComponentEmojiAnimatedType | null = null
 
     /**
      * Sets a label of a button.
@@ -40,7 +40,7 @@ abstract class BaseButtonComponent extends Component {
      * @param emoji Emoji of a button.
      * @returns Edited instance.
      */
-    public setEmoji(emoji: string | ComponentEmojiType | null): this {
+    public setEmoji(emoji: string | ComponentEmojiAnimatedType | null): this {
         if (emoji !== null) DiscordEmojiValidator.validateEmoji(emoji)
         this.emoji = emoji
         return this
