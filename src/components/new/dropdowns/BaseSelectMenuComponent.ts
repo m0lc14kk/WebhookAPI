@@ -1,4 +1,5 @@
 import { MAX_CUSTOM_ID_LENGTH, MAX_SELECT_MENU_OPTIONS, MAX_SELECT_MENU_PLACEHOLDER_LENGTH } from "../../../globals"
+import { SnowflakeValidator } from "../../../validators/SnowflakeValidator"
 import { Component } from "../../Component"
 import { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultOptionType"
 import type { ISelectMenuDefaultOptionStructure } from "./interfaces/ISelectMenuDefaultOptionStructure"
@@ -71,6 +72,10 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
      * @returns Edited instance.
      */
     public setDefaultValues(...defaultValues: ISelectMenuDefaultOptionStructure<T>[]): this {
+        for (const { id } of defaultValues) {
+            if (!SnowflakeValidator.isSnowflake(id)) throw new Error("DataError: Invalid select menu's Snowflake identifier.")
+        }
+
         this.defaultValues = defaultValues
         return this
     }
@@ -81,6 +86,10 @@ abstract class BaseSelectMenuComponent<T extends SelectMenuDefaultOptionType> ex
      * @returns Edited instance.
      */
     public addDefaultValues(...defaultValues: ISelectMenuDefaultOptionStructure<T>[]): this {
+        for (const { id } of defaultValues) {
+            if (!SnowflakeValidator.isSnowflake(id)) throw new Error("DataError: Invalid select menu's Snowflake identifier.")
+        }
+
         this.defaultValues.push(...defaultValues)
         return this
     }

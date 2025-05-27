@@ -1,3 +1,4 @@
+import { SnowflakeValidator } from "../../../validators/SnowflakeValidator"
 import { ComponentType } from "../../constants/ComponentType"
 import { BaseSelectMenuComponent } from "./BaseSelectMenuComponent"
 import { SelectMenuDefaultOptionType } from "./constants/SelectMenuDefaultOptionType"
@@ -12,6 +13,10 @@ class RoleSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultO
      * @returns Edited instance.
      */
     public override setDefaultValues(...defaultValues: Omit<ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.ROLE>, "type">[]): this {
+        for (const { id } of defaultValues) {
+            if (!SnowflakeValidator.isSnowflake(id)) throw new Error("DataError: Invalid role's identifier.")
+        }
+
         this.defaultValues = defaultValues.map(({ id }) => ({
             id,
             type: SelectMenuDefaultOptionType.ROLE as const,
@@ -25,6 +30,10 @@ class RoleSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefaultO
      * @returns Edited instance.
      */
     public override addDefaultValues(...defaultValues: Omit<ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.ROLE>, "type">[]): this {
+        for (const { id } of defaultValues) {
+            if (!SnowflakeValidator.isSnowflake(id)) throw new Error("DataError: Invalid role's identifier.")
+        }
+
         const transformedValues: ISelectMenuDefaultOptionStructure<SelectMenuDefaultOptionType.ROLE>[] = defaultValues.map(({ id }) => ({
             id,
             type: SelectMenuDefaultOptionType.ROLE as const,
