@@ -20,7 +20,7 @@ Before you will begin with installation this API, create a basic add-on template
       ```json
         {
             "allowed_modules": [
-                // Other modules does not matter.
+                // Other modules do not matter.
                 "@minecraft/server-gametest",
                 "@minecraft/server",
                 "@minecraft/server-ui",
@@ -37,7 +37,7 @@ Before you will begin with installation this API, create a basic add-on template
                 // Other dependencies.
                 {
                     "module_name": "@minecraft/server-net",
-                    "version": "1.0.0-beta" // Version does not matter.
+                    "version": "1.0.0-beta" // Version do not matter.
                 }
             ]
         }
