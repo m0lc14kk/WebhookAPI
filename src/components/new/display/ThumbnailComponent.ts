@@ -14,6 +14,7 @@ class ThumbnailComponent extends Component {
      * @returns Edited instance.
      */
     public setUrl(url: string): this {
+        if (typeof url !== "string") throw new TypeError("TypeError: Thumbnail's URL must be a string.")
         this.url = url
         return this
     }
@@ -35,6 +36,7 @@ class ThumbnailComponent extends Component {
      * @returns Edited instance.
      */
     public setSpoiler(spoiler: boolean): this {
+        if (typeof spoiler !== "boolean") throw new TypeError("TypeError: Thumbnail's spoiler state must be a boolean.")
         this.spoiler = spoiler
         return this
     }
