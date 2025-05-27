@@ -20,7 +20,7 @@ Before you will begin with installation this API, create a basic add-on template
       ```json
         {
             "allowed_modules": [
-                // Other modules does not matter.
+                // Other modules do not matter.
                 "@minecraft/server-gametest",
                 "@minecraft/server",
                 "@minecraft/server-ui",
