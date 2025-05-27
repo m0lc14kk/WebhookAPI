@@ -13,6 +13,7 @@ class SeparatorComponent extends Component {
      * @returns Edited instance.
      */
     public setPadding(padding: SeparatorPaddingType): this {
+        if (padding !== SeparatorPaddingType.SMALL && padding !== SeparatorPaddingType.LARGE) throw new TypeError("TypeError: Display divider option of a separator must be a boolean.")
         this.padding = padding
         return this
     }
@@ -23,6 +24,7 @@ class SeparatorComponent extends Component {
      * @returns Edited instance.
      */
     public setDisplayDivider(displayDivider: boolean): this {
+        if (typeof displayDivider !== "boolean") throw new TypeError("TypeError: Display divider option of a separator must be a boolean.")
         this.displayDivider = displayDivider
         return this
     }
