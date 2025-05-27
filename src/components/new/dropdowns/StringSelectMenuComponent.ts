@@ -1,4 +1,5 @@
 import { MAX_CUSTOM_ID_LENGTH, MAX_SELECT_MENU_OPTIONS, MAX_SELECT_MENU_PLACEHOLDER_LENGTH } from "../../../globals"
+import { DiscordEmojiValidator } from "../../../validators/DiscordEmojiValidator"
 import { Component } from "../../Component"
 import { ComponentType } from "../../constants/ComponentType"
 import type { IStringSelectMenuOptionStructure } from "./interfaces/IStringSelectMenuOptionStructure"
@@ -95,6 +96,7 @@ class StringSelectMenuComponent extends Component {
     public toJSON(): object {
         if (this.customId === null) throw new Error("DataError: You must provide custom identifier of a dropdown before creating it.")
         if (this.options.length === 0) throw new Error("DataError: You must provide at least 1 option to a string dropdown.")
+        if (this.minValues > this.maxValues) throw new Error("DataError: Select menu cannot have more minimum than maximum values to select!")
 
         return {
             type: StringSelectMenuComponent.type,
@@ -103,15 +105,19 @@ class StringSelectMenuComponent extends Component {
             min_values: this.minValues,
             max_values: this.maxValues,
             disabled: this.disabled,
-            options: this.options.map(({ emoji, ...props }: IStringSelectMenuOptionStructure) => ({
-                ...props,
-                emoji:
-                    typeof emoji === "string"
-                        ? {
-                              name: emoji,
-                          }
-                        : emoji,
-            })),
+            options: this.options.map(({ emoji, ...props }: IStringSelectMenuOptionStructure) => {
+                DiscordEmojiValidator.validateEmoji(emoji)
+
+                return {
+                    ...props,
+                    emoji:
+                        typeof emoji === "string"
+                            ? {
+                                name: emoji,
+                            }
+                            : emoji,
+                }
+            }),
         }
     }
 }

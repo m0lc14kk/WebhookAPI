@@ -42,6 +42,7 @@ class ChannelSelectMenuComponent extends BaseSelectMenuComponent<SelectMenuDefau
      */
     public toJSON(): object {
         if (this.customId === null) throw new Error("DataError: You must provide custom identifier of a dropdown before creating it.")
+        if (this.minValues > this.maxValues) throw new Error("DataError: Select menu cannot have more minimum than maximum values to select!")
 
         return {
             type: ChannelSelectMenuComponent.type,
