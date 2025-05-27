@@ -247,35 +247,35 @@ class EmbedBuilder {
                 this.author === null
                     ? null
                     : {
-                        name: this.author.name,
-                        icon_url: this.author.iconUrl || null,
-                        url: this.author.url || null,
-                    },
+                          name: this.author.name,
+                          icon_url: this.author.iconUrl || null,
+                          url: this.author.url || null,
+                      },
             footer:
                 this.footer === null
                     ? null
                     : {
-                        text: this.footer.text,
-                        icon_url: this.footer.iconUrl || null,
-                    },
+                          text: this.footer.text,
+                          icon_url: this.footer.iconUrl || null,
+                      },
             image:
                 this.image === null
                     ? null
                     : {
-                        url: this.image.url,
-                    },
+                          url: this.image.url,
+                      },
             video:
                 this.video === null
                     ? null
                     : {
-                        url: this.video.url,
-                    },
+                          url: this.video.url,
+                      },
             thumbnail:
                 this.thumbnail === null
                     ? null
                     : {
-                        url: this.thumbnail.url,
-                    },
+                          url: this.thumbnail.url,
+                      },
             timestamp: this.timestamp,
         }
     }
