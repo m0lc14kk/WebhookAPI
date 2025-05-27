@@ -12,6 +12,7 @@ class MediaGalleryComponent extends Component {
      * @returns Edited instance.
      */
     public addImages(...images: IMediaGalleryItemStructure[]): this {
+        this.validateMediaGalleryItems(images)
         this.images.push(...images)
         return this
     }
@@ -22,8 +23,17 @@ class MediaGalleryComponent extends Component {
      * @returns Edited instance.
      */
     public setImages(...images: IMediaGalleryItemStructure[]): this {
+        this.validateMediaGalleryItems(images)
         this.images = images
         return this
+    }
+
+    private validateMediaGalleryItems(images: IMediaGalleryItemStructure[]): void {
+        for (const image of images) {
+            if (image.description && typeof image.description !== "string") throw new TypeError("TypeError: Gallery item's description has to be a string.")
+            if (!image.media || typeof image.media.url !== "string") throw new TypeError("TypeError: Gallery item's URL has to be a string.")
+            if (typeof (image.spoiler ?? false) !== "boolean") throw new TypeError("TypeError: Gallery item's spoiler status has to be a boolean.")
+        }
     }
 
     /**
