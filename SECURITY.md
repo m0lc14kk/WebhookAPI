@@ -11,4 +11,4 @@ The following table shows which versions of the project are currently being supp
 
 ## Reporting a Vulnerability
 
-If you are having troubles with API, create an issue on GitHub. Using *Bug Report* template.
+If you are having troubles with API, create an issue on GitHub, using *Bug Report* template.
