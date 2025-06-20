@@ -15,7 +15,7 @@ interface IWebhookMessageMethodQueryOptionsStructure {
 
     /**
      * Optional identifier of a thread.
-     * @remarks If it is not provided, it'll send in a main channel.
+     * @remarks If it is not provided, it'll be send in a main channel.
      */
     threadId?: string
 }

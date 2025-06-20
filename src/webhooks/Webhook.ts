@@ -112,23 +112,23 @@ class Webhook {
         let finalUrl: string = this.webhookUrl
         const params: string[] = []
 
-        if (options?.wait) {
-            if (typeof options.wait !== "boolean") throw new TypeError("DataError: You have to provide wait query option as a boolean.")
+        const messageOptions: IWebhookMessageMethodQueryOptionsStructure = {
+            withComponents: (message.components?.length ?? 0) > 0 || options?.withComponents,
+            ...options,
+        }
+
+        DiscordMessageValidator.validateDiscordMessageOptions(messageOptions)
+
+        if (messageOptions?.wait) {
             params.push("wait=true")
         }
 
-        if (options?.withComponents) {
-            if (typeof options.withComponents !== "boolean") throw new TypeError("DataError: You have to provide withComponents query option as a boolean.")
+        if (messageOptions?.withComponents) {
             params.push("with_components=true")
         }
 
-        if (options?.threadId) {
-            if (typeof options.threadId !== "string") throw new TypeError("DataError: You have to provide thread's identifier query option as a Snowflake.")
-            if (!SnowflakeValidator.isSnowflake(options.threadId)) {
-                throw new Error("DataError: Invalid thread's identifier.")
-            }
-
-            params.push(`thread_id=${encodeURIComponent(options.threadId)}`)
+        if (messageOptions?.threadId) {
+            params.push(`thread_id=${messageOptions.threadId}`)
         }
 
         if (params.length > 0) {
@@ -220,14 +220,19 @@ class Webhook {
         let finalUrl: string = `${this.webhookUrl}/messages/${messageId}`
         const params: string[] = []
 
-        if (options?.withComponents) {
+        const messageOptions: Omit<IWebhookMessageMethodQueryOptionsStructure, "wait"> = {
+            withComponents: (message.components?.length ?? 0) > 0 || options?.withComponents,
+            ...options,
+        }
+
+        DiscordMessageValidator.validateDiscordMessageOptions(messageOptions, false)
+
+        if (messageOptions.withComponents) {
             params.push("with_components=true")
         }
 
-        if (options?.threadId) {
-            if (typeof options.threadId !== "string") throw new TypeError("DataError: You have to provide thread's identifier query option as a Snowflake.")
-            if (SnowflakeValidator.isSnowflake(options.threadId)) throw new Error("DataError: Invalid thread's identifier.")
-            params.push(`thread_id=${encodeURIComponent(options.threadId)}`)
+        if (messageOptions.threadId) {
+            params.push(`thread_id=${messageOptions.threadId}`)
         }
 
         if (params.length > 0) {
