@@ -8,7 +8,7 @@ import { SnowflakeValidator } from "./SnowflakeValidator"
  * A class to validate Discord messages, that will be send soon.
  */
 class DiscordMessageValidator {
-    private constructor() { }
+    private constructor() {}
 
     /**
      * Validates Discord message.
@@ -33,8 +33,10 @@ class DiscordMessageValidator {
     }
 
     public static validateDiscordMessageOptions(options: IWebhookMessageMethodQueryOptionsStructure, checkWaitProperty: boolean = true): void {
-        if (options.withComponents !== undefined && typeof options.withComponents !== "boolean") throw new TypeError("TypeError: Invalid withComponents query option while sending or editing a message.")
-        if (options.threadId !== undefined && !SnowflakeValidator.isSnowflake(options.threadId)) throw new TypeError("TypeError: Invalid thread identifier query option while sending or editing a message.")
+        if (options.withComponents !== undefined && typeof options.withComponents !== "boolean")
+            throw new TypeError("TypeError: Invalid withComponents query option while sending or editing a message.")
+        if (options.threadId !== undefined && !SnowflakeValidator.isSnowflake(options.threadId))
+            throw new TypeError("TypeError: Invalid thread identifier query option while sending or editing a message.")
         if (checkWaitProperty && options.wait !== undefined && typeof options.threadId !== "boolean") throw new TypeError("TypeError: Invalid wait query option while sending or editing a message.")
     }
 }
