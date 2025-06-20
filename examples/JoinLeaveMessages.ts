@@ -15,13 +15,16 @@ const webhook: Webhook = new Webhook(WEBHOOK_URL)
 
 world.afterEvents.playerJoin.subscribe(({ playerName }: PlayerJoinAfterEvent): void => {
     system.run((): void => {
-        webhook.sendMessage({
-            version: WebhookMessageType.NEW,
-            username: playerName,
-            components: [new TextDisplayComponent().setContent("I just joined a server!")],
-        }, {
-            withComponents: true
-        })
+        webhook.sendMessage(
+            {
+                version: WebhookMessageType.NEW,
+                username: playerName,
+                components: [new TextDisplayComponent().setContent("I just joined a server!")],
+            },
+            {
+                withComponents: true,
+            },
+        )
     })
 })
 
@@ -32,12 +35,15 @@ world.beforeEvents.playerLeave.subscribe(({ player }: PlayerLeaveBeforeEvent): v
      */
     const { name: playerName } = player
     system.run((): void => {
-        webhook.sendMessage({
-            version: WebhookMessageType.NEW,
-            username: playerName,
-            components: [new TextDisplayComponent().setContent("I just left a server!")],
-        }, {
-            withComponents: true
-        })
+        webhook.sendMessage(
+            {
+                version: WebhookMessageType.NEW,
+                username: playerName,
+                components: [new TextDisplayComponent().setContent("I just left a server!")],
+            },
+            {
+                withComponents: true,
+            },
+        )
     })
 })
