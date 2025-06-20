@@ -19,6 +19,8 @@ world.afterEvents.playerJoin.subscribe(({ playerName }: PlayerJoinAfterEvent): v
             version: WebhookMessageType.NEW,
             username: playerName,
             components: [new TextDisplayComponent().setContent("I just joined a server!")],
+        }, {
+            withComponents: true
         })
     })
 })
@@ -34,6 +36,8 @@ world.beforeEvents.playerLeave.subscribe(({ player }: PlayerLeaveBeforeEvent): v
             version: WebhookMessageType.NEW,
             username: playerName,
             components: [new TextDisplayComponent().setContent("I just left a server!")],
+        }, {
+            withComponents: true
         })
     })
 })
