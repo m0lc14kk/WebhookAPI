@@ -2,7 +2,7 @@
  * This example is a sample code, that will log every player's message
  * from a chat to Discord channel.
  *
- * @author m0l1c4kk
+ * @author m0lc14kk
  * @see https://github.com/m0lc14kk/WebhookAPI
  */
 
@@ -18,8 +18,13 @@ world.beforeEvents.chatSend.subscribe((eventData: ChatSendBeforeEvent): void => 
     eventData.cancel = true
 
     world.sendMessage(`${player.name}: ${message}`)
-    system.run((): void => {
-        webhook.sendMessage(
+
+    /**
+     * You don't have to call the method using await, but most of
+     * standards might throw a warning about ignoring a promise.
+     */
+    system.run(async (): Promise<void> => {
+        await webhook.sendMessage(
             {
                 version: WebhookMessageType.NEW,
                 components: [new TextDisplayComponent().setContent(`${player.name}: ${message}`)],

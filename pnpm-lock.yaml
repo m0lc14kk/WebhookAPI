@@ -18,6 +18,9 @@ importers:
       '@eslint/json':
         specifier: ^0.12.0
         version: 0.12.0
+      '@minecraft/server':
+        specifier: 2.1.0-beta.1.21.93-stable
+        version: 2.1.0-beta.1.21.93-stable(@minecraft/vanilla-data@1.21.81)
       eslint:
         specifier: ^9.26.0
         version: 9.26.0
@@ -292,6 +295,11 @@ packages:
 
   '@minecraft/server@1.19.0':
     resolution: {integrity: sha512-Nq42tLYRcH8AIxpBq1F9/sXia75Vp7k7SXnV+t+yaFNKHwE7LZIfJ3TSbQ4THWTbf1VjwnbSUfJ0qVb3aTDCug==}
+    peerDependencies:
+      '@minecraft/vanilla-data': '>=1.20.70'
+
+  '@minecraft/server@2.1.0-beta.1.21.93-stable':
+    resolution: {integrity: sha512-31FrGqYAqcQUQu0DEP5GKKPsIO4Z5FJyozLPKFY0lbWYlO96WAQjfyv/3YpDpoh5aW/S3vlgMpcU2SZjzkD6Fg==}
     peerDependencies:
       '@minecraft/vanilla-data': '>=1.20.70'
 
@@ -1573,6 +1581,11 @@ snapshots:
       - '@minecraft/vanilla-data'
 
   '@minecraft/server@1.19.0(@minecraft/vanilla-data@1.21.81)':
+    dependencies:
+      '@minecraft/common': 1.2.0
+      '@minecraft/vanilla-data': 1.21.81
+
+  '@minecraft/server@2.1.0-beta.1.21.93-stable(@minecraft/vanilla-data@1.21.81)':
     dependencies:
       '@minecraft/common': 1.2.0
       '@minecraft/vanilla-data': 1.21.81

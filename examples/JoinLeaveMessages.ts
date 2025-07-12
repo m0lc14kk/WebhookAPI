@@ -2,7 +2,7 @@
  * This example is a sample code, that will log every player's join
  * and leave to a Minecraft server as themselves.
  *
- * @author m0l1c4kk
+ * @author m0lc14kk
  * @see https://github.com/m0lc14kk/WebhookAPI
  */
 
@@ -14,8 +14,12 @@ const WEBHOOK_URL: string = "YOUR_WEBHOOK_URL"
 const webhook: Webhook = new Webhook(WEBHOOK_URL)
 
 world.afterEvents.playerJoin.subscribe(({ playerName }: PlayerJoinAfterEvent): void => {
-    system.run((): void => {
-        webhook.sendMessage(
+    /**
+     * You don't have to call the method using await, but most of
+     * standards might throw a warning about ignoring a promise.
+     */
+    system.run(async (): Promise<void> => {
+        await webhook.sendMessage(
             {
                 version: WebhookMessageType.NEW,
                 username: playerName,
@@ -30,12 +34,17 @@ world.afterEvents.playerJoin.subscribe(({ playerName }: PlayerJoinAfterEvent): v
 
 world.beforeEvents.playerLeave.subscribe(({ player }: PlayerLeaveBeforeEvent): void => {
     /**
-     * You must save player's name, beacuse in system.run player will be undefined
+     * You must save player's name, because in system.run player will be undefined
      * due to privilege system.
      */
     const { name: playerName } = player
-    system.run((): void => {
-        webhook.sendMessage(
+
+    /**
+     * You don't have to call the method using await, but most of
+     * standards might throw a warning about ignoring a promise.
+     */
+    system.run(async (): Promise<void> => {
+        await webhook.sendMessage(
             {
                 version: WebhookMessageType.NEW,
                 username: playerName,

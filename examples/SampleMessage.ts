@@ -13,8 +13,12 @@ import { ContainerComponent, MediaGalleryComponent, TextDisplayComponent, Webhoo
 const WEBHOOK_URL = "YOUR_WEBHOOK_URL"
 const webhook: Webhook = new Webhook(WEBHOOK_URL)
 
-world.afterEvents.worldLoad.subscribe((): void => {
-    webhook.sendMessage(
+world.afterEvents.worldLoad.subscribe(async (): Promise<void> => {
+    /**
+     * You don't have to call the method using await, but most of
+     * standards might throw a warning about ignoring a promise.
+     */
+    await webhook.sendMessage(
         {
             version: WebhookMessageType.NEW,
             components: [
