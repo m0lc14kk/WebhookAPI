@@ -5,5 +5,13 @@
 /dist/
 /src/**/*.js
 
+# macOS files
+.DS_Store
+
+/.idea/
+/.vscode/
+/.vs/
+
 # Package manager's file.
+package-lock.json
 pnpm-lock.yaml
