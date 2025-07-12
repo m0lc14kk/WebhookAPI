@@ -22,12 +22,20 @@ jobs:
             - name: Set up pnpm as a package manager
               uses: pnpm/action-setup@v2
               with:
-                  version: 10.11
+                  version: latest
 
             - name: Install dependencies
               run: pnpm install
               shell: bash
 
             - name: Run ESLint script and validate
-              run: pnpm lint
+              run: pnpm run lint
+              shell: bash
+
+            - name: Build a project using TypeScript Compiler
+              run: pnpm exec tsc
+              shell: bash
+
+            - name: Build a project
+              run: pnpm run build
               shell: bash
