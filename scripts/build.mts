@@ -1,6 +1,6 @@
-import { existsSync, readFileSync, writeFileSync } from "fs";
-import { join } from "path";
-import { cwd } from "process";
+import { existsSync, readFileSync, writeFileSync } from "fs"
+import { join } from "path"
+import { cwd } from "process"
 
 const buildSourceFile: string = join(cwd(), "dist", "index.mjs")
 

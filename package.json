@@ -3,9 +3,9 @@
     "description": "A typing library to easily create content of Discord webhook messages.",
     "version": "1.0.0",
     "scripts": {
-        "build": "tsup && node --no-deprecation --experimental-strip-types \"./scripts/build.mts\"",
-        "pretty": "pnpx prettier --write \"./**/*.{ts,js,mjs,json,yaml}\"",
-        "lint": "pnpm eslint .",
+        "build": "pnpm exec tsup && node --no-deprecation --experimental-strip-types \"./scripts/build.mts\"",
+        "format": "pnpm exec prettier --write .",
+        "lint": "pnpm exec eslint .",
         "prepare": "husky"
     },
     "keywords": [

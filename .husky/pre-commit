@@ -1,2 +1,2 @@
-pnpm lint
-pnpm pretty
+pnpm run lint
+pnpm run format
