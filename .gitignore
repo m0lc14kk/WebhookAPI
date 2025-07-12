@@ -7,11 +7,14 @@
 
 # IDE files.
 /.vscode/
+/.vs/
+/.idea/
 
 # Keep VS Code recommended extensions in Git. 
 !.vscode/extensions.json
-/.vs/
-/.idea/
+
+# macOS file
+.DS_Store*
 
 # File for testing HTTP requests.
 .rest
