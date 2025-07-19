@@ -17,7 +17,6 @@
 Before you will begin with installation this API, create a basic add-on template before. It should have atleast a manifest and a scripting folder.
 
 - ### BDS:
-
     - Activate **Experimental Beta API** experiment in a world. You can find this option in _Experiments_ section of a world.
     - Add `@minecraft/server-net` module to server's permissions (`config/default/permissions.json`):
         ```json
