@@ -68,7 +68,7 @@ enum ComponentType {
      * Media gallery component, which might include lots of media.
      * @remarks Check class `MediaGalleryComponent` for more details.
      */
-    MEDIA_GALERY = 12,
+    MEDIA_GALLERY = 12,
 
     /**
      * File component.

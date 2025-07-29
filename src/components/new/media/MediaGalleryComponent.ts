@@ -3,7 +3,7 @@ import { ComponentType } from "../../constants/ComponentType"
 import { IMediaGalleryItemStructure } from "./interfaces/IMediaGalleryItemStructure"
 
 class MediaGalleryComponent extends Component {
-    public static override readonly type: ComponentType = ComponentType.MEDIA_GALERY
+    public static override readonly type: ComponentType = ComponentType.MEDIA_GALLERY
     private images: IMediaGalleryItemStructure[] = []
 
     /**
