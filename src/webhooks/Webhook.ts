@@ -11,6 +11,8 @@ import { EmbedBuilder } from "../components/old/embeds/EmbedBuilder"
 import { ActionRowComponent } from "../components/new/grouping/ActionRowComponent"
 import { DiscordWebhookEndPointValidator } from "../validators/DiscordWebhookEndPointValidator"
 import { DiscordMessageValidator } from "../validators/DiscordMessageValidator"
+import { HttpMethodNameManager } from "./managers/HttpMethodNameManager"
+import { HttpRequestMethod } from "@minecraft/server-net"
 
 /**
  * Discord Webhook instance that is connecting to REST API via `@minecraft/server-net` library.
@@ -61,11 +63,11 @@ class Webhook {
         if (avatar && typeof avatar !== "string") throw new Error("DataError: Webhook's avatar has to be a string in Base64 format.")
 
         try {
+            // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
             const { http, HttpRequest, HttpRequestMethod, HttpHeader } = await import("@minecraft/server-net")
             await http.request(
                 new HttpRequest(this.webhookUrl)
-                    // to-do: change method to PATCH after an update
-                    .setMethod(HttpRequestMethod.Put)
+                    .setMethod(HttpMethodNameManager.PATCH as HttpRequestMethod)
                     .setHeaders([new HttpHeader("Content-Type", "application/json")])
                     .setBody(
                         JSON.stringify({
@@ -88,8 +90,9 @@ class Webhook {
      */
     public async deleteWebhook(): Promise<boolean> {
         try {
+            // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
             const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
-            await http.request(new HttpRequest(this.webhookUrl).setMethod(HttpRequestMethod.Delete))
+            await http.request(new HttpRequest(this.webhookUrl).setMethod(HttpMethodNameManager.DELETE as HttpRequestMethod))
             return true
         } catch {
             return false
@@ -153,10 +156,11 @@ class Webhook {
         }
 
         try {
+            // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
             const { http, HttpRequest, HttpRequestMethod, HttpHeader } = await import("@minecraft/server-net")
             const response = await http.request(
                 new HttpRequest(finalUrl)
-                    .setMethod(HttpRequestMethod.Post)
+                    .setMethod(HttpMethodNameManager.POST as HttpRequestMethod)
                     .setHeaders([new HttpHeader("Content-Type", "application/json")])
                     .setBody(JSON.stringify(finalObject)),
             )
@@ -257,10 +261,11 @@ class Webhook {
         }
 
         try {
+            // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
             const { http, HttpRequest, HttpRequestMethod, HttpHeader } = await import("@minecraft/server-net")
             const response = await http.request(
                 new HttpRequest(finalUrl)
-                    .setMethod(HttpRequestMethod.Post)
+                    .setMethod(HttpMethodNameManager.PUT as HttpRequestMethod)
                     .setHeaders([new HttpHeader("Content-Type", "application/json")])
                     .setBody(JSON.stringify(finalObject)),
             )
@@ -291,8 +296,9 @@ class Webhook {
         }
 
         try {
+            // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
             const { http, HttpRequest, HttpRequestMethod } = await import("@minecraft/server-net")
-            await http.request(new HttpRequest(finalUrl).setMethod(HttpRequestMethod.Delete))
+            await http.request(new HttpRequest(finalUrl).setMethod(HttpMethodNameManager.DELETE as HttpRequestMethod))
             return true
         } catch {
             return false

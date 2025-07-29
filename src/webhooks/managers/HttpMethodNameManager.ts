@@ -37,27 +37,27 @@ class HttpMethodNameManager {
         return this.currentMap[method]
     }
 
-    public static get get() {
+    public static get GET(): string {
         return this.getMethodName("get")
     }
 
-    public static get post() {
+    public static get POST(): string {
         return this.getMethodName("post")
     }
 
-    public static get put() {
+    public static get PUT(): string {
         return this.getMethodName("put")
     }
 
-    public static get patch() {
+    public static get PATCH(): string {
         return this.getMethodName("patch")
     }
 
-    public static get delete() {
+    public static get DELETE(): string {
         return this.getMethodName("delete")
     }
 
-    public static get head() {
+    public static get HEAD() {
         return this.getMethodName("head")
     }
 }
