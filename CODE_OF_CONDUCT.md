@@ -1,4 +1,10 @@
-# Code of Conduct for the Discord Webhook API – by m0lc14kk
+![Banner](./.github/assets/banner.png)
+
+<p align="center">
+    Webhook API - Code of Conduct
+</p>
+
+---
 
 ## Our Pledge
 
