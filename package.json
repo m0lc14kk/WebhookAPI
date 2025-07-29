@@ -2,8 +2,10 @@
     "name": "webhook-api",
     "description": "A typing library to easily create content of Discord webhook messages.",
     "version": "1.0.0",
+    "private": false,
+    "type": "module",
     "scripts": {
-        "build": "pnpm exec tsup && node --no-deprecation --experimental-strip-types \"./scripts/build.mts\"",
+        "build": "pnpm exec tsup && node --no-deprecation --experimental-strip-types \"./scripts/build-library.ts\"",
         "format": "pnpm exec prettier --write .",
         "lint": "pnpm exec eslint .",
         "prepare": "husky"
@@ -22,13 +24,16 @@
     "devDependencies": {
         "@eslint/js": "^9.31.0",
         "@eslint/json": "^0.12.0",
+        "@eslint/plugin-kit": ">=0.3.3",
         "@minecraft/server": "2.1.0-beta.1.21.93-stable",
+        "@types/node": "^24.1.0",
         "eslint": "^9.31.0",
         "globals": "^16.3.0",
         "husky": "^9.1.7",
+        "path": "^0.12.7",
         "prettier": "^3.6.2",
+        "process": "^0.11.10",
         "tsup": "^8.5.0",
-        "typescript-eslint": "^8.37.0",
-        "@eslint/plugin-kit": ">=0.3.3"
+        "typescript-eslint": "^8.37.0"
     }
 }
