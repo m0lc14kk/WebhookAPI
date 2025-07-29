@@ -12,6 +12,7 @@
 
 export * from "./globals"
 export * from "./webhooks/Webhook"
+export * from "./webhooks/managers/HttpMethodNameManager"
 export * from "./webhooks/constants/WebhookMessageFlagsType"
 export * from "./webhooks/constants/WebhookMessageMentionsParseType"
 export * from "./webhooks/constants/WebhookMessageType"

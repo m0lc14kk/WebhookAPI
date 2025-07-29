@@ -17,6 +17,15 @@ The following table shows which versions of the project are currently being supp
 
 Versions of players, that are playing on a server does not matter.
 
+If your server is running on older versions, it's better to use `HttpMethodNameManager` class to change server's version.
+
+```ts
+import { HttpMethodNameManager } from "webhook-api"
+
+// Versions below 1.21.10 are mostly affected.
+HttpMethodNameManager.setVersion("1.21.10")
+```
+
 ## 🔎 Reporting a Vulnerability
 
 If you are having troubles with API, create an issue on GitHub, using _Bug Report_ template. Remember, sometimes it might take a bit longer to fix or implement new API features.
