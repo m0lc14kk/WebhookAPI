@@ -1,23 +1,32 @@
 {
     "name": "webhook-api",
-    "description": "A typing library to easily create content of Discord webhook messages.",
+    "description": "A library that makes Discord webhook simpler for Minecraft: Bedrock Edition Vanilla software.",
     "version": "1.0.0",
     "private": false,
+    "license": "Apache-2.0",
     "type": "module",
-    "scripts": {
-        "build": "pnpm exec tsup && node --no-deprecation --experimental-strip-types \"./scripts/build-library.ts\"",
-        "format": "pnpm exec prettier --write .",
-        "lint": "pnpm exec eslint .",
-        "prepare": "husky"
+    "author": {
+        "name": "m0lc14kk",
+        "email": "olek@m0lc14kk.com",
+        "url": "https://m0lc14kk.com"
     },
     "keywords": [
         "webhook-api",
         "discord webhooks",
         "minecraft discord"
     ],
-    "author": "m0lc14kk",
-    "license": "Apache-2.0",
-    "packageManager": "pnpm@10.13.1",
+    "main": "./src/Main.ts",
+    "types": "./src/Main.ts",
+    "scripts": {
+        "build": "bunx tsup && bun run ./scripts/build-library.ts",
+        "format": "bunx prettier --write .",
+        "lint": "bunx eslint .",
+        "prepare": "bunx husky"
+    },
+    "engines": {
+        "node": ">=1.0.0",
+        "bun": ">=1.0.0"
+    },
     "dependencies": {
         "@minecraft/server-net": "1.0.0-beta.1.21.93-stable"
     },
