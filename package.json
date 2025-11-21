@@ -21,7 +21,7 @@
         "build": "bunx tsup && bun run ./scripts/build-library.ts",
         "format": "bunx prettier --write .",
         "lint": "bunx eslint .",
-        "prepare": "bunx husky"
+        "prepare": "husky"
     },
     "lint-staged": {
         "*.{ts,json,jsonc,md}": [
