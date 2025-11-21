@@ -1,41 +1,42 @@
-name: Validate library's code
+name: Validate library's code quality.
 
 on:
     push:
-        branches: [main]
+        branches:
+            - main
+            - development
     pull_request:
-        branches: [main]
+        branches:
+            - main
+            - development
+
+defaults:
+    run:
+        working-directory: ./
+        shell: bash
 
 jobs:
     lint:
+        name: Validate library's code quality.
         runs-on: ubuntu-latest
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v3
+              uses: actions/checkout@v5
 
             - name: Set up Node.js
-              uses: actions/setup-node@v3
+              uses: oven-sh/setup-bun@v2
               with:
-                  node-version: "22.17"
-
-            - name: Set up pnpm as a package manager
-              uses: pnpm/action-setup@v2
-              with:
-                  version: latest
+                  bun-version: latest
 
             - name: Install dependencies
-              run: pnpm install
-              shell: bash
+              run: bun install --frozen-lockfile
 
             - name: Run ESLint script and validate
-              run: pnpm run lint
-              shell: bash
+              run: bun run lint
 
             - name: Build a project using TypeScript Compiler
-              run: pnpm exec tsc
-              shell: bash
+              run: bun exec tsc
 
             - name: Build a project
-              run: pnpm run build
-              shell: bash
+              run: bun run build
