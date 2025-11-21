@@ -69,4 +69,4 @@ jobs:
               run: pnpm exec tsc
 
             - name: Build a project
-              run: pnpm exec tsup && pnpm run ./scripts/build-library.ts
+              run: pnpm exec tsup && node ./scripts/build-library.ts
