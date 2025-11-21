@@ -1,11 +1,10 @@
 {
   "lockfileVersion": 1,
-  "configVersion": 1,
   "workspaces": {
     "": {
       "name": "webhook-api",
       "dependencies": {
-        "@minecraft/server-net": "1.0.0-beta.1.21.93-stable",
+        "@minecraft/server-net": "1.0.0-beta.11940b24",
       },
       "devDependencies": {
         "@eslint/js": "^9.39.1",
@@ -123,9 +122,9 @@
 
     "@minecraft/server": ["@minecraft/server@2.1.0-beta.1.21.93-stable", "", { "dependencies": { "@minecraft/common": "^1.1.0" }, "peerDependencies": { "@minecraft/vanilla-data": ">=1.20.70" } }, "sha512-31FrGqYAqcQUQu0DEP5GKKPsIO4Z5FJyozLPKFY0lbWYlO96WAQjfyv/3YpDpoh5aW/S3vlgMpcU2SZjzkD6Fg=="],
 
-    "@minecraft/server-admin": ["@minecraft/server-admin@1.0.0-beta.release.1.19.50", "", {}, "sha512-RVHU4LLs0gZeTntbfcUEc+WM9DEWXbl1kK+vh02kCta8KSWWmW2aGX+vNdrJjrlyAVy3+uZgzLAb3O67g24xig=="],
+    "@minecraft/server-admin": ["@minecraft/server-admin@1.0.0-beta.11940b24", "", {}, "sha512-UZ8YyB8mvF31f22+uM67gJums9d6NDgz9AQ2l4a++EHUP9uen0m3aaBaqM9RyumJpRBJbv/hslAKOyeDT01qew=="],
 
-    "@minecraft/server-net": ["@minecraft/server-net@1.0.0-beta.1.21.93-stable", "", { "dependencies": { "@minecraft/common": "^1.0.0", "@minecraft/server": "^1.17.0 || ^2.0.0", "@minecraft/server-admin": "^1.0.0-beta.1.21.93-stable" } }, "sha512-8jFgu0ij8kNPhp2cfUwRZBwrbTkUP6axkWTphvMQHcL0swFZ74qfEqsiGLmekFfk2sPBwR9bGmlwm00gMY+x9A=="],
+    "@minecraft/server-net": ["@minecraft/server-net@1.0.0-beta.11940b24", "", { "dependencies": { "@minecraft/server-admin": "1.0.0-beta.11940b24" } }, "sha512-jiL03mGNpADCfvPDyydheEAhdi7J++nx5nB7Gyu3GImDlV5pv9uTwKCrnmILrLs4qJTtxhuRLKBKRlVyYDpKMw=="],
 
     "@minecraft/vanilla-data": ["@minecraft/vanilla-data@1.21.123", "", {}, "sha512-Lu86/yqL6utCRTRVSAyi6/AIsOQZk/D0KPp5E/U+ug0emE+LBR3l+YOcEWaWuK3Um4MoCbNh24k1/ky80CixBw=="],
 
@@ -640,8 +639,6 @@
     "@eslint-community/eslint-utils/eslint-visitor-keys": ["eslint-visitor-keys@3.4.3", "", {}, "sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag=="],
 
     "@eslint/eslintrc/globals": ["globals@14.0.0", "", {}, "sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ=="],
-
-    "@minecraft/server-net/@minecraft/server": ["@minecraft/server@2.3.0", "", { "peerDependencies": { "@minecraft/common": "^1.2.0", "@minecraft/vanilla-data": ">=1.20.70" } }, "sha512-2SXAjZPb67TRjVGVhSXST8ha9p9zrRw0LiCY6+Ul4RN62+j3BbeCMtvOlVLvZV/KjGJyw3fFxIw7SsTzi2szYw=="],
 
     "@typescript-eslint/eslint-plugin/ignore": ["ignore@7.0.5", "", {}, "sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg=="],
 
