@@ -1,6 +1,5 @@
 {
   "lockfileVersion": 1,
-  "configVersion": 1,
   "workspaces": {
     "": {
       "name": "webhook-api",
@@ -11,7 +10,7 @@
         "@eslint/js": "^9.39.1",
         "@eslint/json": "^0.14.0",
         "@eslint/markdown": "^7.5.1",
-        "@minecraft/server": "2.1.0-beta.1.21.93-stable",
+        "@minecraft/server": "2.3.0",
         "@types/node": "^24.10.1",
         "eslint": "^9.39.1",
         "globals": "^16.5.0",
@@ -121,7 +120,7 @@
 
     "@minecraft/common": ["@minecraft/common@1.2.0", "", {}, "sha512-JdmEq4P3Z/FtoBzhLijFgMSVFnFRrUoLwY8DHHrgtFo0mfLTOLTB1RErYjLMsA6b7BGVNxkX/pfFRiH7QZ0XwQ=="],
 
-    "@minecraft/server": ["@minecraft/server@2.1.0-beta.1.21.93-stable", "", { "dependencies": { "@minecraft/common": "^1.1.0" }, "peerDependencies": { "@minecraft/vanilla-data": ">=1.20.70" } }, "sha512-31FrGqYAqcQUQu0DEP5GKKPsIO4Z5FJyozLPKFY0lbWYlO96WAQjfyv/3YpDpoh5aW/S3vlgMpcU2SZjzkD6Fg=="],
+    "@minecraft/server": ["@minecraft/server@2.3.0", "", { "peerDependencies": { "@minecraft/common": "^1.2.0", "@minecraft/vanilla-data": ">=1.20.70" } }, "sha512-2SXAjZPb67TRjVGVhSXST8ha9p9zrRw0LiCY6+Ul4RN62+j3BbeCMtvOlVLvZV/KjGJyw3fFxIw7SsTzi2szYw=="],
 
     "@minecraft/server-admin": ["@minecraft/server-admin@1.0.0-beta.release.1.19.50", "", {}, "sha512-RVHU4LLs0gZeTntbfcUEc+WM9DEWXbl1kK+vh02kCta8KSWWmW2aGX+vNdrJjrlyAVy3+uZgzLAb3O67g24xig=="],
 
@@ -640,8 +639,6 @@
     "@eslint-community/eslint-utils/eslint-visitor-keys": ["eslint-visitor-keys@3.4.3", "", {}, "sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag=="],
 
     "@eslint/eslintrc/globals": ["globals@14.0.0", "", {}, "sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ=="],
-
-    "@minecraft/server-net/@minecraft/server": ["@minecraft/server@2.3.0", "", { "peerDependencies": { "@minecraft/common": "^1.2.0", "@minecraft/vanilla-data": ">=1.20.70" } }, "sha512-2SXAjZPb67TRjVGVhSXST8ha9p9zrRw0LiCY6+Ul4RN62+j3BbeCMtvOlVLvZV/KjGJyw3fFxIw7SsTzi2szYw=="],
 
     "@typescript-eslint/eslint-plugin/ignore": ["ignore@7.0.5", "", {}, "sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg=="],
 
