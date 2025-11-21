@@ -23,6 +23,12 @@
         "lint": "bunx eslint .",
         "prepare": "bunx husky"
     },
+    "lint-staged": {
+        "*.{ts,json,jsonc,md}": [
+            "bunx eslint --fix",
+            "bunx prettier --write"
+        ]
+    },
     "engines": {
         "node": ">=1.0.0",
         "bun": ">=1.0.0"
@@ -40,6 +46,7 @@
         "globals": "^16.5.0",
         "husky": "^9.1.7",
         "jiti": "^2.6.1",
+        "lint-staged": "^16.2.7",
         "path": "^0.12.7",
         "prettier": "^3.6.2",
         "process": "^0.11.10",
