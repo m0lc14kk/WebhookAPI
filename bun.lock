@@ -11,7 +11,7 @@
         "@eslint/js": "^9.39.2",
         "@eslint/json": "^1.0.1",
         "@eslint/markdown": "^7.5.1",
-        "@minecraft/server": "2.4.0",
+        "@minecraft/server": "2.5.0",
         "@types/node": "^25.2.3",
         "eslint": "^10.0.0",
         "globals": "^17.3.0",
@@ -119,7 +119,7 @@
 
     "@minecraft/common": ["@minecraft/common@1.2.0", "", {}, "sha512-JdmEq4P3Z/FtoBzhLijFgMSVFnFRrUoLwY8DHHrgtFo0mfLTOLTB1RErYjLMsA6b7BGVNxkX/pfFRiH7QZ0XwQ=="],
 
-    "@minecraft/server": ["@minecraft/server@2.4.0", "", { "peerDependencies": { "@minecraft/common": "^1.2.0", "@minecraft/vanilla-data": ">=1.20.70" } }, "sha512-xd9dOWQ4RhPQBCt2aui9tp/GCnjvXpi6ZHVxaUr0SPDHfh/GkMRWnyf2Ud6D3pEThp/0giOEtHY1sx2HN9Qd+A=="],
+    "@minecraft/server": ["@minecraft/server@2.5.0", "", { "peerDependencies": { "@minecraft/common": "^1.2.0", "@minecraft/vanilla-data": ">=1.20.70" } }, "sha512-fh+1lByNo5tav75Xz0StOjBLUnWEQabg4K+RV7B7acGjdO5YkPnpXa2vw1ABuppgLuiBb2+E5letoCAj89bUBQ=="],
 
     "@minecraft/server-admin": ["@minecraft/server-admin@1.0.0-beta.11940b24", "", {}, "sha512-UZ8YyB8mvF31f22+uM67gJums9d6NDgz9AQ2l4a++EHUP9uen0m3aaBaqM9RyumJpRBJbv/hslAKOyeDT01qew=="],
 
